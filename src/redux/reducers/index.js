@@ -1,6 +1,6 @@
-import users from './users';
+import {authReducer} from './auth/auth.reducer';
 
 
 export default {
-  users
+  authReducer
 }
