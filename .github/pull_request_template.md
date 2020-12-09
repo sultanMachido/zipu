@@ -1,7 +1,5 @@
 #### What does this PR do?
 > - 
-#### Description of Task to be completed?
-> - 
 #### How should this be manually tested?
 > - Clone the repo using the command `git clone [repo url]`
 > - run `npm install` to install all dependencies for the project.
