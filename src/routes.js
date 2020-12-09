@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from './pages/landing/Home';
 import Login from './pages/Auth/Login';
-
-import 'antd/dist/antd.css';
+import Registration from './pages/Auth/Registration'
+import './styles.less'
 
 export default class Routes extends Component {
   render() {
@@ -12,6 +12,7 @@ export default class Routes extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Registration} />
         </Switch>
       </BrowserRouter>
     );
