@@ -1,4 +1,4 @@
-.loginWrapper{
+.registrationWrapper{
   width: 100vw;
   height: 100vh;
   background: #E5E5E5;
@@ -9,46 +9,53 @@
   p{
     font-size: 13px;
   }
-  .loginContent{
+  .registrationContent{
     width: 50%;
     background-color: #ffffff;
     padding: 5rem 15rem;
     color: #637A87;
 
-    .loginText{
-      width:80%;
-      margin-bottom: 3rem;
+    .registrationHeader{
+      width: 100%;
+      display: flex;
+      justify-content:flex-start;
+      align-items:center;
+      margin-bottom: 5rem;
 
-      h1{
-        font-weight: bold;
-        margin: 0;
-        padding: 0;
+      .registrationText{
+        margin-left: 3rem;
+        h1{
+          font-weight: 600;
+          margin: 0;
+        }
+        p{
+          margin: 0;
+        }
       }
     }
 
-    .loginForm{
+    .registrationForm{
       width: 100%;
 
       .btnWrapper{
-          margin: 5rem 0rem 1rem 0rem;
+          margin:5rem 0 2rem 0;
       }
 
-      .forgotPassword{
+      .verificationText{
         width: 100%;
-        margin-bottom: 5rem;
         
         p{
           text-align: center !important;
         }
       }
     }
-    .newUser{
+    .privacyPolicy{
       width: 100%;
       font-size: 13px;
       text-align: center;
-      color: #333333;
+      margin-top: 5rem;
 
-      a{
+      .termsConditions, .privacyStatement{
           color: #FFD301;
       }
     }
@@ -56,18 +63,18 @@
 }
 
 @media (max-width: 1024px){
-  .loginWrapper{
+  .registrationWrapper{
     width: 100vw;
-    .loginContent{
+    .registrationContent{
       width: 70%;
     }
   }
 }
 
 @media (max-width: 768px){
-  .loginWrapper{
+  .registrationWrapper{
     width: 100vw;
-    .loginContent{
+    .registrationContent{
       width: 85%;
       padding: 5rem 9rem;
     }
@@ -75,9 +82,9 @@
 }
 
 @media (max-width: 600px){
-  .loginWrapper{
+  .registrationWrapper{
     width: 100vw;
-    .loginContent{
+    .registrationContent{
       width: 95%;
       padding: 5rem 7rem;
     }
@@ -85,9 +92,9 @@
 }
 
 @media (max-width: 414px){
-  .loginWrapper{
+  .registrationWrapper{
     width: 100vw;
-    .loginContent{
+    .registrationContent{
       width: 100%;
       padding: 5rem 5rem;
     }
