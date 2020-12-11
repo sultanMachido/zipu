@@ -16,9 +16,10 @@ const Auth = (props) => {
     props.history.push(`/register?step=${query.get('step') || '1'}`)
   }, [query.get('step')]);
 
-  const onFinishRegistration = () => {
+  const onFinishRegistration = (values) => {
     query.set('step', 2)
     props.history.push(`/register?step=${query.get('step')}`)
+    console.log({ values })
   }
 
   const onFinishEmailVerify = (values) => {
@@ -40,8 +41,7 @@ const Auth = (props) => {
   }
 
   const onFinishBusinessDetails = (values) => {
-    query.set('step', 6)
-    props.history.push(`/register?step=${query.get('step')}`)
+    props.history.push(`/bookings`)
     console.log({ values })
   }
 

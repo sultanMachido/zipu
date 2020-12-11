@@ -123,10 +123,17 @@ export const OTPField = (name, autofocus, placeholder = "-") => (
       { required: true, message: "" },
       { min: 1, message: "" },
       { max: 1, message: "" },
-      { pattern: /(?<!\S)\d(?!\S)/, message: "" }
+      { pattern: /^\d+$/, message: "" }
     ]}
   >
-    <Input min={1} max={1} className="otpInputElement" autoFocus={autofocus} placeholder={placeholder} />
+    <Input
+      min={1} max={1}
+      className="otpInputElement"
+      autoFocus={autofocus}
+      placeholder={placeholder}
+      inputMode="numeric"
+      autoComplete="one-time-code"
+    />
   </Form.Item>
 )
 
@@ -325,12 +332,12 @@ export const AccountNumberField = (inputSize, required = true, placeholder) => (
         ? [
           { required: true, message: "Please enter your bank account number" },
           {
-            min: 11,
-            message: 'Bank account number cannot be less than 11 characters',
+            min: 10,
+            message: 'Bank account number cannot be less than 10 characters',
           },
           {
-            max: 11,
-            message: 'Bank account number cannot be greater than 11 characters',
+            max: 10,
+            message: 'Bank account number cannot be greater than 10 characters',
           },
         ]
         : []),
@@ -355,17 +362,17 @@ export const AccountNameField = (inputSize, required = true, placeholder) => (
         ? [
           { required: true, message: "Please enter your bank account name" },
           {
-            min: 11,
-            message: 'Bank account name cannot be less than 11 characters',
+            min: 3,
+            message: 'Bank account name cannot be less than 3 characters',
           },
           {
-            max: 11,
-            message: 'Bank account name cannot be greater than 11 characters',
+            max: 60,
+            message: 'Bank account name cannot be greater than 60 characters',
           },
         ]
         : []),
       {
-        pattern: /^\d+$/,
+        pattern: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
         message: 'Bank account name can only contain digits',
       },
     ]}
