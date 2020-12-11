@@ -1,0 +1,32 @@
+.menuTabs {
+    background: #F1F3F4;
+    display: flex;
+    justify-content: flex-start;
+    padding: 34px 145px 0px;
+    .tab-item {
+        padding: 16px 24px;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 10px 10px 0px 0px;
+        &.active {
+            background: #fff;
+        }
+        h5 {
+            font-family: Inter;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 24px;
+            color: #323D44;
+            margin-bottom: 0px;
+        }
+        span {
+            font-family: Inter;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 20px;
+            color: #637A87;
+        }
+    }
+}

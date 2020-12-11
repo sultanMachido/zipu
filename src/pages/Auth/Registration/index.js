@@ -59,7 +59,7 @@ const Registration = () => {
         </div>
 
         <div className="privacyPolicy">
-          <p>By signing in or creating an account, you agree with our <a href="#" className="termsConditions">Terms & Conditions</a> and <a href="#" className="privacyStatement">Privacy Statement</a></p>
+          <p>By signing in or creating an account, you agree with our <a href="/#" className="termsConditions">Terms & Conditions</a> and <a href="/#" className="privacyStatement">Privacy Statement</a></p>
         </div>
       </div>
     </div>

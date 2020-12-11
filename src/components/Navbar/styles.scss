@@ -1,0 +1,87 @@
+/*
+* Navbar
+*/
+
+.reg-navbar {
+    height: 80px;
+    padding: 0px 145px;
+    z-index: 100;
+    background: #ffffff;
+    border-bottom: 1px solid #FFD301;
+    transition: all ease-in-out 0.3s;
+    
+    .navbar-brand {
+        color: #2C3F5E;
+        font-size: 18px;
+        font-weight: bold;
+        letter-spacing: 0;
+        line-height: 23px;
+        img {
+            width: 100px;
+        }
+    }
+    .navbar-collapse {
+        height: 100%;
+    }
+    .navbar-nav {
+        height: 100%;
+    }
+    .nav-item {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative !important;
+        .nav-link {
+            text-align: center;
+            p {
+                margin-bottom: 0px;
+                font-family: Inter;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 24px;
+                color: #323D44;
+            }
+            p.sub-text {
+                font-size: 10px;
+                margin-bottom: 0px;
+                font-family: Inter;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 20px;
+                color: #637A87;
+            }
+        }
+        .nav-icon {
+            margin: 0px 12px;
+            img {
+                fill: #2C3F5E;
+                fill-opacity: 0.37185861;
+                &:hover {
+                    fill: #3a48bb;
+                    fill-opacity: 1;
+                }
+            }
+            .icon {
+                display: block;
+                width: 24px;
+                height: 24px;
+                background-size: cover;
+            }
+            .avatar {
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+        }
+    }
+    
+    .underline {
+        font-size:200%;
+        font-weight:bold;
+        box-shadow: inset 0 -2px 0 white, inset 0 -3px 0 black
+    }
+}
