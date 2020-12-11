@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from './pages/landing/Home';
 import Login from './pages/Auth/Login';
-import Registration from './pages/Auth/Registration'
-import './styles.less'
+import Registration from './pages/Auth'
+import './styles.less';
 
 export default class Routes extends Component {
   render() {
