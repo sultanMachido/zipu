@@ -1,0 +1,53 @@
+.emptyScreen {
+    padding-top: 94px;
+    padding-bottom: 225px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    img {
+        height: 82px;
+        width: 82px;
+    }
+    h3 {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 36px;
+        line-height: 46px;
+        color: #323D44;
+        margin-top: 32px;
+        margin-bottom: 0px;
+    }
+    p {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 24px;
+        color: #323D44;
+        margin-top: 20px;
+        margin-bottom: 72px;
+    }
+    button {
+        border: none;
+        padding: 12px 32px;
+        position: absolute;
+        width: 251px;
+        height: 44px;
+        left: 587px;
+        top: 659px;
+        background: linear-gradient(180deg, #FADE90 0%, #F3B348 93.23%, #CB820B 100%);
+        border-radius: 6px;
+
+        font-family: Inter;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 20px;
+
+        letter-spacing: 0.45px;
+        text-transform: uppercase;
+        color: #323D44;
+    }
+}

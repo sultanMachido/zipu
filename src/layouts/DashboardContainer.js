@@ -6,6 +6,7 @@ import MenuTabs from "../components/MenuTabs";
 
 import Navbar from "../components/Navbar/index";
 import Bookings from "../pages/DashboardPages/Bookings";
+import Staff from "../pages/DashboardPages/Staff";
 
 import "./styles.scss";
 
@@ -26,6 +27,7 @@ class DashboardContainer extends Component {
         <Layout className="layoutContainer">
           <Switch>
             <Route exact path="/bookings" component={Bookings}></Route>
+            <Route exact path="/staff" component={Staff}></Route>
           </Switch>
         </Layout>
       </>
