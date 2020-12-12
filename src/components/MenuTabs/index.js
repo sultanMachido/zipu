@@ -40,9 +40,9 @@ const menuList = [
     }
 ]
 
-const MenuTabs = ({ selected }) => {
+const MenuTabs = ({ visible }) => {
     const { pathname } = useLocation();
-    return (
+    return visible && (
         <div className="menuTabs">
             {
                 menuList.map(({ title, subText, route }) => {

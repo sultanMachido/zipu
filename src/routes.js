@@ -7,6 +7,7 @@ import Registration from './pages/Auth'
 import { Guest } from './utils/AuthHelper';
 import DashboardContainer from './layouts/DashboardContainer';
 import './styles.less';
+import 'antd/dist/antd.css';
 
 export default class Routes extends Component {
   render() {
