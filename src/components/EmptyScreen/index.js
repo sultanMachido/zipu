@@ -1,5 +1,4 @@
 import React from 'react';
-import { SubmitButton } from '../FormField';
 import './styles.scss';
 
 const EmptyScreen = ({ img, title, subText }) => {
