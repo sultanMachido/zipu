@@ -5,12 +5,13 @@ import { EmailField, PasswordField, SubmitButton } from '../../../components/For
 
 const inputSize = 'large';
 
-const Login = () => {
+const Login = (props) => {
   const [form] = Form.useForm();
 
 
-  const onFinish = () => {
-
+  const onFinish = (values) => {
+    console.log({ values })
+    props.history.push('/');
   }
   return (
     <div className="loginWrapper">

@@ -1,19 +1,14 @@
 import React from 'react';
 import { Form, Progress } from 'antd';
+import './Registration.scss'
 import { EmailField, PasswordField, PhoneNumberField, SubmitButton } from '../../../components/FormField';
-import './Registration.scss';
 
-const inputSize = 'large';
-const Registration = () => {
+const Registration = (props) => {
   const [form] = Form.useForm();
+  const inputSize = 'large';
 
-
-  const onFinish = () => {
-
-  }
-
-  return (<div className="registrationWrapper">
-    <div className="registrationContent">
+  return (
+    <>
       <div className="registrationHeader">
         <Progress
           type="circle"
@@ -21,20 +16,19 @@ const Registration = () => {
           percent={25}
           format={percent => `${(percent / 100) * 4} of 4`}
           strokeColor="#ffbc00"
-          strokeWidth={7}
+          strokeWidth={8}
           trailColor="#f8eac2"
         />
         <div className="registrationText">
           <h1>Company registration</h1>
           <p>Next: Transport type</p>
         </div>
-
       </div>
 
       <div className="registrationForm">
         <Form
           form={form}
-          onFinish={onFinish}
+          onFinish={props?.onFinishRegistration}
           hideRequiredMark
           layout="vertical"
         >
@@ -59,11 +53,11 @@ const Registration = () => {
         </div>
 
         <div className="privacyPolicy">
-          <p>By signing in or creating an account, you agree with our <a href="/#" className="termsConditions">Terms & Conditions</a> and <a href="/#" className="privacyStatement">Privacy Statement</a></p>
+          <p>By signing in or creating an account, you agree with our <a href="/" className="termsConditions">Terms & Conditions</a> and <a href="/" className="privacyStatement">Privacy Statement</a></p>
         </div>
       </div>
-    </div>
-  </div>)
+    </>
+  )
 }
 
 export default Registration

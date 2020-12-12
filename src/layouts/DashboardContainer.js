@@ -16,7 +16,7 @@ import "./styles.scss";
 class DashboardContainer extends Component {
 
   handleLogout = () => {
-    return;
+    this.props.history.push('/login');
   };
 
   render() {
