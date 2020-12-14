@@ -10,7 +10,8 @@ import TitlePane from "../components/TitlePane";
 import Bookings from "../pages/DashboardPages/Bookings";
 import Staff from "../pages/DashboardPages/Staff";
 import StaffAdd from "../pages/DashboardPages/StaffAdd";
-import TripInventory from '../pages/DashboardPages/TripInventory'
+import TripInventory from '../pages/DashboardPages/TripInventory';
+import Footer from '../components/Footer'
 
 import "./styles.scss";
 
@@ -54,6 +55,9 @@ class DashboardContainer extends Component {
             <Route exact path="/trip-inventory" component={TripInventory}></Route>
           </Switch>
         </Layout>
+        <div className="footerSection">
+          <Footer />
+        </div>
       </>
     );
   }
