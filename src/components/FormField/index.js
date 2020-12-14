@@ -27,9 +27,15 @@ const normFile = () => {
 }
 
 export const SubmitButton = (name) => (
-  <button className="submitButton" type="submit">
-    {name}
-  </button>
+  <button className="submitButtonPrimary" type="submit" >
+    { name}
+  </button >
+)
+
+export const SubmitButtonSecondary = (name) => (
+  <button className="submitButtonSecondary" type="submit" >
+    { name}
+  </button >
 )
 
 // email address

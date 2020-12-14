@@ -10,6 +10,7 @@ import TitlePane from "../components/TitlePane";
 import Bookings from "../pages/DashboardPages/Bookings";
 import Staff from "../pages/DashboardPages/Staff";
 import StaffAdd from "../pages/DashboardPages/StaffAdd";
+import TripInventory from '../pages/DashboardPages/TripInventory'
 
 import "./styles.scss";
 
@@ -37,19 +38,20 @@ class DashboardContainer extends Component {
       <>
         <Navbar path={pathname} profile={profile} logoutUser={this.handleLogout} />
         <div style={{ marginTop: "80px" }} />
-        <MenuTabs 
-          visible={selectedInnerPage ? false : true} 
+        <MenuTabs
+          visible={selectedInnerPage ? false : true}
         />
-        <TitlePane 
+        <TitlePane
           prev={selectedInnerPage && selectedInnerPage.prev}
           title={selectedInnerPage && selectedInnerPage.title}
-          visible={selectedInnerPage ? true : false} 
+          visible={selectedInnerPage ? true : false}
         />
         <Layout className="layoutContainer">
           <Switch>
             <Route exact path="/bookings" component={Bookings}></Route>
             <Route exact path="/staff" component={Staff}></Route>
             <Route exact path="/staff/add" component={StaffAdd}></Route>
+            <Route exact path="/trip-inventory" component={TripInventory}></Route>
           </Switch>
         </Layout>
       </>
