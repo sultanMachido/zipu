@@ -10,6 +10,10 @@ import TitlePane from "../components/TitlePane";
 import Bookings from "../pages/DashboardPages/Bookings";
 import Staff from "../pages/DashboardPages/Staff";
 import StaffAdd from "../pages/DashboardPages/StaffAdd";
+import CarListing from '../pages/DashboardPages/CarListing';
+import AddTrip from '../pages/DashboardPages/CarListing/AddTrip';
+import EditTrip from '../pages/DashboardPages/CarListing/EditTrip'
+import Footer from '../components/Footer'
 
 import "./styles.scss";
 
@@ -28,6 +32,16 @@ class DashboardContainer extends Component {
         route: '/staff/add',
         prev: '/staff',
         title: 'Create new staff'
+      },
+      {
+        route: '/car-listing/add',
+        prev: '/car-listing',
+        title: 'Create new trip'
+      },
+      {
+        route: '/car-listing/edit/:id',
+        prev: '/car-listing',
+        title: 'Edit Listing'
       }
     ]
     const selectedInnerPage = innerPages.filter(({ route }) => {
@@ -37,21 +51,27 @@ class DashboardContainer extends Component {
       <>
         <Navbar path={pathname} profile={profile} logoutUser={this.handleLogout} />
         <div style={{ marginTop: "80px" }} />
-        <MenuTabs 
-          visible={selectedInnerPage ? false : true} 
+        <MenuTabs
+          visible={selectedInnerPage ? false : true}
         />
-        <TitlePane 
+        <TitlePane
           prev={selectedInnerPage && selectedInnerPage.prev}
           title={selectedInnerPage && selectedInnerPage.title}
-          visible={selectedInnerPage ? true : false} 
+          visible={selectedInnerPage ? true : false}
         />
         <Layout className="layoutContainer">
           <Switch>
             <Route exact path="/bookings" component={Bookings}></Route>
             <Route exact path="/staff" component={Staff}></Route>
             <Route exact path="/staff/add" component={StaffAdd}></Route>
+            <Route exact path="/car-listing" component={CarListing}></Route>
+            <Route exact path="/car-listing/add" component={AddTrip}></Route>
+            <Route exact path="/car-listing/edit/:id" component={EditTrip}></Route>
           </Switch>
         </Layout>
+        <div className="footerSection">
+          <Footer />
+        </div>
       </>
     );
   }

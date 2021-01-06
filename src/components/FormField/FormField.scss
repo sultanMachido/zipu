@@ -53,12 +53,12 @@
   font-weight: bold;
   font-size: 5rem;
 }
-.submitButton{
+.submitButtonPrimary{
     background: linear-gradient(180deg, #FADE90 0%, #F3B348 93.23%, #CB820B 100%) !important;
     line-height: 1.5715;
     position: relative;
     display: inline-block;
-    font-weight: 400;
+    font-weight: 600;
     white-space: nowrap;
     text-align: center;
     background-image: none;
@@ -68,14 +68,15 @@
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     user-select: none;
     touch-action: manipulation;
-    font-size: 18px;
+    font-size: 15px;
     color:#323D44;
     border-radius: 6px !important;
     outline: none;
     border: none;
     transition:all .2s ease-out;
     width: 100%;
-    padding: 1.4rem 0;
+    padding: 1rem 0;
+    margin: .5rem 0;
     
     &:active{
       outline: none;
@@ -83,4 +84,38 @@
     }
 }
 
+.submitButtonSecondary{
+  background: linear-gradient(180deg, #FEFEFE 0%, #E4E4E4 100%) !important;
+  line-height: 1.5715;
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+  white-space: nowrap;
+  text-align: center;
+  background-image: none;
+  border: 1px solid transparent;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  user-select: none;
+  touch-action: manipulation;
+  font-size: 15px;
+  color:#323D44;
+  border-radius: 6px !important;
+  outline: none !important;
+    border: none !important;
+  transition:all .2s ease-out;
+  width: 100%;
+  padding: 1rem 0;
+  margin: .5rem 0;
+
+  &:active{
+    outline: none !important;
+    border: none !important;
+  }
+  &:focus{
+    outline: none !important;
+    border: none !important;
+  }
+}
 

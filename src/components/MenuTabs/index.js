@@ -14,8 +14,13 @@ const menuList = [
         route: "/passengers"
     },
     {
-        title: "Trip Inventory",
-        subText: "Trip/Car listing",
+        title: "Car Listing",
+        subText: "Car/Bus Management",
+        route: "/car-listing"
+    },
+    {
+        title: "Trip",
+        subText: "Management",
         route: "/trip-inventory"
     },
     {
@@ -58,6 +63,6 @@ const MenuTabs = ({ visible }) => {
             }
         </div>
     )
-} 
+}
 
 export default MenuTabs;
