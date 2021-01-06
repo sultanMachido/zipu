@@ -1,27 +1,34 @@
 import React from 'react';
-import { Divider, Checkbox } from 'antd';
-import { ImPencil } from 'react-icons/all'
+import { Divider, Checkbox, Pagination } from 'antd';
+import { ImPencil } from 'react-icons/all';
 import './styles.scss';
 import { SubmitButton } from '../../../components/FormField';
 import EmptyScreen from '../../../components/EmptyScreen';
 import { TerminalsList } from '../../../utils/constants/TerminalList';
 import { StatusList } from '../../../utils/constants/StatusList';
-import { useQuery } from '../../../utils/URLSearchParam';
-import { CategoriesList } from '../../../utils/constants/CategoryList'
+import { VehicleList } from '../../../utils/constants/VehicleList';
 import { TripData } from '../../../utils/constants/TripInventoryList';
 import TripDataComponent from './TripData';
+import { useQuery } from '../../../utils/URLSearchParam'
 
 const CheckboxGroup = Checkbox.Group;
 const defaultCheckedList = [''];
 
 const TripInventory = (props) => {
+  let query = useQuery();
   const [checkedList, setCheckedList] = React.useState(defaultCheckedList);
   const [indeterminate, setIndeterminate] = React.useState(true);
   const [checkAll, setCheckAll] = React.useState(false);
+  const [page, setPage] = React.useState(query.get('page') || 1)
+  const [pageSize, setPageSize] = React.useState(3)
 
-  let query = useQuery();
+  React.useEffect(() => {
+    props.history.push(`/car-listing?page=${page}&pageSize=${pageSize}`)
+  }, [page, pageSize]);
 
-  const currentCategory = query.get('category');
+  const indexOfLastCarTrip = page * pageSize;
+  const indexOfFirstCarTrip = indexOfLastCarTrip - pageSize;
+  const currentCarTrips = TripData.slice(indexOfFirstCarTrip, indexOfLastCarTrip);
 
   const onChangeTerminals = list => {
     setCheckedList(list);
@@ -47,32 +54,34 @@ const TripInventory = (props) => {
     setCheckAll(e.target.checked);
   };
 
-  React.useEffect(() => {
-    props.history.push(`/trip-inventory?category=${query.get('category') || 'small'}`)
-  }, [query.get('category')]);
+  const handleClick = () => {
+    props.history.push('/car-listing/add')
+  }
 
-  const changeCategory = (category) => {
-    query.set('category', category.path)
-    props.history.push(`/trip-inventory?category=${query.get('category')}`)
+  const onChange = (page, pageSize) => {
+    query.set('page', page)
+    setPage(page)
+  }
+  const onShowSizeChange = (current, pageSize) => {
+    console.log(pageSize)
+    query.set('pageSize', pageSize)
+    setPageSize(pageSize)
   }
 
 
   return (
     <div className="tripInventoryWrapper">
       <div className="tripInventoryHeader">
-        <h5 className="title">Availiable Listing</h5>
+        <h5 className="title">Trip and car list</h5>
+        <div className="btnWrapper">
+          {
+            SubmitButton('ADD NEW TRIPS', handleClick)
+          }
+        </div>
       </div>
 
       <div className="tripInventoryContent">
         <div className="contentSidebar">
-          <div className="emptyContent">
-
-          </div>
-          <div className="btnWrapper">
-            {
-              SubmitButton('ADD NEW TRIPS')
-            }
-          </div>
           <div className="terminalsWrapper">
             <p className="terminalsTitle">Terminals</p>
             <div>
@@ -93,24 +102,20 @@ const TripInventory = (props) => {
             </div>
           </div>
           <Divider />
+
+          <div className="vehicleWrapper">
+            <p className="vehicleTitle">Vehicle</p>
+            <div>
+              <Checkbox indeterminate={indeterminate} onChange={onCheckAllChangeStatus} checked={checkAll}>
+                All
+              </Checkbox>
+              <CheckboxGroup options={VehicleList} value={checkedList} onChange={onChangeStatus} layout="vertical" />
+            </div>
+          </div>
+          <Divider />
+
         </div>
         <div className="contentMain">
-          <div className="contentHeader">
-            {
-              CategoriesList.map((category) => {
-                return (
-                  <div
-                    key={category.id}
-                    className={`categoryWrapper ${category.path === currentCategory ? 'active' : ''}`}
-                    onClick={() => changeCategory(category)}
-                  >
-                    {category.name}
-                  </div>
-                )
-              })
-            }
-          </div>
-
           {
             TripData.length === 0
               ?
@@ -121,12 +126,21 @@ const TripInventory = (props) => {
                 buttonText="ADD TRIPS"
               />
               :
-              TripData.map((data) => {
-                return (data && data.carCategory === currentCategory && (<TripDataComponent data={data} key={data.id} />))
+              currentCarTrips.map((data) => {
+                return (<TripDataComponent data={data} key={data.id} />)
               })
           }
 
-
+          <Pagination
+            total={TripData.length}
+            showSizeChanger
+            showQuickJumper
+            showTotal={total => `Total ${total} items`}
+            onChange={onChange}
+            onShowSizeChange={onShowSizeChange}
+            defaultPageSize={3}
+            current={parseInt(page)}
+          />
         </div>
       </div>
     </div>

@@ -1,12 +1,16 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom'
 import { Divider, Card } from 'antd';
 import { GoLocation, GiAlarmClock } from 'react-icons/all';
 import formatCurrency from 'format-currency'
 import './styles.scss';
 import { SubmitButton, SubmitButtonSecondary } from '../../../../components/FormField';
-import './styles.scss';
 
 const TripData = (props) => {
+
+  const handleClick = () => {
+    props.history.push(`/trip-inventory/edit/${props.data.id}`)
+  }
   return (
     <Card style={{ borderRadius: "5px", marginBottom: "2rem" }}>
       <div className="tripInventoryCardTop">
@@ -91,7 +95,7 @@ const TripData = (props) => {
         </div>
         <div className="editAndChangeStausWrpper">
           {
-            SubmitButton('EDIT LISTING')
+            SubmitButton('EDIT LISTING', handleClick)
           }
           {
             SubmitButtonSecondary('Change status')
@@ -102,4 +106,4 @@ const TripData = (props) => {
   )
 }
 
-export default TripData
+export default withRouter(TripData)

@@ -2,13 +2,23 @@
   width: 100%;
   .tripInventoryHeader{
     width: 100%;
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom: 2rem;
+
     h5.title {
       font-family: Inter;
       font-style: normal;
       font-weight: 500;
-      font-size: 25px;
+      font-size: 20px;
       line-height: 32px;
       color: #323D44;
+      padding: 0;
+      margin: 0;
+    }
+    .btnWrapper{
+      flex-basis: 20%;
     }
   }
 
@@ -18,51 +28,13 @@
     justify-content: space-between;
 
     .contentSidebar{
+      border: 1px solid #E3EAED;
       flex-basis: 20%;
-      padding: 0rem 0rem 0 0rem;
-
-      .emptyContent{
-        width: 100%;
-        height: 70px;
-      }
-      .btnWrapper{
-        margin:0;
-      }
-      .terminalsWrapper{
-        margin-top: 5rem;
-      }
+      padding: 2rem 3rem;
+      border-radius: 10px;
     }
     .contentMain{
-      flex-basis: 75%;
-
-      .contentHeader{
-        width: 75%;
-        height: 50px;
-        margin-bottom: 2.5rem;
-        display: flex;
-        justify-content:space-between;
-        align-items:center;
-        border: 1px solid #EFF1F5;
-        border-radius: 5px;
-        background: #E5E5E5;
-        text-align: center;
-
-        div{
-          height:100%;
-          padding: 0 2rem;
-          display:flex;
-          justify-content:center;
-          align-items:center;
-          cursor: pointer;
-          text-align: center;
-        }
-
-        .active{
-          background: #fff;
-          color: #FFBC00;
-          text-align: center;
-        }
-      }
+      flex-basis: 78%;
     }
   }
 }
@@ -102,4 +74,32 @@
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
   content: ' ';
+}
+
+.ant-pagination-item-active {
+  font-weight: 500;
+  background: #fff;
+  border-color: #FFD301 !important;
+}
+
+.ant-pagination-item-active a {
+  color: #ffbc00 !important;
+}
+.ant-pagination-options-quick-jumper input {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  min-width: 0;
+  padding: 4px 11px;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  line-height: 1.5715;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid  #ffbc00 !important;
+  border-radius: 2px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 50px;
+  margin: 0 8px;
 }

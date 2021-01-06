@@ -26,14 +26,14 @@ const normFile = () => {
 
 }
 
-export const SubmitButton = (name) => (
-  <button className="submitButtonPrimary" type="submit" >
+export const SubmitButton = (name, handleClick) => (
+  <button className="submitButtonPrimary" type="submit" onClick={handleClick}>
     { name}
   </button >
 )
 
 export const SubmitButtonSecondary = (name) => (
-  <button className="submitButtonSecondary" type="submit" >
+  <button className="submitButtonSecondary" type="submit">
     { name}
   </button >
 )
