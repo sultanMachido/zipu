@@ -9,7 +9,7 @@ import Navbar from "../components/Navbar/index";
 import TitlePane from "../components/TitlePane";
 import Bookings from "../pages/DashboardPages/Bookings";
 import Staff from "../pages/DashboardPages/Staff";
-import StaffAdd from "../pages/DashboardPages/StaffAdd";
+import StaffAdd from "../pages/DashboardPages/Staff/Add";
 
 import "./styles.scss";
 

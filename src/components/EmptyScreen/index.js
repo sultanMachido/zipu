@@ -1,3 +1,4 @@
+import { Button } from 'antd';
 import React from 'react';
 import './styles.scss';
 
@@ -7,7 +8,7 @@ const EmptyScreen = ({ img, title, subText }) => {
             <img alt="empty-icon" src={img} />
             <h3>{title}</h3>
             <p>{subText}</p>
-            <button>CREATE STAFF PROFILE</button>
+            <Button type="primary">CREATE STAFF PROFILE</Button>
         </div>
     )
 }

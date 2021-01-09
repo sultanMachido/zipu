@@ -3,4 +3,78 @@
         padding: 59px 145px;
         background: #fff;
     }
+    .tableHeader {
+        margin-bottom: 20px;
+    }
+    .ant-input {
+        border: 1px solid rgba(168, 168, 168, 0.32);
+        height: 47px;
+        border-radius: 5px;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        color: #000000;
+    }
+    .ant-select {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        color: #000000;
+        .ant-select-selector {
+            border-radius: 5px !important;
+            height: 47px !important;
+            display: flex;
+            align-items: center;
+        }
+    } 
+    .ant-checkbox-wrapper {
+        margin-bottom: 15.5px;
+        .ant-checkbox + span {
+            padding-left: 16px;
+            font-family: Inter;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 19px;
+            color: #000000;
+        }
+        .ant-checkbox {
+            .ant-checkbox-inner {
+                width: 24px;
+                height: 24px;
+                border-color: #FFBC00;
+            }
+            &.ant-checkbox-checked .ant-checkbox-inner {
+                background-color: #FFBC00;
+            }
+            .ant-checkbox-inner::after {
+                left: 30%;
+            }
+        }
+    }
+}
+
+button.ant-btn-primary {
+    border: none;
+    padding: 12px 32px;
+    background: linear-gradient(180deg, #FADE90 0%, #F3B348 93.23%, #CB820B 100%);
+    border-radius: 6px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    height: auto;
+
+    letter-spacing: 0.45px;
+    text-transform: uppercase;
+    color: #323D44;
+    &:hover, &:focus, {
+        background: linear-gradient(180deg, #ebc55d 0%, #ca8f28 93.23%, #83550b 100%);
+        color: #323D44;
+    }
 }

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ViewBookingsModal from '../../../components/Modals/ViewBookingsModal';
 import TableWrapper from '../../../components/TableWrapper';
 import './styles.scss';
 
 const Bookings = () => {
 
+    const [isModalVisible, setIsModalVisible] = useState(false);
     const columns = [
         {
             title: 'Book',
@@ -73,7 +75,7 @@ const Bookings = () => {
             dataIndex: 'actions',
             key: 'actions',
             render: () => (
-                <button className="view">View</button>
+                <button className="view" onClick={() => setIsModalVisible(true)}>View</button>
             )
         },
     ];
@@ -157,6 +159,10 @@ const Bookings = () => {
             <TableWrapper
                 columns={columns}
                 dataSource={data}
+            />
+            <ViewBookingsModal 
+                isModalVisible={isModalVisible} 
+                handleCancel={() => setIsModalVisible(false)} 
             />
         </div>
     )
