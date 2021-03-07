@@ -1,0 +1,75 @@
+.tripWrapper{
+  width: 100%;
+  display: grid;
+  grid-template-columns: .3fr .3fr 6fr;
+  justify-content:center;
+
+  .tripTime{
+   p{
+     padding: 0px;
+     margin: 0px;
+     font-size: 12px;
+     color: #8D8D8D;
+   }
+  }
+
+  .separator{
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+
+    .circle{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      
+    }
+    .completed{
+      background-color: #6FCF97;
+    }
+    .notCompleted{
+      border: 1px solid #637A87;
+    }
+
+    .dottedLine{
+      width: 10px;
+      min-height: 15rem;
+      margin-left: -1rem;
+    }
+    .dottedCompleted{
+      border-right: 1px dotted #6FCF97;
+    }
+    .dottedNotCompleted{
+      border-right: 1px dotted #637A87;
+    }
+
+  }
+
+  .tripDetailsWrapper{
+    border-top: 1px solid #DDE3E9;
+    padding:.5rem 0rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2rem;
+
+
+  .tripDetails{
+    margin-right: 50px;
+
+   p{
+    color: #637A87;
+    font-size: 10px;
+    padding: 0;
+    margin: 0;
+   }
+   a{
+    font-size: 10px;
+    color: #FFBC00 !important;
+    padding: 0;
+    margin: 0;
+   }
+   
+  }
+}
+}
