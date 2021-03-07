@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.scss';
 import { SubmitButton } from '../../components/FormField'
 
-const EmptyScreen = ({ icon, title, subText, buttonText }) => {
+const EmptyScreen = ({ icon, title, subText, buttonText, handleClick }) => {
     console.log(icon)
     return (
         <div className="emptyScreen">
@@ -14,7 +14,7 @@ const EmptyScreen = ({ icon, title, subText, buttonText }) => {
             <p>{subText}</p>
             <div className="btnWrapper">
                 {
-                    SubmitButton(buttonText)
+                    SubmitButton(buttonText, handleClick)
                 }
             </div>
 

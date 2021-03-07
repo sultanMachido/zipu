@@ -7,8 +7,8 @@ import EmptyScreen from '../../../components/EmptyScreen';
 import { TerminalsList } from '../../../utils/constants/TerminalList';
 import { StatusList } from '../../../utils/constants/StatusList';
 import { VehicleList } from '../../../utils/constants/VehicleList';
-import { TripData } from '../../../utils/constants/TripInventoryList';
-import TripDataComponent from './TripData';
+import { VehicleData } from '../../../utils/constants/VehicleInventoryList';
+import VehicleComponent from './Vehicle';
 import { useQuery } from '../../../utils/URLSearchParam'
 
 const CheckboxGroup = Checkbox.Group;
@@ -28,7 +28,7 @@ const TripInventory = (props) => {
 
   const indexOfLastCarTrip = page * pageSize;
   const indexOfFirstCarTrip = indexOfLastCarTrip - pageSize;
-  const currentCarTrips = TripData.slice(indexOfFirstCarTrip, indexOfLastCarTrip);
+  const currentCarTrips = VehicleData.slice(indexOfFirstCarTrip, indexOfLastCarTrip);
 
   const onChangeTerminals = list => {
     setCheckedList(list);
@@ -117,7 +117,7 @@ const TripInventory = (props) => {
         </div>
         <div className="contentMain">
           {
-            TripData.length === 0
+            VehicleData.length === 0
               ?
               <EmptyScreen
                 icon={<ImPencil />}
@@ -127,12 +127,12 @@ const TripInventory = (props) => {
               />
               :
               currentCarTrips.map((data) => {
-                return (<TripDataComponent data={data} key={data.id} />)
+                return (<VehicleComponent data={data} key={data.id} />)
               })
           }
 
           <Pagination
-            total={TripData.length}
+            total={VehicleData.length}
             showSizeChanger
             showQuickJumper
             showTotal={total => `Total ${total} items`}

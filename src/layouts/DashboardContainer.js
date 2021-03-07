@@ -11,9 +11,11 @@ import Bookings from "../pages/DashboardPages/Bookings";
 import Staff from "../pages/DashboardPages/Staff";
 import StaffAdd from "../pages/DashboardPages/StaffAdd";
 import CarListing from '../pages/DashboardPages/CarListing';
-import AddTrip from '../pages/DashboardPages/CarListing/AddTrip';
-import EditTrip from '../pages/DashboardPages/CarListing/EditTrip'
-import Footer from '../components/Footer'
+import AddVehicle from '../pages/DashboardPages/CarListing/AddVehicle';
+import EditTrip from '../pages/DashboardPages/CarListing/EditVehicle'
+import Footer from '../components/Footer';
+import TripManagement from '../pages/DashboardPages/TripManagement';
+import AddTrip from '../pages/DashboardPages/TripManagement/AddTrip'
 
 import "./styles.scss";
 
@@ -42,6 +44,11 @@ class DashboardContainer extends Component {
         route: '/car-listing/edit/:id',
         prev: '/car-listing',
         title: 'Edit Listing'
+      },
+      {
+        route: '/trip-management/add',
+        prev: '/trip-management',
+        title: 'Create new Trip'
       }
     ]
     const selectedInnerPage = innerPages.filter(({ route }) => {
@@ -65,8 +72,10 @@ class DashboardContainer extends Component {
             <Route exact path="/staff" component={Staff}></Route>
             <Route exact path="/staff/add" component={StaffAdd}></Route>
             <Route exact path="/car-listing" component={CarListing}></Route>
-            <Route exact path="/car-listing/add" component={AddTrip}></Route>
+            <Route exact path="/car-listing/add" component={AddVehicle}></Route>
             <Route exact path="/car-listing/edit/:id" component={EditTrip}></Route>
+            <Route exact path="/trip-management" component={TripManagement}></Route>
+            <Route exact path="/trip-management/add" component={AddTrip}></Route>
           </Switch>
         </Layout>
         <div className="footerSection">

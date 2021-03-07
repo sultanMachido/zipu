@@ -22,6 +22,18 @@ const bankDetails = [
   { id: 3, value: "Bank 3" },
   { id: 4, value: "Bank 4" }
 ]
+
+const terminals = [
+  { id: 1, value: "Terminal 4" },
+  { id: 2, value: "Terminal 2" },
+  { id: 3, value: "Terminal 3" },
+]
+
+const times = [
+  { id: 1, value: "Time 1" },
+  { id: 2, value: "Time 2" },
+  { id: 3, value: "Time 3" }
+]
 const normFile = () => {
 
 }
@@ -45,21 +57,21 @@ export const EmailField = (
   required = true,
   placeholder
 ) => (
-    <Form.Item
-      label=""
-      name="email"
-      validateTrigger={['onChange', 'onBlur']}
-      hasFeedback
-      rules={[
-        ...(required
-          ? [{ required: true, message: "Please enter your email address" }]
-          : []),
-        { type: 'email', message: 'Please input a valid email' },
-      ]}
-    >
-      <Input size={inputSize} className="formInputElement" placeholder={placeholder} disabled={disabled} />
-    </Form.Item>
-  );
+  <Form.Item
+    label=""
+    name="email"
+    validateTrigger={['onChange', 'onBlur']}
+    hasFeedback
+    rules={[
+      ...(required
+        ? [{ required: true, message: "Please enter your email address" }]
+        : []),
+      { type: 'email', message: 'Please input a valid email' },
+    ]}
+  >
+    <Input size={inputSize} className="formInputElement" placeholder={placeholder} disabled={disabled} />
+  </Form.Item>
+);
 
 
 
@@ -169,40 +181,40 @@ export const ReservationWindowField = (
   disabled = false,
   required = true,
 ) => (
-    <Form.Item
-      label=""
-      name="reservation"
-      hasFeedback
-      validateTrigger={['onChange', 'onBlur']}
-      rules={[
-        ...(required
-          ? [
-            {
-              required: true,
-              message: 'Please select a reservation window',
-            },
-          ]
-          : []),
-      ]}
+  <Form.Item
+    label=""
+    name="reservation"
+    hasFeedback
+    validateTrigger={['onChange', 'onBlur']}
+    rules={[
+      ...(required
+        ? [
+          {
+            required: true,
+            message: 'Please select a reservation window',
+          },
+        ]
+        : []),
+    ]}
+  >
+    <Select
+      placeholder="Select reservation window"
+      size={inputSize}
+      disabled={disabled}
     >
-      <Select
-        placeholder="Select reservation window"
-        size={inputSize}
-        disabled={disabled}
-      >
-        {
-          reservationWindows.map((reservationWindow) => (
-            <Select.Option
-              key={`reservationWindowSelect-${reservationWindow.id}`}
-              value={reservationWindow.id}
-            >
-              {reservationWindow.value}
-            </Select.Option>
-          ))
-        }
-      </Select>
-    </Form.Item>
-  );
+      {
+        reservationWindows.map((reservationWindow) => (
+          <Select.Option
+            key={`reservationWindowSelect-${reservationWindow.id}`}
+            value={reservationWindow.id}
+          >
+            {reservationWindow.value}
+          </Select.Option>
+        ))
+      }
+    </Select>
+  </Form.Item>
+);
 
 export const UploadCACDocsField = () => (
   <Form.Item
@@ -251,80 +263,80 @@ export const PlatformOptionsField = (
   disabled = false,
   required = true,
 ) => (
-    <Form.Item
-      label=""
-      name="platformOptions"
-      hasFeedback
-      validateTrigger={['onChange', 'onBlur']}
-      rules={[
-        ...(required
-          ? [
-            {
-              required: true,
-              message: 'Please select a platform',
-            },
-          ]
-          : []),
-      ]}
+  <Form.Item
+    label=""
+    name="platformOptions"
+    hasFeedback
+    validateTrigger={['onChange', 'onBlur']}
+    rules={[
+      ...(required
+        ? [
+          {
+            required: true,
+            message: 'Please select a platform',
+          },
+        ]
+        : []),
+    ]}
+  >
+    <Select
+      placeholder="Platform options"
+      size={inputSize}
+      disabled={disabled}
     >
-      <Select
-        placeholder="Platform options"
-        size={inputSize}
-        disabled={disabled}
-      >
-        {
-          platformOptions.map((platformOption) => (
-            <Select.Option
-              key={`platformOptionSelect-${platformOption.id}`}
-              value={platformOption.id}
-            >
-              {platformOption.value}
-            </Select.Option>
-          ))
-        }
-      </Select>
-    </Form.Item>
-  );
+      {
+        platformOptions.map((platformOption) => (
+          <Select.Option
+            key={`platformOptionSelect-${platformOption.id}`}
+            value={platformOption.id}
+          >
+            {platformOption.value}
+          </Select.Option>
+        ))
+      }
+    </Select>
+  </Form.Item>
+);
 
 export const BankDetailsField = (
   inputSize,
   disabled = false,
   required = true,
 ) => (
-    <Form.Item
-      label="Bank details"
-      name="bankdetails"
-      hasFeedback
-      validateTrigger={['onChange', 'onBlur']}
-      rules={[
-        ...(required
-          ? [
-            {
-              required: true,
-              message: 'Please select a bank',
-            },
-          ]
-          : []),
-      ]}
+  <Form.Item
+    label="Bank details"
+    name="bankdetails"
+    hasFeedback
+    validateTrigger={['onChange', 'onBlur']}
+    rules={[
+      ...(required
+        ? [
+          {
+            required: true,
+            message: 'Please select a bank',
+          },
+        ]
+        : []),
+    ]}
+  >
+    <Select
+      placeholder="Select bank"
+      size={inputSize}
+      disabled={disabled}
     >
-      <Select
-        placeholder="Select bank"
-        size={inputSize}
-        disabled={disabled}
-      >
-        {
-          bankDetails.map((bank) => (
-            <Select.Option
-              key={`bankSelect-${bank.id}`}
-              value={bank.id}
-            >
-              {bank.value}
-            </Select.Option>
-          ))
-        }
-      </Select>
-    </Form.Item>
-  );
+      {
+        bankDetails.map((bank) => (
+          <Select.Option
+            key={`bankSelect-${bank.id}`}
+            value={bank.id}
+          >
+            {bank.value}
+          </Select.Option>
+        ))
+      }
+    </Select>
+  </Form.Item>
+);
 
 
 export const AccountNumberField = (inputSize, required = true, placeholder) => (
@@ -428,3 +440,85 @@ export const UploadCustomerCarePolicyField = () => (
     </Upload>
   </Form.Item>
 )
+
+
+export const TerminalSelectField = (
+  inputSize,
+  disabled = false,
+  required = true,
+) => (
+  <Form.Item
+    label=""
+    name="terminalOptions"
+    hasFeedback
+    validateTrigger={['onChange', 'onBlur']}
+    rules={[
+      ...(required
+        ? [
+          {
+            required: true,
+            message: 'Please select a terminal',
+          },
+        ]
+        : []),
+    ]}
+  >
+    <Select
+      placeholder="Terminal: All"
+      size={inputSize}
+      disabled={disabled}
+      className="selectElement"
+    >
+      {
+        terminals.map((terminal) => (
+          <Select.Option
+            key={`terminal-${terminal.id}`}
+            value={terminal.id}
+          >
+            {terminal.value}
+          </Select.Option>
+        ))
+      }
+    </Select>
+  </Form.Item>
+);
+
+export const TimeSelectField = (
+  inputSize,
+  disabled = false,
+  required = true,
+) => (
+  <Form.Item
+    label=""
+    name="timeOptions"
+    hasFeedback
+    validateTrigger={['onChange', 'onBlur']}
+    rules={[
+      ...(required
+        ? [
+          {
+            required: true,
+            message: 'Please select a time',
+          },
+        ]
+        : []),
+    ]}
+  >
+    <Select
+      placeholder="Time: All"
+      size={inputSize}
+      disabled={disabled}
+    >
+      {
+        times.map((time) => (
+          <Select.Option
+            key={`time-${time.id}`}
+            value={time.id}
+          >
+            {time.value}
+          </Select.Option>
+        ))
+      }
+    </Select>
+  </Form.Item>
+);

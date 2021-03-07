@@ -2,7 +2,7 @@ import React from 'react';
 import EmptyScreen from '../../../components/EmptyScreen';
 import TableWrapper from '../../../components/TableWrapper';
 import './styles.scss';
-import { BiUser } from 'react-icons/all'
+import { BiUser } from 'react-icons/all';
 
 const Staff = () => {
 
@@ -168,4 +168,4 @@ const Staff = () => {
     )
 }
 
-export default Staff
+export default Staff;
