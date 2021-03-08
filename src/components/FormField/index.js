@@ -4,6 +4,7 @@ import React from 'react';
 import './FormField.scss';
 import { Form, Input, Select, Button, Upload } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
+import Loader from '../../components/Loader'
 
 const reservationWindows = [
   { id: 1, value: 'Reservation window 1' },
@@ -38,11 +39,13 @@ const times = [
 ];
 const normFile = () => { };
 
-export const SubmitButton = (name, handleClick) => (
-  <button className="submitButtonPrimary" type="submit" onClick={handleClick}>
-    {name}
-  </button>
-);
+export const SubmitButton = (name, handleClick, loading) => {
+  return (
+    < button className="submitButtonPrimary" type="submit" onClick={handleClick} >
+      {loading ? <Loader color="black" /> : name}
+    </button >
+  )
+};
 
 export const SubmitButtonSecondary = (name) => (
   <button className="submitButtonSecondary" type="submit">

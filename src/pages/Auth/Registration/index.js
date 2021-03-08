@@ -27,9 +27,9 @@ const Registration = (props) => {
       const tryUserRegistration = await props.registerUser(values);
 
       if (tryUserRegistration.registerStatus) {
-        message.loading({ content: 'Loading...', key: messageKey, duration: 0 });
         message.success({ content: tryUserRegistration.message, key: messageKey, duration: 15 });
         query.set('step', 2);
+
         props.history.push(`/register?step=${query.get('step')}`);
       } else {
         return message.error({ content: tryUserRegistration.message.email[0], key, duration: 2 });
@@ -40,6 +40,7 @@ const Registration = (props) => {
   };
 
   return (
+
     <>
       <div className="registrationHeader">
         <Progress
@@ -63,7 +64,7 @@ const Registration = (props) => {
           {PhoneNumberField(inputSize, true, 'Phone number')}
           {PasswordField(inputSize, true, 'Enter password')}
           {ConfirmPasswordField(inputSize, true, 'Confirm password')}
-          <div className="btnWrapper">{SubmitButton('CREATE ACCOUNT')}</div>
+          <div className="btnWrapper">{SubmitButton('CREATE ACCOUNT', null, props?.register?.registerLoading)}</div>
         </Form>
         <div className="verificationText">
           <p>A verification message will be sent to your email</p>

@@ -21,7 +21,4 @@ export const registerSuccess = (userInfo) => ({
   payload: userInfo,
 });
 
-export const logOutUserSuccess = () => ({
-  type: registerTypes.LOG_OUT_USER,
-});
 
