@@ -3,12 +3,12 @@ import { Col, Input, Row, Form, Button, Select, Checkbox } from 'antd';
 import './styles.scss';
 import Modal from 'antd/lib/modal/Modal';
 import checkCircleIcon from '../../../../assets/img/check-circle-icon.svg';
-import { Link } from 'react-router-dom';
 const { Option } = Select;
 
 const StaffAdd = (props) => {
     const [form] = Form.useForm();
     const modules = ["Trips", "Terminals", "Registered customer", "Routes", "Registration statistics", "Payment & Delivery", "Report & Feedback", "Vendor registration"];
+    const terminals = ["Yaba", "Jibowu", "Uselu", "Yaba 2", "Abuja", "Nassarawa East", "Obalende"];
     const [isSuccessModal, setIsSuccessModal] = useState(false);
     return (
         <div className="staffAddWrapper">
@@ -57,11 +57,14 @@ const StaffAdd = (props) => {
                 <Row gutter={24}>
                     <Col span={12}>
                         <Form.Item>
+                            <Input placeholder="Position" />
+                        </Form.Item>
+                        <Form.Item>
                             <Checkbox.Group className="modulesPane" style={{ width: '100%' }} onChange={null}>
-                                <p>Select module for this user</p>
+                                <p>Allocate terminal to this user</p>
                                 <Row>
                                     {
-                                        modules.map((item, index) => {
+                                        terminals.map((item, index) => {
                                             return (
                                                 <Col span={24} key={index}>
                                                     <Checkbox value={item}>{item}</Checkbox>
@@ -75,14 +78,28 @@ const StaffAdd = (props) => {
                     </Col>
                     <Col span={12}>
                         <Form.Item>
-                            <Input placeholder="Position" />
+                            <Checkbox.Group className="modulesPane" style={{ width: '100%' }} onChange={null}>
+                                <p>Select modules for this user</p>
+                                <Row>
+                                    {
+                                        modules.map((item, index) => {
+                                            return (
+                                                <Col span={24} key={index}>
+                                                    <Checkbox value={item}>{item}</Checkbox>
+                                                </Col>
+                                            )
+                                        })
+                                    }
+                                </Row>
+                            </Checkbox.Group>
                             <Button type="primary" onClick={() => setIsSuccessModal(true)}>Save</Button>
                         </Form.Item>
+                        
                     </Col>
                 </Row>
             </Form>
             <Modal className="successStaffModal" visible={isSuccessModal} onOk={null} footer={null} onCancel={() => setIsSuccessModal(false)}>
-                <img src={checkCircleIcon} />
+                <img alt="icon" src={checkCircleIcon} />
                 <h1>Profile created successfully</h1>
                 <p>Click to create new profile</p>
                 <a href='/staff/add'>

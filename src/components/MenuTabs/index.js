@@ -14,14 +14,14 @@ const menuList = [
         route: "/passengers"
     },
     {
-        title: "Car Listing",
-        subText: "Car/Bus Management",
-        route: "/car-listing"
-    },
-    {
         title: "Trip",
         subText: "Management",
         route: "/trip-inventory"
+    },
+    {
+        title: "Car Listing",
+        subText: "Car/Bus Management",
+        route: "/car-listing"
     },
     {
         title: "Staff",
@@ -34,14 +34,14 @@ const menuList = [
         route: "/reports"
     },
     {
-        title: "Company",
-        subText: "Details and settings",
-        route: "/company"
-    },
-    {
         title: "Terminals",
         subText: "Management",
         route: "/terminals"
+    },
+    {
+        title: "Company",
+        subText: "Details and settings",
+        route: "/company"
     }
 ]
 
