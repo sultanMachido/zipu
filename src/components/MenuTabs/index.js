@@ -16,7 +16,7 @@ const menuList = [
     {
         title: "Trip",
         subText: "Management",
-        route: "/trip-inventory"
+        route: "/trip-management"
     },
     {
         title: "Car Listing",

@@ -3,7 +3,7 @@ import MainCar from '../../assets/img/toppng.svg';
 import SuitCaseCar from '../../assets/img/briefcase.svg';
 import CarType from '../../assets/img/virus.svg';
 import ACCar from '../../assets/img/airC.svg'
-export const TripData = [
+export const VehicleData = [
   {
     id: 1,
     startingPoint: "Lagos",

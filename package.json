@@ -10,6 +10,7 @@
     "antd": "^4.6.6",
     "apexcharts": "^3.23.1",
     "assert": "^2.0.0",
+    "axios": "^0.21.1",
     "craco-less": "^1.17.1",
     "format-currency": "^1.0.0",
     "node-sass": "^4.14.1",
@@ -28,9 +29,9 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

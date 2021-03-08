@@ -6,10 +6,10 @@ import formatCurrency from 'format-currency'
 import './styles.scss';
 import { SubmitButton, SubmitButtonSecondary } from '../../../../components/FormField';
 
-const TripData = (props) => {
+const Vehicle = (props) => {
 
   const handleClick = () => {
-    props.history.push(`/trip-inventory/edit/${props.data.id}`)
+    props.history.push(`/car-listing/edit/${props.data.id}`)
   }
   return (
     <Card style={{ borderRadius: "5px", marginBottom: "2rem" }}>
@@ -106,4 +106,4 @@ const TripData = (props) => {
   )
 }
 
-export default withRouter(TripData)
+export default withRouter(Vehicle)

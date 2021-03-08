@@ -1,15 +1,15 @@
 import React from 'react';
 import { useParams } from 'react-router-dom'
 import './styles.scss';
-import { TripData } from '../../../../utils/constants/TripInventoryList';
+import { VehicleData } from '../../../../utils/constants/VehicleInventoryList';
 import { Card } from 'antd';
 import { SubmitButton } from '../../../../components/FormField'
 
 
-const EditTrip = (props) => {
+const EditVehicle = (props) => {
   let { id } = useParams();
 
-  const data = TripData.filter((items) => {
+  const data = VehicleData.filter((items) => {
     return items.id === parseInt(id)
   })
   console.log({ data })
@@ -30,4 +30,4 @@ const EditTrip = (props) => {
   )
 }
 
-export default EditTrip;
+export default EditVehicle;
