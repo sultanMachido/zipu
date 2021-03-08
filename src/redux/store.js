@@ -3,7 +3,8 @@ import logger from "redux-logger";
 import reducers from "./reducers";
 import thunkMiddleware from "redux-thunk";
 
-const middleware = [thunkMiddleware, logger];
+// const middleware = [thunkMiddleware, logger];
+const middleware = [thunkMiddleware];
 export default function configureStore(initialState = {}) {
   const rootReducer = combineReducers({
     ...reducers

@@ -84,6 +84,22 @@
     }
 }
 
+.submitButtonPrimary .ant-spin-dot-item {
+  position: absolute;
+  display: block;
+  width: 9px;
+  height: 9px;
+  background-color: #000000 !important;
+  border-radius: 100%;
+  -webkit-transform: scale(0.75);
+  transform: scale(0.75);
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  opacity: 0.3;
+  -webkit-animation: antSpinMove 1s infinite linear alternate;
+  animation: antSpinMove 1s infinite linear alternate;
+}
+
 .submitButtonSecondary{
   background: linear-gradient(180deg, #FEFEFE 0%, #E4E4E4 100%) !important;
   line-height: 1.5715;

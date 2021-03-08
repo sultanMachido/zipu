@@ -1,27 +1,47 @@
 /** @format */
 
 import React from 'react';
-import { Form } from 'antd';
+import { Form, message } from 'antd';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { RiMailOpenLine } from 'react-icons/all';
 import { SubmitButton } from '../../../components/FormField';
 import { useWindowSize } from '../../../hooks/useWindowSize'
 import OtpInput from 'react-otp-input';
+import { verifyUserEmail } from '../../../redux/actions/verifyEmail/verifyEmail.actions';
+import { useQuery } from '../../../utils/URLSearchParam';
 
 import './EmailVerification.scss';
 
 const EmailVerification = (props) => {
   const [form] = Form.useForm();
   const [otpValue, setOtpValue] = React.useState('');
-  const { width, height } = useWindowSize();
-  console.log('yes')
-  console.log(width, height)
+  const { width } = useWindowSize();
+  let query = useQuery();
 
   const handleChange = (otp) => {
-    console.log({ otp });
     setOtpValue(otp);
   };
 
-  console.log({ otpValue });
+  const onVerifyEmail = async (values) => {
+
+    try {
+      const messageKey = 'verifyEmailResponse';
+      const key = 'verifyEmail';
+      const tryUserEmailVerification = await props.verifyUserEmail(otpValue);
+
+      if (tryUserEmailVerification.verifyEmailStatus) {
+        message.success({ content: tryUserEmailVerification.message, key: messageKey, duration: 15 });
+        query.set('step', 3);
+        props.history.push(`/register?step=${query.get('step')}`);
+      } else {
+        return message.error({ content: tryUserEmailVerification.message, key, duration: 2 });
+      }
+    } catch (error) {
+      console.log({ error }, 'error');
+    }
+
+  }
 
   return (
     <>
@@ -36,7 +56,7 @@ const EmailVerification = (props) => {
       </div>
       <Form
         form={form}
-        onFinish={props?.onFinishEmailVerify}
+        onFinish={onVerifyEmail}
         hideRequiredMark
         layout="vertical"
         style={{ width: '100%', height: "100%" }}>
@@ -74,9 +94,9 @@ const EmailVerification = (props) => {
           // placeholder="----"
           />
         </div>
-        <div className="btnWrapper">{SubmitButton('CONFIRM OTP')}</div>
+        <div className="btnWrapper">{SubmitButton('CONFIRM OTP', null, props?.verifyEmail?.otpDataLoading)}</div>
       </Form>
-      <div className="resentOTPWrapper">
+      <div className="resetOTPWrapper">
         <p>
           Didn't get OTP? <a href="/">Resend</a>
         </p>
@@ -85,5 +105,13 @@ const EmailVerification = (props) => {
   );
 };
 
-export default EmailVerification;
+const mapStateToProps = (state) => ({
+  verifyEmail: state.verifyEmail,
+});
+
+const mapDispatchToProps = {
+  verifyUserEmail,
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EmailVerification));
 
