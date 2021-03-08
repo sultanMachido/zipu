@@ -3,9 +3,9 @@ import EmptyScreen from '../../../components/EmptyScreen';
 import TableWrapper from '../../../components/TableWrapper';
 import './styles.scss';
 
-import UserIcon from '../../../assets/img/user-icon.svg';
 import { Button, Col, Row } from 'antd';
 import { Link } from 'react-router-dom';
+import { BiUser } from 'react-icons/all'
 
 const Staff = () => {
 
@@ -61,7 +61,7 @@ const Staff = () => {
             render: (_, { loginActivity, logsCount }) => (
                 <>
                     <p>{loginActivity}</p>
-                    <span>{logsCount} log{logsCount !== 1 ? 's' : '' } this month</span>
+                    <span>{logsCount} log{logsCount !== 1 ? 's' : ''} this month</span>
                 </>
             )
         },
@@ -164,15 +164,16 @@ const Staff = () => {
                 </Col>
             </Row>
             {
-                data && data.length > 0 
-                ? <TableWrapper
-                    columns={columns}
-                    dataSource={data}
-                />
-                : <EmptyScreen 
-                        img={UserIcon}
+                data && data.length > 0
+                    ? <TableWrapper
+                        columns={columns}
+                        dataSource={data}
+                    />
+                    : <EmptyScreen
+                        icon={<BiUser />}
                         title="List is empty"
                         subText="When you create a staff profile, they will appear here"
+                        buttonText="CREATE STAFF PROFILE"
                     />
             }
         </div>

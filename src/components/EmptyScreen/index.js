@@ -1,14 +1,23 @@
-import { Button } from 'antd';
 import React from 'react';
 import './styles.scss';
+import { SubmitButton } from '../../components/FormField'
 
-const EmptyScreen = ({ img, title, subText }) => {
+const EmptyScreen = ({ icon, title, subText, buttonText }) => {
+    console.log(icon)
     return (
         <div className="emptyScreen">
-            <img alt="empty-icon" src={img} />
+            <div className="iconWrapper">
+                {icon}
+            </div>
+
             <h3>{title}</h3>
             <p>{subText}</p>
-            <Button type="primary">CREATE STAFF PROFILE</Button>
+            <div className="btnWrapper">
+                {
+                    SubmitButton(buttonText)
+                }
+            </div>
+
         </div>
     )
 }

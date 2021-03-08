@@ -1,14 +1,23 @@
 .emptyScreen {
-    padding-top: 94px;
-    padding-bottom: 225px;
+    width: 100%;
+    margin-top: 5rem;
+    padding: 2rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    img {
-        height: 82px;
-        width: 82px;
+    
+    .iconWrapper{
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: #E3EAED;
+        display: flex;
+        justify-content:center;
+        align-items:center;
+        font-size: 25px;
     }
+
     h3 {
         font-family: Inter;
         font-style: normal;
@@ -28,5 +37,8 @@
         color: #323D44;
         margin-top: 20px;
         margin-bottom: 72px;
+    }
+    .btnWrapper{
+        width: 30%;
     }
 }

@@ -1,6 +1,6 @@
 .layoutContainer {
     &.ant-layout {
-        padding: 59px 145px;
+        padding: 59px 130px;
         background: #fff;
     }
     .tableHeader {
@@ -77,4 +77,9 @@ button.ant-btn-primary {
         background: linear-gradient(180deg, #ebc55d 0%, #ca8f28 93.23%, #83550b 100%);
         color: #323D44;
     }
+
+    
+}
+.footerSection{
+    width: 100%;
 }

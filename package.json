@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^7.1.2",
     "antd": "^4.6.6",
     "craco-less": "^1.17.1",
+    "format-currency": "^1.0.0",
     "node-sass": "^4.14.1",
     "otp-input-react": "^0.2.4",
     "react": "^16.13.1",

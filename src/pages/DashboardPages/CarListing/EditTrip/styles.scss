@@ -1,0 +1,12 @@
+.editTripWrapper{
+  width: 100%;
+  display:flex;
+  justify-content: space-between;
+
+  .cardSection{
+    flex-basis:73%;
+  }
+  .sideBarSection{
+    flex-basis: 25%;
+  }
+}
