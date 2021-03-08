@@ -1,6 +1,7 @@
-import {authReducer} from './auth/auth.reducer';
+/** @format */
 
+import { registerReducer } from './registration/register.reducer';
 
 export default {
-  authReducer
-}
+  register: registerReducer,
+};

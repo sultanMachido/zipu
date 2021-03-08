@@ -42,3 +42,23 @@
       color: #FFD301;
   }
 }
+
+@media (max-width: 600px){
+  .registrationHeader{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items:center;
+    margin-bottom: 5rem;
+  
+    .registrationText{
+      text-align: center;
+      margin-left: 0;
+      h1{
+        font-weight: 600;
+        font-size: 20px;
+      }
+    }
+  }
+}

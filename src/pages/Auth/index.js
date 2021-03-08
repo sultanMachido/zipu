@@ -16,12 +16,6 @@ const Auth = (props) => {
     props.history.push(`/register?step=${query.get('step') || '1'}`)
   }, [query.get('step')]);
 
-  const onFinishRegistration = (values) => {
-    query.set('step', 2)
-    props.history.push(`/register?step=${query.get('step')}`)
-    console.log({ values })
-  }
-
   const onFinishEmailVerify = (values) => {
     query.set('step', 3)
     props.history.push(`/register?step=${query.get('step')}`)
@@ -50,7 +44,7 @@ const Auth = (props) => {
       case "1":
         return (
           <>
-            <Registration onFinishRegistration={onFinishRegistration} />
+            <Registration />
           </>
         )
 
