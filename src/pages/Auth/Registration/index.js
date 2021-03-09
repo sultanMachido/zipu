@@ -27,7 +27,7 @@ const Registration = (props) => {
       const tryUserRegistration = await props.registerUser(values);
 
       if (tryUserRegistration.registerStatus) {
-        message.success({ content: tryUserRegistration.message, key: messageKey, duration: 15 });
+        message.success({ content: tryUserRegistration.message, key: messageKey, duration: 5 });
         query.set('step', 2);
 
         props.history.push(`/register?step=${query.get('step')}`);

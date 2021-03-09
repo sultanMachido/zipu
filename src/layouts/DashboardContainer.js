@@ -15,14 +15,16 @@ import AddVehicle from '../pages/DashboardPages/CarListing/AddVehicle';
 import EditTrip from '../pages/DashboardPages/CarListing/EditVehicle'
 import Footer from '../components/Footer';
 import TripManagement from '../pages/DashboardPages/TripManagement';
-import AddTrip from '../pages/DashboardPages/TripManagement/AddTrip'
+import AddTrip from '../pages/DashboardPages/TripManagement/AddTrip';
+
+import { logUserOut } from '../redux/actions/login/login.actions'
 
 import "./styles.scss";
 
 class DashboardContainer extends Component {
 
-  handleLogout = () => {
-    this.props.history.push('/login');
+  handleLogout = async () => {
+    return await this.props.logUserOut(this.props.history);
   };
 
   render() {
@@ -85,5 +87,7 @@ class DashboardContainer extends Component {
     );
   }
 }
-
-export default withRouter(connect(state => ({}))(DashboardContainer));
+const mapDispatchToProps = {
+  logUserOut
+}
+export default withRouter(connect(state => ({}), mapDispatchToProps)(DashboardContainer));

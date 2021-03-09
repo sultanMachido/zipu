@@ -12,7 +12,7 @@ export const registerUser = (transacoData) => async (dispatch) => {
   try {
     const registerRequest = await APIService.post('/register-transco', { ...transacoData });
     if (registerRequest.data.status === 'Success') {
-      localStorage.setItem('zipuJWTToken', registerRequest.data.data.token);
+      localStorage.setItem('zipuJWTToken', registerRequest.data.data.token.plainTextToken);
       dispatch(registerLoading());
       dispatch(registerSuccess(registerRequest.data));
       return { registerStatus: true, tokenValid: true, message: 'Registration successful' };
