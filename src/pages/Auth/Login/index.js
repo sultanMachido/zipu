@@ -1,17 +1,31 @@
 import React from 'react';
-import { Form } from 'antd'
+import { Form, message } from 'antd';
+import { connect } from 'react-redux';
 import './Login.scss';
 import { EmailField, PasswordField, SubmitButton } from '../../../components/FormField';
+import { loginUser } from '../../../redux/actions/login/login.actions';
 
 const inputSize = 'large';
 
 const Login = (props) => {
   const [form] = Form.useForm();
 
+  const onFinish = async (values) => {
+    try {
+      const messageKey = 'loginResponse';
+      const key = 'login';
+      const tryUserLogin = await props.loginUser({ ...values });
+      if (tryUserLogin.loginStatus) {
+        message.success({ content: tryUserLogin.message, key: messageKey, duration: 5 });
+        props.history.push('/');
+      } else {
+        return message.error({ content: tryUserLogin.message, key, duration: 2 });
+      }
+    } catch (error) {
+      console.log({ error }, 'error');
+    }
 
-  const onFinish = (values) => {
-    console.log({ values })
-    props.history.push('/');
+
   }
   return (
     <div className="loginWrapper">
@@ -36,7 +50,7 @@ const Login = (props) => {
             }
             <div className="btnWrapper">
               {
-                SubmitButton('LOGIN')
+                SubmitButton('LOGIN', null, props?.userLogin?.loginLoading)
               }
             </div>
           </Form>
@@ -54,4 +68,13 @@ const Login = (props) => {
   )
 }
 
-export default Login
+const mapStateToProps = (state) => ({
+  userLogin: state.login,
+});
+
+const mapDispatchToProps = {
+  loginUser,
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
