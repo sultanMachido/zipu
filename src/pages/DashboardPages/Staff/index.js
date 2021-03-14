@@ -2,7 +2,10 @@ import React from 'react';
 import EmptyScreen from '../../../components/EmptyScreen';
 import TableWrapper from '../../../components/TableWrapper';
 import './styles.scss';
-import { BiUser } from 'react-icons/all';
+
+import { Button, Col, Row } from 'antd';
+import { Link } from 'react-router-dom';
+import { BiUser } from 'react-icons/all'
 
 const Staff = () => {
 
@@ -150,7 +153,16 @@ const Staff = () => {
 
     return (
         <div className="bookingsWrapper">
-            <h5 className="title">Staff Management</h5>
+            <Row className="tableHeader">
+                <Col span={12}>
+                    <h5 className="title">Staff Management</h5>
+                </Col>
+                <Col span={12} className="text-right">
+                    <Link to="/staff/add">
+                        <Button type="primary">ADD NEW STAFF</Button>
+                    </Link>
+                </Col>
+            </Row>
             {
                 data && data.length > 0
                     ? <TableWrapper

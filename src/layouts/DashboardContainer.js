@@ -9,7 +9,7 @@ import Navbar from "../components/Navbar/index";
 import TitlePane from "../components/TitlePane";
 import Bookings from "../pages/DashboardPages/Bookings";
 import Staff from "../pages/DashboardPages/Staff";
-import StaffAdd from "../pages/DashboardPages/StaffAdd";
+import StaffAdd from "../pages/DashboardPages/Staff/Add";
 import CarListing from '../pages/DashboardPages/CarListing';
 import AddVehicle from '../pages/DashboardPages/CarListing/AddVehicle';
 import EditTrip from '../pages/DashboardPages/CarListing/EditVehicle'
@@ -20,6 +20,9 @@ import AddTrip from '../pages/DashboardPages/TripManagement/AddTrip';
 import { logUserOut } from '../redux/actions/login/login.actions'
 
 import "./styles.scss";
+import Report from "../pages/DashboardPages/Report";
+import PromoCodes from "../pages/DashboardPages/Report/PromoCodes";
+import Company from "../pages/DashboardPages/Company";
 
 class DashboardContainer extends Component {
 
@@ -46,6 +49,11 @@ class DashboardContainer extends Component {
         route: '/car-listing/edit/:id',
         prev: '/car-listing',
         title: 'Edit Listing'
+      },
+      {
+        route: '/reports/promo-codes',
+        prev: '/reports',
+        title: 'Promo Codes'
       },
       {
         route: '/trip-management/add',
@@ -76,6 +84,9 @@ class DashboardContainer extends Component {
             <Route exact path="/car-listing" component={CarListing}></Route>
             <Route exact path="/car-listing/add" component={AddVehicle}></Route>
             <Route exact path="/car-listing/edit/:id" component={EditTrip}></Route>
+            <Route exact path="/reports" component={Report}></Route>
+            <Route exact path="/reports/promo-codes" component={PromoCodes}></Route>
+            <Route exact path="/company" component={Company}></Route>
             <Route exact path="/trip-management" component={TripManagement}></Route>
             <Route exact path="/trip-management/add" component={AddTrip}></Route>
           </Switch>
