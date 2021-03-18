@@ -6,6 +6,17 @@
     .tableHeader {
         margin-bottom: 20px;
     }
+    .ant-input-number {
+        width: 100%;
+        border: 1px solid rgba(168, 168, 168, 0.32);
+        line-height: 34px;
+        border-radius: 5px;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        color: #000000;
+    }
     .ant-input {
         border: 1px solid rgba(168, 168, 168, 0.32);
         height: 47px;

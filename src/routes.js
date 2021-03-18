@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Login from './pages/Auth/Login';
 import Registration from './pages/Auth'
 
-import { Guest } from './utils/AuthHelper';
+import { Guest, Private } from './utils/AuthHelper';
 import DashboardContainer from './layouts/DashboardContainer';
 import './styles.less';
 import 'antd/dist/antd.css';
@@ -16,7 +16,7 @@ export default class Routes extends Component {
         <Switch>
           <Route exact path="/login" component={Guest(Login)} />
           <Route exact path="/register" component={Guest(Registration)} />
-          <Route path="/" component={Guest(DashboardContainer)} />
+          <Route path="/" component={Private(DashboardContainer)} />
         </Switch>
       </BrowserRouter>
     );
