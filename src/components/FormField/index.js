@@ -170,7 +170,7 @@ export const OTPField = (name, autofocus, placeholder = '-') => (
 
 export const CompanySizeField = (inputSize, required = true, placeholder) => (
   <Form.Item
-    name="company"
+    name="company_size"
     label="Company size"
     rules={[
       ...(required

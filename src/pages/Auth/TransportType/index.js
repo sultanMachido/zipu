@@ -1,39 +1,64 @@
 import React from 'react';
-import { Form, Progress, Row, Col, Checkbox } from 'antd';
+import { Form, Progress, Row, Col, Checkbox, message } from 'antd';
+import { MdAirlineSeatReclineExtra, AiFillCar, MdDirectionsBus } from 'react-icons/all';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { CompanySizeField, SubmitButton } from '../../../components/FormField';
 import './TransportType.scss';
-import { MdAirlineSeatReclineExtra, AiFillCar, MdDirectionsBus } from 'react-icons/all'
+import { selectTransportType } from '../../../redux/actions/transportType/transportType.actions'
+import { useQuery } from '../../../utils/URLSearchParam';
 
 const inputSize = 'large';
 
 const TransportType = (props) => {
   const [form] = Form.useForm();
   const [value, setValue] = React.useState([]);
+  let query = useQuery();
 
   const chekboxOptions = [
     {
       id: 1,
       label: "Vehicle hire",
       icon: <MdDirectionsBus className="checkIcon" />,
-      value: "1"
+      value: "vehicle hire"
     },
     {
       id: 2,
       label: "Seat booking",
       icon: <MdAirlineSeatReclineExtra className="checkIcon" />,
-      value: "2"
+      value: "seat booking"
     },
     {
       id: 3,
       label: "Vehicle renting",
       icon: <AiFillCar className="checkIcon" />,
-      value: "3"
+      value: "vehicle renting"
     }
   ]
 
 
   const onChange = (checkedValues) => {
-    setValue(checkedValues)
+    setValue(checkedValues);
+
+  }
+
+  const onFinish = async (values) => {
+    const payload = { operations: value, company_size: values.company_size }
+    try {
+      const messageKey = 'selectTransportTypeResponse';
+      const key = 'selectTransportType';
+      const trySelectTransportType = await props.selectTransportType(payload);
+
+      if (trySelectTransportType.transportTypeStatus) {
+        message.success({ content: trySelectTransportType.message, key: messageKey, duration: 10 });
+        query.set('step', 4);
+        props.history.push(`/register?step=${query.get('step')}`);
+      } else {
+        return message.error({ content: trySelectTransportType.message, key, duration: 2 });
+      }
+    } catch (error) {
+      console.log({ error }, 'error');
+    }
   }
 
 
@@ -59,7 +84,7 @@ const TransportType = (props) => {
       <div className="transportTypeform">
         <Form
           form={form}
-          onFinish={props?.onFinishTransportType}
+          onFinish={onFinish}
           hideRequiredMark
           layout="vertical"
         >
@@ -109,4 +134,14 @@ const TransportType = (props) => {
   )
 }
 
-export default TransportType;
+const mapStateToProps = (state) => {
+  return {
+    transportTypes: state.transportTypes
+  }
+}
+
+const mapDispatchToProps = {
+  selectTransportType
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TransportType));
