@@ -1,12 +1,42 @@
 import React from 'react';
-import { Form, Progress, Radio } from 'antd';
+import { Form, Progress, Row, Col, Checkbox } from 'antd';
 import { CompanySizeField, SubmitButton } from '../../../components/FormField';
 import './TransportType.scss';
 import { MdAirlineSeatReclineExtra, AiFillCar, MdDirectionsBus } from 'react-icons/all'
 
-const inputSize = 'large'
+const inputSize = 'large';
+
 const TransportType = (props) => {
   const [form] = Form.useForm();
+  const [value, setValue] = React.useState([]);
+
+  const chekboxOptions = [
+    {
+      id: 1,
+      label: "Vehicle hire",
+      icon: <MdDirectionsBus className="checkIcon" />,
+      value: "1"
+    },
+    {
+      id: 2,
+      label: "Seat booking",
+      icon: <MdAirlineSeatReclineExtra className="checkIcon" />,
+      value: "2"
+    },
+    {
+      id: 3,
+      label: "Vehicle renting",
+      icon: <AiFillCar className="checkIcon" />,
+      value: "3"
+    }
+  ]
+
+
+  const onChange = (checkedValues) => {
+    setValue(checkedValues)
+  }
+
+
 
   return (
     <>
@@ -33,29 +63,36 @@ const TransportType = (props) => {
           hideRequiredMark
           layout="vertical"
         >
+          <Form.Item
+            name="transportType"
+            rules={[{ required: true, message: 'Select atleast one option' }]}
+          >
 
-          <div className="typeOfOperation">
-            <Form.Item
-              name="radio-button"
-              label="What type of operation?"
-              rules={[{ required: true, message: 'Please pick an item!' }]}
-            >
-              <Radio.Group className="radioBtnWrapper">
-                <Radio.Button value="a" className="radioBtnItem">
-                  <MdAirlineSeatReclineExtra className="radioIcon" />
-                  <p>Seat booking</p>
-                </Radio.Button>
-                <Radio.Button value="b" className="radioBtnItem">
-                  <MdDirectionsBus className="radioIcon" />
-                  <p>Vehicle hire</p>
-                </Radio.Button>
-                <Radio.Button value="c" className="radioBtnItem">
-                  <AiFillCar className="radioIcon" />
-                  <p>Vehicle renting</p>
-                </Radio.Button>
-              </Radio.Group>
-            </Form.Item>
-          </div>
+            <div className="typeOfOperation">
+              <Checkbox.Group
+                className="checkboxWrapper"
+                onChange={onChange}
+              >
+                <Row className="rowContainer">
+                  {
+                    chekboxOptions.map((option) => {
+                      return (
+                        <Col key={option.id}>
+                          <Checkbox
+                            value={option.value}
+                            className={`checkboxBtnItem ${value.includes(option.value) ? 'checked' : ''}`}
+                          >
+                            {option.icon}
+                            <p>{option.label}</p>
+                          </Checkbox>
+                        </Col>
+                      )
+                    })
+                  }
+                </Row>
+              </Checkbox.Group>
+            </div>
+          </Form.Item>
           <div className="companySizeInputWrapper">
             {
               CompanySizeField(inputSize, true, '0')
