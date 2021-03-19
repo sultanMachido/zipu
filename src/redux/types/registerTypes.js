@@ -1,5 +1,3 @@
-/** @format */
-
 const registerTypes = {
   REGISTER_ERROR: 'REGISTER_ERROR',
   REGISTER_SUCCESS: 'REGISTER_SUCCESS',

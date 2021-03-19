@@ -1,12 +1,67 @@
 import React from 'react';
-import { Form, Progress, Radio } from 'antd';
+import { Form, Progress, Row, Col, Checkbox, message } from 'antd';
+import { MdAirlineSeatReclineExtra, AiFillCar, MdDirectionsBus } from 'react-icons/all';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { CompanySizeField, SubmitButton } from '../../../components/FormField';
 import './TransportType.scss';
-import { MdAirlineSeatReclineExtra, AiFillCar, MdDirectionsBus } from 'react-icons/all'
+import { selectTransportType } from '../../../redux/actions/transportType/transportType.actions'
+import { useQuery } from '../../../utils/URLSearchParam';
 
-const inputSize = 'large'
+const inputSize = 'large';
+
 const TransportType = (props) => {
   const [form] = Form.useForm();
+  const [value, setValue] = React.useState([]);
+  let query = useQuery();
+
+  const chekboxOptions = [
+    {
+      id: 1,
+      label: "Vehicle hire",
+      icon: <MdDirectionsBus className="checkIcon" />,
+      value: "vehicle hire"
+    },
+    {
+      id: 2,
+      label: "Seat booking",
+      icon: <MdAirlineSeatReclineExtra className="checkIcon" />,
+      value: "seat booking"
+    },
+    {
+      id: 3,
+      label: "Vehicle renting",
+      icon: <AiFillCar className="checkIcon" />,
+      value: "vehicle renting"
+    }
+  ]
+
+
+  const onChange = (checkedValues) => {
+    setValue(checkedValues);
+
+  }
+
+  const onFinish = async (values) => {
+    const payload = { operations: value, company_size: values.company_size }
+    try {
+      const messageKey = 'selectTransportTypeResponse';
+      const key = 'selectTransportType';
+      const trySelectTransportType = await props.selectTransportType(payload);
+
+      if (trySelectTransportType.transportTypeStatus) {
+        message.success({ content: trySelectTransportType.message, key: messageKey, duration: 10 });
+        query.set('step', 4);
+        props.history.push(`/register?step=${query.get('step')}`);
+      } else {
+        return message.error({ content: trySelectTransportType.message, key, duration: 2 });
+      }
+    } catch (error) {
+      console.log({ error }, 'error');
+    }
+  }
+
+
 
   return (
     <>
@@ -29,33 +84,40 @@ const TransportType = (props) => {
       <div className="transportTypeform">
         <Form
           form={form}
-          onFinish={props?.onFinishTransportType}
+          onFinish={onFinish}
           hideRequiredMark
           layout="vertical"
         >
+          <Form.Item
+            name="transportType"
+            rules={[{ required: true, message: 'Select atleast one option' }]}
+          >
 
-          <div className="typeOfOperation">
-            <Form.Item
-              name="radio-button"
-              label="What type of operation?"
-              rules={[{ required: true, message: 'Please pick an item!' }]}
-            >
-              <Radio.Group className="radioBtnWrapper">
-                <Radio.Button value="a" className="radioBtnItem">
-                  <MdAirlineSeatReclineExtra className="radioIcon" />
-                  <p>Seat booking</p>
-                </Radio.Button>
-                <Radio.Button value="b" className="radioBtnItem">
-                  <MdDirectionsBus className="radioIcon" />
-                  <p>Vehicle hire</p>
-                </Radio.Button>
-                <Radio.Button value="c" className="radioBtnItem">
-                  <AiFillCar className="radioIcon" />
-                  <p>Vehicle renting</p>
-                </Radio.Button>
-              </Radio.Group>
-            </Form.Item>
-          </div>
+            <div className="typeOfOperation">
+              <Checkbox.Group
+                className="checkboxWrapper"
+                onChange={onChange}
+              >
+                <Row className="rowContainer">
+                  {
+                    chekboxOptions.map((option) => {
+                      return (
+                        <Col key={option.id}>
+                          <Checkbox
+                            value={option.value}
+                            className={`checkboxBtnItem ${value.includes(option.value) ? 'checked' : ''}`}
+                          >
+                            {option.icon}
+                            <p>{option.label}</p>
+                          </Checkbox>
+                        </Col>
+                      )
+                    })
+                  }
+                </Row>
+              </Checkbox.Group>
+            </div>
+          </Form.Item>
           <div className="companySizeInputWrapper">
             {
               CompanySizeField(inputSize, true, '0')
@@ -72,4 +134,14 @@ const TransportType = (props) => {
   )
 }
 
-export default TransportType;
+const mapStateToProps = (state) => {
+  return {
+    transportTypes: state.transportTypes
+  }
+}
+
+const mapDispatchToProps = {
+  selectTransportType
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TransportType));
