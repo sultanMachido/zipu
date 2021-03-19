@@ -125,7 +125,7 @@ const TransportType = (props) => {
           </div>
           <div className="btnWrapper">
             {
-              SubmitButton('NEXT')
+              SubmitButton('NEXT', null, props?.transportTypes?.transportTypeLoading)
             }
           </div>
         </Form>

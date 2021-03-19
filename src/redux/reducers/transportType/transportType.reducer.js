@@ -1,6 +1,3 @@
-
-/** @format */
-
 import transportTypes from '../../types/transportTypes';
 
 export const transportTypesInitialState = {
