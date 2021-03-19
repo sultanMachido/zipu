@@ -1,4 +1,25 @@
 .successWrapper{
   width: 100%;
-background: red;
+
+  .carsWrapper{
+    display:flex;
+    justify-content:space-between;
+  }
+
+  .welcomeWrapper{
+    color: #fff;
+    text-align: center;
+    width: 50%;
+    margin-left: 25%;
+
+    h1{
+      color: #fff;
+      font-size: 40px;
+    }
+    p{
+      font-size:14px;
+      line-height: 25px;
+      margin-bottom: 5rem;
+    }
+  }
 }

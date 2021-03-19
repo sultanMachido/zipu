@@ -30,11 +30,10 @@ const BusinessDetails = (props) => {
         query.set('step', 6);
         props.history.push(`/register?step=${query.get('step')}`);
       } else {
-        console.log(tryBusinessDetails?.message, ['tryBusinessDetails?.message'])
-        // return message.error({ content: tryBusinessDetails?.message['reservation_window'][0], key, duration: 2 });
+        return message.error({ content: tryBusinessDetails?.message, key, duration: 2 });
       }
     } catch (error) {
-      console.log({ error }, 'error');
+      message.error(error?.message);
     }
   }
   return (

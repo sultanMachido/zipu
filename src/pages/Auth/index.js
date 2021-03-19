@@ -12,7 +12,9 @@ import Success from './Success'
 
 const Auth = (props) => {
   let query = useQuery();
-  const page = query.get('step')
+  const page = query.get('step');
+
+  console.log({ page })
 
   React.useEffect(() => {
     props.history.push(`/register?step=${query.get('step') || '1'}`)
@@ -73,7 +75,7 @@ const Auth = (props) => {
 
   return (
     <div className="registrationWrapper">
-      <div className={`registrationContent ${page === "6" ? "success" : ""}`}>
+      <div className={`${page === "6" ? "success" : "registrationContent "}`}>
         {currentRegistrationView()}
       </div>
     </div>)
