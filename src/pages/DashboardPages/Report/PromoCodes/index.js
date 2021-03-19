@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Checkbox, Col, Form, Input, Row, DatePicker, Select, message, InputNumber, Spin } from 'antd';
+import { Card, Col, Form, Input, Row, DatePicker, Select, message, InputNumber, Spin } from 'antd';
 import './styles.scss';
 import { SubmitButton } from '../../../../components/FormField';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import { fetchAllPromoCodes, createPromoCode } from '../../../../redux/actions/promoCodes/promoCodes.actions';
