@@ -43,7 +43,7 @@ class DashboardContainer extends Component {
       {
         route: '/car-listing/add',
         prev: '/car-listing',
-        title: 'Create new trip'
+        title: 'Create new vehicle'
       },
       {
         route: '/car-listing/edit/:id',

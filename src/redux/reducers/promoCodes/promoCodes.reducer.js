@@ -40,22 +40,22 @@ export const promoCodesReducer = (state = initialState, action) => {
       };
 
     /** Update Promo Code */
-    case promoCodesTypes.CREATE_PROMO_CODES_ERROR:
+    case promoCodesTypes.UPDATE_PROMO_CODES_ERROR:
       return {
         ...state,
         updatePromoCodeError: action.payload,
       };
-    case promoCodesTypes.CLEAR_CREATE_PROMO_CODES_ERRORS:
+    case promoCodesTypes.CLEAR_UPDATE_PROMO_CODES_ERRORS:
       return {
         ...state,
         updatePromoCodeError: '',
       };
-    case promoCodesTypes.CREATE_PROMO_CODES_LOADING:
+    case promoCodesTypes.UPDATE_PROMO_CODES_LOADING:
       return {
         ...state,
         updatePromoCodeLoading: action.payload,
       };
-    case promoCodesTypes.CREATE_PROMO_CODES_SUCCESS:
+    case promoCodesTypes.UPDATE_PROMO_CODES_SUCCESS:
       return {
         ...state,
         updatePromoCodeLoading: false

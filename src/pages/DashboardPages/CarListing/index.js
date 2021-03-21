@@ -75,7 +75,7 @@ const TripInventory = (props) => {
         <h5 className="title">Trip and car list</h5>
         <div className="btnWrapper">
           {
-            SubmitButton('ADD NEW TRIPS', handleClick)
+            SubmitButton('ADD NEW VEHICLE', handleClick)
           }
         </div>
       </div>
