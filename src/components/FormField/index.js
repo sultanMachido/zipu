@@ -7,10 +7,13 @@ import { UploadOutlined } from '@ant-design/icons';
 import Loader from '../../components/Loader'
 
 const reservationWindows = [
-  { id: 1, value: 'Reservation window 1' },
-  { id: 2, value: 'Reservation window 2' },
-  { id: 3, value: 'Reservation window 3' },
-  { id: 4, value: 'Reservation window 4' },
+  { id: 1, value: 'One Day' },
+  { id: 2, value: 'Two Days' },
+  { id: 3, value: 'Three Days' },
+  { id: 4, value: 'Four Days' },
+  { id: 5, value: 'Five Days' },
+  { id: 6, value: 'Six Days' },
+  { id: 7, value: 'Seven Days' },
 ];
 const platformOptions = [
   { id: 1, value: 'Platform Option 1' },
@@ -20,10 +23,28 @@ const platformOptions = [
 ];
 
 const bankDetails = [
-  { id: 1, value: 'Bank 1' },
-  { id: 2, value: 'Bank 2' },
-  { id: 3, value: 'Bank 3' },
-  { id: 4, value: 'Bank 4' },
+  { id: 1, value: 'Zenith Bank Plc' },
+  { id: 2, value: 'Access Bank Plc' },
+  { id: 3, value: 'Fidelity Bank Plc' },
+  { id: 5, value: 'First City Monument Bank Limited' },
+  { id: 6, value: 'First Bank of Nigeria Limited' },
+  { id: 7, value: 'Guaranty Trust Bank Plc' },
+  { id: 8, value: 'Union Bank of Nigeria Plc' },
+  { id: 9, value: 'United Bank for Africa Plc' },
+  { id: 10, value: 'Citibank Nigeria Limited' },
+  { id: 11, value: 'Ecobank Nigeria Limited' },
+  { id: 12, value: 'Keystone Bank Limited' },
+  { id: 13, value: 'Polaris Bank Limited' },
+  { id: 14, value: 'Stanbic IBTC Bank Plc' },
+  { id: 15, value: 'Standard Chartered' },
+  { id: 16, value: 'Sterling Bank Plc' },
+  { id: 17, value: 'Titan Trust Bank Limited' },
+  { id: 18, value: 'Unity Bank Plc' },
+  { id: 19, value: 'Wema Bank Plc' },
+  { id: 20, value: 'Globus Bank Limited[3]' },
+  { id: 21, value: 'SunTrust Bank Nigeria Limited' },
+  { id: 22, value: 'Providus Bank Limited' },
+  { id: 23, value: 'Jaiz Bank Plc' }
 ];
 
 const terminals = [
@@ -170,7 +191,7 @@ export const OTPField = (name, autofocus, placeholder = '-') => (
 
 export const CompanySizeField = (inputSize, required = true, placeholder) => (
   <Form.Item
-    name="company"
+    name="company_size"
     label="Company size"
     rules={[
       ...(required
@@ -191,7 +212,7 @@ export const CompanySizeField = (inputSize, required = true, placeholder) => (
 export const ReservationWindowField = (inputSize, disabled = false, required = true) => (
   <Form.Item
     label=""
-    name="reservation"
+    name="reservation_window"
     hasFeedback
     validateTrigger={['onChange', 'onBlur']}
     rules={[
@@ -216,7 +237,7 @@ export const ReservationWindowField = (inputSize, disabled = false, required = t
 
 export const UploadCACDocsField = () => (
   <Form.Item
-    name="upload"
+    name="cac"
     valuePropName="fileList"
     getValueFromEvent={normFile}
     style={{ border: '1px solid #D9D9D9', padding: '1rem' }}>
@@ -237,7 +258,7 @@ export const UploadCACDocsField = () => (
 
 export const UploadPermitField = () => (
   <Form.Item
-    name="upload"
+    name="permit"
     valuePropName="fileList"
     getValueFromEvent={normFile}
     style={{ border: '1px solid #D9D9D9', padding: '1rem' }}>
@@ -285,7 +306,7 @@ export const PlatformOptionsField = (inputSize, disabled = false, required = tru
 export const BankDetailsField = (inputSize, disabled = false, required = true) => (
   <Form.Item
     label="Bank details"
-    name="bankdetails"
+    name="bank"
     hasFeedback
     validateTrigger={['onChange', 'onBlur']}
     rules={[
@@ -300,7 +321,7 @@ export const BankDetailsField = (inputSize, disabled = false, required = true) =
     ]}>
     <Select placeholder="Select bank" size={inputSize} disabled={disabled}>
       {bankDetails.map((bank) => (
-        <Select.Option key={`bankSelect-${bank.id}`} value={bank.id}>
+        <Select.Option key={`bankSelect-${bank.id}`} value={bank.value}>
           {bank.value}
         </Select.Option>
       ))}
@@ -311,7 +332,7 @@ export const BankDetailsField = (inputSize, disabled = false, required = true) =
 export const AccountNumberField = (inputSize, required = true, placeholder) => (
   <Form.Item
     label=""
-    name="accountNumber"
+    name="account_number"
     hasFeedback
     validateTrigger={['onChange', 'onBlur']}
     rules={[
@@ -340,7 +361,7 @@ export const AccountNumberField = (inputSize, required = true, placeholder) => (
 export const AccountNameField = (inputSize, required = true, placeholder) => (
   <Form.Item
     label=""
-    name="accountName"
+    name="account_name"
     hasFeedback
     validateTrigger={['onChange', 'onBlur']}
     rules={[
@@ -368,7 +389,7 @@ export const AccountNameField = (inputSize, required = true, placeholder) => (
 
 export const UploadPrivacyPolicyField = () => (
   <Form.Item
-    name="privacy"
+    name="privacy_policy"
     valuePropName="fileList"
     getValueFromEvent={normFile}
     style={{ border: '1px solid #D9D9D9', padding: '1rem' }}>
@@ -389,7 +410,7 @@ export const UploadPrivacyPolicyField = () => (
 
 export const UploadCustomerCarePolicyField = () => (
   <Form.Item
-    name="customercare"
+    name="customer_care_policy"
     valuePropName="fileList"
     getValueFromEvent={normFile}
     style={{ border: '1px solid #D9D9D9', padding: '1rem' }}>

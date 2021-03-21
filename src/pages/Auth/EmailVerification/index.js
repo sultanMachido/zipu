@@ -23,15 +23,14 @@ const EmailVerification = (props) => {
     setOtpValue(otp);
   };
 
-  const onVerifyEmail = async (values) => {
-
+  const onVerifyEmail = async () => {
     try {
       const messageKey = 'verifyEmailResponse';
       const key = 'verifyEmail';
       const tryUserEmailVerification = await props.verifyUserEmail(otpValue);
 
       if (tryUserEmailVerification.verifyEmailStatus) {
-        message.success({ content: tryUserEmailVerification.message, key: messageKey, duration: 15 });
+        message.success({ content: tryUserEmailVerification.message, key: messageKey, duration: 10 });
         query.set('step', 3);
         props.history.push(`/register?step=${query.get('step')}`);
       } else {
