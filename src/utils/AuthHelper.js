@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Redirect }         from 'react-router-dom';
+import React, {Component} from 'react';
+import {Redirect} from 'react-router-dom';
 
 export function Guest(WrappedComponent,) {
     const ACCESS_TOKEN = window.localStorage.getItem("zipuJWTToken");

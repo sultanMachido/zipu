@@ -1,8 +1,8 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom'
-import { Divider, Card } from 'antd';
-import { GoLocation, GiAlarmClock } from 'react-icons/all';
-import formatCurrency from 'format-currency'
+import {withRouter} from 'react-router-dom';
+import {Divider, Card} from 'antd';
+import {GoLocation, GiAlarmClock} from 'react-icons/all';
+import formatCurrency from 'format-currency';
 import './styles.scss';
 import { SubmitButton, SubmitButtonSecondary } from '../../../../components/FormField';
 import MainCar from '../../../../assets/img/toppng.svg';

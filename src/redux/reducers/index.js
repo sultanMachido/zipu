@@ -7,6 +7,8 @@ import { transportReducer } from './transportType/transportType.reducer';
 import { permitSubmissionReducer } from './permitSubmission/permitSubmission.reducer';
 import { businessDetailsReducer } from './businessDetails/businessDetails.reducer'
 import { vehiclesReducer } from './vehicles/vehicles.reducer';
+import {staffReducer} from './staff/staff.reducer';
+import {terminalsReducer} from './terminals/terminals.reducer';
 
 export default {
   register: registerReducer,
@@ -17,5 +19,7 @@ export default {
   transportTypes: transportReducer,
   permitSubmission: permitSubmissionReducer,
   businessDetails: businessDetailsReducer,
-  vehicles: vehiclesReducer
-};
+  vehicles: vehiclesReducer,
+  staffData: staffReducer,
+	terminals: terminalsReducer
+}

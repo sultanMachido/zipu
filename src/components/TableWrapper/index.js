@@ -1,15 +1,19 @@
 import React from 'react';
-import { Table } from 'antd';
+import {Table} from 'antd';
 import './styles.scss';
 
-const TableWrapper = ({ dataSource, columns }) => {
-    return (
-        <div className="tableWrapper">
-            <Table 
-                dataSource={dataSource} 
-                columns={columns} 
-            />
-            {/* <Row className="tableThead">
+const TableWrapper = ({dataSource, columns, loading = false, rowKey, locale, pagination}) => {
+	return (
+		<div className="tableWrapper">
+			<Table
+				dataSource={dataSource}
+				columns={columns}
+				loading={loading}
+				rowKey={rowKey}
+				locale={{emptyText: locale}}
+				pagination={pagination}
+			/>
+			{/* <Row className="tableThead">
             {
                 columns.map(({ title }) => {
                     return (
@@ -35,8 +39,8 @@ const TableWrapper = ({ dataSource, columns }) => {
                     )
                 })
             } */}
-        </div>
-    )
-}
+		</div>
+	);
+};
 
 export default TableWrapper;

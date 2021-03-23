@@ -1,183 +1,101 @@
 import React from 'react';
+import { BiUser } from 'react-icons/all';
+import { connect } from 'react-redux';
+import { format } from 'date-fns';
+
 import EmptyScreen from '../../../components/EmptyScreen';
 import TableWrapper from '../../../components/TableWrapper';
+import { staffColumns } from '../../../utils/constants/TableColumns/staffTableColumns';
+import { getStaff } from '../../../redux/actions/staff/staff.actions';
+import { SubmitButton } from '../../../components/FormField';
 import './styles.scss';
 
-import { Button, Col, Row } from 'antd';
-import { Link } from 'react-router-dom';
-import { BiUser } from 'react-icons/all'
+const Staff = props => {
+	const [recordPage, setRecordPage] = React.useState(1);
+	const [recordPageSize, setRecordPageSize] = React.useState(10);
 
-const Staff = () => {
+	const columns = staffColumns();
 
-    const columns = [
-        {
-            title: 'Name',
-            dataIndex: 'name',
-            key: 'name',
-            render: (_, { name, email }) => (
-                <>
-                    <p>{name}</p>
-                    <span>{email}</span>
-                </>
-            )
-        },
-        {
-            title: 'Station',
-            dataIndex: 'station',
-            key: 'station',
-            render: (_, { state, terminal }) => (
-                <>
-                    <p>{state}</p>
-                    <span>{terminal}</span>
-                </>
-            )
-        },
-        {
-            title: 'Position/Access',
-            dataIndex: 'position',
-            key: 'position',
-            render: (_, { position, access }) => (
-                <>
-                    <p>{position}</p>
-                    <span>{access}</span>
-                </>
-            )
-        },
-        {
-            title: 'Date created',
-            dataIndex: 'createdAt',
-            key: 'createdAt',
-            render: (createdAt) => (
-                <>
-                    <p>{createdAt}</p>
-                    <span>&nbsp;</span>
-                </>
-            )
-        },
-        {
-            title: 'Login activity',
-            dataIndex: 'loginActivity',
-            key: 'loginActivity',
-            render: (_, { loginActivity, logsCount }) => (
-                <>
-                    <p>{loginActivity}</p>
-                    <span>{logsCount} log{logsCount !== 1 ? 's' : ''} this month</span>
-                </>
-            )
-        },
-        {
-            title: 'Status',
-            dataIndex: 'status',
-            key: 'status',
-            render: (status) => (
-                <div className="status">{status}</div>
-            )
-        },
-        {
-            title: '',
-            dataIndex: 'actions',
-            key: 'actions',
-            render: () => (
-                <button className="view">Edit access</button>
-            )
-        },
-    ];
+	const fetchStaff = async () => {
+		const transco_id = localStorage.getItem('transcoId');
+		const staffRecords = await props.getStaff(transco_id);
+		return staffRecords;
+	};
 
-    const data = [
-        {
-            key: '1',
-            name: 'Oluwaleke Ojo',
-            email: 'lekeojo@gmail.com',
-            state: 'Lagos',
-            terminal: 'Yaba terminal',
-            position: 'Head of Patrol',
-            access: '8 modules',
-            createdAt: '10/20/2020',
-            loginActivity: 'Online',
-            logsCount: 8,
-            status: 'Active'
-        },
-        {
-            key: '1',
-            name: 'Oluwaleke Ojo',
-            email: 'lekeojo@gmail.com',
-            state: 'Lagos',
-            terminal: 'Yaba terminal',
-            position: 'Head of Patrol',
-            access: '8 modules',
-            createdAt: '10/20/2020',
-            loginActivity: 'online',
-            logsCount: 8,
-            status: 'Active'
-        },
-        {
-            key: '1',
-            name: 'Oluwaleke Ojo',
-            email: 'lekeojo@gmail.com',
-            state: 'Lagos',
-            terminal: 'Yaba terminal',
-            position: 'Head of Patrol',
-            access: '8 modules',
-            createdAt: '10/20/2020',
-            loginActivity: 'online',
-            logsCount: 8,
-            status: 'Active'
-        },
-        {
-            key: '1',
-            name: 'Oluwaleke Ojo',
-            email: 'lekeojo@gmail.com',
-            state: 'Lagos',
-            terminal: 'Yaba terminal',
-            position: 'Head of Patrol',
-            access: '8 modules',
-            createdAt: '10/20/2020',
-            loginActivity: 'online',
-            logsCount: 8,
-            status: 'Active'
-        },
-        {
-            key: '1',
-            name: 'Oluwaleke Ojo',
-            email: 'lekeojo@gmail.com',
-            state: 'Lagos',
-            terminal: 'Yaba terminal',
-            position: 'Head of Patrol',
-            access: '8 modules',
-            createdAt: '10/20/2020',
-            loginActivity: 'online',
-            logsCount: 8,
-            status: 'Active'
-        }
-    ]
+	React.useEffect(() => {
+		fetchStaff();
+	}, []);
 
-    return (
-        <div className="bookingsWrapper">
-            <Row className="tableHeader">
-                <Col span={12}>
-                    <h5 className="title">Staff Management</h5>
-                </Col>
-                <Col span={12} className="text-right">
-                    <Link to="/staff/add">
-                        <Button type="primary">ADD NEW STAFF</Button>
-                    </Link>
-                </Col>
-            </Row>
-            {
-                data && data.length > 0
-                    ? <TableWrapper
-                        columns={columns}
-                        dataSource={data}
-                    />
-                    : <EmptyScreen
-                        icon={<BiUser />}
-                        title="List is empty"
-                        subText="When you create a staff profile, they will appear here"
-                        buttonText="CREATE STAFF PROFILE"
-                    />
-            }
-        </div>
-    )
-}
+	const handleEdit = (staff) => {
+		props.history.push({ pathname: `/staff/edit/${staff?.id}`, state: staff });
+	};
 
-export default Staff;
+	const handleAddStaff = () => {
+		props.history.push("/staff/add");
+	};
+
+	const staffData = props?.staffData?.getStaffSuccess.map(staff => {
+		return {
+			...staff,
+			created_at: format(new Date(staff.created_at), 'yyyy-MM-dd hh:mm:ss'),
+			actions: (
+				<button className="editStaff" onClick={() => handleEdit(staff)} type="submit">
+					Edit roles
+				</button>
+			)
+		};
+	});
+
+	return (
+		<div className="bookingsWrapper">
+			<div className="staffHeader">
+				<h5 className="title">Staff Management</h5>
+				{SubmitButton('ADD NEW STAFF', handleAddStaff)}
+			</div>
+			{
+				<TableWrapper
+					columns={columns}
+					dataSource={staffData}
+					loading={props?.staffData?.getStaffLoading}
+					rowKey={`created_at${Math.random()}`}
+					locale={
+						<EmptyScreen
+							icon={<BiUser />}
+							title="List is empty"
+							subText="When you create a staff profile, they will appear here"
+							buttonText="CREATE STAFF PROFILE"
+						/>
+					}
+					pagination={{
+						showSizeChanger: true,
+						total: 400,
+						position: 'both',
+						onShowSizeChange: (current, size) => {
+							setRecordPage(current);
+							setRecordPageSize(size);
+						},
+						onChange: (page, pageSize) => {
+							setRecordPage(page);
+							setRecordPageSize(pageSize);
+						},
+						pageSizeOptions: ['10', '15', '20', '25'],
+						showTotal: (total, range) =>
+							`${range[0]} - ${range[1]} of ${total} record(s)`
+					}}
+				/>
+			}
+		</div>
+	);
+};
+
+const mapStateToProps = state => {
+	return {
+		staffData: state.staffData
+	};
+};
+
+const mapDispatchToProps = {
+	getStaff
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Staff);
