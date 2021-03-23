@@ -2,15 +2,13 @@
 
 import axios from 'axios';
 
-console.log(process.env.REACT_APP_BASE_URL, 'process.env.REACT_APP_BASE_URL');
-
 export const instance = axios.create({
 	baseURL: process.env.REACT_APP_BASE_URL
 });
 
 const multipartInstance = axios.create({
 	baseURL: process.env.REACT_APP_BASE_URL,
-	headers: {'Content-Type': 'multipart/form-data'}
+	headers: { 'Content-Type': 'multipart/form-data' }
 });
 
 const useConfig = config => {

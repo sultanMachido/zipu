@@ -2,61 +2,61 @@
 
 import React from 'react';
 import './FormField.scss';
-import {Form, Input, Select, Button, Upload} from 'antd';
-import {UploadOutlined} from '@ant-design/icons';
+import { Form, Input, Select, Button, Upload } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
 import Loader from '../../components/Loader';
 
 const reservationWindows = [
-	{id: 1, value: 'One Day'},
-	{id: 2, value: 'Two Days'},
-	{id: 3, value: 'Three Days'},
-	{id: 4, value: 'Four Days'},
-	{id: 5, value: 'Five Days'},
-	{id: 6, value: 'Six Days'},
-	{id: 7, value: 'Seven Days'}
+	{ id: 1, value: 'One Day' },
+	{ id: 2, value: 'Two Days' },
+	{ id: 3, value: 'Three Days' },
+	{ id: 4, value: 'Four Days' },
+	{ id: 5, value: 'Five Days' },
+	{ id: 6, value: 'Six Days' },
+	{ id: 7, value: 'Seven Days' }
 ];
 const platformOptions = [
-	{id: 1, value: 'Platform Option 1'},
-	{id: 2, value: 'Platform Option 2'},
-	{id: 3, value: 'Platform Option 3'},
-	{id: 4, value: 'Platform Option 4'}
+	{ id: 1, value: 'Platform Option 1' },
+	{ id: 2, value: 'Platform Option 2' },
+	{ id: 3, value: 'Platform Option 3' },
+	{ id: 4, value: 'Platform Option 4' }
 ];
 
 const bankDetails = [
-	{id: 1, value: 'Zenith Bank Plc'},
-	{id: 2, value: 'Access Bank Plc'},
-	{id: 3, value: 'Fidelity Bank Plc'},
-	{id: 5, value: 'First City Monument Bank Limited'},
-	{id: 6, value: 'First Bank of Nigeria Limited'},
-	{id: 7, value: 'Guaranty Trust Bank Plc'},
-	{id: 8, value: 'Union Bank of Nigeria Plc'},
-	{id: 9, value: 'United Bank for Africa Plc'},
-	{id: 10, value: 'Citibank Nigeria Limited'},
-	{id: 11, value: 'Ecobank Nigeria Limited'},
-	{id: 12, value: 'Keystone Bank Limited'},
-	{id: 13, value: 'Polaris Bank Limited'},
-	{id: 14, value: 'Stanbic IBTC Bank Plc'},
-	{id: 15, value: 'Standard Chartered'},
-	{id: 16, value: 'Sterling Bank Plc'},
-	{id: 17, value: 'Titan Trust Bank Limited'},
-	{id: 18, value: 'Unity Bank Plc'},
-	{id: 19, value: 'Wema Bank Plc'},
-	{id: 20, value: 'Globus Bank Limited[3]'},
-	{id: 21, value: 'SunTrust Bank Nigeria Limited'},
-	{id: 22, value: 'Providus Bank Limited'},
-	{id: 23, value: 'Jaiz Bank Plc'}
+	{ id: 1, value: 'Zenith Bank Plc' },
+	{ id: 2, value: 'Access Bank Plc' },
+	{ id: 3, value: 'Fidelity Bank Plc' },
+	{ id: 5, value: 'First City Monument Bank Limited' },
+	{ id: 6, value: 'First Bank of Nigeria Limited' },
+	{ id: 7, value: 'Guaranty Trust Bank Plc' },
+	{ id: 8, value: 'Union Bank of Nigeria Plc' },
+	{ id: 9, value: 'United Bank for Africa Plc' },
+	{ id: 10, value: 'Citibank Nigeria Limited' },
+	{ id: 11, value: 'Ecobank Nigeria Limited' },
+	{ id: 12, value: 'Keystone Bank Limited' },
+	{ id: 13, value: 'Polaris Bank Limited' },
+	{ id: 14, value: 'Stanbic IBTC Bank Plc' },
+	{ id: 15, value: 'Standard Chartered' },
+	{ id: 16, value: 'Sterling Bank Plc' },
+	{ id: 17, value: 'Titan Trust Bank Limited' },
+	{ id: 18, value: 'Unity Bank Plc' },
+	{ id: 19, value: 'Wema Bank Plc' },
+	{ id: 20, value: 'Globus Bank Limited[3]' },
+	{ id: 21, value: 'SunTrust Bank Nigeria Limited' },
+	{ id: 22, value: 'Providus Bank Limited' },
+	{ id: 23, value: 'Jaiz Bank Plc' }
 ];
 
 const terminals = [
-	{id: 1, value: 'Terminal 4'},
-	{id: 2, value: 'Terminal 2'},
-	{id: 3, value: 'Terminal 3'}
+	{ id: 1, value: 'Terminal 4' },
+	{ id: 2, value: 'Terminal 2' },
+	{ id: 3, value: 'Terminal 3' }
 ];
 
 const times = [
-	{id: 1, value: 'Time 1'},
-	{id: 2, value: 'Time 2'},
-	{id: 3, value: 'Time 3'}
+	{ id: 1, value: 'Time 1' },
+	{ id: 2, value: 'Time 2' },
+	{ id: 3, value: 'Time 3' }
 ];
 
 const states = [
@@ -211,13 +211,13 @@ const states = [
 ];
 
 const staffRoles = [
-	{id: 1, name: 'Admin/Business Manager'},
-	{id: 2, name: 'Regional Manager'},
-	{id: 3, name: 'Terminal Manager'},
-	{id: 4, name: 'Trip Manger/Support'}
+	{ id: 1, name: 'Admin/Business Manager' },
+	{ id: 2, name: 'Regional Manager' },
+	{ id: 3, name: 'Terminal Manager' },
+	{ id: 4, name: 'Trip Manger/Support' }
 ];
 
-const normFile = () => {};
+const normFile = () => { };
 
 export const SubmitButton = (name, handleClick, loading) => {
 	return (
@@ -234,15 +234,15 @@ export const SubmitButtonSecondary = name => (
 );
 
 // email address
-export const EmailField = (inputSize, disabled = false, required = true, placeholder) => (
+export const EmailField = (inputSize, required = true, disabled = false, placeholder) => (
 	<Form.Item
 		label=""
 		name="email"
 		validateTrigger={['onChange', 'onBlur']}
 		hasFeedback
 		rules={[
-			...(required ? [{required: true, message: 'Please enter your email address'}] : []),
-			{type: 'email', message: 'Please input a valid email'}
+			...(required ? [{ required: true, message: 'Please enter your email address' }] : []),
+			{ type: 'email', message: 'Please input a valid email' }
 		]}
 	>
 		<Input
@@ -263,14 +263,14 @@ export const PasswordField = (inputSize, required = true, placeholder) => (
 		rules={[
 			...(required
 				? [
-						{required: true, message: 'Please enter your password'},
-						{
-							max: 60,
-							message: 'Password cannot be greater than 60 characters'
-						}
-				  ]
+					{ required: true, message: 'Please enter your password' },
+					{
+						max: 60,
+						message: 'Password cannot be greater than 60 characters'
+					}
+				]
 				: []),
-			{min: 6, message: 'Password cannot be less than 6 characters'},
+			{ min: 6, message: 'Password cannot be less than 6 characters' },
 			{
 				pattern: /^(?=.*\d)(?=.*[a-zA-Z]).{0,}$/,
 				message:
@@ -293,7 +293,7 @@ export const ConfirmPasswordField = (inputSize, required = true, placeholder) =>
 				required: true,
 				message: 'Please confirm your password!'
 			},
-			({getFieldValue}) => ({
+			({ getFieldValue }) => ({
 				validator(_, value) {
 					if (!value || getFieldValue('password') === value) {
 						return Promise.resolve();
@@ -318,16 +318,16 @@ export const PhoneNumberField = (inputSize, required = true, placeholder) => (
 		rules={[
 			...(required
 				? [
-						{required: true, message: 'Please enter your phone number'},
-						{
-							min: 11,
-							message: 'Phone number cannot be less than 11 characters'
-						},
-						{
-							max: 11,
-							message: 'Phone number cannot be greater than 11 characters'
-						}
-				  ]
+					{ required: true, message: 'Please enter your phone number' },
+					{
+						min: 11,
+						message: 'Phone number cannot be less than 11 characters'
+					},
+					{
+						max: 11,
+						message: 'Phone number cannot be greater than 11 characters'
+					}
+				]
 				: []),
 			{
 				pattern: /^\d+$/,
@@ -343,10 +343,10 @@ export const OTPField = (name, autofocus, placeholder = '-') => (
 	<Form.Item
 		name={name}
 		rules={[
-			{required: true, message: ''},
-			{min: 1, message: ''},
-			{max: 1, message: ''},
-			{pattern: /^\d+$/, message: ''}
+			{ required: true, message: '' },
+			{ min: 1, message: '' },
+			{ max: 1, message: '' },
+			{ pattern: /^\d+$/, message: '' }
 		]}
 	>
 		<Input
@@ -368,9 +368,9 @@ export const CompanySizeField = (inputSize, required = true, placeholder) => (
 		rules={[
 			...(required
 				? [
-						{required: true, message: 'Company size is required'},
-						{max: 10, message: 'Company size cannot be more than 10 digits'}
-				  ]
+					{ required: true, message: 'Company size is required' },
+					{ max: 10, message: 'Company size cannot be more than 10 digits' }
+				]
 				: []),
 			{
 				pattern: /^\d+$/,
@@ -391,11 +391,11 @@ export const ReservationWindowField = (inputSize, disabled = false, required = t
 		rules={[
 			...(required
 				? [
-						{
-							required: true,
-							message: 'Please select a reservation window'
-						}
-				  ]
+					{
+						required: true,
+						message: 'Please select a reservation window'
+					}
+				]
 				: [])
 		]}
 	>
@@ -417,7 +417,7 @@ export const UploadCACDocsField = () => (
 		name="cac"
 		valuePropName="fileList"
 		getValueFromEvent={normFile}
-		style={{border: '1px solid #D9D9D9', padding: '1rem'}}
+		style={{ border: '1px solid #D9D9D9', padding: '1rem' }}
 	>
 		<Upload>
 			<Button
@@ -440,7 +440,7 @@ export const UploadPermitField = () => (
 		name="permit"
 		valuePropName="fileList"
 		getValueFromEvent={normFile}
-		style={{border: '1px solid #D9D9D9', padding: '1rem'}}
+		style={{ border: '1px solid #D9D9D9', padding: '1rem' }}
 	>
 		<Upload>
 			<Button
@@ -467,11 +467,11 @@ export const PlatformOptionsField = (inputSize, disabled = false, required = tru
 		rules={[
 			...(required
 				? [
-						{
-							required: true,
-							message: 'Please select a platform'
-						}
-				  ]
+					{
+						required: true,
+						message: 'Please select a platform'
+					}
+				]
 				: [])
 		]}
 	>
@@ -497,16 +497,16 @@ export const TranscoNameField = (inputSize, required = true, placeholder) => (
 		rules={[
 			...(required
 				? [
-						{required: true, message: 'Please enter transco name'},
-						{
-							min: 3,
-							message: 'Transco name cannot be less than 3 characters'
-						},
-						{
-							max: 60,
-							message: 'Transco name cannot be greater than 60 characters'
-						}
-				  ]
+					{ required: true, message: 'Please enter transco name' },
+					{
+						min: 3,
+						message: 'Transco name cannot be less than 3 characters'
+					},
+					{
+						max: 60,
+						message: 'Transco name cannot be greater than 60 characters'
+					}
+				]
 				: []),
 			{
 				pattern: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
@@ -527,16 +527,16 @@ export const NumberOfStaffField = (inputSize, required = true, placeholder) => (
 		rules={[
 			...(required
 				? [
-						{required: true, message: 'Please enter number of staff'},
-						{
-							min: 1,
-							message: 'Number of staff cannot be less than 1 digit'
-						},
-						{
-							max: 10,
-							message: 'Number of staff cannot be greater than 10 digits'
-						}
-				  ]
+					{ required: true, message: 'Please enter number of staff' },
+					{
+						min: 1,
+						message: 'Number of staff cannot be less than 1 digit'
+					},
+					{
+						max: 10,
+						message: 'Number of staff cannot be greater than 10 digits'
+					}
+				]
 				: []),
 			{
 				pattern: /^\d+$/,
@@ -557,11 +557,11 @@ export const BankDetailsField = (inputSize, disabled = false, required = true) =
 		rules={[
 			...(required
 				? [
-						{
-							required: true,
-							message: 'Please select a bank'
-						}
-				  ]
+					{
+						required: true,
+						message: 'Please select a bank'
+					}
+				]
 				: [])
 		]}
 	>
@@ -584,16 +584,16 @@ export const AccountNumberField = (inputSize, required = true, placeholder) => (
 		rules={[
 			...(required
 				? [
-						{required: true, message: 'Please enter your bank account number'},
-						{
-							min: 10,
-							message: 'Bank account number cannot be less than 10 characters'
-						},
-						{
-							max: 10,
-							message: 'Bank account number cannot be greater than 10 characters'
-						}
-				  ]
+					{ required: true, message: 'Please enter your bank account number' },
+					{
+						min: 10,
+						message: 'Bank account number cannot be less than 10 characters'
+					},
+					{
+						max: 10,
+						message: 'Bank account number cannot be greater than 10 characters'
+					}
+				]
 				: []),
 			{
 				pattern: /^\d+$/,
@@ -614,16 +614,16 @@ export const AccountNameField = (inputSize, required = true, placeholder) => (
 		rules={[
 			...(required
 				? [
-						{required: true, message: 'Please enter your bank account name'},
-						{
-							min: 3,
-							message: 'Bank account name cannot be less than 3 characters'
-						},
-						{
-							max: 60,
-							message: 'Bank account name cannot be greater than 60 characters'
-						}
-				  ]
+					{ required: true, message: 'Please enter your bank account name' },
+					{
+						min: 3,
+						message: 'Bank account name cannot be less than 3 characters'
+					},
+					{
+						max: 60,
+						message: 'Bank account name cannot be greater than 60 characters'
+					}
+				]
 				: []),
 			{
 				pattern: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
@@ -640,7 +640,7 @@ export const UploadPrivacyPolicyField = () => (
 		name="privacy_policy"
 		valuePropName="fileList"
 		getValueFromEvent={normFile}
-		style={{border: '1px solid #D9D9D9', padding: '1rem'}}
+		style={{ border: '1px solid #D9D9D9', padding: '1rem' }}
 	>
 		<Upload>
 			<Button
@@ -663,7 +663,7 @@ export const UploadCustomerCarePolicyField = () => (
 		name="customer_care_policy"
 		valuePropName="fileList"
 		getValueFromEvent={normFile}
-		style={{border: '1px solid #D9D9D9', padding: '1rem'}}
+		style={{ border: '1px solid #D9D9D9', padding: '1rem' }}
 	>
 		<Upload>
 			<Button
@@ -690,11 +690,11 @@ export const TerminalSelectField = (inputSize, disabled = false, required = true
 		rules={[
 			...(required
 				? [
-						{
-							required: true,
-							message: 'Please select a terminal'
-						}
-				  ]
+					{
+						required: true,
+						message: 'Please select a terminal'
+					}
+				]
 				: [])
 		]}
 	>
@@ -722,11 +722,11 @@ export const TimeSelectField = (inputSize, disabled = false, required = true) =>
 		rules={[
 			...(required
 				? [
-						{
-							required: true,
-							message: 'Please select a time'
-						}
-				  ]
+					{
+						required: true,
+						message: 'Please select a time'
+					}
+				]
 				: [])
 		]}
 	>
@@ -749,16 +749,16 @@ export const TransportNameField = (inputSize, required = true, placeholder) => (
 		rules={[
 			...(required
 				? [
-						{required: true, message: 'Please enter your bank account name'},
-						{
-							min: 3,
-							message: 'Bank account name cannot be less than 3 characters'
-						},
-						{
-							max: 60,
-							message: 'Bank account name cannot be greater than 60 characters'
-						}
-				  ]
+					{ required: true, message: 'Please enter your bank account name' },
+					{
+						min: 3,
+						message: 'Bank account name cannot be less than 3 characters'
+					},
+					{
+						max: 60,
+						message: 'Bank account name cannot be greater than 60 characters'
+					}
+				]
 				: []),
 			{
 				pattern: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
@@ -771,25 +771,26 @@ export const TransportNameField = (inputSize, required = true, placeholder) => (
 );
 
 // staff input fileds
-export const StaffFullNameField = (inputSize, required = true, placeholder) => (
+export const StaffFullNameField = (inputSize, required = true, disabled = false, placeholder) => (
 	<Form.Item
 		label=""
 		name="name"
 		hasFeedback
+
 		validateTrigger={['onChange', 'onBlur']}
 		rules={[
 			...(required
 				? [
-						{required: true, message: 'Please enter staff full name'},
-						{
-							min: 3,
-							message: 'Staff Full name cannot be less than 3 characters'
-						},
-						{
-							max: 60,
-							message: 'Staff full name cannot be greater than 60 characters'
-						}
-				  ]
+					{ required: true, message: 'Please enter staff full name' },
+					{
+						min: 3,
+						message: 'Staff Full name cannot be less than 3 characters'
+					},
+					{
+						max: 60,
+						message: 'Staff full name cannot be greater than 60 characters'
+					}
+				]
 				: []),
 			{
 				pattern: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
@@ -797,11 +798,11 @@ export const StaffFullNameField = (inputSize, required = true, placeholder) => (
 			}
 		]}
 	>
-		<Input size={inputSize} className="formInputElement" placeholder={placeholder} />
+		<Input size={inputSize} className="formInputElement" placeholder={placeholder} disabled={disabled} />
 	</Form.Item>
 );
 
-export const StaffPositionField = (inputSize, required = true, placeholder) => (
+export const StaffPositionField = (inputSize, required = true, disabled = false, placeholder) => (
 	<Form.Item
 		label=""
 		name="position"
@@ -810,16 +811,16 @@ export const StaffPositionField = (inputSize, required = true, placeholder) => (
 		rules={[
 			...(required
 				? [
-						{required: true, message: 'Please enter staff position'},
-						{
-							min: 3,
-							message: 'Staff Position cannot be less than 3 characters'
-						},
-						{
-							max: 60,
-							message: 'Staff Position cannot be greater than 60 characters'
-						}
-				  ]
+					{ required: true, message: 'Please enter staff position' },
+					{
+						min: 3,
+						message: 'Staff Position cannot be less than 3 characters'
+					},
+					{
+						max: 60,
+						message: 'Staff Position cannot be greater than 60 characters'
+					}
+				]
 				: []),
 			{
 				pattern: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
@@ -827,11 +828,11 @@ export const StaffPositionField = (inputSize, required = true, placeholder) => (
 			}
 		]}
 	>
-		<Input size={inputSize} className="formInputElement" placeholder={placeholder} />
+		<Input size={inputSize} className="formInputElement" placeholder={placeholder} disabled={disabled} />
 	</Form.Item>
 );
 
-export const StatesField = (inputSize, disabled = false, required = true, placeholder) => (
+export const StatesField = (inputSize, required = true, disabled = false, placeholder) => (
 	<Form.Item
 		label=""
 		name="state"
@@ -840,11 +841,11 @@ export const StatesField = (inputSize, disabled = false, required = true, placeh
 		rules={[
 			...(required
 				? [
-						{
-							required: true,
-							message: 'Please select a state'
-						}
-				  ]
+					{
+						required: true,
+						message: 'Please select a state'
+					}
+				]
 				: [])
 		]}
 	>
@@ -854,7 +855,7 @@ export const StatesField = (inputSize, disabled = false, required = true, placeh
 			disabled={disabled}
 			className="selectElement"
 		>
-			{states.map(({code, name}) => (
+			{states.map(({ code, name }) => (
 				<Select.Option key={`state-${code}`} value={name}>
 					{name}
 				</Select.Option>
@@ -865,24 +866,25 @@ export const StatesField = (inputSize, disabled = false, required = true, placeh
 
 export const SearchTerminalField = (
 	inputSize,
-	disabled = false,
 	required = true,
+	disabled = false,
 	placeholder,
-	props
+	props,
+	type
 ) => (
 	<Form.Item
 		label=""
-		name="terminals[0]"
+		name="terminals"
 		hasFeedback
 		validateTrigger={['onChange', 'onBlur']}
 		rules={[
 			...(required
 				? [
-						{
-							required: true,
-							message: 'Please select a terminal'
-						}
-				  ]
+					{
+						required: true,
+						message: 'Please select a terminal'
+					}
+				]
 				: [])
 		]}
 	>
@@ -901,9 +903,9 @@ export const SearchTerminalField = (
 			disabled={disabled}
 			className="selectElement"
 		>
-			{props?.terminals?.getTerminalsSuccess.map(({id, name}) => (
+			{props?.terminals?.getTerminalsSuccess.map(({ id, name }) => (
 				<>
-					<Select.Option key={`state-${id}`} value={name}>
+					<Select.Option key={`state-${id}`} value={id}>
 						{name}
 					</Select.Option>
 				</>
@@ -912,7 +914,7 @@ export const SearchTerminalField = (
 	</Form.Item>
 );
 
-export const StaffRolesField = (inputSize, disabled = false, required = true, placeholder) => (
+export const StaffRolesField = (inputSize, required = true, disabled = false, placeholder) => (
 	<Form.Item
 		label=""
 		name="role_id"
@@ -921,11 +923,11 @@ export const StaffRolesField = (inputSize, disabled = false, required = true, pl
 		rules={[
 			...(required
 				? [
-						{
-							required: true,
-							message: 'Please select a role'
-						}
-				  ]
+					{
+						required: true,
+						message: 'Please select a role'
+					}
+				]
 				: [])
 		]}
 	>
@@ -935,7 +937,7 @@ export const StaffRolesField = (inputSize, disabled = false, required = true, pl
 			disabled={disabled}
 			className="selectElement"
 		>
-			{staffRoles.map(({id, name}) => (
+			{staffRoles.map(({ id, name }) => (
 				<Select.Option key={`state-${id}`} value={id}>
 					{name}
 				</Select.Option>

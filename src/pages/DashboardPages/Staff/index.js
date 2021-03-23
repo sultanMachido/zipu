@@ -1,13 +1,13 @@
 import React from 'react';
-import {BiUser} from 'react-icons/all';
-import {connect} from 'react-redux';
-import {format} from 'date-fns';
+import { BiUser } from 'react-icons/all';
+import { connect } from 'react-redux';
+import { format } from 'date-fns';
 
 import EmptyScreen from '../../../components/EmptyScreen';
 import TableWrapper from '../../../components/TableWrapper';
-import {staffColumns} from '../../../utils/constants/TableColumns/staffTableColumns';
-import {getStaff} from '../../../redux/actions/staff/staff.actions';
-import {SubmitButton} from '../../../components/FormField';
+import { staffColumns } from '../../../utils/constants/TableColumns/staffTableColumns';
+import { getStaff } from '../../../redux/actions/staff/staff.actions';
+import { SubmitButton } from '../../../components/FormField';
 import './styles.scss';
 
 const Staff = props => {
@@ -26,12 +26,12 @@ const Staff = props => {
 		fetchStaff();
 	}, []);
 
-	const handleEdit = staff => {
-		props.history.push(`/staff/edit/${staff?.id}`);
+	const handleEdit = (staff) => {
+		props.history.push({ pathname: `/staff/edit/${staff?.id}`, state: staff });
 	};
 
 	const handleAddStaff = () => {
-		props.history.push(`/staff/add`);
+		props.history.push("/staff/add");
 	};
 
 	const staffData = props?.staffData?.getStaffSuccess.map(staff => {
@@ -68,7 +68,7 @@ const Staff = props => {
 					}
 					pagination={{
 						showSizeChanger: true,
-						total: 40,
+						total: 400,
 						position: 'both',
 						onShowSizeChange: (current, size) => {
 							setRecordPage(current);

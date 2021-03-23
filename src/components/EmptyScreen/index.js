@@ -1,9 +1,8 @@
 import React from 'react';
 import './styles.scss';
-import {SubmitButton} from '../../components/FormField';
+import { SubmitButton } from '../../components/FormField';
 
-const EmptyScreen = ({icon, title, subText, buttonText, handleClick}) => {
-	console.log(icon);
+const EmptyScreen = ({ icon, title, subText, buttonText, handleClick }) => {
 	return (
 		<div className="emptyScreen">
 			<div className="iconWrapper">{icon}</div>

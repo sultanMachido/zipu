@@ -1,6 +1,6 @@
 import React from 'react';
-import {Form, Progress, message, Collapse, Switch} from 'antd';
-import {connect} from 'react-redux';
+import { Form, Progress, message, Collapse, Switch } from 'antd';
+import { connect } from 'react-redux';
 import {
 	StaffFullNameField,
 	StaffPositionField,
@@ -12,11 +12,11 @@ import {
 	SubmitButton
 } from '../../../../components/FormField';
 import './styles.scss';
-import {getTerminals} from '../../../../redux/actions/terminals/terminals.action';
-import {addStaff} from '../../../../redux/actions/staff/staff.actions';
-import {apiErrors} from '../../../../utils/errorHandler/apiErrors';
+import { getTerminals } from '../../../../redux/actions/terminals/terminals.action';
+import { addStaff } from '../../../../redux/actions/staff/staff.actions';
+import { apiErrors } from '../../../../utils/errorHandler/apiErrors';
 
-const {Panel} = Collapse;
+const { Panel } = Collapse;
 
 const StaffAdd = props => {
 	const inputSize = 'large';
@@ -37,7 +37,7 @@ const StaffAdd = props => {
 		try {
 			const messageKey = 'addStaffResponse';
 			const key = 'addStaff';
-			const tryAddStaff = await props.addStaff({...values});
+			const tryAddStaff = await props.addStaff({ ...values });
 
 			if (tryAddStaff.addStaffStatus) {
 				message.success({
@@ -55,12 +55,12 @@ const StaffAdd = props => {
 				});
 			}
 		} catch (error) {
-			console.log({error}, 'error');
+			console.log({ error }, 'error');
 		}
 	};
 
 	const handleChange = (checked, event) => {
-		setChecked(checked => !checked);
+		setChecked(checked);
 	};
 
 	return (
@@ -81,35 +81,35 @@ const StaffAdd = props => {
 					onFinish={onFinish}
 					hideRequiredMark
 					layout="vertical"
-					style={{width: '100%'}}
+					style={{ width: '100%' }}
 				>
 					<div className="inputRow">
 						<div className="inputElement">
-							{StaffFullNameField(inputSize, true, 'Full name')}
+							{StaffFullNameField(inputSize, true, false, 'Full name')}
 						</div>
 						<div className="inputElement">
-							{StaffPositionField(inputSize, true, 'Position')}
+							{StaffPositionField(inputSize, true, false, 'Position')}
 						</div>
 					</div>
 
 					<div className="inputRow">
 						<div className="inputElement">
-							{EmailField(inputSize, false, true, 'Email address')}
+							{EmailField(inputSize, true, false, 'Email address')}
 						</div>
 						<div className="inputElement">
-							{PhoneNumberField(inputSize, true, 'Phone number')}
+							{PhoneNumberField(inputSize, true, false, 'Phone number')}
 						</div>
 					</div>
 
 					<div className="inputRow">
 						<div className="inputElement">
 							<div className="states">
-								{StatesField(inputSize, false, true, 'State')}
+								{StatesField(inputSize, true, false, 'State')}
 							</div>
 							<br />
 							<div className="roles">
 								{' '}
-								{StaffRolesField(inputSize, false, true, 'Select Role')}
+								{StaffRolesField(inputSize, true, false, 'Select Role')}
 							</div>
 							<div className="btnWrapper">
 								{SubmitButton(
@@ -120,12 +120,12 @@ const StaffAdd = props => {
 							</div>
 						</div>
 						<div className="inputElement">
-							<Collapse>
+							<Collapse defaultActiveKey={['1']}>
 								<Panel header="Allocate terminal to this user" key="1">
 									{SearchTerminalField(
 										inputSize,
-										false,
 										true,
+										false,
 										'Search terminals',
 										props
 									)}

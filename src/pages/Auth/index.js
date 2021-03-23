@@ -1,6 +1,6 @@
 import React from 'react';
 import './Auth.scss';
-import {useQuery} from './../../utils/URLSearchParam';
+import { useQuery } from './../../utils/URLSearchParam';
 
 import Registration from './Registration';
 import EmailVerification from './EmailVerification';
@@ -12,8 +12,6 @@ import Success from './Success';
 const Auth = props => {
 	let query = useQuery();
 	const page = query.get('step');
-
-	console.log({page});
 
 	React.useEffect(() => {
 		props.history.push(`/register?step=${query.get('step') || '1'}`);

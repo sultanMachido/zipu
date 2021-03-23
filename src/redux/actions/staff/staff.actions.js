@@ -17,7 +17,7 @@ import {
 	deActivateStaffLoading
 } from './staff.actionCreators';
 
-import {APIService} from '../../../config/apiConfig';
+import { APIService } from '../../../config/apiConfig';
 
 const SOMETHING_WENT_WRONG = 'Something went wrong';
 
@@ -37,13 +37,13 @@ export const getStaff = transco_id => async dispatch => {
 			};
 		} else {
 			dispatch(getStaffLoading(false));
-			return {getStaffStatus: false, message: SOMETHING_WENT_WRONG};
+			return { getStaffStatus: false, message: SOMETHING_WENT_WRONG };
 		}
 	} catch (error) {
 		const message = error.response?.data?.message;
 		dispatch(getStaffError(message));
 		dispatch(getStaffLoading(false));
-		return {getStaffStatus: false, message: message || SOMETHING_WENT_WRONG};
+		return { getStaffStatus: false, message: message || SOMETHING_WENT_WRONG };
 	}
 };
 
@@ -52,7 +52,7 @@ export const addStaff = staffRecord => async dispatch => {
 	dispatch(clearStaffTErrors());
 	dispatch(addStaffLoading());
 	try {
-		const addStaffRequest = await APIService.post(`/addstaff`, {...staffRecord});
+		const addStaffRequest = await APIService.post(`/addstaff`, { ...staffRecord });
 		if (addStaffRequest.data.status === 'Success') {
 			dispatch(addStaffLoading());
 			dispatch(addStaffSuccess(addStaffRequest.data));
@@ -63,13 +63,13 @@ export const addStaff = staffRecord => async dispatch => {
 			};
 		} else {
 			dispatch(addStaffLoading(false));
-			return {addStaffStatus: false, message: SOMETHING_WENT_WRONG};
+			return { addStaffStatus: false, message: SOMETHING_WENT_WRONG };
 		}
 	} catch (error) {
 		const message = error.response?.data?.message;
 		dispatch(addStaffError(message));
 		dispatch(addStaffLoading(false));
-		return {addStaffStatus: false, message: message || SOMETHING_WENT_WRONG};
+		return { addStaffStatus: false, message: message || SOMETHING_WENT_WRONG };
 	}
 };
 
@@ -78,7 +78,7 @@ export const editStaff = staffRecord => async dispatch => {
 	dispatch(clearStaffTErrors());
 	dispatch(editStaffLoading());
 	try {
-		const editStaffRequest = await APIService.post(`/editstaff`, {...staffRecord});
+		const editStaffRequest = await APIService.post(`/editstaff`, { ...staffRecord });
 		if (editStaffRequest.data.status === 'Success') {
 			dispatch(editStaffLoading());
 			dispatch(editStaffSuccess(editStaffRequest.data));
@@ -89,13 +89,13 @@ export const editStaff = staffRecord => async dispatch => {
 			};
 		} else {
 			dispatch(editStaffLoading(false));
-			return {editStaffStatus: false, message: SOMETHING_WENT_WRONG};
+			return { editStaffStatus: false, message: SOMETHING_WENT_WRONG };
 		}
 	} catch (error) {
 		const message = error.response?.data?.message;
 		dispatch(editStaffError(message));
 		dispatch(editStaffLoading(false));
-		return {editStaffStatus: false, message: message || SOMETHING_WENT_WRONG};
+		return { editStaffStatus: false, message: message || SOMETHING_WENT_WRONG };
 	}
 };
 
@@ -115,13 +115,13 @@ export const activateStaff = staffId => async dispatch => {
 			};
 		} else {
 			dispatch(activateStaffLoading(false));
-			return {activateStaffStatus: false, message: SOMETHING_WENT_WRONG};
+			return { activateStaffStatus: false, message: SOMETHING_WENT_WRONG };
 		}
 	} catch (error) {
 		const message = error.response?.data?.message;
 		dispatch(activateStaffError(message));
 		dispatch(activateStaffLoading(false));
-		return {activateStaffStatus: false, message: message || SOMETHING_WENT_WRONG};
+		return { activateStaffStatus: false, message: message || SOMETHING_WENT_WRONG };
 	}
 };
 
@@ -141,12 +141,12 @@ export const deActivateStaff = staffId => async dispatch => {
 			};
 		} else {
 			dispatch(deActivateStaffLoading(false));
-			return {deActivateStaffStatus: false, message: SOMETHING_WENT_WRONG};
+			return { deActivateStaffStatus: false, message: SOMETHING_WENT_WRONG };
 		}
 	} catch (error) {
 		const message = error.response?.data?.message;
 		dispatch(deActivateStaffError(message));
 		dispatch(deActivateStaffLoading(false));
-		return {deActivateStaffStatus: false, message: message || SOMETHING_WENT_WRONG};
+		return { deActivateStaffStatus: false, message: message || SOMETHING_WENT_WRONG };
 	}
 };

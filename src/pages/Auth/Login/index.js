@@ -1,9 +1,9 @@
 import React from 'react';
-import {Form, message} from 'antd';
-import {connect} from 'react-redux';
+import { Form, message } from 'antd';
+import { connect } from 'react-redux';
 import './Login.scss';
-import {EmailField, PasswordField, SubmitButton} from '../../../components/FormField';
-import {loginUser} from '../../../redux/actions/login/login.actions';
+import { EmailField, PasswordField, SubmitButton } from '../../../components/FormField';
+import { loginUser } from '../../../redux/actions/login/login.actions';
 
 const inputSize = 'large';
 
@@ -14,15 +14,15 @@ const Login = props => {
 		try {
 			const messageKey = 'loginResponse';
 			const key = 'login';
-			const tryUserLogin = await props.loginUser({...values});
+			const tryUserLogin = await props.loginUser({ ...values });
 			if (tryUserLogin.loginStatus) {
-				message.success({content: tryUserLogin.message, key: messageKey, duration: 5});
+				message.success({ content: tryUserLogin.message, key: messageKey, duration: 5 });
 				props.history.push('/');
 			} else {
-				return message.error({content: tryUserLogin.message, key, duration: 2});
+				return message.error({ content: tryUserLogin.message, key, duration: 2 });
 			}
 		} catch (error) {
-			console.log({error}, 'error');
+			console.log({ error }, 'error');
 		}
 	};
 	return (
@@ -35,7 +35,7 @@ const Login = props => {
 
 				<div className="loginForm">
 					<Form form={form} onFinish={onFinish} hideRequiredMark layout="vertical">
-						{EmailField(inputSize, false, true, 'Enter address')}
+						{EmailField(inputSize, true, false, 'Enter address')}
 						{PasswordField(inputSize, true, 'Password')}
 						<div className="btnWrapper">
 							{SubmitButton('LOGIN', null, props?.userLogin?.loginLoading)}

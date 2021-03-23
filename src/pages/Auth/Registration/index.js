@@ -1,9 +1,9 @@
 /** @format */
 
 import React from 'react';
-import {Form, Progress, message} from 'antd';
-import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
+import { Form, Progress, message } from 'antd';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import './Registration.scss';
 import {
 	EmailField,
@@ -12,8 +12,8 @@ import {
 	SubmitButton,
 	ConfirmPasswordField
 } from '../../../components/FormField';
-import {registerUser} from '../../../redux/actions/registration/register.actions';
-import {useQuery} from '../../../utils/URLSearchParam';
+import { registerUser } from '../../../redux/actions/registration/register.actions';
+import { useQuery } from '../../../utils/URLSearchParam';
 
 const inputSize = 'large';
 const Registration = props => {
@@ -43,7 +43,7 @@ const Registration = props => {
 				});
 			}
 		} catch (error) {
-			console.log({error}, 'error');
+			console.log({ error }, 'error');
 		}
 	};
 
@@ -67,8 +67,8 @@ const Registration = props => {
 
 			<div className="registrationForm">
 				<Form form={form} onFinish={onRegister} hideRequiredMark layout="vertical">
-					{EmailField(inputSize, false, true, 'Your email address')}
-					{PhoneNumberField(inputSize, true, 'Phone number')}
+					{EmailField(inputSize, true, false, 'Your email address')}
+					{PhoneNumberField(inputSize, true, false, 'Phone number')}
 					{PasswordField(inputSize, true, 'Enter password')}
 					{ConfirmPasswordField(inputSize, true, 'Confirm password')}
 					<div className="btnWrapper">

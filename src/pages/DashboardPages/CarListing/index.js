@@ -1,15 +1,15 @@
 import React from 'react';
-import {Divider, Checkbox, Pagination} from 'antd';
-import {ImPencil} from 'react-icons/all';
+import { Divider, Checkbox, Pagination } from 'antd';
+import { ImPencil } from 'react-icons/all';
 import './styles.scss';
-import {SubmitButton} from '../../../components/FormField';
+import { SubmitButton } from '../../../components/FormField';
 import EmptyScreen from '../../../components/EmptyScreen';
-import {TerminalsList} from '../../../utils/constants/TerminalList';
-import {StatusList} from '../../../utils/constants/StatusList';
-import {VehicleList} from '../../../utils/constants/VehicleList';
-import {VehicleData} from '../../../utils/constants/VehicleInventoryList';
+import { TerminalsList } from '../../../utils/constants/TerminalList';
+import { StatusList } from '../../../utils/constants/StatusList';
+import { VehicleList } from '../../../utils/constants/VehicleList';
+import { VehicleData } from '../../../utils/constants/VehicleInventoryList';
 import VehicleComponent from './Vehicle';
-import {useQuery} from '../../../utils/URLSearchParam';
+import { useQuery } from '../../../utils/URLSearchParam';
 
 const CheckboxGroup = Checkbox.Group;
 const defaultCheckedList = [''];
@@ -63,7 +63,6 @@ const TripInventory = props => {
 		setPage(page);
 	};
 	const onShowSizeChange = (current, pageSize) => {
-		console.log(pageSize);
 		query.set('pageSize', pageSize);
 		setPageSize(pageSize);
 	};

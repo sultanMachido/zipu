@@ -1,7 +1,7 @@
-import {Layout} from 'antd';
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Switch, Route, withRouter} from 'react-router-dom';
+import { Layout } from 'antd';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Switch, Route, withRouter, useParams } from 'react-router-dom';
 
 import MenuTabs from '../components/MenuTabs';
 
@@ -18,7 +18,7 @@ import TripManagement from '../pages/DashboardPages/TripManagement';
 import AddTrip from '../pages/DashboardPages/TripManagement/AddTrip';
 import EditStaff from '../pages/DashboardPages/Staff/StaffEdit';
 
-import {logUserOut} from '../redux/actions/login/login.actions';
+import { logUserOut } from '../redux/actions/login/login.actions';
 
 import './styles.scss';
 
@@ -30,6 +30,7 @@ class DashboardContainer extends Component {
 	render() {
 		const pathname = this.props.location.pathname;
 		const profile = JSON.parse(window.localStorage.getItem('_profile'));
+		const id = pathname.split('/')[3];
 
 		const innerPages = [
 			{
@@ -38,14 +39,9 @@ class DashboardContainer extends Component {
 				title: 'Create new staff'
 			},
 			{
-				route: '/staff/edit/:id',
+				route: `/staff/edit/${id}`,
 				prev: '/staff',
 				title: 'Edit Staff'
-			},
-			{
-				route: '/car-listing/add',
-				prev: '/car-listing',
-				title: 'Create new trip'
 			},
 			{
 				route: '/car-listing/edit/:id',
@@ -53,19 +49,28 @@ class DashboardContainer extends Component {
 				title: 'Edit Listing'
 			},
 			{
+				route: '/car-listing/add',
+				prev: '/car-listing',
+				title: 'Create new trip'
+			},
+
+			{
 				route: '/trip-management/add',
 				prev: '/trip-management',
 				title: 'Create new Trip'
 			}
 		];
-		const selectedInnerPage = innerPages.filter(({route}) => {
-			return route === pathname || pathname.split('/').includes('edit');
+
+
+		const selectedInnerPage = innerPages.filter(({ route }) => {
+			return route === pathname;
 		})[0];
+
 
 		return (
 			<>
 				<Navbar path={pathname} profile={profile} logoutUser={this.handleLogout} />
-				<div style={{marginTop: '80px'}} />
+				<div style={{ marginTop: '80px' }} />
 				<MenuTabs visible={selectedInnerPage ? false : true} />
 				<TitlePane
 					prev={selectedInnerPage && selectedInnerPage.prev}
