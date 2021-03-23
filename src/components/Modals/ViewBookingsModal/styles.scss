@@ -1,0 +1,174 @@
+.viewBookingsModal {
+    &.ant-modal {
+        width: 757px !important;
+    }
+    .ant-modal-content {
+        background-color: #fff;
+        border: 1px solid #E3EAED;
+        box-sizing: border-box;
+        border-radius: 10px;
+        .ant-modal-body {
+            padding: 0px !important;
+        }
+    }
+    .bookingOverviewPane {
+        padding: 47px 40px 24px;
+        border-bottom: 1px solid #E3EAED;
+        .busNameText {
+            font-family: Inter;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 20px;
+            margin-bottom: 8px;
+            color: #323D44;
+        }
+        .smallText {
+            font-family: Inter;
+            font-style: normal;
+            font-size: 14px;
+            line-height: 20px;
+            margin-bottom: 8px;
+            color: #637A87;
+        }
+        .amountText {
+            font-family: Inter;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 20px;
+            margin-bottom: 8px;
+            color: #000000;
+        }
+        .marginTop40 {
+            margin-top: 40px;
+        }
+    }
+    .bookingDetailsPane {
+        padding: 40px 56px 15px;
+        p.mainText {
+            font-family: Inter;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 20px;
+            margin-bottom: 0px;
+            color: #323D44;
+        }
+        p.subText {
+            font-family: Inter;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            margin-bottom: 0px;
+            color: #637A87;
+        }
+        .ant-picker {
+            background: #FFFFFF;
+            height: 48px;
+            width: 100%;
+            border: 1px solid #E3EAED;
+            box-sizing: border-box;
+            border-radius: 10px;
+            margin: 16px 0px 32px;
+        }
+        p.timeLocationText {
+            font-family: Inter;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 20px;
+            margin-bottom: 8px;
+            color: #000000;
+        }
+        p.subLocationText {
+            font-family: Inter;
+            font-style: normal;
+            font-size: 12px;
+            line-height: 20px;
+            margin-bottom: 8px;
+            color: #323D44;
+        }
+        span.badge {
+            padding: 6px 16px;
+            background: #F8EAC2;
+            border-radius: 100px;
+            font-family: Inter;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 20px;
+            text-align: center;
+            color: #C76100;
+            margin-bottom: 64px;
+        }
+    }
+    .passengerDetailsPane {
+        background: #F6F8F9;
+        padding: 25px 61px;
+        height: 200px;
+    }
+    .footerPane {
+        background: #ffffff;
+        padding: 57px 61px;
+        p.mainText {
+            font-family: Inter;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 20px;
+            margin-bottom: 0px;
+            color: #323D44;
+        }
+        p.subText {
+            font-family: Inter;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            margin-bottom: 0px;
+            color: #637A87;
+        }
+        .filledInput {
+            display: inline-flex;
+            background: #FFFFFF;
+            border: 1px solid #D9D9D9;
+            box-sizing: border-box;
+            padding: 8px 16px;
+            margin-right: 22px;
+            margin-bottom: 16px;
+            border-radius: 2px;
+            &.fullWidth {
+                width: 100%;
+                padding: 8px 12px;
+            }
+            .filledInputTitle {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 22px;
+                display: flex;
+                align-items: center;
+                color: #637A87;
+            }
+            .filledInputValue {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 22px;
+                display: flex;
+                align-items: center;
+                color: #323D44;
+            }
+        }
+        .marginTop22 {
+            margin-top: 22px;
+        }
+        .marginBottom70 {
+            margin-bottom: 70px;
+        }
+    }
+}
