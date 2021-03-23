@@ -1,3 +1,1 @@
-export const SearchHelper = (data) => {
-
-}
+export const SearchHelper = data => {};

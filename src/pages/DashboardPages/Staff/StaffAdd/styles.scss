@@ -1,0 +1,105 @@
+.staffAddWrapper {
+    width: 100%;
+    .addStaffHeader{
+        width: 100%;
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h5.title {
+            font-family: Inter;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 25px;
+            line-height: 32px;
+            color: #323D44;
+        }
+    }
+
+    .addStaffForm{
+        width: 100%;
+
+        .inputRow{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            &:not(:last-child){
+                margin-bottom: 2rem;
+            }
+
+            .inputElement{
+                flex-basis: 50%;
+
+                &:not(:last-child){
+                    margin-right: 2rem;
+                }
+
+              
+            }
+        }
+    }
+    
+}
+
+
+
+.ant-collapse > .ant-collapse-item > .ant-collapse-header {
+    position: relative;
+    padding: 12px 16px;
+    padding-left: 40px;
+    color: rgba(0, 0, 0, 0.85);
+    line-height: 2 !important;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.ant-switch {
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    -webkit-font-feature-settings: 'tnum';
+    font-feature-settings: 'tnum', "tnum";
+    position: relative;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    min-width: 44px;
+    height: 22px;
+    line-height: 22px;
+    vertical-align: middle;
+    background-color: rgba(0, 0, 0, 0.25);
+    border: 0;
+    border-radius: 100px;
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ant-switch-checked {
+    background-color: #2e7b32 !important;
+}
+
+.ant-switch-handle::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    border-radius: 9px;
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0, 35, 11, 0.2);
+    box-shadow: 0 2px 4px 0 rgba(0, 35, 11, 0.2);
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    content: '';
+}

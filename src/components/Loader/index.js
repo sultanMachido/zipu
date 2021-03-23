@@ -1,15 +1,13 @@
-
 import React from 'react';
-import { Spin, Space } from 'antd';
-import './Loader.scss'
-
+import {Spin, Space} from 'antd';
+import './Loader.scss';
 
 const Loader = () => {
-  return (
-    <Space size="middle">
-      <Spin size="large" />
-    </Space>
-  )
-}
+	return (
+		<Space size="middle">
+			<Spin size="large" />
+		</Space>
+	);
+};
 
-export default Loader
+export default Loader;
