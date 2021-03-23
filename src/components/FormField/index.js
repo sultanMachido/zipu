@@ -2,7 +2,7 @@
 
 import React from 'react';
 import './FormField.scss';
-import { Form, Input, Select, Button, Upload } from 'antd';
+import { Form, Input, Select, Button, Upload, AutoComplete } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import Loader from '../../components/Loader';
 
@@ -216,6 +216,8 @@ const staffRoles = [
 	{ id: 3, name: 'Terminal Manager' },
 	{ id: 4, name: 'Trip Manger/Support' }
 ];
+
+const { Search } = Input
 
 const normFile = () => { };
 
@@ -945,3 +947,35 @@ export const StaffRolesField = (inputSize, required = true, disabled = false, pl
 		</Select>
 	</Form.Item>
 );
+
+export const StateSearchField = () => (
+	<Form.Item
+		label=""
+		name="state_search"
+		hasFeedback
+		validateTrigger={['onChange', 'onBlur']}
+	>
+		<Input.Group compact>
+			<div style={{ border: '1px solid #D9D9D9', width: "30%", height: "32px", padding: ".5rem .5rem 0 .5rem", background: "#F6F8F9" }}>State:</div>
+			<Select defaultValue="Lagos" style={{ width: '70%', background: "#F6F8F9" }}>
+				{states.map(({ code, name }) => (
+					<Select.Option key={`state-${code}`} value={name}>
+						{name}
+					</Select.Option>
+				))}
+			</Select>
+		</Input.Group>
+	</Form.Item>
+);
+
+export const TerminalSearchField = (onSearch) => (
+	<Form.Item
+		label=""
+		name="terminal_search"
+		hasFeedback
+		validateTrigger={['onChange', 'onBlur']}
+	>
+		<Search placeholder="Search terminal" onSearch={onSearch} />
+	</Form.Item>
+);
+

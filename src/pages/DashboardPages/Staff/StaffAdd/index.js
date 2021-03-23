@@ -15,7 +15,6 @@ import './styles.scss';
 import { getTerminals } from '../../../../redux/actions/terminals/terminals.action';
 import { addStaff } from '../../../../redux/actions/staff/staff.actions';
 import { apiErrors } from '../../../../utils/errorHandler/apiErrors';
-import Notification from '../../../../components/Notification'
 
 const { Panel } = Collapse;
 

@@ -17,6 +17,7 @@ import Footer from '../components/Footer';
 import TripManagement from '../pages/DashboardPages/TripManagement';
 import AddTrip from '../pages/DashboardPages/TripManagement/AddTrip';
 import EditStaff from '../pages/DashboardPages/Staff/StaffEdit';
+import Terminals from '../pages/DashboardPages/Terminals'
 
 import { logUserOut } from '../redux/actions/login/login.actions';
 
@@ -88,6 +89,7 @@ class DashboardContainer extends Component {
 						<Route exact path="/car-listing/edit/:id" component={EditTrip}></Route>
 						<Route exact path="/trip-management" component={TripManagement}></Route>
 						<Route exact path="/trip-management/add" component={AddTrip}></Route>
+						<Route exact path="/terminals" component={Terminals}></Route>
 					</Switch>
 				</Layout>
 				<div className="footerSection">
