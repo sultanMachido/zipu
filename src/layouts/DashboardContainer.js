@@ -21,7 +21,10 @@ import Terminals from '../pages/DashboardPages/Terminals'
 
 import { logUserOut } from '../redux/actions/login/login.actions';
 
-import './styles.scss';
+import "./styles.scss";
+import Report from "../pages/DashboardPages/Report";
+import PromoCodes from "../pages/DashboardPages/Report/PromoCodes";
+import Company from "../pages/DashboardPages/Company";
 
 class DashboardContainer extends Component {
 	handleLogout = async () => {
@@ -54,7 +57,11 @@ class DashboardContainer extends Component {
 				prev: '/car-listing',
 				title: 'Create new trip'
 			},
-
+			{
+				route: '/reports/promo-codes',
+				prev: '/reports',
+				title: 'Promo Codes'
+			},
 			{
 				route: '/trip-management/add',
 				prev: '/trip-management',
@@ -62,17 +69,16 @@ class DashboardContainer extends Component {
 			}
 		];
 
-
 		const selectedInnerPage = innerPages.filter(({ route }) => {
 			return route === pathname;
 		})[0];
-
-
 		return (
 			<>
 				<Navbar path={pathname} profile={profile} logoutUser={this.handleLogout} />
-				<div style={{ marginTop: '80px' }} />
-				<MenuTabs visible={selectedInnerPage ? false : true} />
+				<div style={{ marginTop: "80px" }} />
+				<MenuTabs
+					visible={selectedInnerPage ? false : true}
+				/>
 				<TitlePane
 					prev={selectedInnerPage && selectedInnerPage.prev}
 					title={selectedInnerPage && selectedInnerPage.title}
@@ -99,6 +105,7 @@ class DashboardContainer extends Component {
 		);
 	}
 }
+
 const mapDispatchToProps = {
 	logUserOut
 };

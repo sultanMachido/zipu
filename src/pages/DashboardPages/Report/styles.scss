@@ -1,0 +1,179 @@
+.bookingsWrapper {
+    h5.title {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 25px;
+        line-height: 32px;
+        color: #323D44;
+    }
+    .cardsRow {
+        padding: 22px 0px;
+        padding-top: 0px;
+    }
+    .ant-col { 
+        .divider {
+            padding: 15px 0px;
+        }
+        .inner {
+            padding: 35px 20px;
+        }
+        .divider, .inner {
+            border-right: 1px solid #E4E4E4;
+            margin-top: 43px;
+            text-align: center;
+            h4 {
+                margin-bottom: 4px;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 20px;
+                text-align: center;
+                letter-spacing: 0.45px;
+                text-transform: capitalize;
+                color: #000000;
+            }
+            p {
+                &.name {
+                    margin-bottom: 0;
+                    font-family: Inter;
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 20px;
+                    text-align: center;
+                    letter-spacing: 0.45px;
+                    text-transform: capitalize;
+                    color: #637A87;
+                }
+                &.seeAll {
+                    font-family: Inter;
+                    font-style: normal;
+                    font-weight: bold;
+                    font-size: 10px;
+                    line-height: 12px;
+                    text-align: center;
+                    color: #FFBC00;
+                }
+            }
+        }
+        &:last-child {
+            .divider {
+                border-right: none;
+            }
+        }
+        .cardView {
+            background: #FFFFFF;
+            border: 1px solid #E3EAED;
+            box-sizing: border-box;
+            border-radius: 8px;
+            padding: 20px 24px;
+            h4 {
+                font-family: Inter;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 24px;
+                color: #000000;
+                margin-bottom: 0px;
+            }
+            p {
+                font-family: Inter;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 17px;
+                color: #8D8D8D;
+                margin-bottom: 4px;
+            }
+        }
+    }
+    .staffOnline {
+        .inner {
+            padding-top: 14px;
+        }
+    }
+    .greenDotWrapper {
+        height: 35px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    .dot {
+        height: 15px;
+        width: 15px;
+        margin: auto 0px;
+        border-radius: 50%;
+        display: inline-block;
+        &.greenDot {
+            background: #27AE60;
+        }
+        &.greyDot {
+            background: #637A87;
+        }
+    }
+    .sectionRow {
+        margin-bottom: 42px;
+    }
+    .donutLegend {
+        .donutLegendItem {
+            margin-bottom: 24px;
+            p {
+                font-family: Inter;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 19px;
+                color: #000000;
+                margin-bottom: 4px;
+            }
+            span {
+                font-family: Inter;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 17px;
+                color: #8D8D8D;
+                margin-bottom: 0px;
+            }
+        }
+    }
+    .textCenter {
+        text-align: center;
+    }
+    .areaChart {
+        width: 100%;
+    }
+    .mostStats {
+        .miniHeader {
+            margin-bottom: 32px;
+            i {
+                margin-right: 10px;
+            }
+            span {
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 17px;
+                color: #323D44;
+            }
+        }
+        h3 {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 29px;
+            color: #1C1C1C;
+            margin-bottom: 8px;
+        }
+        p {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px !important;
+            line-height: 19px;
+            color: #8D8D8D;
+            margin-bottom: 24px;
+        }
+    }
+}
