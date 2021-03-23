@@ -309,7 +309,7 @@ export const ConfirmPasswordField = (inputSize, required = true, placeholder) =>
 	</Form.Item>
 );
 
-export const PhoneNumberField = (inputSize, required = true, placeholder) => (
+export const PhoneNumberField = (inputSize, required = true, disabled = false, placeholder) => (
 	<Form.Item
 		label=""
 		name="phone"
@@ -335,7 +335,7 @@ export const PhoneNumberField = (inputSize, required = true, placeholder) => (
 			}
 		]}
 	>
-		<Input size={inputSize} className="formInputElement" placeholder={placeholder} />
+		<Input size={inputSize} className="formInputElement" placeholder={placeholder} disabled={disabled} />
 	</Form.Item>
 );
 

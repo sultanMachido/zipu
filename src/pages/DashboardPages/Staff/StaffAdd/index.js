@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Progress, message, Collapse, Switch } from 'antd';
+import { Form, Progress, message, Collapse, Switch, Modal } from 'antd';
 import { connect } from 'react-redux';
 import {
 	StaffFullNameField,
@@ -15,6 +15,7 @@ import './styles.scss';
 import { getTerminals } from '../../../../redux/actions/terminals/terminals.action';
 import { addStaff } from '../../../../redux/actions/staff/staff.actions';
 import { apiErrors } from '../../../../utils/errorHandler/apiErrors';
+import Notification from '../../../../components/Notification'
 
 const { Panel } = Collapse;
 
@@ -22,6 +23,7 @@ const StaffAdd = props => {
 	const inputSize = 'large';
 	const [form] = Form.useForm();
 	const [checked, setChecked] = React.useState(true);
+	const [modalOpen, setModalOpen] = React.useState(false)
 
 	const fetchTerminals = async () => {
 		const response = await props.getTerminals();
@@ -33,6 +35,10 @@ const StaffAdd = props => {
 		fetchTerminals();
 	}, []);
 
+	const handleClick = () => {
+		Modal.destroyAll()
+	}
+
 	const onFinish = async values => {
 		try {
 			const messageKey = 'addStaffResponse';
@@ -40,11 +46,19 @@ const StaffAdd = props => {
 			const tryAddStaff = await props.addStaff({ ...values });
 
 			if (tryAddStaff.addStaffStatus) {
-				message.success({
-					content: tryAddStaff.message,
-					key: messageKey,
-					duration: 10
-				});
+				Modal.success({
+					content: (<div>
+						<p style={{ fontSize: "20px" }}>Staff created successfully</p>
+						{
+							SubmitButton('NEW STAFF PROFILE', handleClick)
+						}
+					</div>),
+					closable: modalOpen || true,
+					style: { marginTop: "20px" },
+					okText: 'NEW STAFF PROFILE',
+					centered: true,
+
+				})
 				form.resetFields();
 			} else {
 				const err = apiErrors(tryAddStaff?.message);
@@ -62,6 +76,7 @@ const StaffAdd = props => {
 	const handleChange = (checked, event) => {
 		setChecked(checked);
 	};
+
 
 	return (
 		<div className="staffAddWrapper">
