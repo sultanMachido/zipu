@@ -38,6 +38,15 @@
   color: #FFBC00 !important;
 }
 
+.formInputNumberElement{
+  padding: 6px !important;
+  width: 100%;
+
+  &::placeholder {
+    font-size: 13px !important;
+  }
+}
+
 .formInputElement{
   padding: 1.4rem !important;
   width: 100%;

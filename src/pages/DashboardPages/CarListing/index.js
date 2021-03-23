@@ -1,6 +1,7 @@
-import React from 'react';
-import { Divider, Checkbox, Pagination } from 'antd';
+import React, { useEffect } from 'react';
+import { Divider, Checkbox, Pagination, Row } from 'antd';
 import { ImPencil } from 'react-icons/all';
+import { connect } from 'react-redux';
 import './styles.scss';
 import { SubmitButton } from '../../../components/FormField';
 import EmptyScreen from '../../../components/EmptyScreen';
@@ -10,11 +11,13 @@ import { VehicleList } from '../../../utils/constants/VehicleList';
 import { VehicleData } from '../../../utils/constants/VehicleInventoryList';
 import VehicleComponent from './Vehicle';
 import { useQuery } from '../../../utils/URLSearchParam'
+import { fetchAllVehicles } from '../../../redux/actions/vehicles/vehicles.actions';
+import Loader from '../../../components/Loader';
 
 const CheckboxGroup = Checkbox.Group;
 const defaultCheckedList = [''];
 
-const TripInventory = (props) => {
+const VehicleInventory = (props) => {
   let query = useQuery();
   const [checkedList, setCheckedList] = React.useState(defaultCheckedList);
   const [indeterminate, setIndeterminate] = React.useState(true);
@@ -22,13 +25,23 @@ const TripInventory = (props) => {
   const [page, setPage] = React.useState(query.get('page') || 1)
   const [pageSize, setPageSize] = React.useState(3)
 
-  React.useEffect(() => {
+  useEffect(() => {
     props.history.push(`/car-listing?page=${page}&pageSize=${pageSize}`)
   }, [page, pageSize]);
 
+  useEffect(() => {
+    const zipuUser = JSON.parse(localStorage.getItem('zipuUser'));
+    console.log(zipuUser);
+    if (zipuUser?.id) {
+      props.fetchAllVehicles(20);
+    }
+  }, [])
+
   const indexOfLastCarTrip = page * pageSize;
   const indexOfFirstCarTrip = indexOfLastCarTrip - pageSize;
-  const currentCarTrips = VehicleData.slice(indexOfFirstCarTrip, indexOfLastCarTrip);
+  
+  const { vehicles: vehiclesData, fetchAllVehiclesLoading } = props.vehicles;
+  const vehicles = vehiclesData.slice(indexOfFirstCarTrip, indexOfLastCarTrip);
 
   const onChangeTerminals = list => {
     setCheckedList(list);
@@ -117,7 +130,11 @@ const TripInventory = (props) => {
         </div>
         <div className="contentMain">
           {
-            VehicleData.length === 0
+            fetchAllVehiclesLoading 
+              ? <Row align="middle" justify="center" style={{height: '400px'}}>
+                <Loader />
+              </Row>
+            : vehicles.length === 0
               ?
               <EmptyScreen
                 icon={<ImPencil />}
@@ -126,25 +143,36 @@ const TripInventory = (props) => {
                 buttonText="ADD TRIPS"
               />
               :
-              currentCarTrips.map((data) => {
+              vehicles.map((data) => {
                 return (<VehicleComponent data={data} key={data.id} />)
               })
           }
-
-          <Pagination
-            total={VehicleData.length}
-            showSizeChanger
-            showQuickJumper
-            showTotal={total => `Total ${total} items`}
-            onChange={onChange}
-            onShowSizeChange={onShowSizeChange}
-            defaultPageSize={3}
-            current={parseInt(page)}
-          />
+          {
+            vehicles.length > 0
+            &&  <Pagination
+              total={vehiclesData.length}
+              showSizeChanger
+              showQuickJumper
+              showTotal={total => `Total ${total} items`}
+              onChange={onChange}
+              onShowSizeChange={onShowSizeChange}
+              defaultPageSize={3}
+              current={parseInt(page)}
+            />
+          }
         </div>
       </div>
     </div>
   )
 }
 
-export default TripInventory;
+const mapStateToProps = (state) => ({
+  vehicles: state.vehicles
+});
+
+const mapDispatchToProps = {
+  fetchAllVehicles
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(VehicleInventory);

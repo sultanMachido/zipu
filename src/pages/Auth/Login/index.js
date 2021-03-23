@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 import './Login.scss';
 import { EmailField, PasswordField, SubmitButton } from '../../../components/FormField';
 import { loginUser } from '../../../redux/actions/login/login.actions';
+import { useHistory } from 'react-router';
 
 const inputSize = 'large';
 
 const Login = (props) => {
   const [form] = Form.useForm();
+  const history = useHistory();
 
   const onFinish = async (values) => {
     try {
@@ -17,7 +19,7 @@ const Login = (props) => {
       const tryUserLogin = await props.loginUser({ ...values });
       if (tryUserLogin.loginStatus) {
         message.success({ content: tryUserLogin.message, key: messageKey, duration: 5 });
-        props.history.push('/');
+        window.open('/bookings', '_self');
       } else {
         return message.error({ content: tryUserLogin.message, key, duration: 2 });
       }

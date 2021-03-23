@@ -13,8 +13,9 @@ export const loginUser = (userData) => async (dispatch) => {
     const loginRequest = await APIService.post('/login-transco', { ...userData });
     if (loginRequest.data.status === 'Success') {
       localStorage.setItem('zipuJWTToken', loginRequest.data.data.token.plainTextToken);
+      localStorage.setItem('zipuUser', JSON.stringify(loginRequest.data.data.user));
       dispatch(loginLoading(false));
-      dispatch(loginSuccess(loginRequest.data));
+      dispatch(loginSuccess(loginRequest.data.data.user));
       return { loginStatus: true, tokenValid: true, message: 'Login successful' };
     }
     else {

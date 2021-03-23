@@ -1,71 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Col, Form, Input, Row, Select, message, Checkbox } from 'antd';
+import { Card, Col, Form, Input, Row, Select, message, Checkbox, InputNumber } from 'antd';
 import './styles.scss';
 import { SubmitButton } from '../../../../components/FormField';
 import { connect } from 'react-redux';
-import { fetchAllTrips, createTrip } from '../../../../redux/actions/trips/trips.actions';
+import { createVehicle, fetchAllVehicles } from '../../../../redux/actions/vehicles/vehicles.actions';
+import _ from "lodash";
 
 const AddVehicle = (props) => {
   const [form] = Form.useForm();
-  const [startTerminal, setStartTerminal] = useState(null);
-  const [endTerminal, setEndTerminal] = useState(null);
-  const vehicles = [];
-  const terminals = [];
+  const [ac_available, setAcAvailable] = useState(false);
+  const [extra_leg_space, setExtraLegSpace] = useState(false);
+  const [toilet, setToilet] = useState(false);
+  const [theft_insurance, setTheftInsurance] = useState(false);
 
-  const [seatsArrangements, setSeatsArrangements] = useState([
-    [1, 0],
-    [0, 0, 1, 0],
-    [0, 1, 1, 0],
-    [0, 0, 1, 0],
-    [1, 0, 1, 0],
-    [0, 1, 1, 0],
-    [0, 0, 1, 0],
-    [1, 0, 1, 0]
-  ])
-
-  const { promoCodes, fetchAllTripsLoading } = props.promoCodes;
-
-  useEffect(() => {
-    // fetchAllTerminals();
-    // fetchAllVehicles();
-  }, []);
-
-  const fetchAllTerminals = async () => {
+  const handleCreateVehicle = async (values) => {
+    const _seat_arrangment = values.seat_arrangment.split(',').map((seatNo) => {
+      const array = _.times(seatNo, _.constant(0));
+      return array;
+    })
+    const payload = { ...values, ac_available, toilet, theft_insurance, extra_leg_space, seat_arrangment: _seat_arrangment };
     try {
-      const messageKey = 'fetchAllTerminalsResponse';
-      const key = 'fetchAllTerminals';
-      const tryFetchALlPromoCodes = await props.fetchAllTrips();
-      if (!tryFetchALlPromoCodes.fetchPromoCodesStatus) {
-        return message.error({ content: tryFetchALlPromoCodes.message, key, duration: 2 });
-      }
-    } catch (error) {
-      console.log({ error }, 'error');
-    }
-  }
+      const successKey = 'createVehicleSuccess';
+      const errorKey = 'createVehicleError';
 
-  const fetchAllVehicles = async () => {
-    try {
-      const messageKey = 'fetchAllTerminalsResponse';
-      const key = 'fetchAllTerminals';
-      const tryFetchALlPromoCodes = await props.fetchAllTrips();
-      if (!tryFetchALlPromoCodes.fetchPromoCodesStatus) {
-        return message.error({ content: tryFetchALlPromoCodes.message, key, duration: 2 });
-      }
-    } catch (error) {
-      console.log({ error }, 'error');
-    }
-  }
+      const tryCreateVehicle = await props.createVehicle({ ...payload });
 
-  const handleCreateTrip = async (values) => {
-    const payload = { seat_arrangement: seatsArrangements, ...values };
-    try {
-      const successKey = 'createTripSuccess';
-      const errorKey = 'createTripError';
-
-      const tryCreatePromoCode = await props.createTrip({ ...payload });
-
-      const { message: resMessage, createTripStatus } = tryCreatePromoCode || {};
-      if (createTripStatus) {
+      const { message: resMessage, createVehicleStatus } = tryCreateVehicle || {};
+      if (createVehicleStatus) {
         message.success({ content: resMessage, key: successKey, duration: 5 });
         form.resetFields()
       } else {
@@ -78,9 +39,10 @@ const AddVehicle = (props) => {
 
   return (
     <div className="addVehicleWrapper">
+      <h3>Add Vehicle</h3>
       <Form
         form={form}
-        onFinish={handleCreateTrip}
+        onFinish={handleCreateVehicle}
         hideRequiredMark
         layout="vertical"
       >
@@ -88,24 +50,17 @@ const AddVehicle = (props) => {
           <Row gutter={0}>
             <Col span={24}>
               <Card className="addVehicle">
-                <Row gutter={30} align="bottom">
+                <Row gutter={30} align="top">
                   <Col span={6}>
                     <Form.Item
                       label="Operation type"
-                      name="vehicle_id"
+                      name="operation_type"
                       hasFeedback
                       validateTrigger={['onChange', 'onBlur']}
                       rules={[
                         { required: true, message: 'Please enter the operation type' }
                       ]}>
                       <Select placeholder="Enter operation type">
-                        {
-                          vehicles.map(({ id, name }, index) => {
-                            return (
-                              <Select.Option key={id}>{name}</Select.Option>
-                            )
-                          })
-                        }
                         <Select.Option key={1}>DEFAULT</Select.Option>
                       </Select>
                     </Form.Item>
@@ -114,7 +69,7 @@ const AddVehicle = (props) => {
                   <Col span={6}>
                     <Form.Item
                       label="Vehicle type"
-                      name="trip_class"
+                      name="vehicle_type"
                       hasFeedback
                       validateTrigger={['onChange', 'onBlur']}
                       rules={[
@@ -130,7 +85,7 @@ const AddVehicle = (props) => {
                   <Col span={6}>
                     <Form.Item
                       label="Vehicle make"
-                      name="information"
+                      name="vehicle_make"
                       hasFeedback
                       validateTrigger={['onChange', 'onBlur']}
                       rules={[
@@ -145,7 +100,7 @@ const AddVehicle = (props) => {
                   <Col span={6}>
                     <Form.Item
                       label="Plate number"
-                      name="information"
+                      name="plate_number"
                       hasFeedback
                       validateTrigger={['onChange', 'onBlur']}
                       rules={[
@@ -162,33 +117,27 @@ const AddVehicle = (props) => {
                   <Col span={6}>
                     <Form.Item
                       label="Seats available"
-                      name="information"
+                      name="seats_available"
                       hasFeedback
                       validateTrigger={['onChange', 'onBlur']}
                       rules={[
-                        { required: true, message: 'Please enter the seats available' }
+                        { required: true, message: 'Please enter the seats available' },
+                        { pattern: /^\d+$/, message: 'Value can only contain digits' }
                       ]}>
-                      <Input className="formInputElement" placeholder={""} />
+                      <InputNumber className="formInputNumberElement" placeholder={""} />
                     </Form.Item>
                   </Col>
 
                   <Col span={6}>
                     <Form.Item
                       label="Luggage space"
-                      name="origin_terminal_id"
+                      name="luggage_space"
                       hasFeedback
                       validateTrigger={['onChange', 'onBlur']}
                       rules={[
                         { required: true, message: 'Please enter the luggage space' }
                       ]}>
-                      <Select placeholder="Select Luggage space" onChange={(value) => setStartTerminal(value)}>
-                        {
-                          terminals.filter(({ id }) => id !== endTerminal).map(({ id, name }, index) => {
-                            return (
-                              <Select.Option key={id}>{name}</Select.Option>
-                            )
-                          })
-                        }
+                      <Select placeholder="Select Luggage space">
                         <Select.Option key={1}>DEFAULT</Select.Option>
                       </Select>
                     </Form.Item>
@@ -197,49 +146,77 @@ const AddVehicle = (props) => {
                   <Col span={6}>
                     <Form.Item
                       label="Luggage capacity (kg)"
-                      name="information"
+                      name="luggage_capacity"
                       hasFeedback
                       validateTrigger={['onChange', 'onBlur']}
                       rules={[
-                        { required: true, message: 'Please enter a value' }
+                        { required: true, message: 'Please enter a value' },
+                        { pattern: /^\d+$/, message: 'Value can only contain digits' }
                       ]}>
-                      <Input className="formInputElement" placeholder={""} />
+                      <InputNumber className="formInputNumberElement" placeholder={""} />
                     </Form.Item>
                   </Col>
 
                   <Col span={6}>
                     <Form.Item
                       label="Doors"
-                      name="information"
+                      name="doors"
                       hasFeedback
                       validateTrigger={['onChange', 'onBlur']}
                       rules={[
-                        { required: true, message: 'Please enter a value' }
+                        { required: true, message: 'Please enter a value' },
+                        { pattern: /^\d+$/, message: 'Value can only contain digits' }
                       ]}>
-                      <Input className="formInputElement" placeholder={""} />
+                      <InputNumber className="formInputNumberElement" placeholder={""} />
                     </Form.Item>
                   </Col>
                 </Row>
 
-                <Row gutter={30} align="bottom">
-                  <Col span={24}>
-                    <Checkbox onChange={null}>AC available</Checkbox>
-                    <Checkbox onChange={null}>Extra Leg space</Checkbox>
-                    <Checkbox onChange={null}>Toilet</Checkbox>
-                    <Checkbox onChange={null}>Theft Insurance</Checkbox>
+                <Row gutter={30} align="top" className="optionsWrapper">
+                  <Col span={8}>
+                    <Form.Item
+                      label={`Row seats (Separate row seats by comma)`}
+                      name="seat_arrangment"
+                      hasFeedback
+                      validateTrigger={['onChange', 'onBlur']}
+                      rules={[
+                        { required: true, message: 'Please enter the seats available' },
+                        { pattern: /^[1-8](,[1-8])*$/, message: 'Value can only contain digits separated by commas' }
+
+                      ]}>
+                      <Input className="formInputElement" placeholder={""} />
+                    </Form.Item>
+                  </Col>
+                  <Col span={6}>
+                    <label>Other options</label>
+                    <div>
+                      <Checkbox checked={ac_available} onChange={(e) => setAcAvailable(e.target.checked)}>AC available</Checkbox>
+                    </div>
+                    <div>
+                      <Checkbox checked={extra_leg_space} onChange={(e) => setExtraLegSpace(e.target.checked)}>Extra Leg space</Checkbox>
+                    </div>
+                  </Col>
+                  <Col span={6}>
+                    <label>&nbsp;</label>
+                    <div>
+                      <Checkbox checked={toilet} onChange={(e) => setToilet(e.target.checked)}>Toilet</Checkbox>
+                    </div>
+                    <div>
+                      <Checkbox checked={theft_insurance} onChange={(e) => setTheftInsurance(e.target.checked)}>Theft Insurance</Checkbox>
+                    </div>
                   </Col>
                 </Row>
               </Card>
             </Col>
             <Col span={24}>
               <Row justify="end">
-                  <Col span={6}>
-                    <div className="btnWrapper mt-74">
-                      {
-                        SubmitButton('SAVE LISTING', null, props?.promoCodes?.createTripLoading)
-                      }
-                    </div>
-                  </Col>
+                <Col span={6}>
+                  <div className="btnWrapper mt-74">
+                    {
+                      SubmitButton('SAVE VEHICLE', null, props?.vehicles?.createVehicleLoading)
+                    }
+                  </div>
+                </Col>
               </Row>
             </Col>
           </Row>
@@ -250,12 +227,12 @@ const AddVehicle = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-  promoCodes: state.promoCodes,
+  vehicles: state.vehicles
 });
 
 const mapDispatchToProps = {
-  fetchAllTrips,
-  createTrip
+  createVehicle,
+  fetchAllVehicles
 };
 
 

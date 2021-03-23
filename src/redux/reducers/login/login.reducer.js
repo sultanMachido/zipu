@@ -4,7 +4,7 @@ import loginTypes from '../../types/loginTypes';
 
 export const loginInitialState = {
   isAuthenticated: false,
-  userInfo: {},
+  userInfo: null,
   loginLoading: false,
   error: '',
 };

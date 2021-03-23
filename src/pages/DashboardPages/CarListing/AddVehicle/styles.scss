@@ -7,6 +7,39 @@
         .ant-card-body {
             padding: 0px;
         }
+        .optionsWrapper {
+            margin-top: 20px;
+            .ant-checkbox-wrapper {
+                margin-bottom: 10px !important;
+                .ant-checkbox-checked::after {
+                    border: none !important;
+                }
+                .ant-checkbox .ant-checkbox-inner {
+                    background: #fff;
+                    border-radius: 50%;
+                    // border: none;
+                    margin-bottom: 5px;
+                    width: 12px !important;
+                    height: 12px !important;
+                }
+                .ant-checkbox-checked .ant-checkbox-inner {
+                    background: #FFBC00 !important;
+                }
+                .ant-checkbox-checked .ant-checkbox-inner::after {
+                    display: none !important;
+                }
+            }
+        }
+        .seatRow {
+            min-height: 50px;
+            border: 1px solid #d1cece;
+        }
+        .addSeatRow {
+            padding: 15px 20px;
+            border: 1px dashed #d1cece;
+            text-align: center;
+            cursor: pointer;
+        }
     }
     .mt-74 {
         margin-top: 74px;
