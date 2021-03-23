@@ -1,84 +1,78 @@
 import React from 'react';
-import './Auth.scss'
+import './Auth.scss';
 import { useQuery } from './../../utils/URLSearchParam';
 
-import Registration from './Registration'
+import Registration from './Registration';
 import EmailVerification from './EmailVerification';
 import TransportType from './TransportType';
 import PermitSubmission from './PermitSubmission';
 import BusinessDetails from './BusinessDetails';
-import Success from './Success'
+import Success from './Success';
 
+const Auth = props => {
+	let query = useQuery();
+	const page = query.get('step');
 
-const Auth = (props) => {
-  let query = useQuery();
-  const page = query.get('step');
+	React.useEffect(() => {
+		props.history.push(`/register?step=${query.get('step') || '1'}`);
+	}, [query.get('step')]);
 
-  console.log({ page })
+	const currentRegistrationView = () => {
+		switch (query.get('step')) {
+			case '1':
+				return (
+					<>
+						<Registration />
+					</>
+				);
 
-  React.useEffect(() => {
-    props.history.push(`/register?step=${query.get('step') || '1'}`)
-  }, [query.get('step')]);
+			case '2':
+				return (
+					<>
+						<EmailVerification />
+					</>
+				);
 
-  const currentRegistrationView = () => {
-    switch (query.get('step')) {
-      case "1":
-        return (
-          <>
-            <Registration />
-          </>
-        )
+			case '3':
+				return (
+					<>
+						<TransportType />
+					</>
+				);
 
-      case "2":
-        return (
-          <>
-            <EmailVerification />
-          </>
-        )
+			case '4':
+				return (
+					<>
+						<PermitSubmission />
+					</>
+				);
 
-      case "3":
-        return (
-          <>
-            <TransportType />
-          </>
-        )
+			case '5':
+				return (
+					<>
+						<BusinessDetails />
+					</>
+				);
 
-      case "4":
-        return (
-          <>
-            <PermitSubmission />
-          </>
-        )
+			case '6':
+				return (
+					<>
+						<Success />
+					</>
+				);
 
-      case "5":
-        return (
-          <>
-            <BusinessDetails />
-          </>
-        )
+			default:
+				return <></>;
+		}
+	};
 
-      case "6":
-        return (
-          <>
-            <Success />
-          </>
-        )
+	return (
+		<div className="registrationWrapper">
+			<div className={`${page === '6' ? 'success' : 'registrationContent '}`}>
+				{currentRegistrationView()}
+			</div>
+		</div>
+	);
+};
 
-      default:
-        return (
-          <>
-
-          </>
-        )
-    }
-  }
-
-  return (
-    <div className="registrationWrapper">
-      <div className={`${page === "6" ? "success" : "registrationContent "}`}>
-        {currentRegistrationView()}
-      </div>
-    </div>)
-}
-
-export default Auth
+export default Auth;
