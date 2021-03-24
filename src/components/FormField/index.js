@@ -5,7 +5,6 @@ import './FormField.scss';
 import { Form, Input, Select, Button, Upload, Checkbox, Divider, Space } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import Loader from '../../components/Loader';
-import MultiSelect from "react-multi-select-component";
 
 const reservationWindows = [
 	{ id: 1, value: 'One Day' },
