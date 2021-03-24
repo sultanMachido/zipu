@@ -17,7 +17,9 @@ import Footer from '../components/Footer';
 import TripManagement from '../pages/DashboardPages/TripManagement';
 import AddTrip from '../pages/DashboardPages/TripManagement/AddTrip';
 import EditStaff from '../pages/DashboardPages/Staff/StaffEdit';
-import Terminals from '../pages/DashboardPages/Terminals'
+import Terminals from '../pages/DashboardPages/Terminals';
+import AddTerminal from '../pages/DashboardPages/Terminals/AddTerminal';
+import EditTerminal from '../pages/DashboardPages/Terminals/EditTerminal';
 
 import { logUserOut } from '../redux/actions/login/login.actions';
 
@@ -66,6 +68,16 @@ class DashboardContainer extends Component {
 				route: '/trip-management/add',
 				prev: '/trip-management',
 				title: 'Create new Trip'
+			},
+			{
+				route: '/terminals/add',
+				prev: '/terminals',
+				title: 'Create new Terminal'
+			},
+			{
+				route: '/terminals/edit/:id',
+				prev: '/terminals',
+				title: 'Edit Terminal'
 			}
 		];
 
@@ -96,6 +108,8 @@ class DashboardContainer extends Component {
 						<Route exact path="/trip-management" component={TripManagement}></Route>
 						<Route exact path="/trip-management/add" component={AddTrip}></Route>
 						<Route exact path="/terminals" component={Terminals}></Route>
+						<Route exact path="/terminals/add" component={AddTerminal}></Route>
+						<Route exact path="/terminals/edit/:id" component={EditTerminal}></Route>
 					</Switch>
 				</Layout>
 				<div className="footerSection">

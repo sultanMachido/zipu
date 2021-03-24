@@ -6,12 +6,12 @@
 }
 
 .ant-select-single.ant-select-lg:not(.ant-select-customize-input) .ant-select-selector {
-  padding: 7px 11px !important;
+  padding: 5px 11px !important;
   line-height: 2rem;
 }
 
 .ant-select-single.ant-select-lg:not(.ant-select-customize-input) .ant-select-selector {
-  height: 54px !important;
+  height: 47px !important;
   font-size: 13px !important;
 }
 
@@ -149,3 +149,19 @@
   background: red !important;
 }
 
+.ant-input-search-button {
+  height: 47px !important;
+  width: 50px !important;
+}
+
+.outlinedBtn{
+  padding: 1rem 3rem;
+  border-radius: 30px;
+  border: 1px solid #c0bfbf;
+  background-color: transparent;
+  outline: none;
+
+  &:active{
+    outline: none;
+  }
+}

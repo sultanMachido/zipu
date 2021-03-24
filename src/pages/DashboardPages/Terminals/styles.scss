@@ -18,12 +18,12 @@
       align-items:center;
 
       .stateSearch{
-        flex-basis: 30%;
+        flex-basis: 25%;
         margin-right: 2rem;
         margin-top: 2rem;
       }
       .terminalSearch{
-        flex-basis: 30%;
+        flex-basis: 40%;
         margin-right: 2rem;
         margin-top: 2rem;
       }
@@ -48,6 +48,7 @@
       flex: 1;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 2rem;
     }
   }
 }

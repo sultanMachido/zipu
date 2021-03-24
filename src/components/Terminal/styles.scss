@@ -1,4 +1,26 @@
 .terminalCardWrapper{
   border-radius: 5px;
   border: 1px solid #e3eaed;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+
+  .terminalLeft{
+    h1{
+      
+    }
+    p{
+      color: #8D8D8D;
+    }
+  }
+
+  .terminalRight{
+
+    span{
+      background: rgba(39, 174, 96, 0.2);
+      border-radius: 100px;
+      padding: 6px 16px;
+      color: #2E7B32;
+    }
+  }
 }

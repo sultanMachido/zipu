@@ -30,6 +30,10 @@ const Terminals = (props) => {
   const onChange = () => {
 
   }
+
+  const handleClick = () => {
+    props.history.push('/terminals/add');
+  }
   return (
     <div className="terminalsWrapper">
       <div className="terminalsHeader">
@@ -39,7 +43,7 @@ const Terminals = (props) => {
         <div className="rightHeader">
           <div className="stateSearch">{StateSearchField(inputSize)}</div>
           <div className="terminalSearch">{TerminalSearchField(onSearch)}</div>
-          <div className="addBtn">{SubmitButton('ADD NEW')}</div>
+          <div className="addBtn">{SubmitButton('ADD NEW', handleClick)}</div>
         </div>
       </div>
       <div className="terminalContents">
@@ -55,6 +59,21 @@ const Terminals = (props) => {
           </div>
         </div>
         <div className="terminalContentRight">
+          <Terminal />
+          <Terminal />
+          <Terminal />
+          <Terminal />
+          <Terminal />
+          <Terminal />
+          <Terminal />
+          <Terminal />
+          <Terminal />
+          <Terminal />
+          <Terminal />
+          <Terminal />
+          <Terminal />
+          <Terminal />
+          <Terminal />
           <Terminal />
         </div>
 
