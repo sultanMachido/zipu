@@ -1,0 +1,55 @@
+.terminalsWrapper{
+  width: 100%;
+
+  .terminalsHeader{
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+
+    .leftHeader{
+      flex-basis: 40%;
+    }
+
+    .rightHeader{
+      flex: 1;
+      display: flex;
+      justify-content:space-between;
+      align-items:center;
+
+      .stateSearch{
+        flex-basis: 35%;
+        margin-right: 2rem;
+        margin-top: 2rem;
+      }
+      .terminalSearch{
+        flex-basis: 35%;
+        margin-right: 2rem;
+        margin-top: 2rem;
+      }
+      .addBtn{
+        flex: 1;
+      }
+    }
+  }
+  .terminalContents{
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+    gap: 2rem;
+
+    .terminalContentLeft{
+      flex-basis: 15%;
+      border: 1px solid #e3eaed;
+      padding: 2rem;
+      border-radius: 10px;
+    }
+    .terminalContentRight{
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 2rem;
+      align-items: start;
+    }
+  }
+}

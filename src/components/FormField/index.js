@@ -2,7 +2,7 @@
 
 import React from 'react';
 import './FormField.scss';
-import { Form, Input, Select, Button, Upload } from 'antd';
+import { Form, Input, Select, Button, Upload, Checkbox, Divider, Space } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import Loader from '../../components/Loader';
 
@@ -217,6 +217,10 @@ const staffRoles = [
 	{ id: 4, name: 'Trip Manger/Support' }
 ];
 
+
+
+const { Search } = Input
+
 const normFile = () => { };
 
 export const SubmitButton = (name, handleClick, loading) => {
@@ -232,6 +236,14 @@ export const SubmitButtonSecondary = name => (
 		{name}
 	</button>
 );
+
+export const OutlinedButton = (btnText, handleClick) => {
+	return (
+		<button className="outlinedBtn" type="button" onClick={handleClick}>
+			{btnText}
+		</button>
+	)
+}
 
 // email address
 export const EmailField = (inputSize, required = true, disabled = false, placeholder) => (
@@ -945,3 +957,140 @@ export const StaffRolesField = (inputSize, required = true, disabled = false, pl
 		</Select>
 	</Form.Item>
 );
+
+export const StateSearchField = () => (
+	<Form.Item
+		label=""
+		name="state_search"
+		hasFeedback
+		validateTrigger={['onChange', 'onBlur']}
+	>
+		<Input.Group compact>
+			<div style={{
+				border: '1px solid #D9D9D9',
+				width: "30%",
+				height: "47px",
+				padding: "1.2rem .5rem 0 .7rem",
+				background: "#F6F8F9",
+				borderRight: "none"
+			}}>
+				State:
+			</div>
+			<Select defaultValue="Lagos" style={{ width: '70%', background: "#F6F8F9" }}>
+				{states.map(({ code, name }) => (
+					<Select.Option key={`state-${code}`} value={name}>
+						{name}
+					</Select.Option>
+				))}
+			</Select>
+		</Input.Group>
+	</Form.Item>
+);
+
+export const TerminalSearchField = (onSearch) => (
+	<Form.Item
+		label=""
+		name="terminal_search"
+		hasFeedback
+		validateTrigger={['onChange', 'onBlur']}
+	>
+		<Search placeholder="Search terminal" onSearch={onSearch} />
+	</Form.Item>
+);
+
+export const TerminalNameField = (inputSize, required = true, disabled = false, placeholder) => {
+	return (
+		<Form.Item
+			label=""
+			name="position"
+			hasFeedback
+			validateTrigger={['onChange', 'onBlur']}
+			rules={[
+				...(required
+					? [
+						{ required: true, message: 'Please enter terminal name' },
+						{
+							min: 3,
+							message: 'Terminal name cannot be less than 3 characters'
+						},
+						{
+							max: 60,
+							message: 'Terminal name cannot be greater than 60 characters'
+						}
+					]
+					: []),
+				{
+					pattern: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
+					message: 'Terminal name can only contain digits'
+				}
+			]}
+		>
+			<Input size={inputSize} className="formInputElement" placeholder={placeholder} disabled={disabled} />
+		</Form.Item>
+	)
+}
+
+export const TerminalAddressField = (inputSize, required = true, disabled = false, placeholder) => {
+	return (
+		<Form.Item
+			label=""
+			name="position"
+			hasFeedback
+			validateTrigger={['onChange', 'onBlur']}
+			rules={[
+				...(required
+					? [
+						{ required: true, message: 'Please enter terminal address' },
+						{
+							min: 3,
+							message: 'Terminal address cannot be less than 3 characters'
+						},
+						{
+							max: 80,
+							message: 'Terminal address cannot be greater than 80 characters'
+						}
+					]
+					: []),
+				{
+					pattern: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
+					message: 'Terminal address can only contain digits'
+				}
+			]}
+		>
+			<Input size={inputSize} className="formInputElement" placeholder={placeholder} disabled={disabled} />
+		</Form.Item>
+	)
+}
+
+export const TerminalCityField = (inputSize, required = true, disabled = false, placeholder) => (
+	<Form.Item
+		label=""
+		name="state"
+		hasFeedback
+		validateTrigger={['onChange', 'onBlur']}
+		rules={[
+			...(required
+				? [
+					{
+						required: true,
+						message: 'Please select a state'
+					}
+				]
+				: [])
+		]}
+	>
+		<Select
+			placeholder={placeholder}
+			size={inputSize}
+			disabled={disabled}
+			className="selectElement"
+		>
+			{states.map(({ code, name }) => (
+				<Select.Option key={`state-${code}`} value={name}>
+					{name}
+				</Select.Option>
+			))}
+		</Select>
+	</Form.Item>
+);
+

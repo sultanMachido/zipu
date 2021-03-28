@@ -28,6 +28,28 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
+        .ant-checkbox {
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          color: rgba(0, 0, 0, 0.85);
+          font-size: 14px;
+          font-variant: tabular-nums;
+          line-height: 1.5715;
+          list-style: none;
+          -webkit-font-feature-settings: 'tnum';
+          font-feature-settings: 'tnum', "tnum";
+          position: relative;
+          top: -0.09em;
+          display: inline-block;
+          line-height: 1;
+          white-space: nowrap;
+          vertical-align: middle;
+          outline: none;
+          cursor: pointer;
+          display: none !important;
+        }
 
         .checkboxBtnItem{
           padding:3rem 0rem;
@@ -93,8 +115,6 @@
     display: none !important;
   }
 }
-
-
 
 @media(max-height: 800px){
   .transportTypeform{
