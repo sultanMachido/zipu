@@ -2,7 +2,7 @@ import terminalsTypes from '../../types/terminalTypes';
 
 export const terminalsInitialState = {
 	getTerminalsLoading: false,
-	getTerminalsSuccess: [],
+	getTerminalsSuccess: {},
 	getTerminalserror: '',
 
 	addTerminalsLoading: false,
@@ -25,7 +25,7 @@ export const terminalsReducer = (state = terminalsInitialState, action) => {
 			return {
 				...state,
 				getTerminalsLoading: false,
-				getTerminalsSuccess: [...action?.payload?.data?.terminals]
+				getTerminalsSuccess: action?.payload?.data
 			};
 		case terminalsTypes.GET_TERMINALS_LOADING:
 			return {

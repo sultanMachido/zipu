@@ -1,14 +1,25 @@
 import React from 'react';
-import { Checkbox, Divider } from 'antd'
+import { Checkbox, Divider } from 'antd';
+import { connect } from 'react-redux';
 import './styles.scss';
 import { SubmitButton, StateSearchField, TerminalSearchField } from '../../../components/FormField';
-import Terminal from '../../../components/Terminal'
+import Terminal from '../../../components/Terminal';
+import { getTerminals } from './../../../redux/actions/terminals/terminals.action';
 
 
 const Terminals = (props) => {
   const inputSize = 'medium';
 
-  console.log(props);
+  const fetchTerminals = async () => {
+    const response = await props.getTerminals();
+    return response;
+  };
+
+  React.useEffect(() => {
+    fetchTerminals();
+  }, []);
+
+  console.log(props.terminals, ['props.terminals'])
 
   const options = [
     { label: 'All', value: 'All' },
@@ -59,22 +70,13 @@ const Terminals = (props) => {
           </div>
         </div>
         <div className="terminalContentRight">
-          <Terminal />
-          <Terminal />
-          <Terminal />
-          <Terminal />
-          <Terminal />
-          <Terminal />
-          <Terminal />
-          <Terminal />
-          <Terminal />
-          <Terminal />
-          <Terminal />
-          <Terminal />
-          <Terminal />
-          <Terminal />
-          <Terminal />
-          <Terminal />
+          {
+            props?.terminals?.getTerminalsSuccess?.terminals?.map((terminal) => {
+              return (
+                <Terminal terminal={terminal} key={terminal.id} transco={props?.terminals?.getTerminalsSuccess?.transco} />
+              )
+            })
+          }
         </div>
 
       </div>
@@ -82,4 +84,14 @@ const Terminals = (props) => {
   )
 }
 
-export default Terminals;
+const mapStateToProps = state => {
+  return {
+    terminals: state.terminals,
+  };
+};
+
+const mapDispatchToProps = {
+  getTerminals,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Terminals);

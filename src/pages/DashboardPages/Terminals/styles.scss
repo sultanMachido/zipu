@@ -8,7 +8,7 @@
     align-items:center;
 
     .leftHeader{
-      flex-basis: 50%;
+      flex-basis: 40%;
     }
 
     .rightHeader{
@@ -18,12 +18,12 @@
       align-items:center;
 
       .stateSearch{
-        flex-basis: 25%;
+        flex-basis: 35%;
         margin-right: 2rem;
         margin-top: 2rem;
       }
       .terminalSearch{
-        flex-basis: 40%;
+        flex-basis: 35%;
         margin-right: 2rem;
         margin-top: 2rem;
       }
@@ -49,6 +49,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       grid-gap: 2rem;
+      align-items: start;
     }
   }
 }

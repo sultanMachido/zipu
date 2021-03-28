@@ -15,12 +15,20 @@
   }
 
   .terminalRight{
-
-    span{
-      background: rgba(39, 174, 96, 0.2);
-      border-radius: 100px;
-      padding: 6px 16px;
-      color: #2E7B32;
+    p{
+      span.active{
+        background: rgba(39, 174, 96, 0.2);
+        border-radius: 100px;
+        padding: 6px 16px;
+        color: #2E7B32;
+      }
+      span.inactive{
+        background: rgba(176, 0, 32, 0.1);
+        border-radius: 100px;
+        padding: 6px 16px;
+        color: #B00020;
+      }
     }
+    
   }
 }
