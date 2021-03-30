@@ -31,7 +31,6 @@ const VehicleInventory = (props) => {
 
   useEffect(() => {
     const zipuUser = JSON.parse(localStorage.getItem('zipuUser'));
-    console.log(zipuUser);
     if (zipuUser?.id) {
       props.fetchAllVehicles(20);
     }
@@ -76,7 +75,6 @@ const VehicleInventory = (props) => {
     setPage(page)
   }
   const onShowSizeChange = (current, pageSize) => {
-    console.log(pageSize)
     query.set('pageSize', pageSize)
     setPageSize(pageSize)
   }

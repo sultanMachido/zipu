@@ -8,7 +8,7 @@
     align-items:center;
 
     .leftHeader{
-      flex-basis: 40%;
+      flex-basis: 55%;
     }
 
     .rightHeader{
@@ -18,17 +18,18 @@
       align-items:center;
 
       .stateSearch{
-        flex-basis: 35%;
+        flex-basis: 30%;
         margin-right: 2rem;
-        margin-top: 2rem;
+        margin-top: 1.8rem;
       }
       .terminalSearch{
-        flex-basis: 35%;
+        flex-basis: 30%;
         margin-right: 2rem;
-        margin-top: 2rem;
+        margin-top: 1.8rem;
       }
       .addBtn{
         flex: 1;
+        margin-top: -.8rem;
       }
     }
   }

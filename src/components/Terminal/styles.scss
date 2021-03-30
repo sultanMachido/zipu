@@ -1,5 +1,5 @@
 .terminalCardWrapper{
-  border-radius: 5px;
+  border-radius: 8px;
   border: 1px solid #e3eaed;
   padding: 2rem;
   display: flex;
@@ -7,7 +7,12 @@
 
   .terminalLeft{
     h1{
-      
+      color: #1C1C1C;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
     }
     p{
       color: #8D8D8D;

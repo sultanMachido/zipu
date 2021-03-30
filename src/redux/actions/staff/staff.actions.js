@@ -22,11 +22,12 @@ import { APIService } from '../../../config/apiConfig';
 const SOMETHING_WENT_WRONG = 'Something went wrong';
 
 // get all staff
-export const getStaff = transco_id => async dispatch => {
+export const getStaff = ({ transco_id, pageSize, page }) => async dispatch => {
 	dispatch(clearStaffTErrors());
 	dispatch(getStaffLoading());
 	try {
-		const getStaffRequest = await APIService.get(`/transco-staffs?transco_id=${transco_id}`);
+		const getStaffRequest = await APIService.get(`/transco-staffs?transco_id=${transco_id}?pagination_number=${pageSize}&page=${page}`);
+
 		if (getStaffRequest.data.status === 'Success') {
 			dispatch(getStaffLoading());
 			dispatch(getStaffSuccess(getStaffRequest.data));
@@ -37,7 +38,7 @@ export const getStaff = transco_id => async dispatch => {
 			};
 		} else {
 			dispatch(getStaffLoading(false));
-			return { getStaffStatus: false, message: SOMETHING_WENT_WRONG };
+			return { getStaffStatus: false, message: SOMETHING_WENT_WRONG, data: getStaffRequest.data.data };
 		}
 	} catch (error) {
 		const message = error.response?.data?.message;

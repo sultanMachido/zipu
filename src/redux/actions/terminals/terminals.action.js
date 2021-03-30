@@ -15,15 +15,19 @@ import { APIService } from '../../../config/apiConfig';
 
 const SOMETHING_WENT_WRONG = 'Something went wrong';
 
-export const getTerminals = ({ page, pageSize, transco_id }) => async (dispatch) => {
-	console.log({ page, pageSize, transco_id }, ['oididi']);
-	const pageInt = parseInt(page);
-	console.log({ pageInt })
+export const getTerminals = (data) => async (dispatch) => {
+	const pageInt = parseInt(data?.page);
 	dispatch(clearTerminalsErrors());
 	dispatch(getTerminalsLoading());
+	let getTerminalRequest;
 	try {
-		const getTerminalRequest = await APIService.get(`/terminals/transco/${transco_id}?pagination_number=${pageSize}&page=${pageInt}`);
-		console.log({ getTerminalRequest })
+		if (data?.pageSize) {
+
+			getTerminalRequest = await APIService.get(`/terminals/transco/${data?.transco_id}?pagination_number=${data?.pageSize}&page=${pageInt}`);
+		}
+		else {
+			getTerminalRequest = await APIService.get(`/terminals/transco/${data?.transco_id}`);
+		}
 		if (getTerminalRequest.data.status === 'Success') {
 			dispatch(getTerminalsLoading());
 			dispatch(getTerminalsSuccess(getTerminalRequest.data.data));

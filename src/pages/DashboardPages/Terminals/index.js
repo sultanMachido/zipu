@@ -73,10 +73,14 @@ const Terminals = (props) => {
     setPageSize(pageSize)
   }
 
+  const onClick = (terminalId) => {
+    props.history.push(`/terminals/${terminalId}`);
+  }
+
 
 
   const currentTerminals = props?.terminals?.getTerminalsSuccess?.terminals?.data?.slice(indextOfFirstTerminal, indexOfLastTerminal);
-  console.log({ currentTerminals })
+
 
   return (
     <div className="terminalsWrapper">
@@ -108,7 +112,7 @@ const Terminals = (props) => {
               {
                 currentTerminals?.map((terminal) => {
                   return (
-                    <Terminal terminal={terminal} key={terminal.id} transco={props?.terminals?.getTerminalsSuccess?.transco} />
+                    <Terminal terminal={terminal} key={terminal.id} transco={props?.terminals?.getTerminalsSuccess?.transco} onClick={onClick} />
                   )
                 })
               }

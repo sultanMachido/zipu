@@ -1,12 +1,12 @@
 import React from 'react';
-import {Form, Progress, Row, Col, Checkbox, message} from 'antd';
-import {MdAirlineSeatReclineExtra, AiFillCar, MdDirectionsBus} from 'react-icons/all';
-import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
-import {CompanySizeField, SubmitButton} from '../../../components/FormField';
+import { Form, Progress, Row, Col, Checkbox, message } from 'antd';
+import { MdAirlineSeatReclineExtra, AiFillCar, MdDirectionsBus } from 'react-icons/all';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { CompanySizeField, SubmitButton } from '../../../components/FormField';
 import './TransportType.scss';
-import {selectTransportType} from '../../../redux/actions/transportType/transportType.actions';
-import {useQuery} from '../../../utils/URLSearchParam';
+import { selectTransportType } from '../../../redux/actions/transportType/transportType.actions';
+import { useQuery } from '../../../utils/URLSearchParam';
 
 const inputSize = 'large';
 
@@ -41,7 +41,7 @@ const TransportType = props => {
 	};
 
 	const onFinish = async values => {
-		const payload = {operations: value, company_size: values.company_size};
+		const payload = { operations: value, company_size: values.company_size };
 		try {
 			const messageKey = 'selectTransportTypeResponse';
 			const key = 'selectTransportType';
@@ -56,10 +56,10 @@ const TransportType = props => {
 				query.set('step', 4);
 				props.history.push(`/register?step=${query.get('step')}`);
 			} else {
-				return message.error({content: trySelectTransportType.message, key, duration: 2});
+				return message.error({ content: trySelectTransportType.message, key, duration: 2 });
 			}
 		} catch (error) {
-			console.log({error}, 'error');
+
 		}
 	};
 
@@ -85,7 +85,7 @@ const TransportType = props => {
 				<Form form={form} onFinish={onFinish} hideRequiredMark layout="vertical">
 					<Form.Item
 						name="transportType"
-						rules={[{required: true, message: 'Select atleast one option'}]}
+						rules={[{ required: true, message: 'Select atleast one option' }]}
 					>
 						<div className="typeOfOperation">
 							<Checkbox.Group className="checkboxWrapper" onChange={onChange}>
@@ -95,11 +95,10 @@ const TransportType = props => {
 											<Col key={option.id}>
 												<Checkbox
 													value={option.value}
-													className={`checkboxBtnItem ${
-														value.includes(option.value)
+													className={`checkboxBtnItem ${value.includes(option.value)
 															? 'checked'
 															: ''
-													}`}
+														}`}
 												>
 													{option.icon}
 													<p>{option.label}</p>

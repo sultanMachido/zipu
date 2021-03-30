@@ -1,6 +1,6 @@
 /** @format */
 
-import { 
+import {
   createVehicleLoading, clearCreateVehicleErrors, createVehicleErrors, createVehicleSuccess,
   updateVehicleLoading, clearUpdateVehicleErrors, updateVehicleErrors, updateVehicleSuccess,
   fetchAllVehiclesLoading, clearFetchAllVehiclesErrors, fetchAllVehiclesErrors, fetchAllVehiclesSuccess,
@@ -75,7 +75,6 @@ export const fetchAllVehicles = (transcoId) => async (dispatch) => {
       return { fetchVehiclesStatus: false, message: 'hi' };
     }
   } catch (error) {
-    console.log(error);
     const message = error.response?.data?.message;
     dispatch(fetchAllVehiclesErrors(message));
     dispatch(fetchAllVehiclesLoading(false));

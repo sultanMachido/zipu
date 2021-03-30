@@ -5,6 +5,7 @@ import './FormField.scss';
 import { Form, Input, Select, Button, Upload, Checkbox, Divider, Space } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import Loader from '../../components/Loader';
+import { SearchOutlined } from '@ant-design/icons';
 
 const reservationWindows = [
 	{ id: 1, value: 'One Day' },
@@ -915,7 +916,8 @@ export const SearchTerminalField = (
 			disabled={disabled}
 			className="selectElement"
 		>
-			{props?.terminals?.getTerminalsSuccess.map(({ id, name }) => (
+
+			{props?.terminals?.getTerminalsSuccess?.terminals?.data?.map(({ id, name }) => (
 				<>
 					<Select.Option key={`state-${id}`} value={id}>
 						{name}
@@ -967,16 +969,20 @@ export const StateSearchField = () => (
 	>
 		<Input.Group compact>
 			<div style={{
-				border: '1px solid #D9D9D9',
-				width: "30%",
+				// border: '1px solid #D9D9D9',
+				width: "25%",
 				height: "47px",
-				padding: "1.2rem .5rem 0 .7rem",
+				padding: "1.2rem 0 0 .7rem",
 				background: "#F6F8F9",
-				borderRight: "none"
+				borderRight: "none",
+				borderTopLeftRadius: "5px",
+				borderBottomLeftRadius: "5px"
 			}}>
 				State:
 			</div>
-			<Select defaultValue="Lagos" style={{ width: '70%', background: "#F6F8F9" }}>
+			<Select defaultValue="Lagos" style={{ width: '75%', background: "#F6F8F9" }}>
+
+
 				{states.map(({ code, name }) => (
 					<Select.Option key={`state-${code}`} value={name}>
 						{name}
@@ -994,7 +1000,7 @@ export const TerminalSearchField = (onSearch) => (
 		hasFeedback
 		validateTrigger={['onChange', 'onBlur']}
 	>
-		<Search placeholder="Search terminal" onSearch={onSearch} />
+		<Input placeholder="Search terminal" onSearch={onSearch} prefix={<SearchOutlined className="site-form-item-icon" />} />
 	</Form.Item>
 );
 
@@ -1025,7 +1031,7 @@ export const TerminalNameField = (inputSize, required = true, disabled = false, 
 				}
 			]}
 		>
-			<Input size={inputSize} className="formInputElement" placeholder={placeholder} disabled={disabled} />
+			<Input className="small" placeholder={placeholder} disabled={disabled} />
 		</Form.Item>
 	)
 }
