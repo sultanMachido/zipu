@@ -3,13 +3,12 @@ import './styles.scss';
 import { OutlinedButton } from '../../components/FormField'
 
 const Terminal = (props) => {
-  console.log(props?.transco, ['transco'])
   return (
     <div className="terminalCardWrapper">
       <div className="terminalLeft">
         <h2>{props?.terminal?.name}</h2>
-        <p>27 busses</p>
-        <p>17 Staff</p>
+        <p>{props?.transco.number_of_buses}</p>
+        <p>{props?.transco.number_of_staff}</p>
         {OutlinedButton('View Terminal')}
       </div>
       <div className="terminalRight">

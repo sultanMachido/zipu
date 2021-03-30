@@ -1002,7 +1002,7 @@ export const TerminalNameField = (inputSize, required = true, disabled = false, 
 	return (
 		<Form.Item
 			label=""
-			name="position"
+			name="name"
 			hasFeedback
 			validateTrigger={['onChange', 'onBlur']}
 			rules={[
@@ -1034,7 +1034,7 @@ export const TerminalAddressField = (inputSize, required = true, disabled = fals
 	return (
 		<Form.Item
 			label=""
-			name="position"
+			name="address"
 			hasFeedback
 			validateTrigger={['onChange', 'onBlur']}
 			rules={[
@@ -1051,10 +1051,6 @@ export const TerminalAddressField = (inputSize, required = true, disabled = fals
 						}
 					]
 					: []),
-				{
-					pattern: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
-					message: 'Terminal address can only contain digits'
-				}
 			]}
 		>
 			<Input size={inputSize} className="formInputElement" placeholder={placeholder} disabled={disabled} />
@@ -1065,7 +1061,7 @@ export const TerminalAddressField = (inputSize, required = true, disabled = fals
 export const TerminalCityField = (inputSize, required = true, disabled = false, placeholder) => (
 	<Form.Item
 		label=""
-		name="state"
+		name="city"
 		hasFeedback
 		validateTrigger={['onChange', 'onBlur']}
 		rules={[
