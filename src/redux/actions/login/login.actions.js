@@ -1,11 +1,11 @@
 import {
-	loginLoading,
-	clearLoginErrors,
-	loginError,
-	loginSuccess,
-	logOutUserSuccess
+  loginLoading,
+  clearLoginErrors,
+  loginError,
+  loginSuccess,
+  logOutUserSuccess
 } from './login.actionCreators';
-import {APIService} from '../../../config/apiConfig';
+import { APIService } from '../../../config/apiConfig';
 
 const SOMETHING_WENT_WRONG = 'Something went wrong';
 
@@ -17,7 +17,7 @@ export const loginUser = (userData) => async (dispatch) => {
     if (loginRequest.data.status === 'Success') {
       localStorage.setItem('zipuJWTToken', loginRequest.data.data.token.plainTextToken);
       localStorage.setItem('zipuUser', JSON.stringify(loginRequest.data.data.user));
-			localStorage.setItem('transcoId', loginRequest.data.data.user.transco_id);
+      localStorage.setItem('transcoId', loginRequest.data.data.user.transco_id);
       dispatch(loginLoading(false));
       dispatch(loginSuccess(loginRequest.data.data.user));
       return { loginStatus: true, tokenValid: true, message: 'Login successful' };
@@ -35,14 +35,13 @@ export const loginUser = (userData) => async (dispatch) => {
 };
 
 export const logUserOut = (history = null) => async dispatch => {
-	try {
-		localStorage.removeItem('zipuJWTToken');
-		localStorage.removeItem('transcodId');
-		if (history) {
-			history.push('/login');
-		}
-		return dispatch(logOutUserSuccess());
-	} catch (error) {
-		return {signedOut: false, error: error.message};
-	}
+  try {
+    localStorage.clear('zipuJWTToken');
+    if (history) {
+      history.push('/login');
+    }
+    return dispatch(logOutUserSuccess());
+  } catch (error) {
+    return { signedOut: false, error: error.message };
+  }
 };

@@ -27,7 +27,6 @@ const PromoCodes = (props) => {
                 return message.error({ content: tryFetchALlPromoCodes.message, key, duration: 2 });
             }
         } catch (error) {
-            console.log({ error }, 'error');
         }
     }
 
@@ -54,7 +53,6 @@ const PromoCodes = (props) => {
                 return message.error({ content: resMessage, key: errorKey, duration: 2 });
             }
         } catch (error) {
-            console.log({ error }, 'error');
         }
     }
 

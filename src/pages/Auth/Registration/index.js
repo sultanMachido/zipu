@@ -43,7 +43,6 @@ const Registration = props => {
 				});
 			}
 		} catch (error) {
-			console.log({ error }, 'error');
 		}
 	};
 

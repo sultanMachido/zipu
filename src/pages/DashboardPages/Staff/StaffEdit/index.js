@@ -76,7 +76,6 @@ const EditStaff = (props) => {
 				});
 			}
 		} catch (error) {
-			console.log({ error }, 'error');
 		}
 	};
 

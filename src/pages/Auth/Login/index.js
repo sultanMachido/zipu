@@ -23,7 +23,6 @@ const Login = props => {
 				return message.error({ content: tryUserLogin.message, key, duration: 2 });
 			}
 		} catch (error) {
-			console.log({ error }, 'error');
 		}
 	};
 	return (

@@ -1,9 +1,9 @@
 import React from 'react';
-import {Avatar, Dropdown, Menu} from 'antd';
-import {Link} from 'react-router-dom';
+import { Avatar, Dropdown, Menu } from 'antd';
+import { Link } from 'react-router-dom';
 import './styles.scss';
 
-const Navbar = ({path, profile, logoutUser}) => {
+const Navbar = ({ path, profile, logoutUser }) => {
 	const menu = (
 		<Menu>
 			<Menu.Item onClick={logoutUser}>Logout</Menu.Item>
@@ -48,7 +48,7 @@ const Navbar = ({path, profile, logoutUser}) => {
 					<li className="nav-item">
 						<Dropdown overlay={menu}>
 							<div>
-								<Avatar size={51} style={{background: '#476FEE'}} className="mr-1">
+								<Avatar size={51} style={{ background: '#476FEE' }} className="mr-1">
 									{profile && profile.name
 										? profile.name.split(' ').map(item => item.slice(0, 1))
 										: 'A'}

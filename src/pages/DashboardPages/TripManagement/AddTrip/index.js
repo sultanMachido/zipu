@@ -15,14 +15,14 @@ const AddTrip = (props) => {
   const terminals = [];
 
   const [seatsArrangements, setSeatsArrangements] = useState([
-    [1,0],
-    [0,0,1,0],
-    [0,1,1,0],
-    [0,0,1,0],
-    [1,0,1,0],
-    [0,1,1,0],
-    [0,0,1,0],
-    [1,0,1,0]
+    [1, 0],
+    [0, 0, 1, 0],
+    [0, 1, 1, 0],
+    [0, 0, 1, 0],
+    [1, 0, 1, 0],
+    [0, 1, 1, 0],
+    [0, 0, 1, 0],
+    [1, 0, 1, 0]
   ])
 
   const { promoCodes, fetchAllTripsLoading } = props.promoCodes;
@@ -41,10 +41,9 @@ const AddTrip = (props) => {
         return message.error({ content: tryFetchALlPromoCodes.message, key, duration: 2 });
       }
     } catch (error) {
-      console.log({ error }, 'error');
     }
   }
-  
+
   const fetchAllVehicles = async () => {
     try {
       const messageKey = 'fetchAllTerminalsResponse';
@@ -54,7 +53,6 @@ const AddTrip = (props) => {
         return message.error({ content: tryFetchALlPromoCodes.message, key, duration: 2 });
       }
     } catch (error) {
-      console.log({ error }, 'error');
     }
   }
 
@@ -74,7 +72,7 @@ const AddTrip = (props) => {
         return message.error({ content: resMessage, key: errorKey, duration: 2 });
       }
     } catch (error) {
-      console.log({ error }, 'error');
+
     }
   }
 
@@ -102,7 +100,7 @@ const AddTrip = (props) => {
                       ]}>
                       <Select placeholder="Enter a vehicle">
                         {
-                          vehicles.map(({id, name}, index) => {
+                          vehicles.map(({ id, name }, index) => {
                             return (
                               <Select.Option key={id}>{name}</Select.Option>
                             )
@@ -140,7 +138,7 @@ const AddTrip = (props) => {
                         { required: true, message: 'Please enter the trip date and time' }
                       ]}>
                       <DatePicker
-                        style={{width: '100%'}}
+                        style={{ width: '100%' }}
                         format="YYYY-MM-DD HH:mm:ss"
                         showTime={{ defaultValue: moment('00:00:00', 'HH:mm:ss') }}
                       />
@@ -160,7 +158,7 @@ const AddTrip = (props) => {
                       ]}>
                       <Select placeholder="Select start terminal" onChange={(value) => setStartTerminal(value)}>
                         {
-                          terminals.filter(({ id }) => id !== endTerminal ).map(({id, name}, index) => {
+                          terminals.filter(({ id }) => id !== endTerminal).map(({ id, name }, index) => {
                             return (
                               <Select.Option key={id}>{name}</Select.Option>
                             )
@@ -181,7 +179,7 @@ const AddTrip = (props) => {
                       ]}>
                       <Select placeholder="Select end terminal" onChange={(value) => setEndTerminal(value)}>
                         {
-                          terminals.filter(({ id }) => id !== startTerminal ).map(({id, name}, index) => {
+                          terminals.filter(({ id }) => id !== startTerminal).map(({ id, name }, index) => {
                             return (
                               <Select.Option key={id}>{name}</Select.Option>
                             )
@@ -297,7 +295,7 @@ const AddTrip = (props) => {
               </Card>
             </Col>
             <Col span={12}>
-              <Card className="promoHistory" style={{height: '100%'}}>
+              <Card className="promoHistory" style={{ height: '100%' }}>
               </Card>
             </Col>
           </Row>

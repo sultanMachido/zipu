@@ -24,6 +24,7 @@ export const terminalsReducer = (state = terminalsInitialState, action) => {
 				terminalCount: 0
 			};
 		case terminalsTypes.GET_TERMINALS_SUCCESS:
+			console.log(action.payload, ['terminals'])
 			return {
 				...state,
 				getTerminalsLoading: false,
