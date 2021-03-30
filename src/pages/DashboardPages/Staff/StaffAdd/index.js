@@ -40,7 +40,6 @@ const StaffAdd = props => {
 
 	const onFinish = async values => {
 		try {
-			const messageKey = 'addStaffResponse';
 			const key = 'addStaff';
 			const tryAddStaff = await props.addStaff({ ...values });
 

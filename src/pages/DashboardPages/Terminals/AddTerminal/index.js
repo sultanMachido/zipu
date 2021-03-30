@@ -1,54 +1,74 @@
 import React from 'react';
-import { Form, Progress, message, Collapse, Switch, Modal, Checkbox } from 'antd';
+import { Form, message, Collapse, Modal } from 'antd';
+import { connect } from 'react-redux';
+import { TerminalNameField, StatesField, TerminalAddressField, TerminalCityField, SubmitButton } from '../../../../components/FormField';
+import MultiSelect from '../../../../components/MultiSelect';
+import { addTerminal } from '../../../../redux/actions/terminals/terminals.action';
+import { apiErrors } from '../../../../utils/errorHandler/apiErrors';
 import './styles.scss';
-
-import { TerminalNameField, StatesField, TerminalAddressField, TerminalCityField } from '../../../../components/FormField';
-import MultiSelect from '../../../../components/MultiSelect'
+import { fetchAllVehicles } from '../../../../redux/actions/vehicles/vehicles.actions'
 
 const { Panel } = Collapse;
-
-
-const buses = [
-  { id: 1, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 2, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 3, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 4, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 5, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 6, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 7, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 8, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 9, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 10, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 11, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 12, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 13, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 14, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 15, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 16, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 17, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 18, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 19, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 20, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 21, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 22, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 23, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-  { id: 24, label: "#24 Toyota hiace - KJV 345 LAG(24 seater" },
-]
 
 
 const AddTerminal = (props) => {
   const inputSize = 'large';
   const [form] = Form.useForm();
-  const [selectedItems, setSelectedItems] = React.useState([])
+  const [modalOpen, setModalOpen] = React.useState(false)
+  const [selectedItems, setSelectedItems] = React.useState([]);
 
-  const onFinish = () => {
-
+  const handleClick = () => {
+    Modal.destroyAll()
   }
 
-  const handleChange = (items) => {
-    setSelectedItems({ items });
+  const fetchVehicles = async (transco_Id) => {
+    return props.fetchAllVehicles(transco_Id);
   }
 
+  React.useEffect(() => {
+    const zipuUser = JSON.parse(localStorage.getItem('zipuUser'));
+    if (zipuUser?.id) {
+      fetchVehicles(zipuUser?.id);
+    }
+  }, [])
+
+  const onFinish = async (values) => {
+    const vehicles = selectedItems.map((item) => {
+      return item.id
+    });
+    const terminalData = { ...values, vehicles: vehicles }
+    try {
+      const key = 'addTerminal';
+      const tryAddTerminal = await props.addTerminal({ ...terminalData });
+      if (tryAddTerminal.addTerminalStatus) {
+        Modal.success({
+          content: (
+            <div>
+              <p style={{ fontSize: "20px" }}>Terminal created successfully</p>
+              {
+                SubmitButton('NEW TERMINAL PROFILE', handleClick)
+              }
+            </div>
+          ),
+          closable: modalOpen || true,
+          style: { marginTop: "20px" },
+          okText: 'CREATE NEW TERMINAL',
+          centered: true,
+
+        })
+        form.resetFields();
+      } else {
+        const err = apiErrors(tryAddTerminal?.message);
+        message.error({
+          content: err,
+          key,
+          duration: 2
+        });
+      }
+    } catch (error) {
+
+    }
+  }
 
   return (
     <div className="addTerminalWrapper">
@@ -77,10 +97,16 @@ const AddTerminal = (props) => {
             <div className="full">
               <Collapse defaultActiveKey={['1']}>
                 <Panel header="Select bus to add to terminal" key="1">
-                  <MultiSelect buses={buses} handleChange={handleChange} setSelectedItems={setSelectedItems} selectedItems={selectedItems} />
+                  <MultiSelect buses={props?.vehicles?.vehicles.data} handleChange={(items) => setSelectedItems(items)} setSelectedItems={setSelectedItems} selectedItems={selectedItems} />
                 </Panel>
               </Collapse>
             </div>
+          </div>
+
+          <div className="inputRow">
+            <div className="right"></div>
+            <div className="left">{SubmitButton('CREATE TERMINAL', null,
+              props?.terminal?.addTerminalsLoading)}</div>
           </div>
 
         </Form>
@@ -90,4 +116,14 @@ const AddTerminal = (props) => {
   )
 }
 
-export default AddTerminal;
+const mapStateToProps = (state) => ({
+  terminal: state.terminals,
+  vehicles: state.vehicles
+})
+
+const mapDispatchToProps = {
+  addTerminal,
+  fetchAllVehicles
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddTerminal);
