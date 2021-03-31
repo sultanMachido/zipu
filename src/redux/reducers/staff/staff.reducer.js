@@ -32,7 +32,6 @@ export const staffReducer = (state = staffInitialState, action) => {
 				getStafferror: action.payload
 			};
 		case staffTypes.GET_STAFF_SUCCESS:
-			console.log(action.payload.data.staffs, ['reducer'])
 			return {
 				...state,
 				getStaffLoading: false,

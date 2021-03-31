@@ -4,7 +4,8 @@ import * as serviceWorker from './serviceWorker';
 import Routes from './routes';
 import { Provider } from 'react-redux';
 import configureStore from './redux/store';
-import "@kenshooui/react-multi-select/dist/style.css"
+import "@kenshooui/react-multi-select/dist/style.css";
+import './index.scss'
 
 const store = configureStore({});
 const rootElement = document.getElementById('root');

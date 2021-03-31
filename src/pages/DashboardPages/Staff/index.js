@@ -23,7 +23,7 @@ const Staff = props => {
 
 	React.useEffect(() => {
 		fetchStaff();
-	}, []);
+	}, [page, pageSize]);
 
 	const handleEdit = (staff) => {
 		props.history.push({ pathname: `/staff/edit/${staff?.id}`, state: staff });

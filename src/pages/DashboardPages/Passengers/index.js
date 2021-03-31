@@ -33,7 +33,7 @@ const Passengers = (props) => {
       <div className="passengersHeader">
         <h2>Passenger Management</h2>
 
-        <div className="passengersSearch">Serch</div>
+        <div className="passengersSearch">Search</div>
       </div>
 
       <TableWrapper

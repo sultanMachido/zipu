@@ -26,7 +26,7 @@ export const getStaff = ({ transco_id, pageSize, page }) => async dispatch => {
 	dispatch(clearStaffTErrors());
 	dispatch(getStaffLoading());
 	try {
-		const getStaffRequest = await APIService.get(`/transco-staffs?transco_id=${transco_id}?pagination_number=${pageSize}&page=${page}`);
+		const getStaffRequest = await APIService.get(`/transco-staffs?transco_id=${transco_id}&pagination_number=${pageSize}&page=${page}`);
 
 		if (getStaffRequest.data.status === 'Success') {
 			dispatch(getStaffLoading());
@@ -75,11 +75,12 @@ export const addStaff = (staffRecord) => async dispatch => {
 };
 
 // edit staff
-export const editStaff = staffRecord => async dispatch => {
+export const editStaff = (staffRecord) => async dispatch => {
+	console.log(staffRecord)
 	dispatch(clearStaffTErrors());
 	dispatch(editStaffLoading());
 	try {
-		const editStaffRequest = await APIService.post(`/editstaff`, { ...staffRecord });
+		const editStaffRequest = await APIService.post(`/updatestaff/${staffRecord.staffId}`, { ...staffRecord });
 		if (editStaffRequest.data.status === 'Success') {
 			dispatch(editStaffLoading());
 			dispatch(editStaffSuccess(editStaffRequest.data));
