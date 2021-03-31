@@ -1,26 +1,21 @@
 import React from 'react';
 import { Rate } from 'antd';
-import { useLocation } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { getTerminal } from '../../../../redux/actions/terminals/terminals.action'
 import './styles.scss';
-import { LoadingOutlined } from '@ant-design/icons'
 
 
 const ViewTerminal = (props) => {
-  const query = useLocation();
   const fetchTerminal = async () => {
-    return props.getTerminal(query.pathname.split('/')[2])
+    return props.getTerminal(props?.location?.state?.id)
   }
 
   React.useEffect(() => {
     fetchTerminal()
-  }, [])
+  }, [props?.location?.state])
 
   return (
     <div className="viewTerminalWrapper">
-      {props?.terminal?.getOnTerminalLoading ? <LoadingOutlined /> : null}
-
       <>
         <div className="viewTerminalHeader">
           <h2>{props?.terminal?.getOneTerminlaSuccess?.data?.terminal?.name}</h2>

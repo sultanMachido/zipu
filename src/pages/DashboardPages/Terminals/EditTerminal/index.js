@@ -1,7 +1,8 @@
 import React from 'react';
 import './styles.scss'
 
-const EditTerminal = () => {
+const EditTerminal = (props) => {
+  console.log({ props }, ['edit terminal'])
   return (
     <div>Edit terminal</div>
   )

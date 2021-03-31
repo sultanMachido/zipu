@@ -79,8 +79,6 @@ const VehicleInventory = (props) => {
     setPageSize(pageSize)
   }
 
-  console.log(vehicles, vehiclesData)
-
   return (
     <div className="tripInventoryWrapper">
       <div className="tripInventoryHeader">
@@ -150,8 +148,6 @@ const VehicleInventory = (props) => {
             vehicles?.length > 0
             && <Pagination
               total={vehiclesData?.length}
-              showSizeChanger
-              showQuickJumper
               showTotal={total => `Total ${total} items`}
               onChange={onChange}
               onShowSizeChange={onShowSizeChange}

@@ -26,7 +26,7 @@ const Staff = props => {
 	}, [page, pageSize]);
 
 	const handleEdit = (staff) => {
-		props.history.push({ pathname: `/staff/edit/${staff?.id}`, state: staff });
+		props.history.push({ pathname: `/staff/edit`, state: staff });
 	};
 
 	const handleAddStaff = () => {
