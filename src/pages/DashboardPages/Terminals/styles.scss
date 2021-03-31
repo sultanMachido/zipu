@@ -40,10 +40,14 @@
     gap: 2rem;
 
     .terminalContentLeft{
-      flex-basis: 18%;
+      flex-basis: 15%;
       border: 1px solid #e3eaed;
       padding: 2rem;
       border-radius: 10px;
+
+      .terminalsCheckbox{
+        display: flex;flex-direction: column;
+      }
     }
     .terminalContentRight{
       width:100%;
