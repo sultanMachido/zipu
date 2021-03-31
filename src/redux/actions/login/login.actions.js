@@ -36,9 +36,10 @@ export const loginUser = (userData) => async (dispatch) => {
 
 export const logUserOut = (history = null) => async dispatch => {
   try {
-    localStorage.clear('zipuJWTToken');
+    localStorage.clear();
     if (history) {
       history.push('/login');
+      window.location.reload()
     }
     return dispatch(logOutUserSuccess());
   } catch (error) {

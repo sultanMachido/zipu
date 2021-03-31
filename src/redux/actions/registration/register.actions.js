@@ -7,7 +7,7 @@ import {
 	registerSuccess
 } from './register.actionCreators';
 
-import {APIService} from '../../../config/apiConfig';
+import { APIService } from '../../../config/apiConfig';
 
 const SOMETHING_WENT_WRONG = 'Something went wrong';
 
@@ -15,20 +15,22 @@ export const registerUser = transacoData => async dispatch => {
 	dispatch(clearRegisterErrors());
 	dispatch(registerLoading());
 	try {
-		const registerRequest = await APIService.post('/register-transco', {...transacoData});
+		const registerRequest = await APIService.post('/register-transco', { ...transacoData });
 		if (registerRequest.data.status === 'Success') {
 			localStorage.setItem('zipuJWTToken', registerRequest.data.data.token.plainTextToken);
+			localStorage.setItem('zipuUser', JSON.stringify(registerRequest.data.data.user));
+			localStorage.setItem('transcoId', registerRequest.data.data.user.transco_id);
 			dispatch(registerLoading());
 			dispatch(registerSuccess(registerRequest.data));
-			return {registerStatus: true, tokenValid: true, message: 'Registration successful'};
+			return { registerStatus: true, tokenValid: true, message: 'Registration successful' };
 		} else {
 			dispatch(registerLoading(false));
-			return {registerStatus: false, message: SOMETHING_WENT_WRONG};
+			return { registerStatus: false, message: SOMETHING_WENT_WRONG };
 		}
 	} catch (error) {
 		const message = error.response?.data?.message;
 		dispatch(registerError(message));
 		dispatch(registerLoading(false));
-		return {registerStatus: false, message: message || SOMETHING_WENT_WRONG};
+		return { registerStatus: false, message: message || SOMETHING_WENT_WRONG };
 	}
 };
