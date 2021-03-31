@@ -425,6 +425,29 @@ export const ReservationWindowField = (inputSize, disabled = false, required = t
 	</Form.Item>
 );
 
+export const UploadDocsField = () => (
+	<Form.Item
+		name="cac"
+		valuePropName="fileList"
+		getValueFromEvent={normFile}
+		style={{ border: '1px solid #D9D9D9', padding: '1rem' }}
+	>
+		<Upload>
+			<Button
+				icon={<UploadOutlined />}
+				style={{
+					borderRadius: '5px',
+					background: '#E3EAED',
+					border: '1px solid #DDE3E9',
+					color: 'rgba(0, 0, 0, 0.25)'
+				}}
+			>
+				Upload CAC documents
+			</Button>
+		</Upload>
+	</Form.Item>
+);
+
 export const UploadCACDocsField = () => (
 	<Form.Item
 		name="cac"

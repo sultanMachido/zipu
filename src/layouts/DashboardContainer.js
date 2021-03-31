@@ -29,6 +29,7 @@ import "./styles.scss";
 import Report from "../pages/DashboardPages/Report";
 import PromoCodes from "../pages/DashboardPages/Report/PromoCodes";
 import Company from "../pages/DashboardPages/Company";
+import EditCompany from '../pages/DashboardPages/Company/EditCompany';
 
 class DashboardContainer extends Component {
 	handleLogout = async () => {
@@ -95,6 +96,12 @@ class DashboardContainer extends Component {
 				title: 'Edit Listing',
 				module: 'car'
 			},
+			{
+				route: '/company/edit',
+				prev: '/company',
+				title: 'Edit Company',
+				module: 'company'
+			}
 		];
 
 
@@ -120,12 +127,14 @@ class DashboardContainer extends Component {
 						<Route exact path="/bookings" component={Bookings}></Route>
 						<Route exact path="/staff" component={Staff}></Route>
 						<Route exact path="/company" component={Company}></Route>
+						<Route exact path="/company/edit" component={EditCompany}></Route>
 						<Route exact path="/staff/add" component={StaffAdd}></Route>
 						<Route exact path="/staff/edit/:id" component={EditStaff}></Route>
 						<Route exact path="/car-listing" component={CarListing}></Route>
 						<Route exact path="/car-listing/add" component={AddVehicle}></Route>
 						<Route exact path="/car-listing/edit/:id" component={EditTrip}></Route>
 						<Route exact path="/reports" component={Report}></Route>
+						<Route exact path="/reports/promo-codes" component={PromoCodes}></Route>
 						<Route exact path="/trip-management" component={TripManagement}></Route>
 						<Route exact path="/trip-management/add" component={AddTrip}></Route>
 						<Route exact path="/terminals" component={Terminals}></Route>
