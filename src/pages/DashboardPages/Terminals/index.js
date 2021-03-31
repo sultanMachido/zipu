@@ -71,14 +71,13 @@ const Terminals = (props) => {
         </div>
         <div className="terminalContentRight">
           {
-            props?.terminals?.getTerminalsSuccess?.terminals?.map((terminal) => {
+            props?.terminals?.getTerminalsSuccess?.terminals?.data?.map((terminal) => {
               return (
                 <Terminal terminal={terminal} key={terminal.id} transco={props?.terminals?.getTerminalsSuccess?.transco} />
               )
             })
           }
         </div>
-
       </div>
     </div>
   )

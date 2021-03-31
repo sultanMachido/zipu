@@ -33,7 +33,7 @@ const VehicleInventory = (props) => {
     const zipuUser = JSON.parse(localStorage.getItem('zipuUser'));
     console.log(zipuUser);
     if (zipuUser?.id) {
-      props.fetchAllVehicles(20);
+      props.fetchAllVehicles(zipuUser?.id);
     }
   }, [])
 
@@ -41,7 +41,8 @@ const VehicleInventory = (props) => {
   const indexOfFirstCarTrip = indexOfLastCarTrip - pageSize;
   
   const { vehicles: vehiclesData, fetchAllVehiclesLoading } = props.vehicles;
-  const vehicles = vehiclesData.slice(indexOfFirstCarTrip, indexOfLastCarTrip);
+  // const vehicles = vehiclesData.slice(indexOfFirstCarTrip, indexOfLastCarTrip);
+  const vehicles = vehiclesData?.data || [];
 
   const onChangeTerminals = list => {
     setCheckedList(list);
@@ -81,6 +82,7 @@ const VehicleInventory = (props) => {
     setPageSize(pageSize)
   }
 
+  console.log(vehicles, vehiclesData)
 
   return (
     <div className="tripInventoryWrapper">

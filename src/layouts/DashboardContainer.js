@@ -100,11 +100,13 @@ class DashboardContainer extends Component {
 					<Switch>
 						<Route exact path="/bookings" component={Bookings}></Route>
 						<Route exact path="/staff" component={Staff}></Route>
+						<Route exact path="/company" component={Company}></Route>
 						<Route exact path="/staff/add" component={StaffAdd}></Route>
 						<Route exact path="/staff/edit/:id" component={EditStaff}></Route>
 						<Route exact path="/car-listing" component={CarListing}></Route>
 						<Route exact path="/car-listing/add" component={AddVehicle}></Route>
 						<Route exact path="/car-listing/edit/:id" component={EditTrip}></Route>
+						<Route exact path="/reports" component={Report}></Route>
 						<Route exact path="/trip-management" component={TripManagement}></Route>
 						<Route exact path="/trip-management/add" component={AddTrip}></Route>
 						<Route exact path="/terminals" component={Terminals}></Route>
