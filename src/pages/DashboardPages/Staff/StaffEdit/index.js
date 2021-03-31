@@ -7,10 +7,8 @@ import {
 	EmailField,
 	PhoneNumberField,
 	StatesField,
-	SearchTerminalField,
 	StaffRolesField,
 	SubmitButton,
-	PasswordField
 } from '../../../../components/FormField';
 import './styles.scss';
 import { getTerminals } from '../../../../redux/actions/terminals/terminals.action';
@@ -25,7 +23,6 @@ const { Panel } = Collapse;
 const EditStaff = (props) => {
 	const inputSize = 'large';
 	const [form] = Form.useForm();
-	const [checked, setChecked] = React.useState(props?.location?.state?.status);
 	const [selectedItems, setSelectedItems] = React.useState([]);
 	const [modalOpen, setModalOpen] = React.useState(false);
 	const [active, setActivate] = React.useState(false)
@@ -167,7 +164,7 @@ const EditStaff = (props) => {
 						</div>
 						<div className="inputElement">
 							<Collapse defaultActiveKey={['1']}>
-								<Panel header="Allocate terminal to this user" key="1">
+								<Panel header="Allocate terminal to this Staff" key="1">
 									<MultiSelect
 										items={terminalsData}
 										selectedItems={terminals?.length > 0 ? terminals : selectedItems}
@@ -185,8 +182,8 @@ const EditStaff = (props) => {
 				visible={active}
 				handleCancel={handleCancel}
 				title="Activate Staff?"
-				text={`Deactivating this staff will remove them from all terminal,
-				from search page, this action cannot be undone.
+				text={`Activating this staff will all them to use the platform
+				based on their configured roles and permission.
 				Enter admin password to continue`}
 			/>
 

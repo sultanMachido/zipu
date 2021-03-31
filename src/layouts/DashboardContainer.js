@@ -63,7 +63,7 @@ const Company = React.lazy(() => moduleHelpers.retryImport(() => import('../page
 
 class DashboardContainer extends Component {
 	handleLogout = async () => {
-		return this.props.logUserOut(this.props.history);
+		this.props.logUserOut(this?.props?.history);
 	};
 
 	render() {
@@ -164,6 +164,7 @@ class DashboardContainer extends Component {
 							<Route exact path="/terminals/:id" component={ViewTerminal}></Route>
 							<Route exact path="/passengers" component={Passengers}></Route>
 							<Route exact path="/passengers/:id" component={ViewPassenger}></Route>
+
 						</Switch>
 					</React.Suspense>
 				</Layout>

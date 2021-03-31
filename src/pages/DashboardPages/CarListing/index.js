@@ -40,7 +40,8 @@ const VehicleInventory = (props) => {
   const indexOfFirstCarTrip = indexOfLastCarTrip - pageSize;
 
   const { vehicles: vehiclesData, fetchAllVehiclesLoading } = props.vehicles;
-  const vehicles = vehiclesData.slice(indexOfFirstCarTrip, indexOfLastCarTrip);
+  console.log(props.vehicles, ['props.vehicles'])
+  const vehicles = vehiclesData?.data?.slice(indexOfFirstCarTrip, indexOfLastCarTrip);
 
   const onChangeTerminals = list => {
     setCheckedList(list);
@@ -132,7 +133,7 @@ const VehicleInventory = (props) => {
               ? <Row align="middle" justify="center" style={{ height: '400px' }}>
                 <Loader />
               </Row>
-              : vehicles.length === 0
+              : vehicles?.length === 0
                 ?
                 <EmptyScreen
                   icon={<ImPencil />}
@@ -141,14 +142,14 @@ const VehicleInventory = (props) => {
                   buttonText="ADD TRIPS"
                 />
                 :
-                vehicles.map((data) => {
+                vehicles?.map((data) => {
                   return (<VehicleComponent data={data} key={data.id} />)
                 })
           }
           {
-            vehicles.length > 0
+            vehicles?.length > 0
             && <Pagination
-              total={vehiclesData.length}
+              total={vehiclesData?.length}
               showSizeChanger
               showQuickJumper
               showTotal={total => `Total ${total} items`}

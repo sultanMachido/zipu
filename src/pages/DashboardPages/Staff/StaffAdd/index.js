@@ -84,6 +84,7 @@ const StaffAdd = props => {
 		return { id: terminal.id, label: terminal.name }
 	})
 
+
 	return (
 		<div className="staffAddWrapper">
 			<div className="addStaffHeader">
@@ -135,7 +136,7 @@ const StaffAdd = props => {
 						</div>
 						<div className="inputElement">
 							<Collapse defaultActiveKey={['1']}>
-								<Panel header="Allocate terminal to this user" key="1">
+								<Panel header="Allocate terminal to this Staff" key="1">
 									<MultiSelect
 										items={terminals}
 										onChange={(items) => setSelectedItems(items)}
