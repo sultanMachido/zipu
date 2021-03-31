@@ -18,7 +18,8 @@ const Login = props => {
 			const tryUserLogin = await props.loginUser({ ...values });
 			if (tryUserLogin.loginStatus) {
 				message.success({ content: tryUserLogin.message, key: messageKey, duration: 5 });
-				props.history.push('/');
+				window.location.reload()
+				props.history.push('/bookings');
 			} else {
 				return message.error({ content: tryUserLogin.message, key, duration: 2 });
 			}
@@ -29,7 +30,7 @@ const Login = props => {
 		<div className="loginWrapper">
 			<div className="loginContent">
 				<div className="loginText">
-					<h1>Welcome!</h1>
+					<h1 style={{ marginBottom: "1rem" }}>Welcome!</h1>
 					<p>Enter your details and login</p>
 				</div>
 

@@ -96,7 +96,7 @@ const Terminals = (props) => {
       </div>
       <div className="terminalContents">
         <div className="terminalContentLeft">
-          <div className="terminals">
+          <div className="terminalsCheckbox">
             <p>Terminals</p>
             <Checkbox.Group options={options} defaultValue={['All']} onChange={onChange} />
           </div>

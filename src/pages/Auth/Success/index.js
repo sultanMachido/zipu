@@ -1,15 +1,18 @@
 import React from 'react';
-import {Form} from 'antd';
-import {withRouter} from 'react-router-dom';
+import { Form } from 'antd';
+import { withRouter } from 'react-router-dom';
 import './success.scss';
 import leftCar from '../../../assets/img/leftCar.svg';
 import rightCar from '../../../assets/img/rightCar.svg';
-import {SubmitButton} from '../../../components/FormField';
+import { SubmitButton } from '../../../components/FormField';
 
-const Success = props => {
+const Success = (props) => {
 	const goToDashboard = () => {
 		props.history.push('/bookings');
+		window.location.reload()
 	};
+
+	console.log({ props })
 	return (
 		<div className="successWrapper">
 			<div className="carsWrapper">
@@ -30,7 +33,7 @@ const Success = props => {
 					onFinish={goToDashboard}
 					hideRequiredMark
 					layout="vertical"
-					style={{width: '100%'}}
+					style={{ width: '100%' }}
 				>
 					{SubmitButton('GO TO DASHBOARD')}
 				</Form>

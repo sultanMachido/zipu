@@ -52,7 +52,7 @@ const StaffAdd = props => {
 			if (tryAddStaff.addStaffStatus) {
 				Modal.success({
 					content: (<div>
-						<p style={{ fontSize: "20px" }}>Staff created successfully</p>
+						<p className="successText">Staff created successfully</p>
 						{
 							SubmitButton('NEW STAFF PROFILE', handleClick)
 						}
@@ -84,17 +84,11 @@ const StaffAdd = props => {
 		return { id: terminal.id, label: terminal.name }
 	})
 
+
 	return (
 		<div className="staffAddWrapper">
 			<div className="addStaffHeader">
 				<h5 className="title">Account Creation</h5>
-				<Switch
-					checkedChildren="Active"
-					unCheckedChildren="Disabled"
-					size="medium"
-					checked={checked}
-					onChange={handleChange}
-				/>
 			</div>
 			<div className="addStaffForm">
 				<Form
@@ -142,11 +136,11 @@ const StaffAdd = props => {
 						</div>
 						<div className="inputElement">
 							<Collapse defaultActiveKey={['1']}>
-								<Panel header="Allocate terminal to this user" key="1">
+								<Panel header="Allocate terminal to this Staff" key="1">
 									<MultiSelect
 										items={terminals}
-										selectedItems={props?.selectedItems}
 										onChange={(items) => setSelectedItems(items)}
+										showSelectedItems
 									/>
 								</Panel>
 							</Collapse>

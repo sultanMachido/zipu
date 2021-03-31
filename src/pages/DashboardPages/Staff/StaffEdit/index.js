@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, message, Collapse, Switch } from 'antd';
+import { Form, message, Collapse, Modal } from 'antd';
 import { connect } from 'react-redux';
 import {
 	StaffFullNameField,
@@ -7,36 +7,39 @@ import {
 	EmailField,
 	PhoneNumberField,
 	StatesField,
-	SearchTerminalField,
 	StaffRolesField,
-	SubmitButton
+	SubmitButton,
 } from '../../../../components/FormField';
 import './styles.scss';
 import { getTerminals } from '../../../../redux/actions/terminals/terminals.action';
 import { editStaff } from '../../../../redux/actions/staff/staff.actions';
 import { apiErrors } from '../../../../utils/errorHandler/apiErrors';
+import MultiSelect from "@kenshooui/react-multi-select";
+import Switch from '../../../../components/Switch';
+import ActivateDisableModal from '../../../../components/Modals/ActivateDisableModal'
 
 const { Panel } = Collapse;
 
 const EditStaff = (props) => {
 	const inputSize = 'large';
 	const [form] = Form.useForm();
-	const [checked, setChecked] = React.useState(props?.location?.state?.status);
+	const [selectedItems, setSelectedItems] = React.useState([]);
+	const [modalOpen, setModalOpen] = React.useState(false);
+	const [active, setActivate] = React.useState(false)
+	const [disabled, setDisabled] = React.useState(false)
 
 	const fetchTerminals = async () => {
-		const response = await props.getTerminals();
-		return response;
+		const transco_id = localStorage.getItem('transcoId')
+		return props.getTerminals({ transco_id });
 	};
 
 	React.useEffect(() => {
 		fetchTerminals();
 	}, []);
 
-	const terminals = props?.location?.state?.terminals.map((terminal) => {
-		return terminal.id
+	const terminals = props?.location?.state?.terminals?.map((terminal) => {
+		return { id: terminal.id, label: terminal.name }
 	});
-
-
 	React.useEffect(() => {
 		form.setFieldsValue({
 			email: props?.location?.state?.email,
@@ -44,29 +47,42 @@ const EditStaff = (props) => {
 			position: props?.location?.state?.position,
 			phone: props?.location?.state?.phone,
 			state: props?.location?.state?.state,
-			role_id: props?.location?.state?.role_id,
+			role_id: props?.location?.state?.roles[0].id,
 			terminals: terminals
 		});
-
-		return () => {
-			form.resetFields();
-		};
 	}, [props.location.state]);
+
+	const handleClick = () => {
+		Modal.destroyAll();
+		props.history.push('/staff');
+	}
+
+	const handleCancel = () => {
+		setActivate(false)
+		setDisabled(false)
+	}
 
 
 	const onFinish = async values => {
+		const staffId = props?.location?.state?.id
+
 		try {
-			const messageKey = 'editStaffResponse';
 			const key = 'editStaff';
-			const tryEditStaff = await props.editStaff({ ...values });
+			const tryEditStaff = await props.editStaff({ ...values, staffId });
 
 			if (tryEditStaff.editStaffStatus) {
-				message.success({
-					content: tryEditStaff.message,
-					key: messageKey,
-					duration: 10
-				});
-				form.resetFields();
+				Modal.success({
+					content: (
+						<div>
+							<p className="successText">Staff Edited successfully</p>
+							{
+								SubmitButton('BACK TO STAFF PAGE', handleClick)
+							}
+						</div>),
+					closable: modalOpen || true,
+					style: { marginTop: "20px" },
+					centered: true,
+				})
 			} else {
 				const err = apiErrors(tryEditStaff?.message);
 				message.error({
@@ -79,20 +95,18 @@ const EditStaff = (props) => {
 		}
 	};
 
-	const handleChange = (checked) => {
-		setChecked(checked);
-	};
+	const terminalsData = props?.terminals?.getTerminalsSuccess?.terminals?.data?.map((terminal) => {
+		return { id: terminal.id, label: terminal.name }
+	});
 
 	return (
 		<div className="staffEditWrapper">
 			<div className="editStaffHeader">
 				<h5 className="title">Edit Staff</h5>
 				<Switch
-					checkedChildren="Active"
-					unCheckedChildren="Disabled"
-					size="medium"
-					checked={checked ? 1 : 0}
-					onChange={handleChange}
+					data={props?.location?.state?.status}
+					setDisabled={setDisabled}
+					setActivate={setActivate}
 				/>
 			</div>
 			<div className="editStaffForm">
@@ -108,7 +122,7 @@ const EditStaff = (props) => {
 						position: props?.location?.state?.position,
 						phone: props?.location?.state?.phone,
 						state: props?.location?.state?.state,
-						role_id: props?.location?.state?.role_id,
+						role_id: props?.location?.state?.roles[0].id,
 						terminals: terminals
 					}}
 
@@ -150,21 +164,37 @@ const EditStaff = (props) => {
 						</div>
 						<div className="inputElement">
 							<Collapse defaultActiveKey={['1']}>
-								<Panel header="Allocate terminal to this user" key="1">
-									{SearchTerminalField(
-										inputSize,
-										true,
-										true,
-										'Search terminals',
-										props,
-										'edit'
-									)}
+								<Panel header="Allocate terminal to this Staff" key="1">
+									<MultiSelect
+										items={terminalsData}
+										selectedItems={terminals?.length > 0 ? terminals : selectedItems}
+										onChange={(items) => setSelectedItems(items)}
+										showSelectedItems
+									/>
 								</Panel>
 							</Collapse>
 						</div>
 					</div>
 				</Form>
 			</div>
+
+			<ActivateDisableModal
+				visible={active}
+				handleCancel={handleCancel}
+				title="Activate Staff?"
+				text={`Activating this staff will all them to use the platform
+				based on their configured roles and permission.
+				Enter admin password to continue`}
+			/>
+
+			<ActivateDisableModal
+				visible={disabled}
+				handleCancel={handleCancel}
+				title="Deactive Staff?"
+				text="Deactivating this staff will remove them from all terminal,
+				from search page, this action cannot be undone.
+				Enter admin password to continue"
+			/>
 		</div>
 	);
 };

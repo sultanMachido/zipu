@@ -12,7 +12,7 @@ import './styles.scss';
 
 const Staff = props => {
 	const [page, setPage] = React.useState(1);
-	const [pageSize, setPageSize] = React.useState(15);
+	const [pageSize, setPageSize] = React.useState(10);
 
 	const columns = staffColumns();
 
@@ -23,7 +23,7 @@ const Staff = props => {
 
 	React.useEffect(() => {
 		fetchStaff();
-	}, []);
+	}, [page, pageSize]);
 
 	const handleEdit = (staff) => {
 		props.history.push({ pathname: `/staff/edit/${staff?.id}`, state: staff });

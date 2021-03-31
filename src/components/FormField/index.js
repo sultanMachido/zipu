@@ -992,7 +992,7 @@ export const StateSearchField = () => (
 	>
 		<Input.Group compact>
 			<div style={{
-				// border: '1px solid #D9D9D9',
+				border: '1px solid #D9D9D9',
 				width: "25%",
 				height: "47px",
 				padding: "1.2rem 0 0 .7rem",
