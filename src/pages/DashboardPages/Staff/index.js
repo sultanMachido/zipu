@@ -12,7 +12,7 @@ import './styles.scss';
 
 const Staff = props => {
 	const [page, setPage] = React.useState(1);
-	const [pageSize, setPageSize] = React.useState(15);
+	const [pageSize, setPageSize] = React.useState(10);
 
 	const columns = staffColumns();
 

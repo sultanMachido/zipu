@@ -1,0 +1,173 @@
+.viewPassengerWrapper{
+  width: 100%;
+  h1{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 32px;   
+    color: #323D44;
+  }
+
+  .passengerInfo{
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin: 5rem 0;
+
+    .passengerBio{
+      flex-basis: 70%;
+      border-right: 1px solid #E3EAED;
+      padding-right: 3rem;
+      margin-right: 3rem;
+
+      &> div {
+        &:not(:last-child){
+          border-bottom: 1px solid #E3EAED;
+          margin-bottom: 2rem;
+          display: flex;
+          justify-content:flex-start;
+          color:#323D44;
+        }
+
+        p.title{
+          flex-basis: 20%;
+        }
+        p.value{
+          flex: 1;
+        }
+      }
+
+      .btnWrapper{
+        width: 25%;
+        display: flex;
+        justify-content:flex-start;
+        align-items:center;
+
+        .editBtn{
+          width: 50%;
+          margin-right: 2rem;
+        }
+        .saveBtn{
+          width: 50%;
+        }
+      }
+    }
+
+    .passengerDocs{
+      flex: 1;
+
+      .passengerPhoto{
+        margin-bottom: 2rem;
+      }
+
+      .passengerSupportingDocs{
+
+        h2{
+          font-family: Inter;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 24px;
+          color: #323D44;
+          border-bottom: 1px solid #E3EAED;
+          padding: 1rem 0;
+          margin-bottom: 3rem;
+        }
+
+        & >div{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid #E3EAED;
+
+          &:not(:last-child){
+            margin-bottom: 2rem;
+          }
+
+          p.title{
+            flex-basis: 60%;
+          }
+          p.value, a.value{
+            flex: 1;
+          }
+        }
+      }
+    }
+  }
+
+  .passengerBookingsAndPayments{
+    margin-top: 5rem;
+
+    .upcoming{
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 32px;
+      color: #FF9633;
+      background: rgba(255, 150, 51, 0.2);
+      border-radius: 100px;
+      padding: 8px 16px;
+    }
+    .completed {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 32px;
+      color: #27AE60;
+      padding: 8px 16px;
+      background: rgba(39, 174, 96, 0.2);
+      border-radius: 100px;
+    }
+  }
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #323D44 !important;
+  
+  border-radius: 4px 0px 0px 0px !important;
+  height: 24px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
+}
+
+.ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab-active, .ant-tabs-card.ant-tabs-top > div > .ant-tabs-nav .ant-tabs-tab-active {
+  border-bottom-color: #E3EAED !important;
+}
+
+.ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab:not(:last-of-type), .ant-tabs-card.ant-tabs-bottom > .ant-tabs-nav .ant-tabs-tab:not(:last-of-type), .ant-tabs-card.ant-tabs-top > div > .ant-tabs-nav .ant-tabs-tab:not(:last-of-type), .ant-tabs-card.ant-tabs-bottom > div > .ant-tabs-nav .ant-tabs-tab:not(:last-of-type) {
+  margin-right: 0px !important;
+}
+
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab-active, .ant-tabs-card > div > .ant-tabs-nav .ant-tabs-tab-active {
+  color: #1890ff;
+  background: #E3EAED !important;
+}
+
+.ant-tabs-tab-btn {
+  outline: none;
+  transition: all 0.3s;
+  color:  #637A87 !important;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab, .ant-tabs-card > div > .ant-tabs-nav .ant-tabs-tab {
+  margin: 0;
+  padding: 8px 16px;
+  background: #F6F8F9;
+  border: 1px solid #f0f0f0;
+  -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}

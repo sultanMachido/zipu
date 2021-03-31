@@ -15,6 +15,7 @@ import './styles.scss';
 import { getTerminals } from '../../../../redux/actions/terminals/terminals.action';
 import { editStaff } from '../../../../redux/actions/staff/staff.actions';
 import { apiErrors } from '../../../../utils/errorHandler/apiErrors';
+import MultiSelect from "@kenshooui/react-multi-select";
 
 const { Panel } = Collapse;
 
@@ -22,9 +23,11 @@ const EditStaff = (props) => {
 	const inputSize = 'large';
 	const [form] = Form.useForm();
 	const [checked, setChecked] = React.useState(props?.location?.state?.status);
+	const [selectedItems, setSelectedItems] = React.useState([]);
 
 	const fetchTerminals = async () => {
-		const response = await props.getTerminals();
+		const transco_id = localStorage.getItem('transcoId')
+		const response = await props.getTerminals({ transco_id });
 		return response;
 	};
 
@@ -33,9 +36,8 @@ const EditStaff = (props) => {
 	}, []);
 
 	const terminals = props?.location?.state?.terminals.map((terminal) => {
-		return terminal.id
+		return { id: terminal.id, label: terminal.name }
 	});
-
 
 	React.useEffect(() => {
 		form.setFieldsValue({
@@ -55,6 +57,7 @@ const EditStaff = (props) => {
 
 
 	const onFinish = async values => {
+
 		try {
 			const messageKey = 'editStaffResponse';
 			const key = 'editStaff';
@@ -82,6 +85,10 @@ const EditStaff = (props) => {
 	const handleChange = (checked) => {
 		setChecked(checked);
 	};
+
+	const terminalsData = props?.terminals?.getTerminalsSuccess?.terminals?.data?.map((terminal) => {
+		return { id: terminal.id, label: terminal.name }
+	});
 
 	return (
 		<div className="staffEditWrapper">
@@ -151,14 +158,21 @@ const EditStaff = (props) => {
 						<div className="inputElement">
 							<Collapse defaultActiveKey={['1']}>
 								<Panel header="Allocate terminal to this user" key="1">
-									{SearchTerminalField(
+									{/* {SearchTerminalField(
 										inputSize,
 										true,
 										true,
 										'Search terminals',
 										props,
 										'edit'
-									)}
+									)} */}
+									<MultiSelect
+										items={terminalsData}
+										selectedItems={terminals.length > 0 ? terminals : selectedItems}
+										onChange={(items) => setSelectedItems(items)}
+										showSelectedItems
+									/>
+
 								</Panel>
 							</Collapse>
 						</div>
