@@ -52,7 +52,7 @@ const StaffAdd = props => {
 			if (tryAddStaff.addStaffStatus) {
 				Modal.success({
 					content: (<div>
-						<p style={{ fontSize: "20px" }}>Staff created successfully</p>
+						<p className="successText">Staff created successfully</p>
 						{
 							SubmitButton('NEW STAFF PROFILE', handleClick)
 						}
@@ -88,13 +88,6 @@ const StaffAdd = props => {
 		<div className="staffAddWrapper">
 			<div className="addStaffHeader">
 				<h5 className="title">Account Creation</h5>
-				<Switch
-					checkedChildren="Active"
-					unCheckedChildren="Disabled"
-					size="medium"
-					checked={checked}
-					onChange={handleChange}
-				/>
 			</div>
 			<div className="addStaffForm">
 				<Form
