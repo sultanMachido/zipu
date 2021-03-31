@@ -32,7 +32,7 @@ const VehicleInventory = (props) => {
   useEffect(() => {
     const zipuUser = JSON.parse(localStorage.getItem('zipuUser'));
     if (zipuUser?.id) {
-      props.fetchAllVehicles(20);
+      props.fetchAllVehicles(zipuUser?.id);
     }
   }, [])
 
@@ -40,7 +40,6 @@ const VehicleInventory = (props) => {
   const indexOfFirstCarTrip = indexOfLastCarTrip - pageSize;
 
   const { vehicles: vehiclesData, fetchAllVehiclesLoading } = props.vehicles;
-  console.log(props.vehicles, ['props.vehicles'])
   const vehicles = vehiclesData?.data?.slice(indexOfFirstCarTrip, indexOfLastCarTrip);
 
   const onChangeTerminals = list => {
@@ -80,6 +79,7 @@ const VehicleInventory = (props) => {
     setPageSize(pageSize)
   }
 
+  console.log(vehicles, vehiclesData)
 
   return (
     <div className="tripInventoryWrapper">

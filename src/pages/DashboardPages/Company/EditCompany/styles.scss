@@ -1,0 +1,25 @@
+.editCompanyWrapper {
+    p {
+        font-family: Inter;
+        font-style: normal;
+        font-size: 14px;
+        line-height: 20px;
+        color: #323D44;
+        margin-bottom: 0px;
+        &.bold {
+            font-weight: 500;
+        }
+    }
+    .ant-upload {
+        width: 100%;
+    }
+    .uploadPane {
+        margin-bottom: 26px;
+    }
+    .main {
+        height: 100%;
+        .main-row {
+            height: 100%;
+        }
+    }
+}

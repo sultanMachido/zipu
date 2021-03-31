@@ -12,6 +12,11 @@ import TitlePane from '../components/TitlePane';
 import Footer from '../components/Footer';
 import { logUserOut } from '../redux/actions/login/login.actions';
 
+import "./styles.scss";
+// import Report from "../pages/DashboardPages/Report";
+// import PromoCodes from "../pages/DashboardPages/Report/PromoCodes";
+// import Company from "../pages/DashboardPages/Company";
+// import EditCompany from '../pages/DashboardPages/Company/EditCompany';
 // import Bookings from '../pages/DashboardPages/Bookings';
 // import Staff from '../pages/DashboardPages/Staff';
 // import StaffAdd from '../pages/DashboardPages/Staff/StaffAdd';
@@ -56,9 +61,7 @@ const ViewPassenger = React.lazy(() => moduleHelpers.retryImport(() => import('.
 const Report = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/Report')))
 const PromoCodes = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/Report/PromoCodes')))
 const Company = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/Company')))
-
-
-
+const EditCompany = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/Company/EditCompany')))
 
 
 class DashboardContainer extends Component {
@@ -126,6 +129,12 @@ class DashboardContainer extends Component {
 				title: 'Edit Listing',
 				module: 'car'
 			},
+			{
+				route: '/company/edit',
+				prev: '/company',
+				title: 'Edit Company',
+				module: 'company'
+			}
 		];
 
 
@@ -164,7 +173,10 @@ class DashboardContainer extends Component {
 							<Route exact path="/terminals/:id" component={ViewTerminal}></Route>
 							<Route exact path="/passengers" component={Passengers}></Route>
 							<Route exact path="/passengers/:id" component={ViewPassenger}></Route>
-
+							<Route exact path="/company" component={Company}></Route>
+							<Route exact path="/company/edit" component={EditCompany}></Route>
+							<Route exact path="/reports" component={Report}></Route>
+							<Route exact path="/reports/promo-codes" component={PromoCodes}></Route>
 						</Switch>
 					</React.Suspense>
 				</Layout>

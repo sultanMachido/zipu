@@ -182,7 +182,7 @@ const PromoCodes = (props) => {
                                 {
                                     fetchAllPromoCodesLoading
                                         ? <Spin />
-                                        : promoCodes.map(({ name, code, start_date, end_date, discount, custom_amount, discount_type, noOfTerminals }) => {
+                                        : promoCodes?.data?.map(({ name, code, start_date, end_date, discount, custom_amount, discount_type, noOfTerminals }) => {
                                             const amount = discount_type === 'amount' ? `NGN ${custom_amount.toLocaleString()}` : discount_type === 'amount' ? `${discount}%` : 'NGN 0'
                                             return (
                                                 <div className="promoHistoryItem">

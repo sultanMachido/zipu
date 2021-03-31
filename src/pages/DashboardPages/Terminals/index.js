@@ -133,7 +133,6 @@ const Terminals = (props) => {
           </div>
 
         </div>
-
       </div>
     </div>
   )
