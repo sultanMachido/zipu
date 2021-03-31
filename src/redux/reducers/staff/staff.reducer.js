@@ -4,6 +4,7 @@ export const staffInitialState = {
 	getStaffLoading: false,
 	getStaffSuccess: [],
 	getStafferror: '',
+	getStaffCount: 0,
 
 	addStaffLoading: false,
 	addStaffSuccess: {},
@@ -31,10 +32,12 @@ export const staffReducer = (state = staffInitialState, action) => {
 				getStafferror: action.payload
 			};
 		case staffTypes.GET_STAFF_SUCCESS:
+			console.log(action.payload.data.staffs, ['reducer'])
 			return {
 				...state,
 				getStaffLoading: false,
-				getStaffSuccess: [...action?.payload?.data?.staffs]
+				getStaffSuccess: action?.payload?.data?.staffs.data,
+				getStaffCount: action?.payload?.data?.staffs?.total,
 			};
 		case staffTypes.GET_STAFF_LOADING:
 			return {

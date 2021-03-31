@@ -33,7 +33,6 @@ const AddVehicle = (props) => {
         return message.error({ content: resMessage, key: errorKey, duration: 2 });
       }
     } catch (error) {
-      console.log({ error }, 'error');
     }
   }
 

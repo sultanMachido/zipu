@@ -45,6 +45,6 @@ export const editTerminalsError = error => ({
 	payload: error
 });
 
-export const clearTerminalsTErrors = () => ({
+export const clearTerminalsErrors = () => ({
 	type: terminalsTypes.CLEAR_TERMINALS_ERRORS
 });

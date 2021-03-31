@@ -1,6 +1,6 @@
 /** @format */
 
-import { 
+import {
   createTripLoading, clearCreateTripErrors, createTripErrors, createTripSuccess,
   updateTripLoading, clearUpdateTripErrors, updateTripErrors, updateTripSuccess,
   fetchAllTripsLoading, clearFetchAllTripsErrors, fetchAllTripsErrors, fetchAllTripsSuccess,
@@ -76,7 +76,6 @@ export const fetchAllTrips = (transcoId) => async (dispatch) => {
       return { fetchTripsStatus: false, message: 'hi' };
     }
   } catch (error) {
-    console.log(error);
     const message = error.response?.data?.message;
     dispatch(fetchAllTripsErrors(message));
     dispatch(fetchAllTripsLoading(false));

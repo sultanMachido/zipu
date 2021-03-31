@@ -1,8 +1,8 @@
 import React from 'react';
-import {Form, Progress, message} from 'antd';
-import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
-import {useQuery} from '../../../utils/URLSearchParam';
+import { Form, Progress, message } from 'antd';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { useQuery } from '../../../utils/URLSearchParam';
 import {
 	ReservationWindowField,
 	UploadCACDocsField,
@@ -10,7 +10,7 @@ import {
 	SubmitButton
 } from '../../../components/FormField';
 import './PermitSubmission.scss';
-import {submitPermission} from '../../../redux/actions/permitSubmission/permitSubmission.actions';
+import { submitPermission } from '../../../redux/actions/permitSubmission/permitSubmission.actions';
 
 const PermitSubmission = props => {
 	const inputSize = 'large';
@@ -21,7 +21,7 @@ const PermitSubmission = props => {
 		try {
 			const messageKey = 'permitSubmissionResponse';
 			const key = 'permitSubmission';
-			const tryPermitSubmission = await props.submitPermission({...values});
+			const tryPermitSubmission = await props.submitPermission({ ...values });
 
 			if (tryPermitSubmission.permitSubmissionStatus) {
 				message.success({
@@ -39,7 +39,6 @@ const PermitSubmission = props => {
 				});
 			}
 		} catch (error) {
-			console.log({error}, 'error');
 		}
 	};
 
@@ -67,7 +66,7 @@ const PermitSubmission = props => {
 					onFinish={onFinishPermitSubmission}
 					hideRequiredMark
 					layout="vertical"
-					style={{width: '100%'}}
+					style={{ width: '100%' }}
 				>
 					<div className="permitSubmitInputWrapper">
 						{ReservationWindowField(inputSize, false, true)}

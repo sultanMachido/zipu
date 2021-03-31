@@ -31,7 +31,6 @@ const VehicleInventory = (props) => {
 
   useEffect(() => {
     const zipuUser = JSON.parse(localStorage.getItem('zipuUser'));
-    console.log(zipuUser);
     if (zipuUser?.id) {
       props.fetchAllVehicles(zipuUser?.id);
     }
@@ -39,7 +38,7 @@ const VehicleInventory = (props) => {
 
   const indexOfLastCarTrip = page * pageSize;
   const indexOfFirstCarTrip = indexOfLastCarTrip - pageSize;
-  
+
   const { vehicles: vehiclesData, fetchAllVehiclesLoading } = props.vehicles;
   // const vehicles = vehiclesData.slice(indexOfFirstCarTrip, indexOfLastCarTrip);
   const vehicles = vehiclesData?.data || [];
@@ -77,7 +76,6 @@ const VehicleInventory = (props) => {
     setPage(page)
   }
   const onShowSizeChange = (current, pageSize) => {
-    console.log(pageSize)
     query.set('pageSize', pageSize)
     setPageSize(pageSize)
   }
@@ -132,26 +130,26 @@ const VehicleInventory = (props) => {
         </div>
         <div className="contentMain">
           {
-            fetchAllVehiclesLoading 
-              ? <Row align="middle" justify="center" style={{height: '400px'}}>
+            fetchAllVehiclesLoading
+              ? <Row align="middle" justify="center" style={{ height: '400px' }}>
                 <Loader />
               </Row>
-            : vehicles.length === 0
-              ?
-              <EmptyScreen
-                icon={<ImPencil />}
-                title="List is empty"
-                subText="When you add a trip, they will appear here"
-                buttonText="ADD TRIPS"
-              />
-              :
-              vehicles.map((data) => {
-                return (<VehicleComponent data={data} key={data.id} />)
-              })
+              : vehicles.length === 0
+                ?
+                <EmptyScreen
+                  icon={<ImPencil />}
+                  title="List is empty"
+                  subText="When you add a trip, they will appear here"
+                  buttonText="ADD TRIPS"
+                />
+                :
+                vehicles.map((data) => {
+                  return (<VehicleComponent data={data} key={data.id} />)
+                })
           }
           {
             vehicles.length > 0
-            &&  <Pagination
+            && <Pagination
               total={vehiclesData.length}
               showSizeChanger
               showQuickJumper

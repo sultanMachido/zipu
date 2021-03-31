@@ -20,6 +20,8 @@ import EditStaff from '../pages/DashboardPages/Staff/StaffEdit';
 import Terminals from '../pages/DashboardPages/Terminals';
 import AddTerminal from '../pages/DashboardPages/Terminals/AddTerminal';
 import EditTerminal from '../pages/DashboardPages/Terminals/EditTerminal';
+import ViewTerminal from '../pages/DashboardPages/Terminals/ViewTerminal';
+import InnerPageHeader from '../components/InnerPagesHeader'
 
 import { logUserOut } from '../redux/actions/login/login.actions';
 
@@ -30,60 +32,76 @@ import Company from "../pages/DashboardPages/Company";
 
 class DashboardContainer extends Component {
 	handleLogout = async () => {
-		return await this.props.logUserOut(this.props.history);
+		return this.props.logUserOut(this.props.history);
 	};
 
 	render() {
 		const pathname = this.props.location.pathname;
 		const profile = JSON.parse(window.localStorage.getItem('_profile'));
-		const id = pathname.split('/')[3];
 
 		const innerPages = [
 			{
 				route: '/staff/add',
 				prev: '/staff',
-				title: 'Create new staff'
+				title: 'Create new staff',
+				module: 'staff'
 			},
-			{
-				route: `/staff/edit/${id}`,
-				prev: '/staff',
-				title: 'Edit Staff'
-			},
-			{
-				route: '/car-listing/edit/:id',
-				prev: '/car-listing',
-				title: 'Edit Listing'
-			},
+
 			{
 				route: '/car-listing/add',
 				prev: '/car-listing',
-				title: 'Create new trip'
+				title: 'Create new trip',
+				module: 'car'
 			},
 			{
 				route: '/reports/promo-codes',
 				prev: '/reports',
-				title: 'Promo Codes'
+				title: 'Promo Codes',
+				module: 'promo'
 			},
 			{
 				route: '/trip-management/add',
 				prev: '/trip-management',
-				title: 'Create new Trip'
+				title: 'Create new Trip',
+				module: 'trip'
 			},
 			{
 				route: '/terminals/add',
 				prev: '/terminals',
-				title: 'Create new Terminal'
+				title: 'Create new Terminal',
+				module: 'terminals'
+			},
+			{
+				route: '/terminals/:id',
+				prev: '/terminals',
+				title: 'View Terminal',
+				module: 'terminals'
 			},
 			{
 				route: '/terminals/edit/:id',
 				prev: '/terminals',
-				title: 'Edit Terminal'
-			}
+				title: 'Edit Terminal',
+				module: 'terminals'
+			},
+			{
+				route: `/staff/edit/:id`,
+				prev: '/staff',
+				title: 'Edit Staff',
+				module: 'staff'
+			},
+			{
+				route: '/car-listing/edit/:id',
+				prev: '/car-listing',
+				title: 'Edit Listing',
+				module: 'car'
+			},
 		];
+
 
 		const selectedInnerPage = innerPages.filter(({ route }) => {
 			return route === pathname;
 		})[0];
+
 		return (
 			<>
 				<Navbar path={pathname} profile={profile} logoutUser={this.handleLogout} />
@@ -96,6 +114,7 @@ class DashboardContainer extends Component {
 					title={selectedInnerPage && selectedInnerPage.title}
 					visible={selectedInnerPage ? true : false}
 				/>
+
 				<Layout className="layoutContainer">
 					<Switch>
 						<Route exact path="/bookings" component={Bookings}></Route>
@@ -112,6 +131,7 @@ class DashboardContainer extends Component {
 						<Route exact path="/terminals" component={Terminals}></Route>
 						<Route exact path="/terminals/add" component={AddTerminal}></Route>
 						<Route exact path="/terminals/edit/:id" component={EditTerminal}></Route>
+						<Route exact path="/terminals/:id" component={ViewTerminal}></Route>
 					</Switch>
 				</Layout>
 				<div className="footerSection">

@@ -15,6 +15,7 @@ import './styles.scss';
 import { getTerminals } from '../../../../redux/actions/terminals/terminals.action';
 import { addStaff } from '../../../../redux/actions/staff/staff.actions';
 import { apiErrors } from '../../../../utils/errorHandler/apiErrors';
+import MultiSelect from "@kenshooui/react-multi-select";
 
 const { Panel } = Collapse;
 
@@ -23,9 +24,11 @@ const StaffAdd = props => {
 	const [form] = Form.useForm();
 	const [checked, setChecked] = React.useState(true);
 	const [modalOpen, setModalOpen] = React.useState(false)
+	const [selectedItems, setSelectedItems] = React.useState([]);
 
 	const fetchTerminals = async () => {
-		const response = await props.getTerminals();
+		const transco_id = localStorage.getItem('transcoId')
+		const response = await props.getTerminals({ transco_id });
 
 		return response;
 	};
@@ -38,12 +41,14 @@ const StaffAdd = props => {
 		Modal.destroyAll()
 	}
 
-	const onFinish = async values => {
-		try {
-			const messageKey = 'addStaffResponse';
-			const key = 'addStaff';
-			const tryAddStaff = await props.addStaff({ ...values });
+	const onFinish = async (values) => {
+		const terminals = selectedItems.map((item) => {
+			return item.id
+		});
 
+		try {
+			const key = 'addStaff';
+			const tryAddStaff = await props.addStaff({ ...values, terminals });
 			if (tryAddStaff.addStaffStatus) {
 				Modal.success({
 					content: (<div>
@@ -56,7 +61,6 @@ const StaffAdd = props => {
 					style: { marginTop: "20px" },
 					okText: 'NEW STAFF PROFILE',
 					centered: true,
-
 				})
 				form.resetFields();
 			} else {
@@ -68,7 +72,7 @@ const StaffAdd = props => {
 				});
 			}
 		} catch (error) {
-			console.log({ error }, 'error');
+
 		}
 	};
 
@@ -76,6 +80,9 @@ const StaffAdd = props => {
 		setChecked(checked);
 	};
 
+	const terminals = props?.terminals?.getTerminalsSuccess?.terminals?.data?.map((terminal) => {
+		return { id: terminal.id, label: terminal.name }
+	})
 
 	return (
 		<div className="staffAddWrapper">
@@ -136,13 +143,11 @@ const StaffAdd = props => {
 						<div className="inputElement">
 							<Collapse defaultActiveKey={['1']}>
 								<Panel header="Allocate terminal to this user" key="1">
-									{SearchTerminalField(
-										inputSize,
-										true,
-										false,
-										'Search terminals',
-										props
-									)}
+									<MultiSelect
+										items={terminals}
+										selectedItems={props?.selectedItems}
+										onChange={(items) => setSelectedItems(items)}
+									/>
 								</Panel>
 							</Collapse>
 						</div>

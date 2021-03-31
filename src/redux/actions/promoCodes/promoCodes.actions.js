@@ -1,6 +1,6 @@
 /** @format */
 
-import { 
+import {
   createPromoCodeLoading, clearCreatePromoCodeErrors, createPromoCodeErrors, createPromoCodeSuccess,
   updatePromoCodeLoading, clearUpdatePromoCodeErrors, updatePromoCodeErrors, updatePromoCodeSuccess,
   fetchAllPromoCodesLoading, clearFetchAllPromoCodesErrors, fetchAllPromoCodesErrors, fetchAllPromoCodesSuccess,
@@ -76,7 +76,6 @@ export const fetchAllPromoCodes = () => async (dispatch) => {
       return { fetchPromoCodesStatus: false, message: 'hi' };
     }
   } catch (error) {
-    console.log(error);
     const message = error.response?.data?.message;
     dispatch(fetchAllPromoCodesErrors(message));
     dispatch(fetchAllPromoCodesLoading(false));

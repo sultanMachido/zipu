@@ -1,22 +1,22 @@
 /** @format */
 
 import React from 'react';
-import {Form, message} from 'antd';
-import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
-import {RiMailOpenLine} from 'react-icons/all';
-import {SubmitButton} from '../../../components/FormField';
-import {useWindowSize} from '../../../hooks/useWindowSize';
+import { Form, message } from 'antd';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { RiMailOpenLine } from 'react-icons/all';
+import { SubmitButton } from '../../../components/FormField';
+import { useWindowSize } from '../../../hooks/useWindowSize';
 import OtpInput from 'react-otp-input';
-import {verifyUserEmail} from '../../../redux/actions/verifyEmail/verifyEmail.actions';
-import {useQuery} from '../../../utils/URLSearchParam';
+import { verifyUserEmail } from '../../../redux/actions/verifyEmail/verifyEmail.actions';
+import { useQuery } from '../../../utils/URLSearchParam';
 
 import './EmailVerification.scss';
 
 const EmailVerification = props => {
 	const [form] = Form.useForm();
 	const [otpValue, setOtpValue] = React.useState('');
-	const {width} = useWindowSize();
+	const { width } = useWindowSize();
 	let query = useQuery();
 
 	const handleChange = otp => {
@@ -38,10 +38,9 @@ const EmailVerification = props => {
 				query.set('step', 3);
 				props.history.push(`/register?step=${query.get('step')}`);
 			} else {
-				return message.error({content: tryUserEmailVerification.message, key, duration: 2});
+				return message.error({ content: tryUserEmailVerification.message, key, duration: 2 });
 			}
 		} catch (error) {
-			console.log({error}, 'error');
 		}
 	};
 
@@ -49,7 +48,7 @@ const EmailVerification = props => {
 		<>
 			<div className="emailVerificationHeader">
 				<div className="emailIconWrapper">
-					<RiMailOpenLine style={{color: '#ffbc00', fontSize: '5rem'}} />
+					<RiMailOpenLine style={{ color: '#ffbc00', fontSize: '5rem' }} />
 				</div>
 			</div>
 			<div className="otpVerifyMessageWrapper">
@@ -64,7 +63,7 @@ const EmailVerification = props => {
 				onFinish={onVerifyEmail}
 				hideRequiredMark
 				layout="vertical"
-				style={{width: '100%', height: '100%'}}
+				style={{ width: '100%', height: '100%' }}
 			>
 				<div className="otpInputWrapper">
 					<OtpInput
@@ -97,7 +96,7 @@ const EmailVerification = props => {
 						errorStyle={{
 							border: '1px solid red'
 						}}
-						// placeholder="----"
+					// placeholder="----"
 					/>
 				</div>
 				<div className="btnWrapper">
