@@ -175,6 +175,8 @@ class DashboardContainer extends Component {
 							<Route exact path="/passengers/:id" component={ViewPassenger}></Route>
 							<Route exact path="/company" component={Company}></Route>
 							<Route exact path="/company/edit" component={EditCompany}></Route>
+							<Route exact path="/reports" component={Report}></Route>
+							<Route exact path="/reports/promo-codes" component={PromoCodes}></Route>
 						</Switch>
 					</React.Suspense>
 				</Layout>
