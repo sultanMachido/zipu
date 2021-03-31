@@ -145,8 +145,8 @@ const StaffAdd = props => {
 								<Panel header="Allocate terminal to this user" key="1">
 									<MultiSelect
 										items={terminals}
-										selectedItems={props?.selectedItems}
 										onChange={(items) => setSelectedItems(items)}
+										showSelectedItems
 									/>
 								</Panel>
 							</Collapse>

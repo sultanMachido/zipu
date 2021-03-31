@@ -49,7 +49,7 @@ export const getStaff = ({ transco_id, pageSize, page }) => async dispatch => {
 };
 
 // add staff
-export const addStaff = staffRecord => async dispatch => {
+export const addStaff = (staffRecord) => async dispatch => {
 	dispatch(clearStaffTErrors());
 	dispatch(addStaffLoading());
 	try {

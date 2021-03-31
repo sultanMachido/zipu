@@ -8,7 +8,10 @@ import {
 	addTerminalsError,
 	editTerminalsLoading,
 	editTerminalsSuccess,
-	editTerminalsError
+	editTerminalsError,
+	getSingleTerminalLoading,
+	getSingleTerminaError,
+	getSingleTerminaSuccess
 } from './terminals.actionCreators';
 
 import { APIService } from '../../../config/apiConfig';
@@ -72,3 +75,31 @@ export const addTerminal = (termialData) => async (dispatch) => {
 		return { addTerminalStatus: false, message: message || SOMETHING_WENT_WRONG };
 	}
 }
+
+
+
+export const getTerminal = (termialData) => async (dispatch) => {
+	console.log({ termialData })
+	dispatch(getSingleTerminalLoading());
+	try {
+		const getTerminalRequest = await APIService.get(`/terminals/${parseInt(termialData)}`);
+		if (getTerminalRequest.data.status === 'Success') {
+			dispatch(getSingleTerminalLoading());
+			dispatch(getSingleTerminaSuccess(getTerminalRequest.data));
+			return {
+				getTerminalStatus: true,
+				tokenValid: true,
+				message: 'Terminal Successfully Created'
+			};
+		} else {
+			dispatch(getSingleTerminalLoading(false));
+			return { getTerminalStatus: false, message: SOMETHING_WENT_WRONG };
+		}
+	} catch (error) {
+		const message = error.response?.data?.message;
+		dispatch(getSingleTerminaError(message));
+		dispatch(getSingleTerminalLoading(false));
+		return { getTerminalStatus: false, message: message || SOMETHING_WENT_WRONG };
+	}
+}
+
