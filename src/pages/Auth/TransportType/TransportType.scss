@@ -9,10 +9,25 @@
     margin-left: 3rem;
     h1{
       font-weight: 600;
-      margin: 0;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 25px;
+      line-height: 32px;
+      color: #323D44;
+      margin: 8px 0px;
     }
     p{
-      margin: 0;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 20px;
+      color: #637A87;
+      flex: none;
+      order: 1;
+      flex-grow: 0;
+      margin: 8px 0px;
     }
   }
 }

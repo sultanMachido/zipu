@@ -1,4 +1,5 @@
 .layoutContainer {
+    width: 100%;
     &.ant-layout {
         padding: 59px 130px;
         background: #fff;
@@ -95,7 +96,7 @@ button.ant-btn-primary {
     letter-spacing: 0.45px;
     text-transform: uppercase;
     color: #323D44;
-    &:hover, &:focus, {
+    &:hover, &:focus {
         background: linear-gradient(180deg, #ebc55d 0%, #ca8f28 93.23%, #83550b 100%);
         color: #323D44;
     }
@@ -104,4 +105,15 @@ button.ant-btn-primary {
 }
 .footerSection{
     width: 100%;
+}
+
+@media (max-width:1024px){
+    .layoutContainer {
+        &.ant-layout {
+            padding: 59px 30px;
+            background: #fff;
+            width: 118%;
+        }
+    
+    }
 }

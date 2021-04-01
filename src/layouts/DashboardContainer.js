@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import moduleHelpers from '../utils/helpers/moduleHelper';
-import ModuleLoading from '../components/Loader';
 import "./styles.scss";
 
 import MenuTabs from '../components/MenuTabs';
@@ -114,7 +113,7 @@ class DashboardContainer extends Component {
 		})[0];
 
 		return (
-			<>
+			<div style={{ width: '100%' }}>
 				<Navbar path={pathname} profile={profile} logoutUser={this.handleLogout} />
 				<div style={{ marginTop: "80px" }} />
 				<MenuTabs
@@ -154,7 +153,7 @@ class DashboardContainer extends Component {
 				<div className="footerSection">
 					<Footer />
 				</div>
-			</>
+			</div>
 		);
 	}
 }
