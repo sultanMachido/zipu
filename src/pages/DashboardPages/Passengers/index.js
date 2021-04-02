@@ -17,14 +17,13 @@ const Passengers = (props) => {
   const columns = passengersColumns();
 
   const handleClick = (passenger) => {
-    console.log({ passenger })
-    props.history.push({ pathname: `/passengers/${passenger.id}`, state: passenger })
+    props.history.push({ pathname: `/passengers/passenger`, state: passenger })
   }
 
   const data = PassengersList.map((passenger) => {
     return {
       ...passenger,
-      action: OutlinedButton('View Passenger', () => handleClick(passenger))
+      action: OutlinedButton('View', () => handleClick(passenger))
     }
   })
 
@@ -32,7 +31,6 @@ const Passengers = (props) => {
     <div className="passengersWrapper">
       <div className="passengersHeader">
         <h2>Passenger Management</h2>
-
         <div className="passengersSearch">Search</div>
       </div>
 

@@ -4,7 +4,7 @@ import React from 'react';
 import { Form, message } from 'antd';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { RiMailOpenLine } from 'react-icons/all';
+import { HiMail } from 'react-icons/all';
 import { SubmitButton } from '../../../components/FormField';
 import { useWindowSize } from '../../../hooks/useWindowSize';
 import OtpInput from 'react-otp-input';
@@ -48,13 +48,13 @@ const EmailVerification = props => {
 		<>
 			<div className="emailVerificationHeader">
 				<div className="emailIconWrapper">
-					<RiMailOpenLine style={{ color: '#ffbc00', fontSize: '5rem' }} />
+					<HiMail style={{ color: '#ffbc00', fontSize: '5rem' }} />
 				</div>
 			</div>
 			<div className="otpVerifyMessageWrapper">
 				<h1>Email Verification</h1>
 				<p>
-					An OTP code has been sent to your email for verificatio, enter the code here to
+					An OTP code has been sent to your email for verification, <br /> enter the code here to
 					verify account
 				</p>
 			</div>
@@ -83,7 +83,7 @@ const EmailVerification = props => {
 						}}
 						inputStyle={{
 							width: '90%',
-							height: width <= '600' ? '5rem' : '10rem',
+							height: width <= '600' ? '5rem' : '12rem',
 							outline: 'none',
 							border: 'none',
 							backgroundColor: '#F8EAC2',

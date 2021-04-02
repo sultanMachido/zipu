@@ -39,6 +39,8 @@
   font-feature-settings: 'tnum', "tnum";
   line-height: 1.5715;
   display: inline-block !important;
+  border: 1px solid #637A87;
+  
 }
 
 .ant-upload-list-item-error .ant-upload-list-item-name {
@@ -163,7 +165,6 @@
 
 .selectElement{
   border-radius: 10px !important;
-  background: red !important;
 }
 
 .ant-input-search-button {
@@ -183,4 +184,63 @@
   &:active{
     outline: none;
   }
+}
+.ant-form-item {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  -webkit-font-feature-settings: 'tnum';
+  font-feature-settings: 'tnum', "tnum";
+  margin-bottom: 24px;
+  vertical-align: top;
+  border-radius: 5px;
+}
+
+.ant-input {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-variant: tabular-nums;
+  list-style: none;
+  -webkit-font-feature-settings: 'tnum';
+  font-feature-settings: 'tnum', "tnum";
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  min-width: 0;
+  padding: 4px 11px;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  line-height: 1.5715;
+  background-color: #fff;
+  background-image: none;
+  border-radius: 2px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border-radius: 5px !important;
+}
+
+.ant-select {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  -webkit-font-feature-settings: 'tnum';
+  font-feature-settings: 'tnum', "tnum";
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  border-radius:9px !important;
 }

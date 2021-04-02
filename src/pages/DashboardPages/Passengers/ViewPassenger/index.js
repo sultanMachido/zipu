@@ -55,7 +55,7 @@ const ViewPassenger = (props) => {
     return {
       ...passengerBooking,
       status: passengerBooking.status === 1 ? <span className="upcoming">Upcoming</span> : <span className="completed">Completed</span>,
-      action: OutlinedButton('View Trip details')
+      action: OutlinedButton('View')
     }
   })
 
@@ -114,12 +114,12 @@ const ViewPassenger = (props) => {
 
             <div className="passengerGovID">
               <p className="title">Insurance Doc.</p>
-              <p className="value">{OutlinedButton('Click to upload')}</p>
+              <p className="value">{OutlinedButton('Upload')}</p>
             </div>
 
             <div className="passengerGovID">
               <p className="title">Proof of Residency</p>
-              <p className="value">{OutlinedButton('Click to upload')}</p>
+              <p className="value">{OutlinedButton('Upload')}</p>
             </div>
           </div>
         </div>

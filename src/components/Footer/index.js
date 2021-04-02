@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.scss';
 import ZipoLogoWhite from '../../assets/img/ZipulogoWhite.svg';
-import {IoLogoTwitter, ImFacebook, FaGoogle, AiFillYoutube} from 'react-icons/all';
+import { IoLogoTwitter, ImFacebook, FaGoogle, AiFillYoutube } from 'react-icons/all';
 
 const Footer = () => {
 	const year = new Date();

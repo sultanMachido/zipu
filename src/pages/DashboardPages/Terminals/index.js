@@ -73,8 +73,8 @@ const Terminals = (props) => {
     setPageSize(pageSize)
   }
 
-  const onClick = (terminalId) => {
-    props.history.push(`/terminals/${terminalId}`);
+  const onClick = (data) => {
+    props.history.push({ pathname: `/terminals/terminal`, state: data });
   }
 
 
@@ -119,10 +119,9 @@ const Terminals = (props) => {
             </div>
           }
 
-          <div className="paginationWrapper">
+          {currentTerminals && currentTerminals.length === 0 ? null : <div className="paginationWrapper">
             <Pagination
               total={props?.terminals?.terminalCount}
-              showSizeChanger
               showTotal={total => `Total ${total} terminals`}
               current={parseInt(page)}
               onChange={handleChange}
@@ -131,7 +130,7 @@ const Terminals = (props) => {
               size="large"
             />
           </div>
-
+          }
         </div>
       </div>
     </div>

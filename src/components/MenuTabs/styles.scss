@@ -1,7 +1,7 @@
 .menuTabs {
     background: #F1F3F4;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-end;
     padding: 34px 130px 0px;
     .tab-item {
@@ -37,3 +37,25 @@
         }
     }
 }
+
+//media queries max-width:1024px
+@media (max-width: 1024px){
+    .menuTabs {
+        width: calc(100% + 180px);
+        padding: 34px 0px 0px;
+    }
+}
+
+//media queries max-width:768px
+@media (max-width:768px){
+    .menuTabs {
+        width: calc(100% + 380px);
+    }
+  }
+
+  //media queries max-width:414px
+@media (max-width:414px){
+    .menuTabs {
+        width: calc(100% + 710px);
+    }
+  }

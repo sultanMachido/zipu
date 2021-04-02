@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, useLocation} from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './styles.scss';
 
 const menuList = [
@@ -14,8 +14,8 @@ const menuList = [
 		route: '/passengers'
 	},
 	{
-		title: 'Car Listing',
-		subText: 'Car/Bus Management',
+		title: 'Vehicle',
+		subText: 'Management',
 		route: '/car-listing'
 	},
 	{
@@ -30,12 +30,12 @@ const menuList = [
 	},
 	{
 		title: 'Reports',
-		subText: 'Analytics system',
+		subText: 'Analytics',
 		route: '/reports'
 	},
 	{
 		title: 'Company',
-		subText: 'Details and settings',
+		subText: 'Details',
 		route: '/company'
 	},
 	{
@@ -45,12 +45,12 @@ const menuList = [
 	}
 ];
 
-const MenuTabs = ({visible}) => {
-	const {pathname} = useLocation();
+const MenuTabs = ({ visible }) => {
+	const { pathname } = useLocation();
 	return (
 		visible && (
 			<div className="menuTabs">
-				{menuList.map(({title, subText, route}) => {
+				{menuList.map(({ title, subText, route }) => {
 					return (
 						<Link to={route} key={route}>
 							<div className={`tab-item ${pathname === route ? 'active' : ''}`}>
