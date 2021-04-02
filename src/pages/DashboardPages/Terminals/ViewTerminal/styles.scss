@@ -12,7 +12,7 @@
     align-items:flex-start;
 
     .viewTerminalBuses{
-      flex-basis: 80%;
+      flex-basis: 70%;
       background: #FFFFFF;
       border: 1px solid #E3EAED;
       box-sizing: border-box;
@@ -108,24 +108,123 @@
         border: 1px solid #E3EAED;
         box-sizing: border-box;
         border-radius: 8px;
-        width: 367px;
-        height: 195px;
+        padding: 2rem 2rem 4rem 2rem;
+
+        p.title{
+          color: #8D8D8D;
+          margin-bottom: 3rem;
+
+        }
+        .chartsWrapper{
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items:flex-start;
+
+          .circleChart{
+            flex-basis: 30%;
+
+            .ant-progress-circle-trail {
+              stroke: rgba(39, 174, 96, 0.2);
+            }
+
+            .formatTitle{
+              margin-top: 1rem; 
+              font-weight: bold;
+              font-size: 14px;
+            }
+            .formatText{
+              font-size: 12px;
+              margin-top: -1rem;
+              color: #8D8D8D;
+              font-size: 12px;
+            }
+          }
+
+          .linearChart{
+            flex: 1;
+
+            .active{
+              margin-bottom: 3rem;
+            }
+          }
+        }
       }
       .viewTerminalPassengersStats{
-        width: 367px;
-        height: 136px;
         background: #FFFFFF;
         border: 1px solid #E3EAED;
         box-sizing: border-box;
         border-radius: 8px;
+
+        p.title{
+          color: #8D8D8D;
+          margin-bottom: 3rem;
+        }
+        .passengersDetails{
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          & > div {
+            h3{
+              font-size: 14px;
+              font-family: Inter;
+              font-style: normal;
+              font-weight: 500;
+            }
+            p{
+              color: #8D8D8D;
+              font-size: 12px;
+            }
+          }
+        }
       }
       .viewTerminalStaffStats{
-        width: 367px;
-        height: 216px;
         background: #FFFFFF;
         border: 1px solid #E3EAED;
         box-sizing: border-box;
         border-radius: 8px;
+        padding: 2rem 2rem 4rem 2rem;
+
+        p.title{
+          color: #8D8D8D;
+          margin-bottom: 3rem;
+        }
+
+        .staffStats{
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items:flex-start;
+
+          .circleChart{
+            flex-basis: 30%;
+
+            .ant-progress-circle-trail {
+              stroke: #FFBC00;
+          }
+          .formatTitle{
+            margin-top: 1rem; 
+            font-weight: bold;
+            font-size: 14px;
+          }
+          .formatText{
+            font-size: 12px;
+            margin-top: -1rem;
+            color: #8D8D8D;
+            font-size: 12px;
+          }
+        }
+
+          .linearChart{
+            flex: 1;
+
+            .active{
+              margin-bottom: 3rem;
+            }
+          }
+        }
       }
     }
   }
