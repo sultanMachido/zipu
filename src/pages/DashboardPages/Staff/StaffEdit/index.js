@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, message, Collapse, Modal } from 'antd';
+import { Form, message, Collapse, Modal, notification } from 'antd';
 import { connect } from 'react-redux';
 import {
 	StaffFullNameField,
@@ -12,11 +12,11 @@ import {
 } from '../../../../components/FormField';
 import './styles.scss';
 import { getTerminals } from '../../../../redux/actions/terminals/terminals.action';
-import { editStaff } from '../../../../redux/actions/staff/staff.actions';
+import { editStaff, activateStaff, deActivateStaff, getSingleStaff } from '../../../../redux/actions/staff/staff.actions';
 import { apiErrors } from '../../../../utils/errorHandler/apiErrors';
 import MultiSelect from "@kenshooui/react-multi-select";
 import Switch from '../../../../components/Switch';
-import ActivateDisableModal from '../../../../components/Modals/ActivateDisableModal'
+import ActivateDisableModal from '../../../../components/Modals/ActivateDisableModal';
 
 const { Panel } = Collapse;
 
@@ -26,20 +26,35 @@ const EditStaff = (props) => {
 	const [selectedItems, setSelectedItems] = React.useState([]);
 	const [modalOpen, setModalOpen] = React.useState(false);
 	const [active, setActivate] = React.useState(false)
-	const [disabled, setDisabled] = React.useState(false)
+	const [disabled, setDisabled] = React.useState(false);
+	const [checked, setChecked] = React.useState(false)
 
+	// fetch terminals
 	const fetchTerminals = async () => {
 		const transco_id = localStorage.getItem('transcoId')
 		return props.getTerminals({ transco_id });
 	};
 
+	// fetch staff after editing
+	const fetchStaff = async () => {
+		const staffId = props?.location?.state?.id
+		return props.getSingleStaff(staffId);
+	}
+
 	React.useEffect(() => {
 		fetchTerminals();
 	}, []);
 
+	React.useEffect(() => {
+		fetchStaff();
+	}, [checked]);
+
+
 	const terminals = props?.location?.state?.terminals?.map((terminal) => {
 		return { id: terminal.id, label: terminal.name }
 	});
+
+	// useEffect for editing staff
 	React.useEffect(() => {
 		form.setFieldsValue({
 			email: props?.location?.state?.email,
@@ -52,20 +67,22 @@ const EditStaff = (props) => {
 		});
 	}, [props.location.state]);
 
+	// close modal after staff has been editted
 	const handleClick = () => {
 		Modal.destroyAll();
 		props.history.push('/staff');
 	}
 
+	// close modal
 	const handleCancel = () => {
 		setActivate(false)
 		setDisabled(false)
+		setActivate(false)
 	}
 
-
+	// method to call on staff edit
 	const onFinish = async values => {
 		const staffId = props?.location?.state?.id
-
 		try {
 			const key = 'editStaff';
 			const tryEditStaff = await props.editStaff({ ...values, staffId });
@@ -80,7 +97,6 @@ const EditStaff = (props) => {
 							}
 						</div>),
 					closable: modalOpen || true,
-					style: { marginTop: "20px" },
 					centered: true,
 				})
 			} else {
@@ -95,18 +111,83 @@ const EditStaff = (props) => {
 		}
 	};
 
+	// terminal data for the multi select
 	const terminalsData = props?.terminals?.getTerminalsSuccess?.terminals?.data?.map((terminal) => {
 		return { id: terminal.id, label: terminal.name }
 	});
 
+	// handle activate/deactivate method
+	const handleSwitch = async (value) => {
+		if (value === true) {
+			setActivate(true)
+			setDisabled(false);
+		} else {
+			setDisabled(true)
+			setActivate(false)
+		}
+
+	}
+
+	// method to call on activate/deactivate
+	const onHandleChangeStatus = async (values) => {
+		const staffId = props?.location?.state?.id;
+		try {
+			if (props.staffData.getSingleStaffSuccess?.status !== 1) {
+				const res = await props.activateStaff({ staffId, ...values });
+				if (res.activateStaffStatus) {
+					setChecked((value) => !value)
+					handleCancel()
+					fetchStaff()
+					notification.success({
+						message: 'Activation Successful',
+						description:
+							'This staff have been successfully activated',
+					});
+				} else {
+					notification.error({
+						message: 'Activation Failed',
+						description:
+							'Unauthorized',
+					});
+				}
+			} else {
+				const res = await props.deActivateStaff({ staffId, ...values });
+				if (res.deActivateStaffStatus) {
+					setChecked((value) => !value)
+					handleCancel()
+					fetchStaff()
+					notification.success({
+						message: 'Deactivation Successful',
+						description:
+							'This staff have been successfully Deactivated',
+					});
+
+				} else {
+					notification.error({
+						message: 'Deactivation Failed',
+						description:
+							'Unauthorized',
+					});
+				}
+			}
+		} catch (error) {
+
+		}
+	}
+
+	// return
 	return (
 		<div className="staffEditWrapper">
 			<div className="editStaffHeader">
 				<h5 className="title">Edit Staff</h5>
 				<Switch
 					data={props?.location?.state?.status}
+					status={props?.staffData?.getSingleStaffSuccess?.status}
 					setDisabled={setDisabled}
 					setActivate={setActivate}
+					handleClick={handleSwitch}
+					checked={props?.staffData?.getSingleStaffSuccess?.status === 1 ? true : false}
+					loading={props?.staffData?.getSingleStaffLoading}
 				/>
 			</div>
 			<div className="editStaffForm">
@@ -185,6 +266,7 @@ const EditStaff = (props) => {
 				text={`Activating this staff will all them to use the platform
 				based on their configured roles and permission.
 				Enter admin password to continue`}
+				onFinish={onHandleChangeStatus}
 			/>
 
 			<ActivateDisableModal
@@ -194,6 +276,7 @@ const EditStaff = (props) => {
 				text="Deactivating this staff will remove them from all terminal,
 				from search page, this action cannot be undone.
 				Enter admin password to continue"
+				onFinish={onHandleChangeStatus}
 			/>
 		</div>
 	);
@@ -208,7 +291,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
 	getTerminals,
-	editStaff
+	editStaff,
+	activateStaff,
+	deActivateStaff,
+	getSingleStaff
 };
 
 

@@ -21,6 +21,28 @@ export const getStaffError = error => ({
 	payload: error
 });
 
+
+// get single staff
+export const getSingleStaffLoading = (loadingState = true) => ({
+	type: staffTypes.GET_SINGLE_STAFF_LOADING,
+	payload: loadingState
+});
+
+export const getSingleStaffSuccess = data => ({
+	type: staffTypes.GET_SINGLE_STAFF_SUCCESS,
+	payload: data
+});
+
+export const getSingleStaffError = error => ({
+	type: staffTypes.GET_SINGLE_STAFF_ERROR,
+	payload: error
+});
+
+export const clearSingleStaffTErrors = () => ({
+	type: staffTypes.CLEAR_SINGLE_STAFF_ERRORS
+});
+
+
 // add staff
 export const addStaffLoading = (loadingState = true) => ({
 	type: staffTypes.ADD_STAFF_LOADING,
