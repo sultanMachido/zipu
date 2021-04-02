@@ -6,6 +6,10 @@ export const staffInitialState = {
 	getStafferror: '',
 	getStaffCount: 0,
 
+	getSingleStaffLoading: false,
+	getSingleStaffSuccess: {},
+	getSingleStafferror: '',
+
 	addStaffLoading: false,
 	addStaffSuccess: {},
 	addStaffError: '',
@@ -42,6 +46,36 @@ export const staffReducer = (state = staffInitialState, action) => {
 			return {
 				...state,
 				getStaffLoading: action.payload
+			};
+
+		// GET STAFF
+		case staffTypes.GET_SINGLE_STAFF_ERROR:
+			return {
+				...state,
+				getSingleStafferror: action.payload
+			};
+		case staffTypes.GET_SINGLE_STAFF_SUCCESS:
+			return {
+				...state,
+				getSingleStaffLoading: false,
+				getSingleStaffSuccess: action?.payload?.data?.staff,
+			};
+		case staffTypes.GET_SINGLE_STAFF_LOADING:
+			return {
+				...state,
+				getSingleStaffLoading: action.payload
+			};
+
+		case staffTypes.GET_SINGLE_STAFF_LOADING:
+			return {
+				...state,
+				getSingleStaffLoading: action.payload
+			};
+
+		case staffTypes.CLEAR_SINGLE_STAFF_ERRORS:
+			return {
+				...state,
+				getSingleStafferror: ''
 			};
 
 		// ADD STAFF

@@ -14,7 +14,11 @@ import {
 	activateStaffLoading,
 	deActivateStaffError,
 	deActivateStaffSuccess,
-	deActivateStaffLoading
+	deActivateStaffLoading,
+	getSingleStaffError,
+	getSingleStaffLoading,
+	getSingleStaffSuccess,
+	clearSingleStaffTErrors
 } from './staff.actionCreators';
 
 import { APIService } from '../../../config/apiConfig';
@@ -22,7 +26,7 @@ import { APIService } from '../../../config/apiConfig';
 const SOMETHING_WENT_WRONG = 'Something went wrong';
 
 // get all staff
-export const getStaff = ({ transco_id, pageSize, page }) => async dispatch => {
+export const getStaffs = ({ transco_id, pageSize, page }) => async dispatch => {
 	dispatch(clearStaffTErrors());
 	dispatch(getStaffLoading());
 	try {
@@ -33,7 +37,6 @@ export const getStaff = ({ transco_id, pageSize, page }) => async dispatch => {
 			dispatch(getStaffSuccess(getStaffRequest.data));
 			return {
 				getStaffStatus: true,
-				tokenValid: true,
 				message: 'Successfully fetched staff records'
 			};
 		} else {
@@ -48,6 +51,32 @@ export const getStaff = ({ transco_id, pageSize, page }) => async dispatch => {
 	}
 };
 
+// get single staff
+export const getSingleStaff = (staffId) => async dispatch => {
+	dispatch(clearSingleStaffTErrors());
+	dispatch(getSingleStaffLoading());
+	try {
+		const getSingleStaffRequest = await APIService.get(`/transco-staff/${staffId}`);
+
+		if (getSingleStaffRequest.data.status === 'Success') {
+			dispatch(getSingleStaffLoading());
+			dispatch(getSingleStaffSuccess(getSingleStaffRequest.data));
+			return {
+				getSingleStaffStatus: true,
+				message: 'Successfully fetched staff record'
+			};
+		} else {
+			dispatch(getSingleStaffLoading(false));
+			return { getSingleStaffStatus: false, message: SOMETHING_WENT_WRONG, data: getSingleStaffRequest.data.data };
+		}
+	} catch (error) {
+		const message = error.response?.data?.message;
+		dispatch(getSingleStaffError(message));
+		dispatch(getSingleStaffLoading(false));
+		return { getSingleStaffStatus: false, message: message || SOMETHING_WENT_WRONG };
+	}
+};
+
 // add staff
 export const addStaff = (staffRecord) => async dispatch => {
 	dispatch(clearStaffTErrors());
@@ -59,7 +88,6 @@ export const addStaff = (staffRecord) => async dispatch => {
 			dispatch(addStaffSuccess(addStaffRequest.data));
 			return {
 				addStaffStatus: true,
-				tokenValid: true,
 				message: 'Staff added successfully'
 			};
 		} else {
@@ -86,7 +114,6 @@ export const editStaff = (staffRecord) => async dispatch => {
 			dispatch(editStaffSuccess(editStaffRequest.data));
 			return {
 				editStaffStatus: true,
-				tokenValid: true,
 				message: 'Staff edited successfully'
 			};
 		} else {
@@ -102,17 +129,16 @@ export const editStaff = (staffRecord) => async dispatch => {
 };
 
 // activate staff
-export const activateStaff = staffId => async dispatch => {
+export const activateStaff = (data) => async dispatch => {
 	dispatch(clearStaffTErrors());
 	dispatch(activateStaffLoading());
 	try {
-		const activateStaffRequest = await APIService.post(`/activatestaff/${staffId}`);
+		const activateStaffRequest = await APIService.post(`/activatestaff/${data?.staffId}`, { password: data?.password });
 		if (activateStaffRequest.data.status === 'Success') {
 			dispatch(activateStaffLoading());
 			dispatch(activateStaffSuccess(activateStaffRequest.data));
 			return {
 				activateStaffStatus: true,
-				tokenValid: true,
 				message: 'Staff activated successfully'
 			};
 		} else {
@@ -128,17 +154,16 @@ export const activateStaff = staffId => async dispatch => {
 };
 
 // deactivate staff
-export const deActivateStaff = staffId => async dispatch => {
+export const deActivateStaff = (data) => async dispatch => {
 	dispatch(clearStaffTErrors());
 	dispatch(deActivateStaffLoading());
 	try {
-		const deActivateStaffRequest = await APIService.post(`/activatestaff/${staffId}`);
+		const deActivateStaffRequest = await APIService.post(`/deactivatestaff/${data?.staffId}`, { password: data?.password });
 		if (deActivateStaffRequest.data.status === 'Success') {
 			dispatch(deActivateStaffLoading());
 			dispatch(deActivateStaffSuccess(deActivateStaffRequest.data));
 			return {
 				deActivateStaffStatus: true,
-				tokenValid: true,
 				message: 'Staff deactivated successfully'
 			};
 		} else {

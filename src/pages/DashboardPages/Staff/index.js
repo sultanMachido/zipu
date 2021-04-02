@@ -7,7 +7,7 @@ import moment from 'moment'
 import EmptyScreen from '../../../components/EmptyScreen';
 import TableWrapper from '../../../components/TableWrapper';
 import { staffColumns } from '../../../utils/constants/TableColumns/staffTableColumns';
-import { getStaff } from '../../../redux/actions/staff/staff.actions';
+import { getStaffs } from '../../../redux/actions/staff/staff.actions';
 import { SubmitButton } from '../../../components/FormField';
 import './styles.scss';
 
@@ -19,7 +19,7 @@ const Staff = props => {
 
 	const fetchStaff = async () => {
 		const transco_id = localStorage.getItem('transcoId');
-		return props.getStaff({ transco_id, pageSize, page });
+		return props.getStaffs({ transco_id, pageSize, page });
 	};
 
 	React.useEffect(() => {
@@ -98,7 +98,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-	getStaff
+	getStaffs
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Staff);
