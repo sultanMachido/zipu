@@ -16,3 +16,30 @@
         margin-bottom: 0px;
     }
 }
+
+@media (max-width:1024px){
+    .titlePane {
+        width: calc(100% + 180px);
+    }
+}
+
+//media queries max-width:768px
+@media (max-width:768px){
+    .titlePane {
+        width: calc(100% + 380px);
+    }
+  }
+
+  //media queries max-width:414px
+@media (max-width:414px){
+    .titlePane {
+        width: calc(100% + 720px);
+    }
+  }
+
+  //media queries max-width:375px
+@media (max-width:375px){
+    .titlePane {
+        width: calc(100% + 730px);
+    }
+  }

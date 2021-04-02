@@ -1,5 +1,7 @@
-.layoutContainer {
+.contentWrapper{
     width: 100%;
+.layoutContainer {
+    width: 100vw;
     &.ant-layout {
         padding: 59px 130px;
         background: #fff;
@@ -78,8 +80,99 @@
                 left: 30%;
             }
         }
+      }
     }
+    .footerSection{
+        width: 100vw;
+    }
+
 }
+
+//media queries max-width:1024px
+@media (max-width:1024px){
+  .contentWrapper{
+      width: 100%;
+      position: relative;
+    .layoutContainer {
+        margin-bottom: 15rem;
+        &.ant-layout {
+            padding: 59px 30px;
+            background: #fff;
+            width: calc(100% + 180px);
+        } 
+    }
+    .footerSection{
+        width: 100vw;
+        position: absolute;
+        bottom: -700px;
+    }
+  }
+}
+
+//media queries max-width:768px
+@media (max-width:768px){
+    .contentWrapper{
+        width: 100%;
+        position: relative;
+      .layoutContainer {
+          margin-bottom: 15rem;
+          &.ant-layout {
+              padding: 59px 30px;
+              background: #fff;
+              width: calc(100% + 680px);
+          } 
+      }
+      .footerSection{
+          width: 100vw;
+          position: absolute;
+          bottom: -1000px;
+          width: calc(100% + 460px);
+      }
+    }
+  }
+
+  //media queries max-width:414px
+@media (max-width:414px){
+    .contentWrapper{
+        width: 100%;
+        position: relative;
+      .layoutContainer {
+          &.ant-layout {
+              padding: 59px 30px;
+              background: #fff;
+              width: calc(100% + 670px ) !important;
+          } 
+      }
+      .footerSection{
+          width: 100vw;
+          position: absolute;
+          bottom: -1100px;
+          width: calc(100% + 510px);
+      }
+    }
+  }
+
+
+  //media queries max-width:375px
+@media (max-width:414px){
+    .contentWrapper{
+        width: 100%;
+        position: relative;
+      .layoutContainer {
+          &.ant-layout {
+              padding: 59px 30px;
+              background: #fff;
+              width: calc(100% + 700px ) !important;
+          } 
+      }
+      .footerSection{
+          width: 100vw;
+          position: absolute;
+          bottom: -1500px;
+          width: calc(100% + 540px);
+      }
+    }
+  }
 
 button.ant-btn-primary {
     border: none;
@@ -103,17 +196,4 @@ button.ant-btn-primary {
 
     
 }
-.footerSection{
-    width: 100%;
-}
 
-@media (max-width:1024px){
-    .layoutContainer {
-        &.ant-layout {
-            padding: 59px 30px;
-            background: #fff;
-            width: 118%;
-        }
-    
-    }
-}

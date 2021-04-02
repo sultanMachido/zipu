@@ -5,7 +5,7 @@ export const staffColumns = () => [
 		title: 'Name',
 		dataIndex: 'name',
 		key: 'name',
-		render: (_, {name, email}) => (
+		render: (_, { name, email }) => (
 			<>
 				<p>{name}</p>
 				<span>{email}</span>
@@ -16,7 +16,7 @@ export const staffColumns = () => [
 		title: 'Station',
 		dataIndex: 'station',
 		key: 'station',
-		render: (_, {state, terminal}) => (
+		render: (_, { state, terminal }) => (
 			<>
 				<p>{state}</p>
 				<span>{terminal}</span>
@@ -24,10 +24,10 @@ export const staffColumns = () => [
 		)
 	},
 	{
-		title: 'Position/Access',
+		title: 'Position',
 		dataIndex: 'position',
 		key: 'position',
-		render: (_, {position, access}) => (
+		render: (_, { position, access }) => (
 			<>
 				<p>{position}</p>
 				<span>{access}</span>
@@ -49,7 +49,7 @@ export const staffColumns = () => [
 		title: 'Login activity',
 		dataIndex: 'loginActivity',
 		key: 'loginActivity',
-		render: (_, {loginActivity, logsCount}) => (
+		render: (_, { loginActivity, logsCount }) => (
 			<>
 				<p>{loginActivity}</p>
 				<span>

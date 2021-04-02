@@ -26,19 +26,108 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items:flex-start;
 
     .contentSidebar{
       border: 1px solid #E3EAED;
       flex-basis: 20%;
       padding: 2rem 3rem;
       border-radius: 10px;
+      margin-right: 2rem;
     }
     .contentMain{
-      flex-basis: 78%;
+      flex: 1;
     }
   }
 }
 
+@media (max-width: 768px){
+  .tripInventoryWrapper{
+    width: 100%;
+    .tripInventoryHeader{
+      width: 100%;
+      display: flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom: 2rem;
+  
+      h5.title {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 32px;
+        color: #323D44;
+        padding: 0;
+        margin: 0;
+      }
+      .btnWrapper{
+        flex-basis: 20%;
+      }
+    }
+  
+    .tripInventoryContent{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+  
+      .contentSidebar{
+        border: 1px solid #E3EAED;
+        flex-basis: 22%;
+        padding: 2rem 3rem;
+        border-radius: 10px;
+        margin-right: 2rem;
+      }
+      .contentMain{
+        flex: 1;
+      }
+    }
+  }
+}
+
+@media (max-width: 375px){
+  .tripInventoryWrapper{
+    width: 100%;
+    .tripInventoryHeader{
+      width: 100%;
+      display: flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom: 2rem;
+  
+      h5.title {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 32px;
+        color: #323D44;
+        padding: 0;
+        margin: 0;
+      }
+      .btnWrapper{
+        flex-basis: 20%;
+      }
+    }
+  
+    .tripInventoryContent{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+  
+      .contentSidebar{
+        border: 1px solid #E3EAED;
+        flex-basis: 26%;
+        padding: 2rem 3rem;
+        border-radius: 10px;
+        margin-right: 2rem;
+      }
+      .contentMain{
+        flex: 1;
+      }
+    }
+  }
+}
 
 
 // ant designs styles

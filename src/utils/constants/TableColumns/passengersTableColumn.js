@@ -54,6 +54,7 @@ export const passengersColumns = () => [
   {
     title: '',
     dataIndex: 'action',
-    key: 'action'
+    key: 'action',
+    width: 100
   }
 ];

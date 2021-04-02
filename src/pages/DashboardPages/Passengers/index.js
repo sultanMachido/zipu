@@ -23,7 +23,7 @@ const Passengers = (props) => {
   const data = PassengersList.map((passenger) => {
     return {
       ...passenger,
-      action: OutlinedButton('View Passenger', () => handleClick(passenger))
+      action: OutlinedButton('View', () => handleClick(passenger))
     }
   })
 

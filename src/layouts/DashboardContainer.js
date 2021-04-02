@@ -113,7 +113,7 @@ class DashboardContainer extends Component {
 		})[0];
 
 		return (
-			<div style={{ width: '100%' }}>
+			<div className="contentWrapper">
 				<Navbar path={pathname} profile={profile} logoutUser={this.handleLogout} />
 				<div style={{ marginTop: "80px" }} />
 				<MenuTabs

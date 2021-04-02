@@ -2,6 +2,7 @@ import React from 'react';
 import { BiUser } from 'react-icons/all';
 import { connect } from 'react-redux';
 import { format } from 'date-fns';
+import moment from 'moment'
 
 import EmptyScreen from '../../../components/EmptyScreen';
 import TableWrapper from '../../../components/TableWrapper';
@@ -38,10 +39,10 @@ const Staff = props => {
 	const staffData = props?.staffData?.getStaffSuccess?.map(staff => {
 		return {
 			...staff,
-			created_at: format(new Date(staff.created_at), 'yyyy-MM-dd hh:mm:ss'),
+			created_at: moment(staff.created_at).format('DD/MM/YYYY'),
 			actions: (
 				<button className="editStaff" onClick={() => handleEdit(staff)} type="submit">
-					Edit roles
+					Edit
 				</button>
 			)
 		};

@@ -10,15 +10,13 @@ import 'antd/dist/antd.css';
 export default class Routes extends Component {
   render() {
     return (
-      <div style={{ width: "100vw" }}>
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/login" component={Guest(Login)} />
-            <Route exact path="/register" component={Guest(Registration)} />
-            <Route path="/" component={Private(DashboardContainer)} />
-          </Switch>
-        </BrowserRouter>
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/login" component={Guest(Login)} />
+          <Route exact path="/register" component={Guest(Registration)} />
+          <Route path="/" component={Private(DashboardContainer)} />
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
