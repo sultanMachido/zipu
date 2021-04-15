@@ -126,7 +126,7 @@
           width: 100vw;
           position: absolute;
           bottom: -1000px;
-          width: calc(100% + 460px);
+          width: calc(100% + 480px);
       }
     }
   }
@@ -154,7 +154,7 @@
 
 
   //media queries max-width:375px
-@media (max-width:414px){
+@media (max-width:375px){
     .contentWrapper{
         width: 100%;
         position: relative;

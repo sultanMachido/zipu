@@ -1,7 +1,7 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
-import {Divider, Card} from 'antd';
-import {GoLocation, GiAlarmClock} from 'react-icons/all';
+import { withRouter } from 'react-router-dom';
+import { Divider, Card } from 'antd';
+import { GoLocation, GiAlarmClock } from 'react-icons/all';
 import formatCurrency from 'format-currency';
 import './styles.scss';
 import { SubmitButton, SubmitButtonSecondary } from '../../../../components/FormField';
@@ -16,7 +16,7 @@ const Vehicle = ({ data, history }) => {
   const handleClick = () => {
     history.push(`/car-listing/edit/${data.id}`);
   }
-  
+
   return (
     <Card style={{ borderRadius: "5px", marginBottom: "2rem" }}>
       <div className="tripInventoryCardTop">
@@ -101,6 +101,7 @@ const Vehicle = ({ data, history }) => {
           {
             SubmitButton('EDIT VEHICLE', handleClick)
           }
+
           {
             SubmitButtonSecondary('Change status')
           }
