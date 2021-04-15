@@ -5,11 +5,11 @@ import { Form, message } from 'antd';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { HiMail } from 'react-icons/all';
-import { SubmitButton } from '../../../components/FormField';
-import { useWindowSize } from '../../../hooks/useWindowSize';
+import { SubmitButton } from '../../../../components/FormField';
+import { useWindowSize } from '../../../../hooks/useWindowSize';
 import OtpInput from 'react-otp-input';
-import { verifyUserEmail } from '../../../redux/actions/verifyEmail/verifyEmail.actions';
-import { useQuery } from '../../../utils/URLSearchParam';
+import { verifyUserEmail } from '../../../../redux/actions/verifyEmail/verifyEmail.actions';
+import { useQuery } from '../../../../utils/URLSearchParam';
 
 import './EmailVerification.scss';
 

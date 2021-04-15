@@ -11,9 +11,9 @@ import {
 	PhoneNumberField,
 	SubmitButton,
 	ConfirmPasswordField
-} from '../../../components/FormField';
-import { registerUser } from '../../../redux/actions/registration/register.actions';
-import { useQuery } from '../../../utils/URLSearchParam';
+} from '../../../../components/FormField';
+import { registerUser } from '../../../../redux/actions/registration/register.actions';
+import { useQuery } from '../../../../utils/URLSearchParam';
 
 const inputSize = 'large';
 const Registration = props => {

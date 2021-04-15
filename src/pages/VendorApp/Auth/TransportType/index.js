@@ -3,10 +3,10 @@ import { Form, Progress, Row, Col, Checkbox, message } from 'antd';
 import { MdAirlineSeatReclineExtra, AiFillCar, MdDirectionsBus } from 'react-icons/all';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { CompanySizeField, SubmitButton } from '../../../components/FormField';
+import { CompanySizeField, SubmitButton } from '../../../../components/FormField';
 import './TransportType.scss';
-import { selectTransportType } from '../../../redux/actions/transportType/transportType.actions';
-import { useQuery } from '../../../utils/URLSearchParam';
+import { selectTransportType } from '../../../../redux/actions/transportType/transportType.actions';
+import { useQuery } from '../../../../utils/URLSearchParam';
 
 const inputSize = 'large';
 
@@ -96,8 +96,8 @@ const TransportType = props => {
 												<Checkbox
 													value={option.value}
 													className={`checkboxBtnItem ${value.includes(option.value)
-															? 'checked'
-															: ''
+														? 'checked'
+														: ''
 														}`}
 												>
 													{option.icon}

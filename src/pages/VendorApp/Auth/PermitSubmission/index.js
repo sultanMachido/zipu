@@ -2,15 +2,15 @@ import React from 'react';
 import { Form, Progress, message } from 'antd';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { useQuery } from '../../../utils/URLSearchParam';
+import { useQuery } from '../../../../utils/URLSearchParam';
 import {
 	ReservationWindowField,
 	UploadCACDocsField,
 	UploadPermitField,
 	SubmitButton
-} from '../../../components/FormField';
+} from '../../../../components/FormField';
 import './PermitSubmission.scss';
-import { submitPermission } from '../../../redux/actions/permitSubmission/permitSubmission.actions';
+import { submitPermission } from '../../../../redux/actions/permitSubmission/permitSubmission.actions';
 
 const PermitSubmission = props => {
 	const inputSize = 'large';
