@@ -1,6 +1,6 @@
 import React from 'react';
 import './Auth.scss';
-import { useQuery } from './../../utils/URLSearchParam';
+import { useQuery } from './../../../utils/URLSearchParam';
 
 import Registration from './Registration';
 import EmailVerification from './EmailVerification';

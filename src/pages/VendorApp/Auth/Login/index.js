@@ -2,8 +2,8 @@ import React from 'react';
 import { Form, message } from 'antd';
 import { connect } from 'react-redux';
 import './Login.scss';
-import { EmailField, PasswordField, SubmitButton } from '../../../components/FormField';
-import { loginUser } from '../../../redux/actions/login/login.actions';
+import { EmailField, PasswordField, SubmitButton } from '../../../../components/FormField';
+import { loginUser } from '../../../../redux/actions/login/login.actions';
 
 const inputSize = 'large';
 

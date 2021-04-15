@@ -1,8 +1,8 @@
 import React from 'react';
 import './BusinessDetails.scss';
-import {Form, Progress, message} from 'antd';
-import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
+import { Form, Progress, message } from 'antd';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import {
 	BankDetailsField,
 	AccountNumberField,
@@ -12,9 +12,9 @@ import {
 	SubmitButton,
 	TranscoNameField,
 	NumberOfStaffField
-} from '../../../components/FormField';
-import {submitBusinessDetails} from '../../../redux/actions/businessDetails/businessDetails.actions';
-import {useQuery} from '../../../utils/URLSearchParam';
+} from '../../../../components/FormField';
+import { submitBusinessDetails } from '../../../../redux/actions/businessDetails/businessDetails.actions';
+import { useQuery } from '../../../../utils/URLSearchParam';
 
 const BusinessDetails = props => {
 	const inputSize = 'large';
@@ -25,7 +25,7 @@ const BusinessDetails = props => {
 		try {
 			const messageKey = 'businessDetailsResponse';
 			const key = 'businessDetails';
-			const tryBusinessDetails = await props.submitBusinessDetails({...values});
+			const tryBusinessDetails = await props.submitBusinessDetails({ ...values });
 
 			if (tryBusinessDetails.businessDetailsStatus) {
 				message.success({
@@ -36,7 +36,7 @@ const BusinessDetails = props => {
 				query.set('step', 6);
 				props.history.push(`/register?step=${query.get('step')}`);
 			} else {
-				return message.error({content: tryBusinessDetails?.message, key, duration: 2});
+				return message.error({ content: tryBusinessDetails?.message, key, duration: 2 });
 			}
 		} catch (error) {
 			message.error(error?.message);
@@ -66,7 +66,7 @@ const BusinessDetails = props => {
 					onFinish={onFinishBusinessDetails}
 					hideRequiredMark
 					layout="vertical"
-					style={{width: '100%'}}
+					style={{ width: '100%' }}
 				>
 					<div className="permitSubmitInputWrapper">
 						<p>Comapny Details</p>

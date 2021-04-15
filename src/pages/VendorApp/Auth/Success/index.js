@@ -2,9 +2,9 @@ import React from 'react';
 import { Form } from 'antd';
 import { withRouter } from 'react-router-dom';
 import './success.scss';
-import leftCar from '../../../assets/img/leftCar.svg';
-import rightCar from '../../../assets/img/rightCar.svg';
-import { SubmitButton } from '../../../components/FormField';
+import leftCar from '../../../../assets/img/leftCar.svg'
+import rightCar from '../../../../assets/img/rightCar.svg';
+import { SubmitButton } from '../../../../components/FormField';
 
 const Success = (props) => {
 	const goToDashboard = () => {
