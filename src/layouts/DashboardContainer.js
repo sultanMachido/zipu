@@ -11,32 +11,32 @@ import TitlePane from '../components/TitlePane';
 import Footer from '../components/Footer';
 import { logUserOut } from '../redux/actions/login/login.actions';
 
-const Staff = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/Staff')))
-const StaffAdd = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/Staff/StaffAdd')))
-const EditStaff = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/Staff/StaffEdit')))
+const Staff = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Staff')))
+const StaffAdd = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Staff/StaffAdd')))
+const EditStaff = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Staff/StaffEdit')))
 
-const TripManagement = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/TripManagement')))
-const AddTrip = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/TripManagement/AddTrip')))
-const EditTrip = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/CarListing/EditVehicle')))
+const TripManagement = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/TripManagement')))
+const AddTrip = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/TripManagement/AddTrip')))
+const EditTrip = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/CarListing/EditVehicle')))
 
-const Terminals = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/Terminals')))
-const AddTerminal = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/Terminals/AddTerminal')))
-const EditTerminal = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/Terminals/EditTerminal')))
-const ViewTerminal = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/Terminals/ViewTerminal')))
+const Terminals = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Terminals')))
+const AddTerminal = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Terminals/AddTerminal')))
+const EditTerminal = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Terminals/EditTerminal')))
+const ViewTerminal = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Terminals/ViewTerminal')))
 
-const Bookings = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/Bookings')))
+const Bookings = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Bookings')))
 
-const CarListing = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/CarListing')))
-const AddVehicle = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/CarListing/AddVehicle')))
+const CarListing = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/CarListing')))
+const AddVehicle = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/CarListing/AddVehicle')))
 
-const Passengers = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/Passengers')))
-const ViewPassenger = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/Passengers/ViewPassenger')))
+const Passengers = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Passengers')))
+const ViewPassenger = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Passengers/ViewPassenger')))
 
 
-const Report = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/Report')))
-const PromoCodes = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/Report/PromoCodes')))
-const Company = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/Company')))
-const EditCompany = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/DashboardPages/Company/EditCompany')))
+const Report = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Report')))
+const PromoCodes = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Report/PromoCodes')))
+const Company = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Company')))
+const EditCompany = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Company/EditCompany')))
 
 
 class DashboardContainer extends Component {
