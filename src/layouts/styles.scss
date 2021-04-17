@@ -1,11 +1,14 @@
 .contentWrapper{
     width: 100%;
+
 .layoutContainer {
-    width: 100vw;
+    width: 100%;
     &.ant-layout {
         padding: 59px 130px;
         background: #fff;
     }
+
+    
     .tableHeader {
         margin-bottom: 20px;
     }
@@ -88,6 +91,7 @@
 
 }
 
+
 //media queries max-width:1024px
 @media (max-width:1024px){
   .contentWrapper{
@@ -156,7 +160,7 @@
   //media queries max-width:375px
 @media (max-width:375px){
     .contentWrapper{
-        width: 100%;
+        width: 170%;
         position: relative;
       .layoutContainer {
           &.ant-layout {

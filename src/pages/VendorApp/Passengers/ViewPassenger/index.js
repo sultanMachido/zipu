@@ -6,8 +6,6 @@ import { passengersBookingsColumns } from '../../../../utils/constants/TableColu
 import TableWrapper from '../../../../components/TableWrapper';
 import EmptyScreen from '../../../../components/EmptyScreen';
 import { BiUser } from 'react-icons/all';
-import { connect } from 'react-redux';
-import { format } from 'date-fns';
 
 import passengeImg from '../../../../assets/img/passenger.png';
 
@@ -47,6 +45,8 @@ const { TabPane } = Tabs;
 const ViewPassenger = (props) => {
   const [page, setPage] = React.useState(1);
   const [pageSize, setPageSize] = React.useState(10);
+
+  console.log({ page, pageSize });
 
 
   const columns = passengersBookingsColumns();
@@ -103,7 +103,7 @@ const ViewPassenger = (props) => {
         </div>
         <div className="passengerDocs">
           <div className="passengerPhoto">
-            <img alt="passenger photo" src={passengeImg} />
+            <img alt="passenger" src={passengeImg} />
           </div>
           <div className="passengerSupportingDocs">
             <h2>Supporting Documents</h2>
