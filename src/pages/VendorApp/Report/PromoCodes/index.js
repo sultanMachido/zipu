@@ -15,20 +15,20 @@ const PromoCodes = (props) => {
     const { promoCodes, fetchAllPromoCodesLoading } = props.promoCodes;
 
     useEffect(() => {
+        const fetchAllPromoCodes = async () => {
+            try {
+                const key = 'fetchAllPromoCodes';
+                const tryFetchALlPromoCodes = await props.fetchAllPromoCodes();
+                if (!tryFetchALlPromoCodes.fetchPromoCodesStatus) {
+                    return message.error({ content: tryFetchALlPromoCodes.message, key, duration: 2 });
+                }
+            } catch (error) {
+            }
+        }
         fetchAllPromoCodes();
     }, []);
 
-    const fetchAllPromoCodes = async () => {
-        try {
-            const messageKey = 'fetchAllPromoCodesResponse';
-            const key = 'fetchAllPromoCodes';
-            const tryFetchALlPromoCodes = await props.fetchAllPromoCodes();
-            if (!tryFetchALlPromoCodes.fetchPromoCodesStatus) {
-                return message.error({ content: tryFetchALlPromoCodes.message, key, duration: 2 });
-            }
-        } catch (error) {
-        }
-    }
+
 
     const handleStartDateChange = (date) => {
         setStartDate(date);

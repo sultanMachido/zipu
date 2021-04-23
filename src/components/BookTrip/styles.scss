@@ -1,0 +1,39 @@
+.bookTripWrapper{
+  margin: 10rem 0;
+
+  .bookTripHeader{
+    width: 100%;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+
+    h1{
+      font-family: Inter;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 40px;
+      line-height: 44px;
+      color: #323D44;
+      width: 467px;
+      margin-right: 45rem;
+    }
+    p{
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      color: #637A87;
+      width: 600px;
+      line-height: 24px;
+      margin-left: -100px;
+    }
+  }
+
+  .vehicleCards{
+    margin-top: 5rem;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 15px;
+  }
+}

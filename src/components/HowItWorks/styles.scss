@@ -1,0 +1,31 @@
+.howItWorksWrapper{
+  width: 100%;
+  margin-bottom: 10rem;
+  
+  .howItWorksHeader{
+    width: 100%;
+    margin-bottom: 3rem;
+    h1{
+      font-family: Inter;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 28px;
+      line-height: 44px;
+      color: #323D44;
+    }
+    p{
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 19px;
+      line-height: 24px;
+      color: #323D44;
+    }
+  }
+  .howItWorksCards{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 2rem;
+  }
+}

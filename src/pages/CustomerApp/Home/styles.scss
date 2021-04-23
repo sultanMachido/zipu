@@ -1,0 +1,56 @@
+.homepageWrapper{
+  width: 100%;
+
+  .homepageHeader{
+    width: 100%;
+    position: relative;
+    top: -11rem;
+
+    .tab{
+      display: flex;
+      border-radius: 8px 8px 0px 0px;
+      background: white;
+      width: 35rem;
+
+      & > div{
+        padding: .5rem 3rem;
+        cursor: pointer;
+        color: #240555;
+      }
+
+      & > div:not(:last-child){
+        margin-right: 5px;
+        
+      }
+
+      & > div.active{
+        background: #EFF1F5;
+        border-radius: 8px 8px 0px 0px;
+        color:#323D44;
+        ;
+      }
+
+      .tabPane{
+        align-items: center;
+        display: flex;
+        padding: 1.6rem 3rem;
+
+        img:first-child{
+          height: 18px;
+          width: 24px;
+          margin-right: 1rem;
+        }
+
+        img:last-child{
+          width: 18px;
+          height: 10px;
+          margin-right: 1rem;
+        }
+      }
+    }
+
+    .tabContents{
+      width: 100%;
+    }
+  }
+}

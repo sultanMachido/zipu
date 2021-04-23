@@ -14,32 +14,29 @@ import { logUserOut } from '../redux/actions/login/login.actions';
 const Staff = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Staff')))
 const StaffAdd = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Staff/StaffAdd')))
 const EditStaff = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Staff/StaffEdit')))
-
 const TripManagement = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/TripManagement')))
 const AddTrip = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/TripManagement/AddTrip')))
 const EditTrip = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/CarListing/EditVehicle')))
-
 const Terminals = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Terminals')))
 const AddTerminal = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Terminals/AddTerminal')))
 const EditTerminal = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Terminals/EditTerminal')))
 const ViewTerminal = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Terminals/ViewTerminal')))
-
 const Bookings = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Bookings')))
-
 const CarListing = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/CarListing')))
 const AddVehicle = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/CarListing/AddVehicle')))
-
 const Passengers = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Passengers')))
 const ViewPassenger = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Passengers/ViewPassenger')))
-
-
 const Report = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Report')))
 const PromoCodes = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Report/PromoCodes')))
 const Company = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Company')))
 const EditCompany = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/VendorApp/Company/EditCompany')))
 
+// customer routes imports
+const HomePage = React.lazy(() => moduleHelpers.retryImport(() => import('../pages/CustomerApp/Home/')));
+
 
 class DashboardContainer extends Component {
+
 	handleLogout = async () => {
 		this.props.logUserOut(this?.props?.history);
 	};
@@ -112,17 +109,34 @@ class DashboardContainer extends Component {
 			return route === pathname;
 		})[0];
 
+		const isCustomer = pathname.split('/').includes('customer');
+
+		const content = () => {
+			return (
+				<div style={{ padding: "2rem 0 8rem 0" }}>
+					<h1 style={{ color: "#fff", lineHeight: "50px", fontSize: "35px" }}>Book a trip or rent a car <br />going to all parts of Nigeria </h1>
+
+					<div className="">
+
+					</div>
+				</div>
+			)
+		}
+
+
 		return (
 			<div className="contentWrapper">
 				<Navbar path={pathname} profile={profile} logoutUser={this.handleLogout} />
 				<div style={{ marginTop: "80px" }} />
 				<MenuTabs
-					visible={selectedInnerPage ? false : true}
+					visible={selectedInnerPage || isCustomer ? false : true}
 				/>
 				<TitlePane
 					prev={selectedInnerPage && selectedInnerPage.prev}
 					title={selectedInnerPage && selectedInnerPage.title}
-					visible={selectedInnerPage ? true : false}
+					visible={selectedInnerPage || isCustomer ? true : false}
+					isCustomer={isCustomer}
+					content={content}
 				/>
 
 				<Layout className="layoutContainer">
@@ -147,6 +161,10 @@ class DashboardContainer extends Component {
 							<Route exact path="/company/edit" component={EditCompany}></Route>
 							<Route exact path="/reports" component={Report}></Route>
 							<Route exact path="/reports/promo-codes" component={PromoCodes}></Route>
+
+							{/* customer routes */}
+							<Route exact path="/customer" component={HomePage}></Route>
+
 						</Switch>
 					</React.Suspense>
 				</Layout>

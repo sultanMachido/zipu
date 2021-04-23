@@ -8,7 +8,6 @@ import EmptyScreen from '../../../components/EmptyScreen';
 import { TerminalsList } from '../../../utils/constants/TerminalList';
 import { StatusList } from '../../../utils/constants/StatusList';
 import { VehicleList } from '../../../utils/constants/VehicleList';
-import { VehicleData } from '../../../utils/constants/VehicleInventoryList';
 import VehicleComponent from './Vehicle';
 import { useQuery } from '../../../utils/URLSearchParam'
 import { fetchAllVehicles } from '../../../redux/actions/vehicles/vehicles.actions';

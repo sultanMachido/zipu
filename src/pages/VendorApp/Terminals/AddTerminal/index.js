@@ -14,7 +14,7 @@ const { Panel } = Collapse;
 const AddTerminal = (props) => {
   const inputSize = 'large';
   const [form] = Form.useForm();
-  const [modalOpen, setModalOpen] = React.useState(false)
+  const [modalOpen] = React.useState(false)
   const [selectedItems, setSelectedItems] = React.useState([]);
 
   const handleClick = () => {

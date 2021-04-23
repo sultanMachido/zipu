@@ -6,11 +6,12 @@ import './styles.scss';
 
 
 const ViewTerminal = (props) => {
-  const fetchTerminal = async () => {
-    return props.getTerminal(props?.location?.state?.id)
-  }
+
 
   React.useEffect(() => {
+    const fetchTerminal = async () => {
+      return props.getTerminal(props?.location?.state?.id)
+    }
     fetchTerminal()
   }, [props?.location?.state])
 
