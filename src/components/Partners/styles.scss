@@ -1,0 +1,17 @@
+@import '../../styles/abstract/basestyles';
+
+.partnersWrapper {
+	width: 100%;
+	margin:5rem 0;
+
+	.partnersGallery {
+		display: grid;
+		grid-template-columns: repeat(4, 25rem);
+		grid-gap: 2rem;
+
+		&__item {
+			@include flexCenter;
+			flex-direction: column;
+		}
+	}
+}

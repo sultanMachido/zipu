@@ -1,0 +1,19 @@
+@import '../../styles/abstract/basestyles';
+
+.destinationWrapper {
+	width: 100%;
+	padding: 6rem 14rem;
+
+	.destinations {
+		display: grid;
+		grid-template-columns: repeat(4, 25rem);
+		grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+		grid-gap: 2rem;
+
+		&__item {
+			h4 {
+				@include fontBold(2rem, 4.4rem, $black);
+			}
+		}
+	}
+}

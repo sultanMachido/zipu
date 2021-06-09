@@ -1,0 +1,224 @@
+@import "../../styles/config";
+@import "../../styles/base";
+
+.faqs {
+  &__header {
+    min-height: 52.4rem;
+    background: url("https://res.cloudinary.com/hervest/image/upload/v1601542061/faqbg_kmcwpt.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    @include flexCenter;
+    flex-direction: column;
+
+    @include respond(misc1) {
+      height: auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    input {
+      background: $white;
+      border: 2px solid $primary;
+      border-radius: 4px;
+      outline: none;
+      padding: 2rem 2.2rem;
+      transition: all 0.2s;
+      @include fontNormal(1.4rem, 2.4rem, $black, $trreg);
+      color: $black;
+      width: 25%;
+
+      @include respond(misc1) {
+        width: 50%;
+      }
+
+      &:focus {
+        outline: none;
+        border-bottom: 3px solid #b40e78;
+
+        &:invalid {
+          border-bottom: 3px solid orangered;
+        }
+      }
+
+      &::-webkit-input-placeholder {
+        color: $black;
+      }
+    }
+  }
+
+  &__content {
+    padding: 10rem;
+    display: flex;
+    justify-content: space-between;
+
+    @include respond(tab-port) {
+      padding: 10rem;
+    }
+
+    @include respond(misc1) {
+      padding: 10rem;
+    }
+
+    @include respond(phone) {
+      padding: 4rem;
+    }
+
+    &__questions {
+      flex-basis: 30%;
+
+      @include respond(misc1) {
+        flex-basis: 100%;
+        margin-bottom: 5rem;
+        display: none;
+      }
+
+      h2 {
+        @include fontBold(2.4rem, 3.2rem, $black, $play);
+        margin-bottom: 3rem;
+      }
+
+      ul {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        li {
+          margin-bottom: 3rem;
+
+          button {
+            outline: none;
+            border: none;
+            background: transparent;
+            font-family: $trreg;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 1.6rem;
+            line-height: 1.9rem;
+            color: $black;
+            cursor: pointer;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            text-align: start;
+          }
+        }
+      }
+    }
+
+    &__answers {
+      flex-basis: 67%;
+      flex-grow: 1;
+
+      @include respond(misc1) {
+        flex-basis: 100%;
+      }
+
+      &-item {
+        margin-bottom: 2rem;
+        min-height: 3rem;
+
+        &__icon {
+          transition: transform 0.3s ease;
+
+          &.rotate {
+            transition: transform 0.3s ease;
+            transform: rotate(90deg);
+          }
+
+          &.rotateBack {
+            transition: transform 0.3s ease;
+            transform: rotate(0deg);
+          }
+        }
+
+        &__button {
+          outline: none;
+          border: none;
+          background: transparent;
+          padding-bottom: 1.6rem;
+          border-bottom: 1px solid #e6e6e6;
+          width: 100%;
+          display: flex;
+          justify-content: flex-start;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          text-align: start;
+
+          &.active,
+          &:hover {
+            //    background-color:rgba(#E6E6E6,0.1);
+          }
+
+          p {
+            @include fontBold(2.4rem, 2.9rem, $primary, $trreg);
+          }
+        }
+
+        &__content {
+          overflow: auto;
+          transition: max-height 0.6s ease;
+          max-height: 0;
+
+          // &.active {
+          //   background-color: red;
+          // }
+
+          &.inactive {
+            transition: max-height 0.6s ease;
+            max-height: 0;
+          }
+
+          p {
+            padding-top: 1.6rem;
+            @include fontNormal(1.4rem, 2.4rem, $black, $trreg);
+            padding-bottom: 1rem;
+          }
+        }
+      }
+
+      form {
+        margin-top: 5rem;
+        width: 100%;
+
+        h4 {
+          @include fontBold(2.4rem, 3.3rem, $black, $play);
+          margin-bottom: 3rem;
+        }
+
+        textarea {
+          margin-bottom: 3rem;
+          width: 100%;
+          border: none;
+          outline: none;
+          padding: 2rem;
+          @include fontNormal(1.6rem, 1.9rem, $black, $lato);
+          background: $white;
+          border: 1px solid #e6e6e6;
+          border-radius: 4px;
+        }
+
+        input[type="submit"] {
+          outline: none;
+          border: none;
+          background: $primary;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          @include flexCenter;
+          color: $white;
+          @include fontNormal(1.6rem, 1.9rem, $white, $lato);
+          padding: 1.4rem 3.4rem;
+          border-radius: 8px;
+        }
+      }
+    }
+  }
+}

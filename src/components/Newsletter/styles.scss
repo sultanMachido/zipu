@@ -1,0 +1,16 @@
+@import '../../styles/abstract/basestyles';
+
+.newsletterWrapper {
+	background: #F7F9F8;
+	background-image: url('../../assets/svg/motor.svg');
+    background-position:80% 70%;
+    background-size: 30%;
+	background-repeat: no-repeat;
+	width: 100%;
+	height:46rem;
+	padding: 5rem 14rem;
+
+	.input {
+		width:46rem;
+	}
+}

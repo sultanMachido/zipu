@@ -1,0 +1,122 @@
+@import '../../styles/abstract/basestyles';
+
+.TripSearchItemWrapper {
+	width: 100%;
+	margin-bottom: 2rem;
+	background-color: $white;
+	border-radius: 10px;
+
+	.tripSearchCar {
+		border-bottom: 1px solid #e3eaed;
+		padding: 3.1rem 3.6rem;
+
+		.tripSearchCarWrapper {
+			flex-basis: 60%;
+		}
+
+		h3 {
+			@include fontNormal(2rem, 2rem, $black);
+		}
+
+		figure {
+			flex-basis: 18rem;
+			height: 100%;
+			flex-shrink: 0;
+			flex-grow: 0;
+			@include flexCenter;
+			margin-right: 2rem;
+
+			img {
+				width: 80%;
+				height: 80%;
+			}
+		}
+
+		.tripSearchDetails {
+			flex-basis: 60%;
+			flex-shrink: 0;
+			flex-grow: 0;
+
+			ul {
+				flex-wrap: wrap;
+				li {
+					margin-bottom: 1rem;
+					flex-basis: 45%;
+
+					svg {
+						margin-right: 5px;
+					}
+				}
+			}
+		}
+
+		.tripSearchPrice {
+			flex-basis: 35%;
+			align-items: flex-end;
+
+			p {
+				margin-bottom: 0.8rem;
+			}
+
+			p.badgeItem {
+				background: rgba(176, 0, 32, 0.1);
+				border-radius: 100px;
+				padding: 0.6rem 1.6rem;
+				text-align:center;
+			}
+		}
+	}
+
+	.tripSearchFirm {
+		padding: 3.1rem 3.6rem;
+		justify-content: space-between;
+
+		&__details {
+			flex-basis: 65%;
+			&-info {
+				flex-basis: 18rem;
+				margin-right: 2rem;
+
+				figure {
+					flex-basis: auto;
+					height: auto;
+					flex-shrink: 0;
+					flex-grow: 0;
+					@include flexCenter;
+				}
+			}
+
+			&-info-2 {
+				li {
+					margin-bottom: 8px;
+					display:flex;
+
+					svg {
+						margin-right: 5px;
+					}
+				}
+			}
+		}
+
+		&__cta {
+			align-items: flex-end;
+			flex-basis: 35%;
+		}
+
+		h6 {
+			span {
+				@include fontNormal(1.1rem, 2rem, $brand2);
+				padding-left: 5px;
+			}
+		}
+
+		button {
+			width: 16rem;
+
+			svg {
+				width:3rem;
+				height:3rem;
+			}
+		}
+	}
+}

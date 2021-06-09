@@ -1,0 +1,20 @@
+@import '../../styles/abstract/basestyles';
+
+.advertWrapper {
+	width: 100%;
+	margin: 5rem 0;
+
+	.advertCard {
+		background-color: $warmBG;
+		padding: 3.3rem 3.7rem;
+		margin-bottom: 2rem;
+		border-radius: 12px;
+
+		.advertBadge {
+			background-color: $brand2;
+			padding: 1rem 1.6rem;
+			border-radius: 10px;
+			width: 13rem;
+		}
+	}
+}

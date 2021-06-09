@@ -1,10 +1,12 @@
-import React from 'react';
-import moduleHelpers from '../../../utils/helpers/moduleHelper';
+import React,{Suspense,useState} from 'react';
+import moduleHelpers from 'utils/helpers/moduleHelper';
 import './styles.scss';
 import seatBooking from '../../../assets/img/seatBooking.png';
 import carHire from '../../../assets/img/carHire.png';
 import SeatsArrangements from '../../../components/SeatsArrangements';
 import EditCompany from '../../VendorApp/Company/EditCompany';
+import seatBooking from 'assets/img/seatBooking.png';
+import carHire from 'assets/img/carHire.png';
 
 const SeatBooking = React.lazy(() => moduleHelpers.retryImport(() => import('./SeatBooking')));
 const CarHire = React.lazy(() => moduleHelpers.retryImport(() => import('./CarHire')));
@@ -25,34 +27,33 @@ const tabs = [
 ];
 
 const Home = () => {
-	const [activeTab, setActiveTab] = React.useState('seatBooking');
+	const [activeTab, setActiveTab] = useState('seatBooking');
 
 	return (
-		<div className="homepageWrapper">
-			<div className="homepageHeader">
-				<div className="tab">
-					{tabs.map(tab => {
-						return (
-							<div
-								key={tab.id}
-								className={`tabPane ${
-									tab.class === activeTab ? 'active' : undefined
-								}`}
-								onClick={() => setActiveTab(tab.class)}
-							>
-								<img src={tab.icon} alt={tab.icon} />
-								<p>{tab.name}</p>
-							</div>
-						);
-					})}
-				</div>
+		<Suspense fallback={'.'}>
+			<div className="homepageWrapper">
+				<div className="homepageHeader">
+					<div className="tab">
+						{tabs.map(tab => {
+							return (
+								<div
+									key={tab.id}
+									className={`tabPane ${tab.class === activeTab ? 'active' : ''}`}
+									onClick={() => setActiveTab(tab.class)}
+								>
+									<img src={tab.icon} alt={tab.icon} />
+									<p>{tab.name}</p>
+								</div>
+							);
+						})}
+					</div>
 
-				<div className="tabContents">
-					{activeTab === 'seatBooking' ? <SeatBooking /> : <CarHire />}
+					<div className="tabContents">
+						{activeTab === 'seatBooking' ? <SeatBooking /> : <CarHire />}
+					</div>
 				</div>
-				<EditCompany />
 			</div>
-		</div>
+		</Suspense>
 	);
 };
 

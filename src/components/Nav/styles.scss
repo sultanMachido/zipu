@@ -1,0 +1,16 @@
+@import '../../styles/abstract/basestyles';
+
+.nav {
+	display: flex;
+	background-color: $white;
+	border-bottom:4px solid $brand3 ;
+	padding: 3rem 14rem;
+
+	ul {
+		li {
+			&:not(:last-child) {
+				margin-right: 35px;
+			}
+		}
+	}
+}

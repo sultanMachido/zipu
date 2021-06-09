@@ -1,0 +1,20 @@
+@import '../../styles/abstract/basestyles';
+
+.mobCTAWrapper {
+	width: 100%;
+	background: #f7f9f8;
+	border-radius: 25px;
+	padding:11rem 10rem;
+	background-image:url('../../assets/img/mobile.png');
+	background-repeat: no-repeat;
+	background-position:center right;
+
+	.btnContainer {
+		button {
+			svg {
+				width:3rem;
+			    height:3rem;
+			}
+		}
+	}
+}
