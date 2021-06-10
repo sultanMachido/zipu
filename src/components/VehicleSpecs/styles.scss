@@ -1,0 +1,19 @@
+.vehicle-specs {
+	color: #637a87;
+	font-weight: bold;
+	font-size: 0.8rem;
+	ul {
+		list-style-type: none;
+		li {
+			display: flex;
+			align-items: flex-start;
+			margin-top: 0.5em;
+			span {
+				margin-left: 1em;
+				@media (max-width: 576.98px) {
+					font-size: 0.5rem;
+				}
+			}
+		}
+	}
+}

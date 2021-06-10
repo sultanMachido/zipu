@@ -1,0 +1,121 @@
+.vehicle-wrapper {
+	border: 1px solid #e3eaed;
+	border-radius: 10px;
+	margin-top: 2em;
+	.top-card {
+		.image-wrapper {
+			width: 183px;
+			height: 100%;
+			img {
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+			}
+		}
+	}
+	.car-type {
+		h2 {
+			font-weight: bold;
+			font-size: 20px;
+			color: #000000;
+		}
+		p,
+		ul {
+			font-size: 0.8rem;
+			font-weight: bold;
+			color: #637a87;
+		}
+		ul {
+			margin-top: 0.8em;
+			list-style-type: none;
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			li {
+				margin-top: 1em;
+				margin-right: 0.8em;
+			}
+		}
+	}
+	.price {
+		text-align: right;
+		font-weight: bold;
+		color: #637a87;
+		p {
+			color: #323d44;
+			margin-bottom: 1em;
+		}
+		.not-available {
+			color: #b00020;
+			background: rgba(176, 0, 32, 0.1);
+			border-radius: 100px;
+			padding: 6px 16px;
+		}
+		.available {
+			color: #2e7b32;
+			border-radius: 100px;
+			padding: 6px 16px;
+			background: rgba(39, 174, 96, 0.2);
+		}
+	}
+	.bottom-card {
+		display: flex;
+		justify-content: space-between;
+	}
+	@media (max-width: 576.98px) {
+		.price,
+		.bottom-card {
+			display: none;
+		}
+		.top-card {
+			.image-wrapper {
+				flex: 1;
+			}
+			.car-type {
+				flex: 2;
+				padding-left: 0.5em;
+				h2 {
+					font-size: 1rem;
+				}
+			}
+		}
+	}
+	.mobile-card {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 1em;
+		font-weight: bold;
+		font-size: 0.8rem;
+		p {
+			font-size: 0.6rem;
+		}
+		.price {
+			display: block;
+		}
+		.amount {
+			text-align: right;
+			h2 {
+				font-weight: 500;
+				font-size: 1.5rem;
+				color: #000000;
+				margin: 0;
+			}
+			p {
+				color: #323d44;
+				margin: 1em 0;
+			}
+			small {
+				color: #c76100;
+				padding: 0;
+				background: none;
+				border-radius: 100px;
+			}
+		}
+		@media (min-width: 576.98px) {
+			display: none;
+			p {
+				font-size: 1rem;
+			}
+		}
+	}
+}
