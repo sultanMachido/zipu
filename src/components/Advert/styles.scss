@@ -4,6 +4,26 @@
 	width: 100%;
 	margin: 5rem 0;
 
+	@include respond(lsc) {
+		flex-wrap: wrap;
+
+		.tsrow-sm,
+		.tsrow-lg {
+			flex-basis: 100%;
+		}
+	}
+
+	@include respond(phone) {
+		.tsrow-lg {
+			.ad2 {
+				flex-wrap: wrap;
+				.col_2 {
+					flex-basis: 100%;
+				}
+			}
+		}
+	}
+
 	.advertCard {
 		background-color: $warmBG;
 		padding: 3.3rem 3.7rem;
@@ -15,6 +35,14 @@
 			padding: 1rem 1.6rem;
 			border-radius: 10px;
 			width: 13rem;
+
+			@include respond(lsc) {
+				width: 20rem;
+			}
+
+			@include respond(phone) {
+				width: 25rem;
+			}
 		}
 	}
 }

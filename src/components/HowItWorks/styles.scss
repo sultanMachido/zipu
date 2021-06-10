@@ -7,6 +7,7 @@
 	.howItWorksHeader {
 		width: 100%;
 		margin-bottom: 3rem;
+		
 		h1 {
 			@include fontBold(2.8rem, 4.4rem, $black);
 		}
@@ -19,5 +20,13 @@
 		display: grid;
 		grid-template-columns: repeat(4, 28rem);
 		grid-gap: 2rem;
+
+		@include respond(tab-port) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@include respond(phone) {
+			grid-template-columns: repeat(1, 1fr);
+		}
 	}
 }

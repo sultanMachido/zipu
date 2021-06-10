@@ -4,16 +4,32 @@
 	width: 100%;
 	background: #f7f9f8;
 	border-radius: 25px;
-	padding:11rem 10rem;
-	background-image:url('../../assets/img/mobile.png');
+	padding: 11rem 10rem;
+	background-image: url('../../assets/img/mobile.png');
 	background-repeat: no-repeat;
-	background-position:center right;
+	background-position: center right;
+
+	@include respond(lsc) {
+		padding: 4rem;
+		background-image: none;
+
+		.col_2 {
+			flex-basis: 100%;
+		}
+	}
 
 	.btnContainer {
+		@include respond(phone) {
+			flex-wrap: wrap;
+		}
 		button {
+			@include respond(phone) {
+				flex-basis: 100%;
+				margin-bottom: 1.5rem;
+			}
 			svg {
-				width:3rem;
-			    height:3rem;
+				width: 3rem;
+				height: 3rem;
 			}
 		}
 	}

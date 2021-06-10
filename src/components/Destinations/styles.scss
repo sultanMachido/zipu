@@ -4,11 +4,18 @@
 	width: 100%;
 	padding: 6rem 14rem;
 
+	@include respond(tab-port) {
+		padding: 4rem;
+	}
+
 	.destinations {
 		display: grid;
-		grid-template-columns: repeat(4, 25rem);
 		grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
 		grid-gap: 2rem;
+
+		@include respond(lsc) {
+			grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+		}
 
 		&__item {
 			h4 {

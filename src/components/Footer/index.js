@@ -6,7 +6,7 @@ import { IoLogoTwitter, ImFacebook, FaGoogle, AiFillYoutube } from 'react-icons/
 const Footer = () => {
 	const year = new Date();
 	return (
-		<div className="footerWrapper">
+		<div className="footerWrapper1">
 			<div className="footerTop">
 				<div className="footerLogoSection">
 					<img src={ZipoLogoWhite} alt="ZipoLogoWhite" />
@@ -22,21 +22,21 @@ const Footer = () => {
 					</div>
 				</div>
 				<div className="footerLinkSection">
-					<div className="footerLinkFirst">
+					<div className="footerLinkFirst footerItem">
 						<a href="/">About Zipu</a>
 						<a href="/">Contact Customer Service</a>
 						<a href="/">Partner help</a>
 						<a href="/">Safety resource center</a>
 						<a href="/">Terms & Conditions</a>
 					</div>
-					<div className="footerLinkSecond">
+					<div className="footerLinkSecond footerItem">
 						<a href="/">Motor park</a>
 						<a href="/">Regions</a>
 						<a href="/">States</a>
 						<a href="/">Cities & Towns</a>
 						<a href="/">Airports</a>
 					</div>
-					<div className="footerLinkThird">
+					<div className="footerLinkThird footerItem">
 						<a href="/">Parks</a>
 						<a href="/">Hotels</a>
 						<a href="/">Resorts</a>

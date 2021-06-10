@@ -1,14 +1,34 @@
-.bookTripWrapper{
+@import '../../styles/abstract/basestyles';
 
-  .bookTripHeader{
-    display: flex;
-  }
+.bookTripWrapper {
+	.bookTripHeader {
+		display: flex;
 
-  .vehicleCards{
-    margin-top: 5rem;
-    display: grid;
-    grid-template-columns: repeat(3,36.8rem);
-    grid-gap: 15px;
-    min-height: 5rem;
-  }
+		@include respond(phone) {
+			flex-wrap: wrap;
+
+			h1,
+			p {
+				margin: 0;
+				margin-bottom: 2rem;
+				flex-basis: 100%;
+			}
+		}
+	}
+
+	.vehicleCards {
+		margin-top: 5rem;
+		display: grid;
+		grid-template-columns: repeat(3, 36.8rem);
+		grid-gap: 15px;
+		min-height: 5rem;
+
+		@include respond(tab-port) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@include respond(phone) {
+			grid-template-columns: repeat(1, 1fr);
+		}
+	}
 }

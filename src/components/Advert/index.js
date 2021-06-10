@@ -37,7 +37,7 @@ const Advert = () => {
 				</div>
 			</div>
 			<div className="tsrow-lg tscol">
-				<div className="tsrow  justify-between">
+				<div className="tsrow  justify-between ad2">
 					<div
 						className="tscol col_2 advertCard"
 						style={{

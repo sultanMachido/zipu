@@ -5,24 +5,30 @@
 	margin: 5rem 0;
 
 	.faqContainer {
+		@include respond(lsc) {
+			flex-wrap: wrap;
+			.col_2 {
+				flex-basis: 100%;
+			}
+		}
 
 		.faqItems {
-		   overflow:hidden;
+			overflow: hidden;
 
-		   .faqs__content__answers-item {
-			   background-color:$white;
-			   margin-bottom: 2rem;
-               min-height:1rem;
-               min-height:0;
-			   border: 1px solid #E3EAED;
-			   padding:2rem 3.4rem;
-			   padding-bottom:2rem;
+			.faqs__content__answers-item {
+				background-color: $white;
+				margin-bottom: 2rem;
+				min-height: 1rem;
+				min-height: 0;
+				border: 1px solid #e3eaed;
+				padding: 2rem 3.4rem;
+				padding-bottom: 2rem;
 
-			    &__button {
+				&__button {
 					outline: none;
 					border: none;
 					background: transparent;
-					padding-bottom: .6rem;
+					padding-bottom: 0.6rem;
 					width: 100%;
 					cursor: pointer;
 					transition: all 0.3s ease;
@@ -30,8 +36,8 @@
 					justify-content: space-between;
 					align-items: flex-start;
 					text-align: start;
-			        background-color:$white;
-					overflow:hidden;
+					background-color: $white;
+					overflow: hidden;
 				}
 
 				&__icon {
@@ -59,43 +65,51 @@
 					}
 
 					p {
-			        padding-bottom:2rem;
+						padding-bottom: 2rem;
 					}
 				}
-		   }
+			}
 		}
 
 		.faqGallery {
-			display:grid;
-			grid-template-columns:repeat(2,1fr);
-			grid-gap:16px;
-			width:100%;
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-gap: 16px;
+			width: 100%;
+
+			@include respond(phone) {
+				grid-template-columns: repeat(1, 1fr);
+			}
 
 			&__item {
-				height:17.8rem;
+				height: 17.8rem;
 				border-radius: 10px;
-				justify-content:flex-end;
-				padding:1.6rem;
+				justify-content: flex-end;
+				padding: 1.6rem;
+				background-repeat: no-repeat;
 
+				@include respond(phone) {
+					background-size: cover;
+				}
 
 				&.item-1 {
-					background: linear-gradient(180deg,
-					 rgba(0, 0, 0, 0) 54.21%, #000000 100%), url('../../assets/img/faq1.png');
+					background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 54.21%, #000000 100%),
+						url('../../assets/img/faq1.png');
 				}
 
 				&.item-2 {
-					background: linear-gradient(180deg,
-					 rgba(0, 0, 0, 0) 54.21%, #000000 100%), url('../../assets/img/faq2.png');
+					background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 54.21%, #000000 100%),
+						url('../../assets/img/faq2.png');
 				}
 
 				&.item-3 {
-					background: linear-gradient(180deg,
-					 rgba(0, 0, 0, 0) 54.21%, #000000 100%), url('../../assets/img/faq2.png');
+					background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 54.21%, #000000 100%),
+						url('../../assets/img/faq2.png');
 				}
 
 				&.item-4 {
-					background: linear-gradient(180deg,
-					 rgba(0, 0, 0, 0) 54.21%, #000000 100%), url('../../assets/img/faq1.png');
+					background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 54.21%, #000000 100%),
+						url('../../assets/img/faq1.png');
 				}
 			}
 		}
