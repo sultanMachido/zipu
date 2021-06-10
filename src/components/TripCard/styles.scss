@@ -73,6 +73,9 @@
 			background: #f8eac2;
 			border-radius: 100px;
 		}
+		@media (max-width: 1024.98px) {
+			font-size: 0.6rem;
+		}
 	}
 	.button-container {
 		button {
@@ -92,6 +95,11 @@
 			svg {
 				margin-right: 0.7em;
 			}
+			@media (max-width: 1024.98px) {
+				width: 100px;
+				height: 30px;
+				font-size: 0.6rem;
+			}
 		}
 		.book-trip {
 			background: linear-gradient(180deg, #fade90 0%, #f3b348 93.23%, #cb820b 100%);
@@ -107,6 +115,7 @@
 			color: #323d44;
 		}
 	}
+
 	@media (max-width: 576.98px) {
 		display: none;
 	}

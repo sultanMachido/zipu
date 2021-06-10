@@ -25,14 +25,20 @@
 			color: #637a87;
 		}
 	}
-	@media (max-width: 576.98px) {
+	@media (max-width: 1024.98px) {
 		p {
-			display: none;
+			margin: 0;
+			font-size: 0.7rem;
 		}
 		.rating-review {
 			small {
 				font-size: 0.5rem;
 			}
+		}
+	}
+	@media (max-width: 576.98px) {
+		p {
+			display: none;
 		}
 		.star {
 			width: 16px;

@@ -13,11 +13,11 @@ function TransoProfile({companyDescription, companyHeader, tripDetails, hireDeta
 				<CompanyInfo {...companyDescription} />
 				<div className="car-infos">
 					<div className="trips">
-						<h2>Trips by God is good motors</h2>
+						<h2 className="title">Trips by God is good motors</h2>
 						{tripDetails.length && tripDetails.map(trip => <TripCard {...trip} />)}
 					</div>
 					<div className="vehicle-hire">
-						<h2>Vehicles for hire</h2>
+						<h2 className="title">Vehicles for hire</h2>
 						{hireDetails.length &&
 							hireDetails.map(hireDetail => <VehicleHireCard {...hireDetail} />)}
 					</div>
