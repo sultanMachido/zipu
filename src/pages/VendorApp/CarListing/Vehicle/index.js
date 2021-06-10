@@ -8,8 +8,8 @@ import { SubmitButton, SubmitButtonSecondary } from '../../../../components/Form
 import MainCar from '../../../../assets/img/toppng.svg';
 import SeaterCar from '../../../../assets/img/car1.svg';
 import SuitCaseCar from '../../../../assets/img/briefcase.svg';
-import CarType from '../../../../assets/img/virus.svg';
-import ACCar from '../../../../assets/img/airC.svg'
+import CarType from '../../../../assets/svg/virus.svg';
+import ACCar from '../../../../assets/img/airC.svg';
 
 const Vehicle = ({ data, history }) => {
 
