@@ -8,3 +8,4 @@ export {RightArrow} from './RightArrow';
 export {ShareIcon} from './ShareIcon';
 export {CheckIcon} from './CheckIcon';
 export {HeartIcon} from './HeartIcon';
+export {LocationIcon} from './LocationIcon';

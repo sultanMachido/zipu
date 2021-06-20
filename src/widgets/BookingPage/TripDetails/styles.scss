@@ -1,0 +1,27 @@
+.trip-details-container {
+	border-bottom: 1px solid #e3eaed;
+	padding-bottom: 2em;
+	padding-top: 2em;
+	.header {
+		font-size: 14px;
+		h5 {
+			font-weight: 500;
+			color: #323d44;
+		}
+		p {
+			font-weight: normal;
+			color: #637a87;
+		}
+	}
+	.date-pick {
+		margin: 3em 0;
+	}
+	.trips {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		// border-left: 1px dashed #6fcf97;
+		// padding-left: 1em;
+	}
+}

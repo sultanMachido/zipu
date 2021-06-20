@@ -266,6 +266,25 @@ export const EmailField = (inputSize, required = true, disabled = false, placeho
 		/>
 	</Form.Item>
 );
+export const TextField = (inputSize, required = true, disabled = false, placeholder) => (
+	<Form.Item
+		label=""
+		name="text"
+		validateTrigger={['onChange', 'onBlur']}
+		hasFeedback
+		rules={[
+			...(required ? [{ required: true, message: `Please enter your ${placeholder}` }] : []),
+			{ type: 'text', message: `Please input a valid ${placeholder}` }
+		]}
+	>
+		<Input
+			size={inputSize}
+			className="formInputElement"
+			placeholder={placeholder}
+			disabled={disabled}
+		/>
+	</Form.Item>
+);
 
 export const PasswordField = (inputSize, required = true, placeholder) => (
 	<Form.Item
@@ -1119,3 +1138,35 @@ export const TerminalCityField = (inputSize, required = true, disabled = false, 
 	</Form.Item>
 );
 
+export const BookingNumberField = (inputSize, required = true, disabled = false, placeholder) => {
+	return (
+		<Form.Item
+			label=""
+			name="boookingNumber"
+			hasFeedback
+			validateTrigger={['onChange', 'onBlur']}
+			rules={[
+				...(required
+					? [
+							{required: true, message: 'Please enter booking number'},
+							{
+								min: 3,
+								message: 'Booking number cannot be less than 3 characters'
+							},
+							{
+								max: 80,
+								message: 'Booking number cannot be greater than 80 characters'
+							}
+					  ]
+					: [])
+			]}
+		>
+			<Input
+				size={inputSize}
+				className="formInputElement"
+				placeholder={placeholder}
+				disabled={disabled}
+			/>
+		</Form.Item>
+	);
+};

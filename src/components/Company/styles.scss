@@ -1,4 +1,6 @@
 .company-wrapper {
+	display: flex;
+	flex-direction: column;
 	.image-container {
 		width: 100px;
 		img {

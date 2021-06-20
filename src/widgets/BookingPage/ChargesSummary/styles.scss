@@ -1,0 +1,99 @@
+.charges-summary-container {
+	.summary-card {
+		border: 1px solid #e3eaed;
+		border-radius: 10px;
+		padding: 1em;
+		.title {
+			border-bottom: 1px solid #e3eaed;
+			padding-bottom: 0.5em;
+			h2 {
+				font-weight: 500;
+				font-size: 18px;
+				color: #000000;
+				margin: 0;
+			}
+			small {
+				font-weight: 500;
+				font-size: 14px;
+				color: #637a87;
+			}
+		}
+		.table {
+			padding-top: 1em;
+			ul {
+				list-style-type: none;
+				small {
+					display: block;
+					width: 100%;
+					text-align: right;
+					color: #637a87;
+				}
+				li {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					margin: 1em 0;
+					.desc {
+						font-weight: normal;
+						font-size: 16px;
+						color: #637a87;
+					}
+					.price {
+						font-weight: normal;
+						font-size: 16px;
+						color: #000000;
+					}
+				}
+				.total {
+					border-top: 1px solid #e3eaed;
+					margin: 0;
+					.desc,
+					.price {
+						padding-top: 1em;
+						font-weight: 500;
+						font-size: 20px;
+						color: #000000;
+					}
+				}
+			}
+		}
+		.extra-note {
+			font-weight: normal;
+			font-size: 13px;
+			color: #637a87;
+			margin: 2em 0;
+		}
+		.button-container {
+			text-align: center;
+			button {
+				border: 0;
+				background: linear-gradient(180deg, #fade90 0%, #f3b348 93.23%, #cb820b 100%);
+				border-radius: 6px;
+				padding: 12px 32px;
+				font-weight: bold;
+				font-size: 14px;
+				letter-spacing: 0.45px;
+				text-transform: uppercase;
+				color: #323d44;
+				cursor: pointer;
+				&:hover {
+					opacity: 0.9;
+				}
+			}
+		}
+	}
+	.policy-card {
+		margin-top: 2em;
+		padding: 2em;
+		background: #f6f8f9;
+		border-radius: 10px;
+		font-size: 12px;
+		h6 {
+			font-weight: 500;
+			color: #323d44;
+		}
+		p {
+			color: #637a87;
+		}
+	}
+}

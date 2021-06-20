@@ -1,0 +1,73 @@
+.booking-company-card {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #e3eaed;
+	padding-bottom: 2em;
+	.company-details {
+		justify-content: center;
+		align-items: flex-start;
+		.rating-review {
+			* {
+				display: block;
+				text-align: center;
+			}
+		}
+	}
+	.left {
+		flex: 1;
+	}
+	.right {
+		flex: 2;
+	}
+	.top-part-card {
+		.top,
+		.bottom {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.bottom {
+			margin-top: 2em;
+			small {
+				font-size: 14px;
+				color: #637a87;
+				display: flex;
+				align-items: center;
+				span {
+					margin-left: 0.6em;
+				}
+			}
+		}
+		.top {
+			h1 {
+				font-weight: 500;
+				font-size: 18px;
+				color: #323d44;
+			}
+			p {
+				font-weight: 500;
+				font-size: 14px;
+				color: #637a87;
+			}
+			.badge {
+				background: rgba(39, 174, 96, 0.2);
+				border-radius: 100px;
+				padding: 6px 16px;
+				color: #2e7b32;
+			}
+		}
+	}
+	.vehicleInfo {
+		ul {
+			margin-top: 0.8em;
+			list-style-type: none;
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			li {
+				margin-top: 1em;
+				margin-right: 0.8em;
+			}
+		}
+	}
+}
