@@ -1,5 +1,8 @@
 storybook helps build components in isolation.
 
+# hierarchy
+
+```components folder(only shared components) -> widgets(contains components specific to the page and coupling of all the components used in it) -> pages(where API calls happen) ```
 ## Development
 
 ```shell
