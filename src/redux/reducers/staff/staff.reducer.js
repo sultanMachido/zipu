@@ -66,11 +66,11 @@ export const staffReducer = (state = staffInitialState, action) => {
 				getSingleStaffLoading: action.payload
 			};
 
-		case staffTypes.GET_SINGLE_STAFF_LOADING:
-			return {
-				...state,
-				getSingleStaffLoading: action.payload
-			};
+		// case staffTypes.GET_SINGLE_STAFF_LOADING:
+		// 	return {
+		// 		...state,
+		// 		getSingleStaffLoading: action.payload
+		// 	};
 
 		case staffTypes.CLEAR_SINGLE_STAFF_ERRORS:
 			return {

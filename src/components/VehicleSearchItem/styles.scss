@@ -1,0 +1,79 @@
+@import '../../styles/abstract/basestyles';
+
+.VehicleSearchItemWrapper {
+	width: 100%;
+	margin-bottom: 2rem;
+	background-color: $white;
+	border-radius: 10px;
+
+	.vsPad {
+		padding: 3.1rem 3.6rem;
+
+		&:first-child {
+			border-bottom: 1px solid #e3eaed;
+		}
+	}
+
+	.vehicleSearchFirm {
+		flex-basis: 25%;
+		li {
+			display: flex;
+			align-items: center;
+
+			svg {
+				margin-right: 5px;
+			}
+		}
+	}
+
+	.vehicleSearchInfo {
+		margin-left: 5rem;
+		flex-basis: auto;
+		flex-grow: 1;
+
+		p {
+			svg {
+				width:2rem;
+				height:2rem;
+			}
+		}
+
+		ul {
+			flex-basis: 33%;
+			li {
+				display: flex;
+				align-items: center;
+
+				svg {
+					margin-right: 5px;
+				}
+			}
+		}
+
+		.parkDetails {
+			margin-bottom:3rem;
+		}
+
+		.vehicleSearchCta {
+			margin-left: 5rem;
+			flex-basis: auto;
+			justify-content: space-between;
+			flex-grow: 1;
+
+			&--Pricing {
+				p.badgeItem {
+					background: rgba(176, 0, 32, 0.1);
+					border-radius: 100px;
+					padding: 0.6rem 1.6rem;
+				}
+			}
+
+			.vsBtnContainer {
+				button {
+					width: 100%;
+					color: $black;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,24 @@
+@import '../../styles/abstract/basestyles';
+
+.nav {
+	display: flex;
+	background-color: $white;
+	border-bottom: 4px solid $brand3;
+	padding: 3rem 14rem;
+
+	@include respond(tab-land) {
+		padding: 3rem 4rem;
+	}
+
+	ul {
+		@include respond(tab-port) {
+			display: none !important;
+		}
+
+		li {
+			&:not(:last-child) {
+				margin-right: 35px;
+			}
+		}
+	}
+}

@@ -1,0 +1,217 @@
+@import '../../../styles/abstract/basestyles';
+
+.row {
+	margin: 0;
+}
+
+@mixin liTab {
+	li {
+		flex-basis: 25%;
+		@include flexCenter;
+		@include fontBold(2.5rem, 3.2rem, $black);
+		padding: 2rem;
+		flex-grow: 1;
+		flex-shrink: 1;
+
+		@include respond(lsc) {
+			flex-basis: 45%;
+		}
+
+		@include respond(phone) {
+			flex-basis: 100%;
+		}
+
+		&:not(:last-child) {
+			border-right: 1px solid $grey;
+
+			@include respond(phone) {
+				border: none;
+			}
+		}
+
+		a {
+			color: $black;
+		}
+
+		select {
+			background-color: transparent;
+			border: none;
+
+			option {
+				@include fontNormal(1.5rem, 2rem, $black);
+			}
+		}
+
+		svg {
+			margin: 0 1.5rem;
+		}
+
+		.btn {
+			color: $black;
+		}
+	}
+}
+
+.hero {
+	&__header {
+		padding: 9rem 14rem;
+		height: 38rem;
+		background-color: $brand1;
+		position: relative;
+
+		@include respond(tab-port) {
+			padding: 4rem;
+			padding-bottom: 8rem;
+			height: auto;
+		}
+
+		h2 {
+			@include fontBold(4.8rem, 6rem, $white);
+			font-weight: 800;
+		}
+
+		.heroTab {
+			position: absolute;
+			left: 14rem;
+			bottom: 0;
+
+			@include respond(tab-port) {
+				left: 4rem;
+			}
+
+			.btn {
+				border-radius: 0;
+				background-color: $nearWhite;
+
+				&:first-child {
+					border-radius: 8px 0px 0px 0px;
+				}
+				&:last-child {
+					border-radius: 0px 8px 0px 0px;
+				}
+
+				&:hover,
+				&.active {
+					background-color: $white;
+					color: $brand1;
+				}
+
+				&.btn-white {
+					background-image: none;
+				}
+			}
+		}
+	}
+
+	.searchTab {
+		padding: 3rem 14rem;
+		background-color: $brand1;
+
+		ul {
+			background-color: $white;
+			border-radius: 10px;
+			display: flex;
+			@include liTab;
+		}
+	}
+
+	.heroTab__content {
+		min-height: 5rem;
+		background-color: $white;
+		margin: 0 14rem;
+		box-shadow: 2px 15px 30px 10px rgba(43, 43, 59, 0.05);
+		border-radius: 0px 0px 10px 10px;
+
+		@include respond(tab-port) {
+			margin: 0 4rem;
+		}
+
+		ul {
+			@include respond(lsc) {
+				flex-wrap: wrap;
+			}
+
+			@include respond(phone) {
+				flex-direction: column;
+				flex-wrap: nowrap;
+			}
+
+			@include liTab;
+		}
+	}
+}
+
+.heroContent {
+	padding: 0 14rem;
+
+	@include respond(tab-port) {
+		padding: 0 4rem;
+	}
+}
+
+.searchContainer {
+	padding: 5rem 14rem;
+	background-color: rgba($nearWhite, 0.5);
+	display: flex;
+	justify-content: space-between;
+
+	.searchFilter {
+		background-color: transparent;
+		flex-basis: 26rem;
+		margin-right: 2.6rem;
+
+		.filterBlock {
+			border-bottom: 1px solid #e3eaed;
+			background-color: $white;
+			padding: 3rem 2rem;
+
+			&:first-child {
+				border-radius: 10px 10px 0px 0px;
+			}
+
+			&:last-child {
+				border: none;
+				border-radius: 0px 0px 10px 10px;
+			}
+
+			&--check {
+				margin-bottom: 1rem;
+				align-items: center;
+
+				input {
+					margin-right: 8px;
+				}
+			}
+		}
+
+		h2 {
+			@include fontNormal(1.8rem, 2rem, $black);
+			margin-bottom: 2rem;
+		}
+	}
+
+	.searchItems {
+		flex-basis: auto;
+		flex-grow: 1;
+
+		&__tabs {
+			button {
+				outline: none;
+				border: none;
+				background-color: $nearWhite;
+				padding: 1.6rem 3.2rem;
+				@include flexCenter;
+				@include fontNormal(1.6rem, 2.4rem, $black);
+
+				&:first-child {
+					border-radius: 8px 0px 0px 8px;
+				}
+
+				&.activeBtn {
+					color: $brand2;
+					background-color: $white;
+				}
+			}
+		}
+	}
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './styles.scss';
 import TranscoService from '../TranscoService';
 import RentCar from '../../assets/img/rentCar.png';
@@ -28,23 +28,24 @@ const transcoServices = [
 
 const BookTrip = () => {
   return (
-    <div className="bookTripWrapper">
-      <div className="bookTripHeader">
-        <h1>Book a trip or rent a car going to all parts </h1>
-        <p>A valet is usually an employee of the establishment or an employee of a third party valet service. When there is a fee, it is usually either a flat amount or a fee based on how long the car is parked.</p>
+    <div className="bookTripWrapper mt-md mb-md">
+
+      <div className="align-center justify-start bookTripHeader">
+        <h1 className="h3-lg mr-xl">Book a trip or rent a car going to all parts </h1>
+        <p className="p-lg">A valet is usually an employee of the establishment or an employee of a third party valet service. When there is a fee, it is usually either a flat amount or a fee based on how long the car is parked.</p>
       </div>
 
       <div className="vehicleCards">
         {
           transcoServices.map((transcoService) => {
             return (
-              <React.Fragment key={transcoService.id}>
+              <Fragment key={transcoService.id}>
                 <TranscoService transcoService={transcoService} />
-              </React.Fragment>
+              </Fragment>
             )
           })
         }
-      </div>
+      </div> 
     </div>
   )
 }

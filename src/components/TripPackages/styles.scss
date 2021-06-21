@@ -1,53 +1,38 @@
-.tripPackagesWrapper{
-  width: 100%;
-  margin-bottom: 10rem;
-  padding: 10rem 0px 10rem 130px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  overflow-x: hidden;
+@import '../../styles/abstract/basestyles';
 
-  .tripPackageLeft{
-    flex-basis: 25%;
-    margin-right: 2rem;
+.tripPackagesWrapper {
+	width: 100%;
+	margin: 5rem 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	overflow-x: hidden;
 
-    h1{
-      font-family: Inter;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 40px;
-      line-height: 44px;
-      color: #323D44;
-      width: 191px;
-    }
+	.tripPackageLeft {
+		flex-basis: 40rem;
+		flex-shrink: 0;
 
-    p{
-      font-family: Inter;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 19px;
-      line-height: 25px;
-      color: #637A87;
-      width: 414px;
-      margin-top: 2rem;
-    }
+		p {
+			@include fontNormal(1.9rem, 2rem, $greyDark);
+			margin-top: 2rem;
+		}
 
-    .directionArrowsWrapper{
-      margin-top: 4rem;
-      img{
-        cursor: pointer;
+		.directionArrowsWrapper {
+			margin-top: 4rem;
+			img {
+				cursor: pointer;
 
-        &:not(:last-child){
-          margin-right: 5rem;
-        }
-      }
-    }
-  }
-  .tripPackageRight{
-    flex: 1;
-    .scrollWrapper{
-      max-width: 1200px;
-      overflow-x: hidden;
-    }
-  }
+				&:not(:last-child) {
+					margin-right: 5rem;
+				}
+			}
+		}
+	}
+	.tripPackageRight {
+		flex: 1;
+		.scrollWrapper {
+			max-width: 1200px;
+			overflow-x: hidden;
+		}
+	}
 }
