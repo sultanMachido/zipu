@@ -1,0 +1,119 @@
+@import '../../../styles/abstract/basestyles';
+
+.row {
+	margin: 0;
+}
+
+.userContainer {
+	padding: 5rem 14rem;
+	background-color: $white;
+	display: flex;
+	justify-content: space-between;
+
+	@include respond(tab-port) {
+		flex-wrap: wrap;
+		padding: 5rem 4rem;
+	}
+}
+
+.userNav {
+	background-color: transparent;
+	flex-basis: 26rem;
+	flex-shrink: 0;
+	margin-right: 2.6rem;
+
+	@include respond(tab-port) {
+		flex-basis: 100%;
+		margin: 0;
+		margin-bottom: 2rem;
+	}
+
+	ul {
+		background-color: $white;
+		border: 1px solid #e3eaed;
+		border-radius: 10px;
+
+		@include respond(tab-port) {
+			// flex-direction: row;
+		}
+
+		li {
+			padding: 2rem 3rem;
+
+			&:not(:last-child) {
+				border-bottom: 1px solid #e3eaed;
+				@include respond(tab-port) {
+					border: none;
+				}
+			}
+
+			a {
+				@include fontNormal(1.6rem, 2rem, $black);
+
+				&:hover {
+					color: $brand2;
+					text-decoration: none;
+				}
+			}
+		}
+	}
+}
+
+.userInfo {
+	flex-basis: auto;
+	flex-grow: 1;
+
+	.userProfile {
+		.userDetails {
+			border-top: 1px solid #e3eaed;
+
+			&__item {
+				border-bottom: 1px solid #e3eaed;
+				padding: 1.8rem 0;
+
+				p {
+					color: $black;
+				}
+
+				button.btnCta {
+					border: none;
+					outline: none;
+					background-color: transparent;
+					@include fontNormal(1.6rem, 2.4rem, $brand2);
+					white-space: nowrap;
+					margin-left: 3rem;
+				}
+
+				.qtrow {
+					flex-basis: 25%;
+				}
+
+				.fullrow {
+					flex-basis: 70%;
+				}
+
+				.userCard {
+					background-color: #ffbc00;
+					border: 1px solid #ffbc00;
+					box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
+					border-radius: 10px;
+					width: 100%;
+					padding:2rem;
+					height:14rem;
+
+					h2 {
+						@include fontBold(1rem, 2.4rem, $black);
+					}
+
+					h3 {
+						@include fontNormal(1.6rem, 2.4rem, $white);
+					}
+
+					h4 {
+						@include fontNormal(1rem, 2.4rem, $black);
+					}
+				}
+			}
+		}
+	}
+}

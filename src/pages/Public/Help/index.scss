@@ -1,0 +1,19 @@
+@import '../../../styles/abstract/basestyles';
+
+.row {
+	margin: 0;
+}
+
+.helpWrapper {
+	padding: 5rem 14rem;
+
+	.help__item {
+		padding: 3.2rem 4rem;
+		border: 1px solid #e3eaed;
+		border-radius: 10px;
+	}
+
+	.help__faq {
+		margin-top: 10rem;
+	}
+}
