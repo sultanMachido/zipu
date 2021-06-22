@@ -1,25 +1,44 @@
-.successWrapper{
-  width: 100%;
+.successWrapper {
+	width: 100%;
 
-  .carsWrapper{
-    display:flex;
-    justify-content:space-between;
-  }
+	.carsWrapper {
+		display: flex;
+		justify-content: space-between;
 
-  .welcomeWrapper{
-    color: #fff;
-    text-align: center;
-    width: 50%;
-    margin-left: 25%;
+		@media (max-width: 1200px) {
+			display: none;
+		}
+	}
 
-    h1{
-      color: #fff;
-      font-size: 40px;
-    }
-    p{
-      font-size:14px;
-      line-height: 25px;
-      margin-bottom: 5rem;
-    }
-  }
+	.welcomeWrapper {
+		color: #fff;
+		text-align: center;
+		width: 50%;
+		// margin-left: 25%;
+		margin: 0 auto;
+
+		@media (max-width: 800px) {
+			width: 70%;
+		}
+
+		h1 {
+			color: #fff;
+			font-size: 40px;
+		}
+		p {
+			font-size: 14px;
+			line-height: 25px;
+			margin-bottom: 5rem;
+		}
+	}
+}
+
+.registrationWrapper .success {
+	@media (max-width: 800px) {
+		width: 90%;
+
+		button.submitButtonPrimary {
+			padding: 12px;
+		}
+	}
 }

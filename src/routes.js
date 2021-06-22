@@ -26,7 +26,6 @@ export default class Routes extends Component {
 					<Route exact path="/search/vehicle" component={VehicleSearch} />
 					<Route exact path="/trips/saved" component={SavedTrip} />
 					<Route path="/user" component={UserPage} />
-
 					<Route exact path="/login" component={Guest(Login)} />
 					<Route exact path="/register" component={Guest(Registration)} />
 					<Route path="/" component={Private(DashboardContainer)} />
