@@ -1,12 +1,10 @@
-import React,{Suspense,useState} from 'react';
+import React, {Suspense, useState} from 'react';
 import moduleHelpers from 'utils/helpers/moduleHelper';
 import './styles.scss';
 import seatBooking from '../../../assets/img/seatBooking.png';
 import carHire from '../../../assets/img/carHire.png';
 import SeatsArrangements from '../../../components/SeatsArrangements';
 import EditCompany from '../../VendorApp/Company/EditCompany';
-import seatBooking from 'assets/img/seatBooking.png';
-import carHire from 'assets/img/carHire.png';
 
 const SeatBooking = React.lazy(() => moduleHelpers.retryImport(() => import('./SeatBooking')));
 const CarHire = React.lazy(() => moduleHelpers.retryImport(() => import('./CarHire')));
