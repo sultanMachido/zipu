@@ -1,76 +1,91 @@
-.registrationHeader{
-  width: 100%;
-  display: flex;
-  justify-content:flex-start;
-  align-items:center;
-  margin-bottom: 5rem;
+.registrationHeader {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin-bottom: 5rem;
 
-  .registrationText{
-    margin-left: 3rem;
-    h1{
-      font-weight: 600;
-      margin: 0;
-      font-family: Inter;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 25px;
-      line-height: 32px;
-      color: #323D44;
-    }
-    p{
-      font-family: Inter;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 14px;
-      line-height: 20px;
-      margin: 8px 0px;
-      color: #637A87;
-    }
-  }
+	.registrationText {
+		margin-left: 3rem;
+		h1 {
+			font-weight: 600;
+			margin: 0;
+			font-family: Inter;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 25px;
+			line-height: 32px;
+			color: #323d44;
+		}
+		p {
+			font-family: Inter;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 14px;
+			line-height: 20px;
+			margin: 8px 0px;
+			color: #637a87;
+		}
+	}
 }
 
-.registrationForm{
-  width: 100%;
+.registrationForm {
+	width: 100%;
 
-  .btnWrapper{
-      margin:5rem 0 2rem 0;
-  }
+	.btnWrapper {
+		margin: 5rem 0 2rem 0;
+	}
 
-  .verificationText{
-    width: 100%;
-    
-    p{
-      text-align: center !important;
-    }
-  }
+	.verificationText {
+		width: 100%;
+
+		p {
+			text-align: center !important;
+		}
+	}
 }
-.privacyPolicy{
-  width: 100%;
-  font-size: 13px;
-  text-align: center;
-  margin-top: 5rem;
+.privacyPolicy {
+	width: 100%;
+	font-size: 13px;
+	text-align: center;
+	margin-top: 5rem;
 
-  .termsConditions, .privacyStatement{
-      color: #FFD301;
-  }
+	.termsConditions,
+	.privacyStatement {
+		color: #ffd301;
+	}
 }
 
-@media (max-width: 600px){
-  .registrationHeader{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content:flex-start;
-    align-items:center;
-    margin-bottom: 5rem;
-  
-    .registrationText{
-      text-align: center;
-      margin-left: 0;
-      h1{
-        font-weight: 600;
-        font-size: 20px;
-      }
-    }
-  }
+@media (max-width: 600px) {
+	.registrationHeader {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		margin-bottom: 5rem;
+
+		.registrationText {
+			text-align: center;
+			margin-left: 0;
+			h1 {
+				font-weight: 600;
+				font-size: 20px;
+			}
+		}
+	}
+}
+
+@media (max-width: 700px) {
+	.registrationWrapper .registrationContent {
+		width: 80%;
+		padding: 5rem 10rem;
+	}
+}
+
+@media (max-width: 500px) {
+	.registrationWrapper .registrationContent {
+		width: 85%;
+		padding: 5rem;
+	}
 }
