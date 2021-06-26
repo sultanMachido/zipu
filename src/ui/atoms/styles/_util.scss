@@ -152,19 +152,19 @@
 	flex-wrap: wrap;
 }
 
-.col_1 {
+.col-1 {
 	flex-basis: 100%;
 }
 
-.col_2 {
+.col-2 {
 	flex-basis: 48%;
 }
 
-.col_3 {
+.col-3 {
 	flex-basis: 33.3%;
 }
 
-.col_4 {
+.col-4 {
 	flex-basis: 25%;
 }
 
@@ -236,7 +236,7 @@
 	color: $white;
 }
 
-.greyDark {
+.grey-dark {
 	color: $greyDark;
 }
 
@@ -274,7 +274,7 @@
 
 //Tabs
 
-.tabContainer {
+.tab-container {
 	border-bottom: 1px solid #e3eaed;
 	display: flex;
 	margin: 3rem 0;
@@ -289,7 +289,7 @@
 		color: $white;
 		padding: 1.6rem 3.2rem;
 
-		&.activeTab,
+		.active-tab,
 		&:hover {
 			background-color: #eff1f5;
 			border-radius: 8px 0 0;

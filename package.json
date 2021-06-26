@@ -103,7 +103,7 @@
 		}
 	},
 	"lint-staged": {
-		"./**/*.{js,jsx,ts,tsx,scss}": [
+		"./**/*.{js,jsx,ts,tsx}": [
 			"npm run lint:styled",
 			"npm run lint"
 		],
