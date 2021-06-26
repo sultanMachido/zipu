@@ -1,20 +1,19 @@
+import { APIService } from '../../../config/apiConfig';
 import {
-	clearTerminalsErrors,
-	getTerminalsLoading,
-	getTerminalsSuccess,
-	getTerminalsError,
+	addTerminalsError,
 	addTerminalsLoading,
 	addTerminalsSuccess,
-	addTerminalsError,
+	clearTerminalsErrors,
+	editTerminalsError,
 	editTerminalsLoading,
 	editTerminalsSuccess,
-	editTerminalsError,
-	getSingleTerminalLoading,
 	getSingleTerminaError,
-	getSingleTerminaSuccess
+	getSingleTerminalLoading,
+	getSingleTerminaSuccess,
+	getTerminalsError,
+	getTerminalsLoading,
+	getTerminalsSuccess
 } from './terminals.actionCreators';
-
-import { APIService } from '../../../config/apiConfig';
 
 const SOMETHING_WENT_WRONG = 'Something went wrong';
 
@@ -25,10 +24,10 @@ export const getTerminals = (data) => async (dispatch) => {
 	let getTerminalRequest;
 	try {
 		if (data?.pageSize) {
-
-			getTerminalRequest = await APIService.get(`/terminals/transco/${data?.transco_id}?pagination_number=${data?.pageSize}&page=${pageInt}`);
-		}
-		else {
+			getTerminalRequest = await APIService.get(
+				`/terminals/transco/${data?.transco_id}?pagination_number=${data?.pageSize}&page=${pageInt}`
+			);
+		} else {
 			getTerminalRequest = await APIService.get(`/terminals/transco/${data?.transco_id}`);
 		}
 		if (getTerminalRequest.data.status === 'Success') {
@@ -74,12 +73,10 @@ export const addTerminal = (termialData) => async (dispatch) => {
 		dispatch(addTerminalsLoading(false));
 		return { addTerminalStatus: false, message: message || SOMETHING_WENT_WRONG };
 	}
-}
-
-
+};
 
 export const getTerminal = (termialData) => async (dispatch) => {
-	console.log({ termialData })
+	console.log({ termialData });
 	dispatch(getSingleTerminalLoading());
 	try {
 		const getTerminalRequest = await APIService.get(`/terminals/${parseInt(termialData)}`);
@@ -101,5 +98,4 @@ export const getTerminal = (termialData) => async (dispatch) => {
 		dispatch(getSingleTerminalLoading(false));
 		return { getTerminalStatus: false, message: message || SOMETHING_WENT_WRONG };
 	}
-}
-
+};

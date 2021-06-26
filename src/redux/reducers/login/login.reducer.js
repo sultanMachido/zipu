@@ -3,10 +3,10 @@
 import loginTypes from '../../types/loginTypes';
 
 export const loginInitialState = {
-  isAuthenticated: false,
-  userInfo: null,
-  loginLoading: false,
-  error: '',
+	isAuthenticated: false,
+	userInfo: null,
+	loginLoading: false,
+	error: ''
 };
 
 export const loginReducer = (state = loginInitialState, action) => {

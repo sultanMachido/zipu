@@ -7,7 +7,7 @@ export const transportTypeLoading = (loadingState = true) => ({
 	payload: loadingState
 });
 
-export const transportTypeError = error => ({
+export const transportTypeError = (error) => ({
 	type: transportTypes.TRANSPORT_TYPE_ERROR,
 	payload: error
 });
@@ -16,7 +16,7 @@ export const clearTransportTypeErrors = () => ({
 	type: transportTypes.CLEAR_TRANSPORT_TYPE_ERRORS
 });
 
-export const transportTypeSuccess = userInfo => ({
+export const transportTypeSuccess = (userInfo) => ({
 	type: transportTypes.TRANSPORT_TYPE_SUCCESS,
 	payload: userInfo
 });

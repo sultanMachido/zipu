@@ -1,17 +1,16 @@
 /** @format */
 
+import { APIService } from '../../../config/apiConfig';
 import {
-	registerLoading,
 	clearRegisterErrors,
 	registerError,
+	registerLoading,
 	registerSuccess
 } from './register.actionCreators';
 
-import { APIService } from '../../../config/apiConfig';
-
 const SOMETHING_WENT_WRONG = 'Something went wrong';
 
-export const registerUser = transacoData => async dispatch => {
+export const registerUser = (transacoData) => async (dispatch) => {
 	dispatch(clearRegisterErrors());
 	dispatch(registerLoading());
 	try {

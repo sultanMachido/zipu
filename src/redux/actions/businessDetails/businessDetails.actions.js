@@ -1,15 +1,14 @@
+import { APIService } from '../../../config/apiConfig';
 import {
-	businessDetailsTypesLoading,
 	businessDetailsTypesError,
-	clearBusinessDetailsTypesErrors,
-	businessDetailsTypesSuccess
+	businessDetailsTypesLoading,
+	businessDetailsTypesSuccess,
+	clearBusinessDetailsTypesErrors
 } from './businessDetails.actionCreators';
-
-import {APIService} from '../../../config/apiConfig';
 
 const SOMETHING_WENT_WRONG = 'Something went wrong';
 
-export const submitBusinessDetails = businessDetails => async dispatch => {
+export const submitBusinessDetails = (businessDetails) => async (dispatch) => {
 	dispatch(clearBusinessDetailsTypesErrors());
 	dispatch(businessDetailsTypesLoading());
 	try {
@@ -26,12 +25,12 @@ export const submitBusinessDetails = businessDetails => async dispatch => {
 			};
 		} else {
 			dispatch(businessDetailsTypesLoading(false));
-			return {businessDetailsStatus: false, message: SOMETHING_WENT_WRONG};
+			return { businessDetailsStatus: false, message: SOMETHING_WENT_WRONG };
 		}
 	} catch (error) {
 		const message = error.response?.data?.message;
 		dispatch(businessDetailsTypesError(message));
 		dispatch(businessDetailsTypesLoading(false));
-		return {businessDetailsStatus: false, message: message || SOMETHING_WENT_WRONG};
+		return { businessDetailsStatus: false, message: message || SOMETHING_WENT_WRONG };
 	}
 };

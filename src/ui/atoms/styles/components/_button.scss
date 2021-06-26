@@ -1,0 +1,61 @@
+.btn {
+	@include btnGeneric;
+	@include flexCenter;
+
+	color: $white;
+	padding: 1rem 2rem;
+
+	// span {
+	// 	width: 2rem;
+	// 	height: 2rem;
+	// 	border-radius: 50%;
+	// 	background-color: transparent;
+	// 	border: 2px solid $white;
+	// 	border-left-color: transparent;
+	// 	border-top-color: transparent;
+	// 	animation: spin 1s;
+	// 	animation-iteration-count: infinite;
+	// 	animation-fill-mode: forwards;
+	// 	animation-timing-function: linear;
+	// }
+
+	&-brand-2 {
+		background-image: linear-gradient(180deg, #fade90 0%, #f3b348 93.23%, #cb820b 100%);
+		border-radius: 6px;
+	}
+
+	&-white {
+		background-image: linear-gradient(180deg, #fefefe 0%, #e4e4e4 100%);
+		border-radius: 6px;
+		color: $black;
+	}
+
+	&-blue {
+		background-color: $blue;
+
+		&:hover {
+			background-color: rgba($blue, 0.7);
+		}
+	}
+
+	&-dark {
+		background-color: #3d4159;
+
+		&:hover {
+			background-color: rgba(#3d4159, 0.7);
+		}
+	}
+
+	&-dark-2 {
+		background-color: #00114d;
+
+		&:hover {
+			background-color: rgba(#00114d, 0.7);
+		}
+	}
+
+	&-outline {
+		background-color: transparent;
+		border: 1px solid $black;
+	}
+}

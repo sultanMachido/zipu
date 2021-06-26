@@ -1,0 +1,308 @@
+
+.ms {
+	margin-bottom: 2rem;
+	margin-top: 2rem;
+}
+
+.my {
+	margin-bottom: 2rem;
+	margin-top: 2rem;
+}
+
+.mt-xs {
+	margin-top: 1rem;
+}
+
+.mt-sm {
+	margin-top: 2rem;
+}
+
+.mt-md {
+	margin-top: 3rem;
+}
+
+.mt-lg {
+	margin-top: 4rem;
+}
+
+.mt-xl {
+	margin-top: 6rem;
+}
+
+.mb-xs {
+	margin-bottom: 1rem;
+}
+
+.mb-sm {
+	margin-bottom: 2rem;
+}
+
+.mb-md {
+	margin-bottom: 3rem;
+}
+
+.mb-lg {
+	margin-bottom: 4rem;
+}
+
+.mb-xl {
+	margin-bottom: 6rem;
+}
+
+.mr-xs {
+	margin-right: 1rem;
+}
+
+.mr-sm {
+	margin-right: 2rem;
+}
+
+.mr-md {
+	margin-right: 3rem;
+}
+
+.mr-lg {
+	margin-right: 4rem;
+}
+
+.mr-xl {
+	margin-right: 6rem;
+}
+
+.ml-xs {
+	margin-left: 1rem;
+}
+
+.ml-sm {
+	margin-left: 2rem;
+}
+
+.ml-md {
+	margin-left: 3rem;
+}
+
+.ml-lg {
+	margin-left: 4rem;
+}
+
+.ml-xl {
+	margin-left: 6rem;
+}
+
+//Padding
+.pl-xs {
+	padding-left: 1rem;
+}
+
+.pl-sm {
+	padding-left: 2rem;
+}
+
+.pl-md {
+	padding-left: 3rem;
+}
+
+.pl-lg {
+	padding-left: 4rem;
+}
+
+.pl-xl {
+	padding-left: 6rem;
+}
+
+.pr-xs {
+	padding-right: 1rem;
+}
+
+.pr-sm {
+	padding-right: 2rem;
+}
+
+.pr-md {
+	padding-right: 3rem;
+}
+
+.pr-lg {
+	padding-right: 4rem;
+}
+
+.pr-xl {
+	padding-right: 6rem;
+}
+
+//Layout
+.d-flex {
+	display: flex;
+}
+
+.main {
+	background-color: $white;
+	min-height: 100vh;
+	overflow-x: hidden;
+}
+
+.w-100 {
+	width: 100%;
+}
+
+.h-20 {
+	height: 20rem;
+}
+
+.d-flex {
+	display: flex;
+}
+
+.wrap {
+	flex-wrap: wrap;
+}
+
+.col_1 {
+	flex-basis: 100%;
+}
+
+.col_2 {
+	flex-basis: 48%;
+}
+
+.col_3 {
+	flex-basis: 33.3%;
+}
+
+.col_4 {
+	flex-basis: 25%;
+}
+
+.justify-start {
+	justify-content: flex-start;
+}
+
+.justify-end {
+	justify-content: flex-end;
+}
+
+.justify-between {
+	justify-content: space-between;
+}
+
+.justify-around {
+	justify-content: space-around;
+}
+
+.justify-center {
+	justify-content: center;
+}
+
+.align-start {
+	align-items: flex-start;
+}
+
+.align-end {
+	align-items: flex-end;
+}
+
+.align-center {
+	align-items: center;
+}
+
+.tsrow {
+	align-items: center;
+	display: flex;
+}
+
+.tsrow-lg {
+	flex-basis: 65%;
+}
+
+.tsrow-md {
+	flex-basis: 50%;
+}
+
+.tsrow-sm {
+	flex-basis: 32%;
+}
+
+.tscol {
+	display: flex;
+	flex-direction: column;
+}
+
+//Colors
+
+.dark {
+	color: #000;
+}
+
+.black {
+	color: $black;
+}
+
+.white {
+	color: $white;
+}
+
+.greyDark {
+	color: $greyDark;
+}
+
+.danger {
+	color: $danger;
+}
+
+.transparent {
+	background-color: transparent;
+}
+
+.brand-1 {
+	color: $brand1;
+}
+
+.brand-2 {
+	color: $brand2;
+}
+
+.brand-3 {
+	color: $brand3;
+}
+
+.cursor {
+	cursor: pointer;
+}
+
+.center {
+	text-align: center;
+}
+
+.overflow-hidden {
+	overflow: hidden;
+}
+
+//Tabs
+
+.tabContainer {
+	border-bottom: 1px solid #e3eaed;
+	display: flex;
+	margin: 3rem 0;
+
+	button {
+		@include btnGeneric;
+		@include flexCenter;
+		@include fontNormal(1.6rem, 2.4rem, $black);
+
+		background-color: transparent;
+		border-bottom: 0;
+		color: $white;
+		padding: 1.6rem 3.2rem;
+
+		&.activeTab,
+		&:hover {
+			background-color: #eff1f5;
+			border-radius: 8px 0 0;
+			color: $brand1;
+		}
+	}
+}
+
+label {
+	margin: 0;
+}

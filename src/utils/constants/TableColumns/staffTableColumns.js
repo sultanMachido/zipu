@@ -38,7 +38,7 @@ export const staffColumns = () => [
 		title: 'Date created',
 		dataIndex: 'created_at',
 		key: 'created_at',
-		render: created_at => (
+		render: (created_at) => (
 			<>
 				<p>{created_at}</p>
 			</>
@@ -61,18 +61,34 @@ export const staffColumns = () => [
 		title: 'Status',
 		dataIndex: 'status',
 		key: 'status',
-		render: status => {
+		render: (status) => {
 			return (
 				<div>
-					{
-						status === 1
-							?
-							<p style={{ color: "#FF9633", background: "rgba(255, 150, 51, 0.2)", padding: "8px 18px", borderRadius: "100px", textAlign: "center" }}>Active </p>
-							:
-							<p style={{ color: "#637A87", background: "#E3EAED", padding: "8px 18px", borderRadius: "100px", textAlign: "center" }}>Disabled</p>
-					}
+					{status === 1 ? (
+						<p
+							style={{
+								color: '#FF9633',
+								background: 'rgba(255, 150, 51, 0.2)',
+								padding: '8px 18px',
+								borderRadius: '100px',
+								textAlign: 'center'
+							}}>
+							Active{' '}
+						</p>
+					) : (
+						<p
+							style={{
+								color: '#637A87',
+								background: '#E3EAED',
+								padding: '8px 18px',
+								borderRadius: '100px',
+								textAlign: 'center'
+							}}>
+							Disabled
+						</p>
+					)}
 				</div>
-			)
+			);
 		}
 	},
 	{

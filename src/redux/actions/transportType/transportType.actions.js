@@ -1,17 +1,16 @@
 /** @format */
 
+import { APIService } from '../../../config/apiConfig';
 import {
-	transportTypeLoading,
-	transportTypeError,
 	clearTransportTypeErrors,
+	transportTypeError,
+	transportTypeLoading,
 	transportTypeSuccess
 } from './transportType.actionCreators';
 
-import {APIService} from '../../../config/apiConfig';
-
 const SOMETHING_WENT_WRONG = 'Something went wrong';
 
-export const selectTransportType = transportType => async dispatch => {
+export const selectTransportType = (transportType) => async (dispatch) => {
 	dispatch(clearTransportTypeErrors());
 	dispatch(transportTypeLoading());
 	try {
@@ -28,12 +27,12 @@ export const selectTransportType = transportType => async dispatch => {
 			};
 		} else {
 			dispatch(transportTypeLoading(false));
-			return {transportTypeStatus: false, message: SOMETHING_WENT_WRONG};
+			return { transportTypeStatus: false, message: SOMETHING_WENT_WRONG };
 		}
 	} catch (error) {
 		const message = error.response?.data?.message;
 		dispatch(transportTypeError(message));
 		dispatch(transportTypeLoading(false));
-		return {transportTypeStatus: false, message: message || SOMETHING_WENT_WRONG};
+		return { transportTypeStatus: false, message: message || SOMETHING_WENT_WRONG };
 	}
 };

@@ -7,7 +7,7 @@ export const verifyEmailLoading = (loadingState = true) => ({
 	payload: loadingState
 });
 
-export const verifyEmailError = error => ({
+export const verifyEmailError = (error) => ({
 	type: verifyEmailTypes.VERIFY_EMAIL_ERROR,
 	payload: error
 });
@@ -16,7 +16,7 @@ export const clearVerifyEmailErrors = () => ({
 	type: verifyEmailTypes.CLEAR_VERIFY_EMAIL_ERRORS
 });
 
-export const verifyEmailSuccess = otpInfo => ({
+export const verifyEmailSuccess = (otpInfo) => ({
 	type: verifyEmailTypes.VERIFY_EMAIL_SUCCESS,
 	payload: otpInfo
 });

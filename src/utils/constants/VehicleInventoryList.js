@@ -1,8 +1,8 @@
+import ACCar from '../../assets/img/airC.svg';
+import SuitCaseCar from '../../assets/img/briefcase.svg';
 import SeaterCar from '../../assets/img/car1.svg';
 import MainCar from '../../assets/img/toppng.svg';
-import SuitCaseCar from '../../assets/img/briefcase.svg';
 import CarType from '../../assets/img/virus.svg';
-import ACCar from '../../assets/img/airC.svg';
 export const VehicleData = [
 	{
 		id: 1,

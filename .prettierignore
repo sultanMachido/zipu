@@ -1,0 +1,8 @@
+# .storybook
+# node_modules
+# package.json
+# jsconfig.json
+# app
+# data
+# scripts
+# public/**/*

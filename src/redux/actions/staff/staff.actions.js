@@ -1,58 +1,65 @@
+import { APIService } from '../../../config/apiConfig';
 import {
-	clearStaffTErrors,
-	getStaffLoading,
-	getStaffSuccess,
-	getStaffError,
+	activateStaffError,
+	activateStaffLoading,
+	activateStaffSuccess,
+	addStaffError,
 	addStaffLoading,
 	addStaffSuccess,
-	addStaffError,
+	clearSingleStaffTErrors,
+	clearStaffTErrors,
+	deActivateStaffError,
+	deActivateStaffLoading,
+	deActivateStaffSuccess,
+	editStaffError,
 	editStaffLoading,
 	editStaffSuccess,
-	editStaffError,
-	activateStaffError,
-	activateStaffSuccess,
-	activateStaffLoading,
-	deActivateStaffError,
-	deActivateStaffSuccess,
-	deActivateStaffLoading,
 	getSingleStaffError,
 	getSingleStaffLoading,
 	getSingleStaffSuccess,
-	clearSingleStaffTErrors
+	getStaffError,
+	getStaffLoading,
+	getStaffSuccess
 } from './staff.actionCreators';
-
-import { APIService } from '../../../config/apiConfig';
 
 const SOMETHING_WENT_WRONG = 'Something went wrong';
 
 // get all staff
-export const getStaffs = ({ transco_id, pageSize, page }) => async dispatch => {
-	dispatch(clearStaffTErrors());
-	dispatch(getStaffLoading());
-	try {
-		const getStaffRequest = await APIService.get(`/transco-staffs?transco_id=${transco_id}&pagination_number=${pageSize}&page=${page}`);
+export const getStaffs =
+	({ transco_id, pageSize, page }) =>
+	async (dispatch) => {
+		dispatch(clearStaffTErrors());
+		dispatch(getStaffLoading());
+		try {
+			const getStaffRequest = await APIService.get(
+				`/transco-staffs?transco_id=${transco_id}&pagination_number=${pageSize}&page=${page}`
+			);
 
-		if (getStaffRequest.data.status === 'Success') {
-			dispatch(getStaffLoading());
-			dispatch(getStaffSuccess(getStaffRequest.data));
-			return {
-				getStaffStatus: true,
-				message: 'Successfully fetched staff records'
-			};
-		} else {
+			if (getStaffRequest.data.status === 'Success') {
+				dispatch(getStaffLoading());
+				dispatch(getStaffSuccess(getStaffRequest.data));
+				return {
+					getStaffStatus: true,
+					message: 'Successfully fetched staff records'
+				};
+			} else {
+				dispatch(getStaffLoading(false));
+				return {
+					getStaffStatus: false,
+					message: SOMETHING_WENT_WRONG,
+					data: getStaffRequest.data.data
+				};
+			}
+		} catch (error) {
+			const message = error.response?.data?.message;
+			dispatch(getStaffError(message));
 			dispatch(getStaffLoading(false));
-			return { getStaffStatus: false, message: SOMETHING_WENT_WRONG, data: getStaffRequest.data.data };
+			return { getStaffStatus: false, message: message || SOMETHING_WENT_WRONG };
 		}
-	} catch (error) {
-		const message = error.response?.data?.message;
-		dispatch(getStaffError(message));
-		dispatch(getStaffLoading(false));
-		return { getStaffStatus: false, message: message || SOMETHING_WENT_WRONG };
-	}
-};
+	};
 
 // get single staff
-export const getSingleStaff = (staffId) => async dispatch => {
+export const getSingleStaff = (staffId) => async (dispatch) => {
 	dispatch(clearSingleStaffTErrors());
 	dispatch(getSingleStaffLoading());
 	try {
@@ -67,7 +74,11 @@ export const getSingleStaff = (staffId) => async dispatch => {
 			};
 		} else {
 			dispatch(getSingleStaffLoading(false));
-			return { getSingleStaffStatus: false, message: SOMETHING_WENT_WRONG, data: getSingleStaffRequest.data.data };
+			return {
+				getSingleStaffStatus: false,
+				message: SOMETHING_WENT_WRONG,
+				data: getSingleStaffRequest.data.data
+			};
 		}
 	} catch (error) {
 		const message = error.response?.data?.message;
@@ -78,7 +89,7 @@ export const getSingleStaff = (staffId) => async dispatch => {
 };
 
 // add staff
-export const addStaff = (staffRecord) => async dispatch => {
+export const addStaff = (staffRecord) => async (dispatch) => {
 	dispatch(clearStaffTErrors());
 	dispatch(addStaffLoading());
 	try {
@@ -103,12 +114,14 @@ export const addStaff = (staffRecord) => async dispatch => {
 };
 
 // edit staff
-export const editStaff = (staffRecord) => async dispatch => {
-	console.log(staffRecord)
+export const editStaff = (staffRecord) => async (dispatch) => {
+	console.log(staffRecord);
 	dispatch(clearStaffTErrors());
 	dispatch(editStaffLoading());
 	try {
-		const editStaffRequest = await APIService.post(`/updatestaff/${staffRecord.staffId}`, { ...staffRecord });
+		const editStaffRequest = await APIService.post(`/updatestaff/${staffRecord.staffId}`, {
+			...staffRecord
+		});
 		if (editStaffRequest.data.status === 'Success') {
 			dispatch(editStaffLoading());
 			dispatch(editStaffSuccess(editStaffRequest.data));
@@ -129,11 +142,13 @@ export const editStaff = (staffRecord) => async dispatch => {
 };
 
 // activate staff
-export const activateStaff = (data) => async dispatch => {
+export const activateStaff = (data) => async (dispatch) => {
 	dispatch(clearStaffTErrors());
 	dispatch(activateStaffLoading());
 	try {
-		const activateStaffRequest = await APIService.post(`/activatestaff/${data?.staffId}`, { password: data?.password });
+		const activateStaffRequest = await APIService.post(`/activatestaff/${data?.staffId}`, {
+			password: data?.password
+		});
 		if (activateStaffRequest.data.status === 'Success') {
 			dispatch(activateStaffLoading());
 			dispatch(activateStaffSuccess(activateStaffRequest.data));
@@ -154,11 +169,13 @@ export const activateStaff = (data) => async dispatch => {
 };
 
 // deactivate staff
-export const deActivateStaff = (data) => async dispatch => {
+export const deActivateStaff = (data) => async (dispatch) => {
 	dispatch(clearStaffTErrors());
 	dispatch(deActivateStaffLoading());
 	try {
-		const deActivateStaffRequest = await APIService.post(`/deactivatestaff/${data?.staffId}`, { password: data?.password });
+		const deActivateStaffRequest = await APIService.post(`/deactivatestaff/${data?.staffId}`, {
+			password: data?.password
+		});
 		if (deActivateStaffRequest.data.status === 'Success') {
 			dispatch(deActivateStaffLoading());
 			dispatch(deActivateStaffSuccess(deActivateStaffRequest.data));

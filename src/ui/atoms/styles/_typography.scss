@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&display=swap');
+
+/* --------------------------
+    typography
+--------------------------- */
+
+html {
+	box-sizing: border-box;
+	font-size: 62.5%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	scroll-behavior: smooth;
+	text-rendering: optimizeLegibility;
+}
+
+// @media only screen and (min-width: 112.5em) {
+//   html {
+//     font-size: 75%;
+//   }
+// }
+
+@media only screen and (max-width: 75em) {
+	html {
+		font-size: 56.25%;
+	}
+}
+
+@media only screen and (max-width: 56.25em) {
+	html {
+		font-size: 50%;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: $primaryFont;
+	font-weight: 300;
+	line-height: 1.6rem;
+}
+
+.h-1 {
+	@include fontBold(5rem, 6rem, $black);
+
+	font-weight: 700;
+}
+
+.title-sm {
+	@include fontNormal(1.9rem, 2.4rem, $black);
+}
+
+.title-lg {
+	@include fontBold(2.8rem, 4.4rem, $black);
+}
+
+.body-2-lg {
+	@include fontNormal(1.4rem, 2rem, #637a87);
+}
+
+.body-2-sm {
+	@include fontNormal(1.2rem, 2rem, #637a87);
+}
+
+.h2-lg {
+	@include fontBold(5rem, 5.6rem, #323d44);
+}
+
+.h3-lg {
+	@include fontBold(4rem, 4.4rem, #323d44);
+}
+
+.p-lg {
+	@include fontNormal(1.6rem, 2.4rem, #637a87);
+}
+
+.p-md {
+	@include fontNormal(1.8rem, 2rem, $black);
+
+	font-weight: 500;
+}
+
+.p-sm {
+	@include fontNormal(1.8rem, 3.2rem, $black);
+
+	font-weight: 600;
+}
+
+.p-xs {
+	@include fontNormal(1rem, 1.2rem, $white);
+}
+
+.sub-lg {
+	@include fontBold(2.5rem, 3.2rem, $grey-4);
+}
+
+.sub-sm {
+	@include fontNormal(2.5rem, 3.2rem, $grey-4);
+}
+
+.action-sm {
+	@include fontBold(1.6rem, 2.4rem, $grey-4);
+}
+
+.action-lg {
+	@include fontBold(1.6rem, 2rem, $grey-4);
+}
+
+.action-xs {
+	@include fontNormal(1.6rem, 2rem, $grey-4);
+}
+
+.font-100 {
+	font-weight: 100;
+}
+
+.font-300 {
+	font-style: normal;
+	font-weight: 300;
+}
+
+.font-400 {
+	font-style: normal;
+	font-weight: 400;
+}
+
+.font-500 {
+	font-weight: 500;
+}
+
+.font-600 {
+	font-weight: 600;
+}
+
+.font-700 {
+	font-weight: 700;
+}

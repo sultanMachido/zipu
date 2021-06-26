@@ -6,12 +6,12 @@ export const getTerminalsLoading = (loadingState = true) => ({
 	payload: loadingState
 });
 
-export const getTerminalsSuccess = data => ({
+export const getTerminalsSuccess = (data) => ({
 	type: terminalsTypes.GET_TERMINALS_SUCCESS,
 	payload: data
 });
 
-export const getTerminalsError = error => ({
+export const getTerminalsError = (error) => ({
 	type: terminalsTypes.GET_TERMINALS_ERROR,
 	payload: error
 });
@@ -22,16 +22,15 @@ export const addTerminalsLoading = (loadingState = true) => ({
 	payload: loadingState
 });
 
-export const addTerminalsSuccess = data => ({
+export const addTerminalsSuccess = (data) => ({
 	type: terminalsTypes.ADD_TERMINALS_SUCCESS,
 	payload: data
 });
 
-export const addTerminalsError = error => ({
+export const addTerminalsError = (error) => ({
 	type: terminalsTypes.ADD_TERMINALS_ERROR,
 	payload: error
 });
-
 
 // edit terminals
 export const editTerminalsLoading = (loadingState = true) => ({
@@ -39,12 +38,12 @@ export const editTerminalsLoading = (loadingState = true) => ({
 	payload: loadingState
 });
 
-export const editTerminalsSuccess = data => ({
+export const editTerminalsSuccess = (data) => ({
 	type: terminalsTypes.EDIT_TERMINALS_SUCCESS,
 	payload: data
 });
 
-export const editTerminalsError = error => ({
+export const editTerminalsError = (error) => ({
 	type: terminalsTypes.EDIT_TERMINALS_ERROR,
 	payload: error
 });
@@ -59,12 +58,12 @@ export const getSingleTerminalLoading = (loadingState = true) => ({
 	payload: loadingState
 });
 
-export const getSingleTerminaSuccess = data => ({
+export const getSingleTerminaSuccess = (data) => ({
 	type: terminalsTypes.GET_ONE_TERMINAL_SUCCESS,
 	payload: data
 });
 
-export const getSingleTerminaError = error => ({
+export const getSingleTerminaError = (error) => ({
 	type: terminalsTypes.GET_ONE_TERMINAL_ERROR,
 	payload: error
 });

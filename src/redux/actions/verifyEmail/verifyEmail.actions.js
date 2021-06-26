@@ -1,21 +1,20 @@
 /** @format */
 
+import { APIService } from '../../../config/apiConfig';
 import {
-	verifyEmailLoading,
-	verifyEmailError,
 	clearVerifyEmailErrors,
+	verifyEmailError,
+	verifyEmailLoading,
 	verifyEmailSuccess
 } from './verifyEmail.actionsCreators';
 
-import {APIService} from '../../../config/apiConfig';
-
 const SOMETHING_WENT_WRONG = 'Something went wrong';
 
-export const verifyUserEmail = otp => async dispatch => {
+export const verifyUserEmail = (otp) => async (dispatch) => {
 	dispatch(clearVerifyEmailErrors());
 	dispatch(verifyEmailLoading());
 	try {
-		const verifyEmailRequest = await APIService.post('/verify-transco-email', {otp_code: otp});
+		const verifyEmailRequest = await APIService.post('/verify-transco-email', { otp_code: otp });
 		if (verifyEmailRequest.data.status === 'Success') {
 			dispatch(verifyEmailLoading());
 			dispatch(verifyEmailSuccess(verifyEmailRequest.data));
@@ -26,12 +25,12 @@ export const verifyUserEmail = otp => async dispatch => {
 			};
 		} else {
 			dispatch(verifyEmailLoading(false));
-			return {verifyEmailStatus: false, message: verifyEmailRequest.message};
+			return { verifyEmailStatus: false, message: verifyEmailRequest.message };
 		}
 	} catch (error) {
 		const message = error.response?.data?.message;
 		dispatch(verifyEmailError(message));
 		dispatch(verifyEmailLoading(false));
-		return {verifyEmailStatus: false, message: message || SOMETHING_WENT_WRONG};
+		return { verifyEmailStatus: false, message: message || SOMETHING_WENT_WRONG };
 	}
 };

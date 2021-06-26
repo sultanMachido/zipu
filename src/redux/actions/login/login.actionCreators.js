@@ -5,7 +5,7 @@ export const loginLoading = (loadingState = true) => ({
 	payload: loadingState
 });
 
-export const loginError = error => ({
+export const loginError = (error) => ({
 	type: loginTypes.LOGIN_ERROR,
 	payload: error
 });
@@ -14,7 +14,7 @@ export const clearLoginErrors = () => ({
 	type: loginTypes.CLEAR_LOGIN_ERRORS
 });
 
-export const loginSuccess = userInfo => ({
+export const loginSuccess = (userInfo) => ({
 	type: loginTypes.LOGIN_SUCCESS,
 	payload: userInfo
 });

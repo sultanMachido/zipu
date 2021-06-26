@@ -1,0 +1,12 @@
+@import '../../ui/atoms/styles/base';
+
+.sample-container {
+	background: blue;
+	color: red;
+	height: 500px;
+	width: 500px;
+}
+.conditional-class {
+	background: red;
+	color: blue;
+}

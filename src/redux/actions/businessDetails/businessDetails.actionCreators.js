@@ -5,7 +5,7 @@ export const businessDetailsTypesLoading = (loadingState = true) => ({
 	payload: loadingState
 });
 
-export const businessDetailsTypesError = error => ({
+export const businessDetailsTypesError = (error) => ({
 	type: businessDetailsTypes.BUSINESS_DETAILS_ERROR,
 	payload: error
 });
@@ -14,7 +14,7 @@ export const clearBusinessDetailsTypesErrors = () => ({
 	type: businessDetailsTypes.CLEAR_BUSINESS_DETAILS_ERRORS
 });
 
-export const businessDetailsTypesSuccess = data => ({
+export const businessDetailsTypesSuccess = (data) => ({
 	type: businessDetailsTypes.BUSINESS_DETAILS_SUCCESS,
 	payload: data
 });

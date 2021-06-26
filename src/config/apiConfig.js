@@ -12,7 +12,7 @@ const multipartInstance = axios.create({
 	headers: { 'Content-Type': 'multipart/form-data' }
 });
 
-const useConfig = config => {
+const useConfig = (config) => {
 	const customConfig = config;
 	// add bearer token to every request header
 	if (localStorage.zipuJWTToken) {

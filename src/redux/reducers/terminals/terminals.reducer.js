@@ -16,12 +16,11 @@ export const terminalsInitialState = {
 
 	getOneTerminlaLoading: false,
 	getOneTerminlaSuccess: {},
-	getOneTerminlaError: '',
+	getOneTerminlaError: ''
 };
 
 export const terminalsReducer = (state = terminalsInitialState, action) => {
 	switch (action.type) {
-
 		// get terminals
 		case terminalsTypes.GET_TERMINALS_LOADING:
 			return {
@@ -43,7 +42,6 @@ export const terminalsReducer = (state = terminalsInitialState, action) => {
 				terminalCount: 0
 			};
 
-
 		// add terminals
 		case terminalsTypes.ADD_TERMINALS_LOADING:
 			return {
@@ -54,15 +52,14 @@ export const terminalsReducer = (state = terminalsInitialState, action) => {
 			return {
 				...state,
 				addTerminalsSuccess: action.payload,
-				addTerminalsLoading: false,
+				addTerminalsLoading: false
 			};
 		case terminalsTypes.ADD_TERMINALS_ERROR:
 			return {
 				...state,
 				addTerminalsError: action.payload,
-				addTerminalsLoading: false,
+				addTerminalsLoading: false
 			};
-
 
 		// get single terminal
 		case terminalsTypes.GET_ONE_TERMINAL_LOADING:
@@ -75,13 +72,13 @@ export const terminalsReducer = (state = terminalsInitialState, action) => {
 			return {
 				...state,
 				getOneTerminlaSuccess: action.payload,
-				getOneTerminlaLoading: false,
+				getOneTerminlaLoading: false
 			};
 		case terminalsTypes.GET_ONE_TERMINAL_ERROR:
 			return {
 				...state,
 				getOneTerminlaError: action.payload,
-				getOneTerminlaLoading: false,
+				getOneTerminlaLoading: false
 			};
 
 		default:

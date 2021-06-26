@@ -11,16 +11,15 @@ export const getStaffLoading = (loadingState = true) => ({
 	payload: loadingState
 });
 
-export const getStaffSuccess = data => ({
+export const getStaffSuccess = (data) => ({
 	type: staffTypes.GET_STAFF_SUCCESS,
 	payload: data
 });
 
-export const getStaffError = error => ({
+export const getStaffError = (error) => ({
 	type: staffTypes.GET_STAFF_ERROR,
 	payload: error
 });
-
 
 // get single staff
 export const getSingleStaffLoading = (loadingState = true) => ({
@@ -28,12 +27,12 @@ export const getSingleStaffLoading = (loadingState = true) => ({
 	payload: loadingState
 });
 
-export const getSingleStaffSuccess = data => ({
+export const getSingleStaffSuccess = (data) => ({
 	type: staffTypes.GET_SINGLE_STAFF_SUCCESS,
 	payload: data
 });
 
-export const getSingleStaffError = error => ({
+export const getSingleStaffError = (error) => ({
 	type: staffTypes.GET_SINGLE_STAFF_ERROR,
 	payload: error
 });
@@ -42,19 +41,18 @@ export const clearSingleStaffTErrors = () => ({
 	type: staffTypes.CLEAR_SINGLE_STAFF_ERRORS
 });
 
-
 // add staff
 export const addStaffLoading = (loadingState = true) => ({
 	type: staffTypes.ADD_STAFF_LOADING,
 	payload: loadingState
 });
 
-export const addStaffSuccess = data => ({
+export const addStaffSuccess = (data) => ({
 	type: staffTypes.ADD_STAFF_SUCCESS,
 	payload: data
 });
 
-export const addStaffError = error => ({
+export const addStaffError = (error) => ({
 	type: staffTypes.ADD_STAFF_ERROR,
 	payload: error
 });
@@ -65,12 +63,12 @@ export const editStaffLoading = (loadingState = true) => ({
 	payload: loadingState
 });
 
-export const editStaffSuccess = data => ({
+export const editStaffSuccess = (data) => ({
 	type: staffTypes.EDIT_STAFF_SUCCESS,
 	payload: data
 });
 
-export const editStaffError = error => ({
+export const editStaffError = (error) => ({
 	type: staffTypes.EDIT_STAFF_ERROR,
 	payload: error
 });
@@ -81,12 +79,12 @@ export const activateStaffLoading = (loadingState = true) => ({
 	payload: loadingState
 });
 
-export const activateStaffSuccess = data => ({
+export const activateStaffSuccess = (data) => ({
 	type: staffTypes.ACTIVATE_STAFF_SUCCESS,
 	payload: data
 });
 
-export const activateStaffError = error => ({
+export const activateStaffError = (error) => ({
 	type: staffTypes.ACTIVATE_STAFF_ERROR,
 	payload: error
 });
@@ -97,12 +95,12 @@ export const deActivateStaffLoading = (loadingState = true) => ({
 	payload: loadingState
 });
 
-export const deActivateStaffSuccess = data => ({
+export const deActivateStaffSuccess = (data) => ({
 	type: staffTypes.DEACTIVATE_STAFF_SUCCESS,
 	payload: data
 });
 
-export const deActivateStaffError = error => ({
+export const deActivateStaffError = (error) => ({
 	type: staffTypes.DEACTIVATE_STAFF_ERROR,
 	payload: error
 });

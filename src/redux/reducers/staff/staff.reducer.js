@@ -40,7 +40,7 @@ export const staffReducer = (state = staffInitialState, action) => {
 				...state,
 				getStaffLoading: false,
 				getStaffSuccess: action?.payload?.data?.staffs.data,
-				getStaffCount: action?.payload?.data?.staffs?.total,
+				getStaffCount: action?.payload?.data?.staffs?.total
 			};
 		case staffTypes.GET_STAFF_LOADING:
 			return {
@@ -58,7 +58,7 @@ export const staffReducer = (state = staffInitialState, action) => {
 			return {
 				...state,
 				getSingleStaffLoading: false,
-				getSingleStaffSuccess: action?.payload?.data?.staff,
+				getSingleStaffSuccess: action?.payload?.data?.staff
 			};
 		case staffTypes.GET_SINGLE_STAFF_LOADING:
 			return {
