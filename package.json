@@ -105,17 +105,14 @@
 	"lint-staged": {
 		"./**/*.{js,jsx,ts,tsx}": [
 			"npm run lint:styled",
-			"npm run lint",
-			"git add"
+			"npm run lint"
 		],
 		"/src/**/*.scss": [
 			"prettier --write",
-			"stylelint --fix",
-			"git add"
+			"stylelint --fix"
 		],
 		"{*.{json,md}}": [
-			"prettier --write",
-			"git add"
+			"prettier --write"
 		]
 	}
 }
