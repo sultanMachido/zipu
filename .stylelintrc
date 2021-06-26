@@ -6,6 +6,7 @@
   "extends": [
     "stylelint-config-recommended",
     "stylelint-config-recommended-scss",
+    "stylelint-config-sass-guidelines",
     "stylelint-config-standard"
   ],
   "rules": {

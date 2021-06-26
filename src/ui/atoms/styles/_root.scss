@@ -1,10 +1,10 @@
-@mixin flexCenter {
+@mixin flex-center {
 	align-items: center;
 	display: flex;
 	justify-content: center;
 }
 
-@mixin fontNormal($fs, $lh, $color) {
+@mixin font-normal($fs, $lh, $color) {
 	color: $color;
 	font-family: $primaryFont;
 	font-size: $fs;
@@ -13,7 +13,7 @@
 	line-height: $lh;
 }
 
-@mixin fontBold($fs, $lh, $color) {
+@mixin font-bold($fs, $lh, $color) {
 	color: $color;
 	font-family: $boldFont;
 	font-size: $fs;
@@ -22,8 +22,8 @@
 	line-height: $lh;
 }
 
-@mixin btnGeneric {
-	border: none;
+@mixin btn-generic {
+	border: 0;
 	border-radius: 4px;
 	cursor: pointer;
 	font-family: $primaryFont;
