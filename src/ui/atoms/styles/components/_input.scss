@@ -9,16 +9,16 @@ input.input {
 	padding: 1.6rem;
 	transition: all 0.2s;
 
+	&::placeholder {
+		@include fontNormal(1.6rem, 2rem, $grey-3);
+	}
+
 	&:focus {
 		outline: none;
 
 		&:invalid {
 			border-bottom: 1px solid orangered;
 		}
-	}
-
-	&::input-placeholder {
-		@include fontNormal(1.6rem, 2rem, $grey-3);
 	}
 }
 
@@ -42,15 +42,15 @@ input.formInput {
 	transition: all 0.2s;
 	width: 100%;
 
+	&::placeholder {
+		@include fontNormal(1.4rem, 2.2rem, rgba(0, 0, 0, 0.25));
+	}
+
 	&:focus {
 		outline: none;
 
 		&:invalid {
 			border-bottom: 1px solid orangered;
 		}
-	}
-
-	&::input-placeholder {
-		@include fontNormal(1.4rem, 2.2rem, rgba(0, 0, 0, 0.25));
 	}
 }

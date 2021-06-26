@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React from 'react';
 
 export const staffColumns = () => [
@@ -67,7 +68,7 @@ export const staffColumns = () => [
 					{status === 1 ? (
 						<p
 							style={{
-								color: '#FF9633',
+								color: '#ff9633',
 								background: 'rgba(255, 150, 51, 0.2)',
 								padding: '8px 18px',
 								borderRadius: '100px',
@@ -78,8 +79,8 @@ export const staffColumns = () => [
 					) : (
 						<p
 							style={{
-								color: '#637A87',
-								background: '#E3EAED',
+								color: '#637a87',
+								background: '#e3eaed',
 								padding: '8px 18px',
 								borderRadius: '100px',
 								textAlign: 'center'
