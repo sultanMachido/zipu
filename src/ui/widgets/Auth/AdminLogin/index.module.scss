@@ -1,0 +1,53 @@
+.admin-login-wrapper {
+	align-items: center;
+	background: #e5e5e5;
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+
+	.card {
+		background: white;
+		margin: auto;
+		padding: 7em 0;
+		width: 45%;
+	}
+
+	.inner-card {
+		margin: auto;
+		width: 80%;
+
+		h1 {
+			padding-bottom: 0.7em;
+		}
+
+		p {
+			font-size: 1.4rem;
+			padding-bottom: 3em;
+		}
+
+		.input-group {
+			margin-bottom: 2em;
+		}
+
+		.form-button-container {
+			margin: 5em 0;
+		}
+	}
+
+	@media (max-width: 768.98px) {
+		.card {
+			width: 70%;
+		}
+	}
+
+	@media (max-width: 576.98px) {
+		.card {
+			height: 100%;
+			width: 100%;
+
+			.inner-card {
+				padding-top: 4em;
+			}
+		}
+	}
+}

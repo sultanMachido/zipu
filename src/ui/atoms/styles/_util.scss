@@ -237,7 +237,7 @@
 }
 
 .grey-dark {
-	color: $greyDark;
+	color: $grey-dark;
 }
 
 .danger {
@@ -280,9 +280,9 @@
 	margin: 3rem 0;
 
 	button {
-		@include btnGeneric;
-		@include flexCenter;
-		@include fontNormal(1.6rem, 2.4rem, $black);
+		@include btn-generic;
+		@include flex-center;
+		@include font-normal(1.6rem, 2.4rem, $black);
 
 		background-color: transparent;
 		border-bottom: 0;
