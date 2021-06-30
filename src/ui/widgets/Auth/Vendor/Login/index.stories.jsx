@@ -1,14 +1,14 @@
 import React from 'react';
 
-import AdminLogin from '.';
+import Login from '.';
 
 export default {
-	title: 'Widgets/Auth/AdminLogin',
-	component: AdminLogin
+	title: 'Widgets/Auth/Vendor/Login',
+	component: Login
 };
 
 const Template = (args) => {
-	return <AdminLogin {...args} />;
+	return <Login {...args} />;
 };
 
 export const Default = Template.bind({});

@@ -1,4 +1,4 @@
-.admin-login-wrapper {
+.card-wrapper {
 	align-items: center;
 	background: #e5e5e5;
 	display: flex;
@@ -14,24 +14,7 @@
 
 	.inner-card {
 		margin: auto;
-		width: 80%;
-
-		h1 {
-			padding-bottom: 0.7em;
-		}
-
-		p {
-			font-size: 1.4rem;
-			padding-bottom: 3em;
-		}
-
-		.input-group {
-			margin-bottom: 2em;
-		}
-
-		.form-button-container {
-			margin: 5em 0;
-		}
+		width: 60%;
 	}
 
 	@media (max-width: 768.98px) {
@@ -47,6 +30,7 @@
 
 			.inner-card {
 				padding-top: 4em;
+				width: 80%;
 			}
 		}
 	}

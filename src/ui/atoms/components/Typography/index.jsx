@@ -22,7 +22,16 @@ export const bodyVariants = {
 	section: 'section'
 };
 
-export const Text = ({ align, color, fontWeight, variant, className, children, ...props }) => {
+export const Text = ({
+	textAlign,
+	color,
+	fontWeight,
+	variant,
+	className,
+	children,
+	fontsize,
+	...props
+}) => {
 	const Component = variant ? variants[variant] : 'p';
 
 	return (
@@ -30,23 +39,34 @@ export const Text = ({ align, color, fontWeight, variant, className, children, .
 			className={styles({
 				[`font-weight-${fontWeight}`]: fontWeight,
 				[`font-color-${color}`]: color,
-				[`font-align-${align}`]: align,
+				[`font-align-${textAlign}`]: textAlign,
 				[`font-color-black`]: !color,
 				[`font-color-yellow`]: variant === 'a',
 				[`${className}`]: className
 			})}
+			style={{ fontSize: fontsize ? fontsize : '1.2rem' }}
 			{...props}>
 			{children}
 		</Component>
 	);
 };
 
-export const Body = ({ variant, children, display, className, ...props }) => {
+export const View = ({
+	variant,
+	children,
+	display,
+	alignItems,
+	justifyContent,
+	className,
+	...props
+}) => {
 	const Component = variant ? bodyVariants[variant] : 'div';
 	return (
 		<Component
 			className={styles({
 				[`display-${display}`]: display,
+				[`align-${alignItems}`]: alignItems,
+				[`justify-${justifyContent}`]: justifyContent,
 				[`${className}`]: className
 			})}
 			{...props}>

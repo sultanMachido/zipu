@@ -1,4 +1,4 @@
-export const EyeClosed = ({ size = '24px' }) => {
+export const EyeClosed = ({ size = '16px' }) => {
 	return (
 		<svg
 			width={size}
