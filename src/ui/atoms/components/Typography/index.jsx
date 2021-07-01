@@ -14,12 +14,15 @@ const variants = {
 	h3: 'h3',
 	h4: 'h4',
 	h5: 'h5',
+	label: 'label',
 	a: 'a'
 };
 
 export const bodyVariants = {
 	div: 'div',
-	section: 'section'
+	label: 'label',
+	section: 'section',
+	button: 'button'
 };
 
 export const Text = ({

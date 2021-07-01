@@ -31,7 +31,8 @@ export const TextInput = React.forwardRef((props, ref) => {
 		isReadOnly,
 		height,
 		textCenter,
-		wrapperClass
+		wrapperClass,
+		labelClass
 	} = props;
 
 	const { PasswordEye, isPasswordEyeOpen } = usePasswordEye();
@@ -51,21 +52,24 @@ export const TextInput = React.forwardRef((props, ref) => {
 	};
 
 	return (
-		<div className={styles('input-wrapper', { wrapper: wrapperClass })}>
+		<div className={styles('input-wrapper', { [`${wrapperClass}`]: wrapperClass })}>
 			<div style={{ position: 'relative' }}>
 				{label !== undefined && (
-					<label className={styles('label')} variant={variant} htmlFor={id}>
+					<label
+						className={styles('label', { [`${labelClass}`]: labelClass })}
+						variant={variant}
+						htmlFor={id}>
 						{label}
 						{isRequired && <StarIcon color="red" />}
 					</label>
 				)}
 				<div className={styles('inner-wrapper')}>
 					<input
-						className={styles('input', { className: className })}
+						className={styles('input', { [`${className}`]: className })}
 						type={type}
 						name={name}
 						placeholder={placeholder + (optional ? optionalText : '')}
-						isValid={isValid}
+						isvalid={isValid}
 						{...(hasFocus ? { autoFocus: true } : {})}
 						{...(onChange ? { onChange } : {})}
 						{...(autoComplete ? { autoComplete } : {})}

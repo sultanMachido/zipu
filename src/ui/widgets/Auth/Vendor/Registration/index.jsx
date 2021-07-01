@@ -3,7 +3,7 @@ import React from 'react';
 import { FormButton } from 'ui/atoms/components/Button';
 import { TextInput } from 'ui/atoms/components/TextInput';
 import { Text, View } from 'ui/atoms/components/Typography';
-import { RingIcon1 } from 'ui/svgs/RingIcon1';
+import { RingIcon1 } from 'ui/svgs';
 
 import AuthCard from '../../AuthCard';
 import style from './index.module.scss';
