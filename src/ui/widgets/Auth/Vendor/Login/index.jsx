@@ -12,9 +12,7 @@ let styles = classnames.bind(style);
 const AdminLogin = () => {
 	return (
 		<AuthCard className={styles('admin-wrapper')}>
-			<Text variant="h1" fontsize="2rem">
-				Login
-			</Text>
+			<Text variant="h3">Login</Text>
 			<Text>Enter your details and continue</Text>
 			<form className={styles('form-container')}>
 				<View className={styles('input-group')}>

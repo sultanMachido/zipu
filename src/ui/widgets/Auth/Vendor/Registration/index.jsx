@@ -16,9 +16,7 @@ const Registration = () => {
 			<View className={styles('card-title')} display="flex" alignItems="center">
 				<RingIcon1 />
 				<View className={styles('col-2')}>
-					<Text variant="h1" fontsize="2rem">
-						Company registration
-					</Text>
+					<Text variant="h4">Company registration</Text>
 					<Text>Next: Transport type</Text>
 				</View>
 			</View>
@@ -38,12 +36,12 @@ const Registration = () => {
 				</View>
 			</form>
 			<View className={styles('verification-text')}>
-				<Text textAlign="center" fontWeight="500">
+				<Text textAlign="center" fontWeight="500" color="grey-dark">
 					A verification message will be sent to your email
 				</Text>
 			</View>
 			<View className={styles('create-account-text')}>
-				<Text textAlign="center">
+				<Text textAlign="center" color="grey-dark">
 					By signing in or creating an account, you agree with our{' '}
 					<Text variant="a" fontWeight="normal" href="/">
 						Terms & Conditions
@@ -52,7 +50,6 @@ const Registration = () => {
 					<Text variant="a" fontWeight="normal" href="/">
 						Privacy Statement
 					</Text>{' '}
-					Do not have an account?{' '}
 				</Text>
 			</View>
 		</AuthCard>

@@ -1,3 +1,3 @@
 export const StarIcon = (props) => {
-	return <div {...props}>*</div>;
+	return <span {...props}>*</span>;
 };

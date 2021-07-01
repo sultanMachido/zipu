@@ -17,6 +17,24 @@ const initialValues = {
 	vehicleRenting: false
 };
 
+const options = [
+	{
+		name: 'seatBooking',
+		icon: SeatIcon,
+		text: 'Seat Booking'
+	},
+	{
+		name: 'vehicleHire',
+		icon: BusIcon,
+		text: 'Vehicle Hire'
+	},
+	{
+		name: 'vehicleRenting',
+		icon: CarIcon,
+		text: 'Vehicle Renting'
+	}
+];
+
 const TransportType = () => {
 	const [values, setValues] = useState(initialValues);
 	const handleInputChange = (e) => {
@@ -28,24 +46,6 @@ const TransportType = () => {
 			[name]: value
 		});
 	};
-
-	const options = [
-		{
-			name: 'seatBooking',
-			icon: SeatIcon,
-			text: 'Seat Booking'
-		},
-		{
-			name: 'vehicleHire',
-			icon: BusIcon,
-			text: 'Vehicle Hire'
-		},
-		{
-			name: 'vehicleRenting',
-			icon: CarIcon,
-			text: 'Vehicle Renting'
-		}
-	];
 
 	const OptionCard = ({ icon: Component, text }) => {
 		return (
@@ -61,9 +61,7 @@ const TransportType = () => {
 			<View className={styles('card-title')} display="flex" alignItems="center">
 				<RingIcon2 />
 				<View className={styles('col-2')}>
-					<Text variant="h1" fontsize="2rem">
-						Transport type
-					</Text>
+					<Text variant="h3">Transport type</Text>
 					<Text>Next: CAC and permit submission</Text>
 				</View>
 			</View>
@@ -100,6 +98,7 @@ const TransportType = () => {
 							placeholder="0"
 							name="companySize"
 							id="companySize"
+							isRequired
 							value={values.companySize}
 							onChange={handleInputChange}
 						/>

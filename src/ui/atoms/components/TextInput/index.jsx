@@ -1,6 +1,6 @@
 import classnames from 'classnames/bind';
 import React, { useImperativeHandle, useRef } from 'react';
-import { StarIcon } from 'ui/svgs';
+import { HTMLStarIcon } from 'ui/svgs';
 
 import style from './index.module.scss';
 import { usePasswordEye } from './usePasswordEye';
@@ -60,7 +60,7 @@ export const TextInput = React.forwardRef((props, ref) => {
 						variant={variant}
 						htmlFor={id}>
 						{label}
-						{isRequired && <StarIcon color="red" />}
+						{/* {isRequired && <HTMLStarIcon color="red" />} */}
 					</label>
 				)}
 				<div className={styles('inner-wrapper')}>

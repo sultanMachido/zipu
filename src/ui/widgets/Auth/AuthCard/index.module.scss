@@ -17,6 +17,12 @@
 		width: 60%;
 	}
 
+	@media (max-width: 1024.98px) {
+		.card {
+			width: 60%;
+		}
+	}
+
 	@media (max-width: 768.98px) {
 		.card {
 			width: 70%;

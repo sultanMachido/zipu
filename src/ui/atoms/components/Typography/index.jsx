@@ -15,7 +15,8 @@ const variants = {
 	h4: 'h4',
 	h5: 'h5',
 	label: 'label',
-	a: 'a'
+	a: 'a',
+	button: 'button'
 };
 
 export const bodyVariants = {
@@ -25,29 +26,28 @@ export const bodyVariants = {
 	button: 'button'
 };
 
-export const Text = ({
-	textAlign,
-	color,
-	fontWeight,
-	variant,
-	className,
-	children,
-	fontsize,
-	...props
-}) => {
-	const Component = variant ? variants[variant] : 'p';
+const fonts = {
+	h1: '40px',
+	h2: '30px',
+	h3: '25px',
+	h4: '20px',
+	h5: '20px',
+	p: '14px'
+};
 
+export const Text = ({ textAlign, color, fontWeight, variant, className, children, ...props }) => {
+	const Component = variant ? variants[variant] : 'p';
 	return (
 		<Component
 			className={styles({
 				[`font-weight-${fontWeight}`]: fontWeight,
-				[`font-color-${color}`]: color,
 				[`font-align-${textAlign}`]: textAlign,
-				[`font-color-black`]: !color,
-				[`font-color-yellow`]: variant === 'a',
+				[`text-color-yellow`]: variant === 'a',
+				[`text-color-black`]: !color,
+				[`text-color-${color}`]: color,
 				[`${className}`]: className
 			})}
-			style={{ fontSize: fontsize ? fontsize : '1.2rem' }}
+			style={{ fontSize: fonts[variant ? variants[variant] : 'p'] }}
 			{...props}>
 			{children}
 		</Component>
