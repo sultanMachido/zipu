@@ -102,17 +102,17 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "npm run fix-styles && npx lint-staged"
+			"pre-commit": "npm run lint:styled && npm run fix-styles && npx lint-staged"
 		}
 	},
 	"lint-staged": {
 		"./**/*.{js,jsx,ts,tsx}": [
+			"npm run lint:styled",
 			"npm run lint"
 		],
 		"/src/**/*.scss": [
 			"prettier --write",
-			"stylelint --fix",
-			"npm run lint:styled"
+			"stylelint --fix"
 		],
 		"{*.{json,md}}": [
 			"prettier --write"
