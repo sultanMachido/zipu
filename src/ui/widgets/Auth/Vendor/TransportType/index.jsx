@@ -12,7 +12,7 @@ let styles = classnames.bind(style);
 
 const initialValues = {
 	seatBooking: true,
-	companySize: '',
+	companySize: '20',
 	vehicleHire: false,
 	vehicleRenting: false
 };
