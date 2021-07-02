@@ -102,12 +102,13 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "npm run fix-styles && npx lint-staged"
+			"pre-commit": " npx lint-staged"
 		}
 	},
 	"lint-staged": {
 		"./**/*.{js,jsx,ts,tsx}": [
 			"npm run lint:styled",
+			"npm run fix-styles",
 			"npm run lint"
 		],
 		"/src/**/*.scss": [
