@@ -106,14 +106,14 @@
 		}
 	},
 	"lint-staged": {
-		"./**/*.{js,jsx,ts,tsx,scss}": [
+		"./**/*.{js,jsx,ts,tsx}": [
 			"npm run lint:styled",
-			"npm run fix-styles",
 			"npm run lint"
 		],
 		"/src/**/*.scss": [
 			"prettier --write",
-			"stylelint --fix"
+			"stylelint --fix",
+			"npm run fix-styles"
 		],
 		"{*.{json,md}}": [
 			"prettier --write"
