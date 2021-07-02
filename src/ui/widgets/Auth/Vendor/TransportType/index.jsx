@@ -68,28 +68,31 @@ const TransportType = () => {
 
 			<form className={styles('form-container')}>
 				<View>
-					<Text fontWeight="bold" className={styles('label')}>
-						What type of operation?
-					</Text>
-					<View
-						className={styles('operation-options')}
-						display="flex"
-						justifyContent="space-between"
-						alignItems="center">
-						{options.map((option) => (
-							<View key={option.name} className={styles('input-group')}>
-								<TextInput
-									type="checkbox"
-									label={OptionCard(option)}
-									labelClass={styles('option-card-label', { ['active']: values[option.name] })}
-									name={option.name}
-									id={option.name}
-									checked={values[option.name]}
-									onChange={handleInputChange}
-								/>
-							</View>
-						))}
+					<View className={styles('input-group')}>
+						<Text fontWeight="bold" className={styles('label')}>
+							What type of operation?
+						</Text>
+						<View
+							className={styles('operation-options')}
+							display="flex"
+							justifyContent="space-between"
+							alignItems="center">
+							{options.map((option) => (
+								<View key={option.name} className={styles('input')}>
+									<TextInput
+										type="checkbox"
+										label={OptionCard(option)}
+										labelClass={styles('option-card-label', { ['active']: values[option.name] })}
+										name={option.name}
+										id={option.name}
+										checked={values[option.name]}
+										onChange={handleInputChange}
+									/>
+								</View>
+							))}
+						</View>
 					</View>
+
 					<View className={styles('input-group')}>
 						<TextInput
 							label="Company size"

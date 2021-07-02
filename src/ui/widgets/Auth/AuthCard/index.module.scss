@@ -14,7 +14,7 @@
 
 	.inner-card {
 		margin: auto;
-		width: 60%;
+		width: 70%;
 	}
 
 	@media (max-width: 1024.98px) {
@@ -30,6 +30,8 @@
 	}
 
 	@media (max-width: 576.98px) {
+		height: 100%;
+
 		.card {
 			height: 100%;
 			width: 100%;
