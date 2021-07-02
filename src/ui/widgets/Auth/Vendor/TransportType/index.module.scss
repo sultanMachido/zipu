@@ -11,13 +11,13 @@
 }
 
 .input-group {
+	margin-bottom: 3em
 	margin-top: 5em;
-	margin-bottom: 3em;
 }
 
 .verification-text {
-	margin-bottom: 4em;
 	margin: 2em 0;
+	margin-bottom: 4em;
 }
 
 .operation-options {
@@ -30,8 +30,8 @@
 	}
 
 	.option-card-label {
-		border: 1px solid #637a87;
 		align-items: center;
+		border: 1px solid #637a87;
 		border-radius: 2px;
 		display: flex;
 		flex: 1;
