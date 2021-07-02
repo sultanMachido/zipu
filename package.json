@@ -113,7 +113,8 @@
 		"./src/**/*.{scss, css}": [
 			"prettier --write",
 			"stylelint --fix",
-			"npm run lint:styled"
+			"npm run lint:styled",
+			"npm run fix-styles"
 		],
 		"{*.{json,md}}": [
 			"prettier --write"
