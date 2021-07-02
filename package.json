@@ -110,7 +110,7 @@
 			"npm run lint:styled",
 			"npm run lint"
 		],
-		"./src/**/*.scss": [
+		"./src/**/*.{scss, css}": [
 			"prettier --write",
 			"stylelint --fix",
 			"npm run lint:styled"
