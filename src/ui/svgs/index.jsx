@@ -7,5 +7,6 @@ export { CarIcon } from './CarIcon';
 export { BusIcon } from './BusIcon';
 export { SeatIcon } from './SeatIcon';
 export { EmailIcon } from './EmailIcon';
+export { RingIcon3 } from './RingIcon3';
 export { RingIcon4 } from './RingIcon4';
 export { UploadIcon } from './UploadIcon';

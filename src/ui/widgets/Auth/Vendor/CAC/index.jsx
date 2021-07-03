@@ -1,11 +1,10 @@
 import classnames from 'classnames/bind';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { FormButton } from 'ui/atoms/components/Button';
 import { SelectField } from 'ui/atoms/components/SelectField';
-import { TextInput } from 'ui/atoms/components/TextInput';
 import { Text, View } from 'ui/atoms/components/Typography';
 import { UploadField } from 'ui/atoms/components/UploadField';
-import { BusIcon, CarIcon, RingIcon4, SeatIcon } from 'ui/svgs';
+import { RingIcon3 } from 'ui/svgs';
 
 import AuthCard from '../../AuthCard';
 import style from './index.module.scss';
@@ -43,7 +42,7 @@ const CAC = () => {
 	return (
 		<AuthCard className={styles('card-container')}>
 			<View className={styles('card-title')} display="flex" alignItems="center">
-				<RingIcon4 />
+				<RingIcon3 />
 				<View className={styles('col-2')}>
 					<Text variant="h4">CAC and Permit submission</Text>
 					<Text>Next: Business details</Text>
