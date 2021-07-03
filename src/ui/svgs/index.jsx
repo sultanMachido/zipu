@@ -10,3 +10,8 @@ export { EmailIcon } from './EmailIcon';
 export { RingIcon3 } from './RingIcon3';
 export { RingIcon4 } from './RingIcon4';
 export { UploadIcon } from './UploadIcon';
+export { LogoIcon } from './LogoIcon';
+export { YoutubeIcon } from './YoutubeIcon';
+export { GoogleIcon } from './GoogleIcon';
+export { FacebookIcon } from './FacebookIcon';
+export { TwitterIcon } from './TwitterIcon';

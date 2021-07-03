@@ -23,7 +23,10 @@ export const bodyVariants = {
 	div: 'div',
 	label: 'label',
 	section: 'section',
-	button: 'button'
+	header: 'header',
+	main: 'main',
+	button: 'button',
+	ul: 'ul'
 };
 
 const fonts = {
@@ -32,7 +35,8 @@ const fonts = {
 	h3: '25px',
 	h4: '20px',
 	h5: '20px',
-	p: '14px'
+	p: '14px',
+	a: '14px'
 };
 
 export const Text = ({ textAlign, color, fontWeight, variant, className, children, ...props }) => {
