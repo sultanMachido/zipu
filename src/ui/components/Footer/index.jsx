@@ -1,10 +1,10 @@
 import classnames from 'classnames/bind';
 import React from 'react';
 import { Text, View } from 'ui/atoms/components/Typography';
-import { YoutubeIcon } from 'ui/svgs';
-import { GoogleIcon } from 'ui/svgs';
-import { TwitterIcon } from 'ui/svgs';
-import { FacebookIcon } from 'ui/svgs';
+// import { YoutubeIcon } from 'ui/svgs';
+// import { GoogleIcon } from 'ui/svgs';
+// import { TwitterIcon } from 'ui/svgs';
+// import { FacebookIcon } from 'ui/svgs';
 import { LogoIcon } from 'ui/svgs';
 
 import style from './index.module.scss';

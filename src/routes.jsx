@@ -1,3 +1,4 @@
+import HomePage from 'pages/Customer/Home/index';
 import Sample from 'pages/Sample';
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -9,14 +10,11 @@ export const Routes = () => {
 			<Switch>
 				<Route exact path="/" component={Sample} />
 				<Route exact path="/reg" component={TransportType} />
-				{/* <Route exact path="/help" component={Help} />
-					<Route exact path="/search/trip" component={TripSearch} />
-					<Route exact path="/search/vehicle" component={VehicleSearch} />
-					<Route exact path="/trips/saved" component={SavedTrip} />
-					<Route path="/user" component={UserPage} />
-					<Route exact path="/login" component={Guest(Login)} />
-					<Route exact path="/register" component={Guest(Registration)} />
-					<Route path="/" component={Private(DashboardContainer)} /> */}
+				<Route exact path="/home" component={HomePage} />
+				<Route exact path="/profile" component={TransportType} />
+				<Route exact path="/search" component={TransportType} />
+				<Route exact path="/trips" component={TransportType} />
+				<Route exact path="/vehicle" component={TransportType} />
 			</Switch>
 		</BrowserRouter>
 	);
