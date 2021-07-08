@@ -4,6 +4,12 @@
 @import './animations';
 @import './util';
 
+html,
+body,
+#root {
+	height: 100%;
+}
+
 * {
 	box-sizing: border-box;
 }

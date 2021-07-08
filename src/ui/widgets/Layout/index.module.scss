@@ -1,4 +1,27 @@
+.layout-wrapper {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.header {
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+
 .main {
+	flex: 1 0 auto;
 	margin: auto;
+	margin-top: 8em;
 	width: 95%;
+
+	@media (max-width: 768.98px) {
+		margin-top: 16em;
+	}
+}
+
+.footer {
+	flex-shrink: none;
 }

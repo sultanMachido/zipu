@@ -1,0 +1,172 @@
+.header-wrapper {
+	background-color: white;
+	border-bottom: 3px solid #ffd301;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+
+	@media (max-width: 768.98px) {
+		background-color: #240555;
+		padding-bottom: 3em;
+	}
+}
+
+.header-container {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	padding: 1em 0;
+}
+
+.logo-column {
+	flex: 0.6;
+
+	@media (max-width: 768.98px) {
+		display: none;
+	}
+}
+
+.nav-column {
+	flex: 2;
+
+	.nav {
+		align-items: center;
+		display: flex;
+		justify-content: flex-end;
+
+		li {
+			margin-right: 3em;
+		}
+
+		a:hover {
+			color: #ffd301;
+		}
+	}
+
+	@media (max-width: 768.98px) {
+		flex: 0;
+		height: auto;
+
+		.nav {
+			background-color: #240555;
+			box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+			flex-direction: column;
+			height: auto;
+			height: 600px;
+			justify-content: space-between;
+			left: -100%;
+			padding-bottom: 1.5em;
+			padding-top: 15em;
+			position: fixed;
+			text-align: center;
+			top: 0;
+			transition: 0.3s;
+			width: 100%;
+
+			li {
+				margin: 0.5em 0;
+			}
+		}
+	}
+}
+
+.hamburger {
+	display: none;
+	margin-right: 2em;
+	padding: 1.2em 0;
+	z-index: 1020;
+
+	span {
+		background-color: #101010;
+		display: block;
+		height: 3px;
+		margin: 5px auto;
+		transition: all 0.3s ease-in-out;
+		width: 25px;
+	}
+
+	@media (max-width: 768.98px) {
+		background: none;
+		display: block;
+
+		span {
+			background-color: white;
+		}
+
+		span:nth-child(2) {
+			opacity: 1;
+		}
+
+		span:nth-child(1) {
+			transform: none;
+		}
+
+		span:nth-child(3) {
+			transform: 0;
+		}
+	}
+}
+
+.mobile {
+	align-items: center;
+	display: none;
+
+	.profile-info {
+		align-items: center;
+		display: flex;
+	}
+
+	.image-container {
+		border-radius: 50%;
+		height: 30px;
+		margin-right: 1em;
+		overflow: hidden;
+		width: 30px;
+
+		img {
+			height: 100%;
+			object-fit: cover;
+			width: 100%;
+		}
+	}
+
+	@media (max-width: 768.98px) {
+		display: flex;
+	}
+}
+
+.path-name {
+	display: none;
+
+	@media (max-width: 768.98px) {
+		display: block;
+	}
+}
+
+.open {
+	.nav {
+		left: 0;
+	}
+
+	@media (max-width: 768.98px) {
+		display: block;
+
+		span:nth-child(2) {
+			opacity: 0;
+		}
+
+		span:nth-child(1) {
+			transform: translateY(8px) rotate(45deg);
+		}
+
+		span:nth-child(3) {
+			transform: translateY(-8px) rotate(-45deg);
+		}
+	}
+}
+
+.notification {
+	display: none;
+
+	@media (max-width: 768.98px) {
+		display: block;
+	}
+}

@@ -1,3 +1,6 @@
+import './ui/atoms/styles/_base.scss';
+
+import { ModalProvider } from 'providers/ModalProvider';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -14,7 +17,9 @@ const rootElement = document.getElementById('root');
 
 ReactDOM.render(
 	<Provider store={store}>
-		<Routes />
+		<ModalProvider>
+			<Routes />
+		</ModalProvider>
 	</Provider>,
 	rootElement
 );
