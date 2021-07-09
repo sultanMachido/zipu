@@ -1,46 +1,129 @@
-.card-wrapper {
-	align-items: center;
-	background: #e5e5e5;
-	display: flex;
-	justify-content: center;
-	min-height: 100vh;
-	padding: 4em 0;
+@import 'ui/styles/abstract/basestyles';
 
-	.card {
-		background: white;
-		margin: auto;
-		padding: 7em 0;
-		width: 45%;
-	}
+@mixin li-tab {
+	li {
+		@include flexCenter;
+		@include fontBold(2.5rem, 3.2rem, $black);
 
-	.inner-card {
-		margin: auto;
-		width: 70%;
-	}
+		flex-basis: 25%;
+		flex-grow: 1;
+		flex-shrink: 1;
+		padding: 2rem;
 
-	@media (max-width: 1024.98px) {
-		.card {
-			width: 60%;
+		@include respond(lsc) {
+			flex-basis: 45%;
 		}
-	}
 
-	@media (max-width: 768.98px) {
-		.card {
-			width: 70%;
+		@include respond(phone) {
+			flex-basis: 100%;
 		}
-	}
 
-	@media (max-width: 576.98px) {
-		min-height: 100%;
-		padding: 0;
+		&:not(:last-child) {
+			border-right: 1px solid $grey;
 
-		.card {
-			width: 100%;
-
-			.inner-card {
-				padding: 4em 0;
-				width: 80%;
+			@include respond(phone) {
+				border: 0;
 			}
+		}
+
+		a {
+			color: $black;
+		}
+
+		select {
+			background-color: transparent;
+			border: 0;
+
+			option {
+				@include fontNormal(1.5rem, 2rem, $black);
+			}
+		}
+
+		svg {
+			margin: 0 1.5rem;
+		}
+
+		.btn {
+			color: $black;
+		}
+	}
+}
+
+.hero {
+	&__header {
+		background-color: $brand1;
+		height: 38rem;
+		padding: 9rem 14rem;
+		position: relative;
+
+		@include respond(tab-port) {
+			height: auto;
+			padding: 4rem;
+			padding-bottom: 8rem;
+		}
+
+		h2 {
+			@include fontBold(4.8rem, 6rem, $white);
+
+			font-weight: 800;
+		}
+	}
+}
+
+.herotab {
+	bottom: 0;
+	left: 14rem;
+	position: absolute;
+
+	@include respond(tab-port) {
+		left: 4rem;
+	}
+
+	.btn {
+		background-color: $nearWhite;
+		border-radius: 0;
+
+		&:first-child {
+			border-radius: 8px 0 0;
+		}
+
+		&:last-child {
+			border-radius: 0 8px 0 0;
+		}
+
+		&:hover,
+		&.active {
+			background-color: $white;
+			color: $brand1;
+		}
+
+		&.btn-white {
+			background-image: none;
+		}
+	}
+}
+
+.herotab--content {
+	background-color: $white;
+	border-radius: 0 0 10px 10px;
+	box-shadow: 2px 15px 30px 10px rgba(43, 43, 59, 0.05);
+	margin: 0 14rem;
+	min-height: 5rem;
+
+	@include respond(tab-port) {
+		margin: 0 4rem;
+	}
+
+	ul {
+		@include liTab;
+
+		@include respond(lsc) {
+			flex-wrap: wrap;
+		}
+
+		@include respond(phone) {
+			flex-direction: column;
+			flex-wrap: nowrap;
 		}
 	}
 }

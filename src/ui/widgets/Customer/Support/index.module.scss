@@ -1,0 +1,16 @@
+@import 'ui/styles/abstract/basestyles';
+
+.help-wrapper {
+	padding: 5rem 14rem;
+
+	.help--item {
+		background-color: red;
+		border: 1px solid #e3eaed;
+		border-radius: 10px;
+		padding: 3.2rem 4rem;
+	}
+
+	.help--faq {
+		margin-top: 10rem;
+	}
+}
