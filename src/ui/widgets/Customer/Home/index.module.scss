@@ -1,9 +1,9 @@
-@import 'ui/styles/abstract/basestyles';
+@import '../../../atoms/styles/basestyles';
 
 @mixin li-tab {
 	li {
-		@include flexCenter;
-		@include fontBold(2.5rem, 3.2rem, $black);
+		@include flex-center;
+		@include font-bold(2.5rem, 3.2rem, $black);
 
 		flex-basis: 25%;
 		flex-grow: 1;
@@ -35,7 +35,7 @@
 			border: 0;
 
 			option {
-				@include fontNormal(1.5rem, 2rem, $black);
+				@include font-normal(1.5rem, 2rem, $black);
 			}
 		}
 
@@ -63,7 +63,7 @@
 		}
 
 		h2 {
-			@include fontBold(4.8rem, 6rem, $white);
+			@include font-bold(4.8rem, 6rem, $white);
 
 			font-weight: 800;
 		}
@@ -80,7 +80,7 @@
 	}
 
 	.btn {
-		background-color: $nearWhite;
+		background-color: $near-white;
 		border-radius: 0;
 
 		&:first-child {
