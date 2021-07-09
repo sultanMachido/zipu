@@ -30,7 +30,7 @@ const AdminLogin = () => {
 					Do not have an account?{' '}
 					<Text variant="a" fontWeight="bold" href="/">
 						Create account
-					</Text>{' '}
+					</Text>
 				</Text>
 			</View>
 		</AuthCard>
