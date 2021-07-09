@@ -3,7 +3,7 @@ import React from 'react';
 import Footer from '.';
 
 export default {
-	title: 'Components/Footer',
+	title: 'Widgets/Footer',
 	component: Footer
 };
 

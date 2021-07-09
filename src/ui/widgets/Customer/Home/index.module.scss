@@ -115,7 +115,7 @@
 	}
 
 	ul {
-		@include liTab;
+		@include li-tab;
 
 		@include respond(lsc) {
 			flex-wrap: wrap;

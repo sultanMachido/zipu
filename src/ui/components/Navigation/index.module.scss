@@ -1,0 +1,84 @@
+.button-link {
+	button {
+		background: none;
+	}
+}
+
+.sign-up {
+	button {
+		background: linear-gradient(180deg, #fade90 0%, #f3b348 93.23%, #cb820b 100%);
+		border-radius: 6px;
+		color: #323d44;
+		font-size: 16px;
+		font-weight: 600;
+		padding: 0.8em 1.4em;
+		text-transform: uppercase;
+
+		&:hover {
+			opacity: 0.9;
+		}
+	}
+}
+
+.navigation-wrapper {
+	@media (max-width: 1024.98px) {
+		.links,
+		button {
+			font-size: 12px !important;
+		}
+	}
+
+	@media (max-width: 768.98px) {
+		.links,
+		button {
+			color: white !important;
+		}
+
+		button {
+			background: none;
+			font-weight: 400;
+			text-transform: capitalize;
+		}
+	}
+}
+
+.nav {
+	align-items: center;
+	display: flex;
+	justify-content: flex-end;
+
+	li {
+		margin-right: 3em;
+	}
+
+	a:hover {
+		color: #ffd301;
+	}
+
+	@media (max-width: 768.98px) {
+		background-color: #240555;
+		box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+		flex-direction: column;
+		height: auto;
+		justify-content: flex-start;
+		left: -100%;
+		min-height: 400px;
+		padding-bottom: 1.5em;
+		padding-top: 11em;
+		position: fixed;
+		text-align: center;
+		top: 0;
+		transition: 0.3s;
+		width: 100%;
+
+		li {
+			margin: 3em 0;
+		}
+	}
+}
+
+.open {
+	.nav {
+		left: 0;
+	}
+}

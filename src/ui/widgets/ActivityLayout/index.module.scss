@@ -15,14 +15,9 @@
 	flex: 1 0 auto;
 	margin: auto;
 	margin-top: 8em;
-	width: 100%;
 	width: 95%;
 
 	@media (max-width: 768.98px) {
 		margin-top: 16em;
 	}
-}
-
-.footer {
-	flex-shrink: none;
 }

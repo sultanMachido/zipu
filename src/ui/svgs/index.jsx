@@ -15,3 +15,6 @@ export { YoutubeIcon } from './YoutubeIcon';
 export { GoogleIcon } from './GoogleIcon';
 export { FacebookIcon } from './FacebookIcon';
 export { TwitterIcon } from './TwitterIcon';
+export { CloseIcon } from './CloseIcon';
+export { DownArrowIcon } from './DownArrowIcon';
+export { NotificationIcon } from './NotificationIcon';

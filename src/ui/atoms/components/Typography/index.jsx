@@ -1,5 +1,6 @@
 import classnames from 'classnames/bind';
 import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
 import style from './index.module.scss';
 
@@ -16,7 +17,9 @@ const variants = {
 	h5: 'h5',
 	label: 'label',
 	a: 'a',
-	button: 'button'
+	button: 'button',
+	NavLink,
+	Link
 };
 
 export const bodyVariants = {
@@ -36,7 +39,9 @@ const fonts = {
 	h4: '20px',
 	h5: '20px',
 	p: '14px',
-	a: '14px'
+	a: '14px',
+	[NavLink]: '14px',
+	[Link]: '14px'
 };
 
 export const Text = ({ textAlign, color, fontWeight, variant, className, children, ...props }) => {

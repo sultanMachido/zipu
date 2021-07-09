@@ -1,5 +1,6 @@
 import classnames from 'classnames/bind';
 import React, { useImperativeHandle, useRef } from 'react';
+import { HTMLStarIcon } from 'ui/svgs';
 
 import style from './index.module.scss';
 import { usePasswordEye } from './usePasswordEye';
