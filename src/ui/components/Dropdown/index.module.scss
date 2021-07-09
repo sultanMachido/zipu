@@ -7,6 +7,29 @@
 	cursor: pointer;
 	display: flex;
 
+	.img-container {
+		border-radius: 50%;
+		height: 30px;
+		margin-right: 1em;
+		overflow: hidden;
+		width: 30px;
+
+		img {
+			height: 100%;
+			object-fit: cover;
+			width: 100%;
+		}
+
+		@media (max-width: 768.98px) {
+			display: none;
+		}
+	}
+
+	.title {
+		align-items: center;
+		display: flex;
+	}
+
 	p {
 		font-weight: 400;
 		margin-right: 0.5em;

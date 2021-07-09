@@ -35,21 +35,6 @@
 	top: 5px;
 	z-index: 10;
 
-	// & > * {
-	// 	display: flex;
-	// }
-
-	// & > svg {
-	// 	border-radius: 99px;
-	// 	cursor: pointer;
-	// 	fill: white;
-	// 	height: 1.5rem;
-
-	// 	&:hover {
-	// 		transform: scale(2.1);
-	// 	}
-	// }
-
 	&::before {
 		border-radius: 99rem;
 		content: '';

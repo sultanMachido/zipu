@@ -7,7 +7,7 @@ import style from './index.module.scss';
 
 const styles = classnames.bind(style);
 
-const Dropdown = ({ dropList, text }) => {
+const Dropdown = ({ dropList, text, imgUrl }) => {
 	const [open, setOpen] = useState(false);
 	return (
 		<View
@@ -15,8 +15,15 @@ const Dropdown = ({ dropList, text }) => {
 			onMouseLeave={() => setOpen(false)}
 			onMouseOver={() => setOpen(true)}>
 			<View className={styles('dropdown-title')}>
-				<Text>{text}</Text>
-				<DownArrowIcon />
+				{imgUrl && (
+					<View className={styles('img-container')}>
+						<img src={imgUrl} alt="" />
+					</View>
+				)}
+				<View className={styles('title')}>
+					<Text>{text}</Text>
+					<DownArrowIcon />
+				</View>
 			</View>
 			{open && (
 				<View className={styles('dropdown-links')}>

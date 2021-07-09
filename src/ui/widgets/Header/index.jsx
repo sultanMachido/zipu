@@ -6,6 +6,7 @@ import Navigation from 'ui/components/Navigation';
 import { NotificationIcon } from 'ui/svgs';
 import { LogoIcon } from 'ui/svgs';
 
+import AdminHeader from './Admin';
 import style from './index.module.scss';
 
 const styles = classnames.bind(style);
@@ -38,6 +39,7 @@ const navLinks = [
 
 const Header = () => {
 	const [open, setOpen] = useState(false);
+	const admin = true;
 	return (
 		<View className={styles('header-wrapper')}>
 			<Container className={styles('header-container')}>
@@ -64,8 +66,12 @@ const Header = () => {
 				<View className={styles('logo-column')}>
 					<LogoIcon color="#240555" />
 				</View>
-				<View className={styles('nav-column', { ['open']: open })}>
-					<Navigation navLinks={navLinks} className={styles('nav')} />
+				<View className={styles('nav-column')}>
+					{admin ? (
+						<AdminHeader className={styles({ ['open']: open })} />
+					) : (
+						<Navigation navLinks={navLinks} className={styles({ ['open']: open })} />
+					)}
 				</View>
 				<View className={styles('notification')}>
 					<NotificationIcon />

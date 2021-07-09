@@ -41,3 +41,44 @@
 		}
 	}
 }
+
+.nav {
+	align-items: center;
+	display: flex;
+	justify-content: flex-end;
+
+	li {
+		margin-right: 3em;
+	}
+
+	a:hover {
+		color: #ffd301;
+	}
+
+	@media (max-width: 768.98px) {
+		background-color: #240555;
+		box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+		flex-direction: column;
+		height: auto;
+		justify-content: flex-start;
+		left: -100%;
+		min-height: 400px;
+		padding-bottom: 1.5em;
+		padding-top: 11em;
+		position: fixed;
+		text-align: center;
+		top: 0;
+		transition: 0.3s;
+		width: 100%;
+
+		li {
+			margin: 3em 0;
+		}
+	}
+}
+
+.open {
+	.nav {
+		left: 0;
+	}
+}
