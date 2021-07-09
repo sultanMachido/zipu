@@ -6,8 +6,8 @@ import Navigation from 'ui/components/Navigation';
 import { NotificationIcon } from 'ui/svgs';
 import { LogoIcon } from 'ui/svgs';
 
-import AdminHeader from './Admin';
 import style from './index.module.scss';
+import VendorHeader from './Vendor';
 
 const styles = classnames.bind(style);
 
@@ -68,7 +68,7 @@ const Header = () => {
 				</View>
 				<View className={styles('nav-column')}>
 					{admin ? (
-						<AdminHeader className={styles({ ['open']: open })} />
+						<VendorHeader className={styles({ ['open']: open })} />
 					) : (
 						<Navigation navLinks={navLinks} className={styles({ ['open']: open })} />
 					)}

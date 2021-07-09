@@ -1,14 +1,14 @@
 import React from 'react';
 
-import Admin from '.';
+import ActivityLayout from '.';
 
 export default {
-	title: 'Widgets/Header/Admin',
-	component: Admin
+	title: 'Widgets/ActivityLayout',
+	component: ActivityLayout
 };
 
 const Template = (args) => {
-	return <Admin {...args} />;
+	return <ActivityLayout {...args} />;
 };
 
 export const Default = Template.bind({});

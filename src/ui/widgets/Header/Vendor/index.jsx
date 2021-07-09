@@ -1,6 +1,6 @@
 import classnames from 'classnames/bind';
-import React, { useState } from 'react';
-import { Text, View } from 'ui/atoms/components/Typography';
+import React from 'react';
+import { View } from 'ui/atoms/components/Typography';
 import Navigation from 'ui/components/Navigation';
 
 import style from './index.module.scss';
@@ -24,7 +24,7 @@ const navLinks = [
 	}
 ];
 
-const AdminHeader = ({ className }) => {
+const VendorHeader = ({ className }) => {
 	return (
 		<View className={styles('admin-header-wrapper')}>
 			<Navigation navLinks={navLinks} className={styles({ [`${className}`]: className })} />
@@ -32,4 +32,4 @@ const AdminHeader = ({ className }) => {
 	);
 };
 
-export default AdminHeader;
+export default VendorHeader;

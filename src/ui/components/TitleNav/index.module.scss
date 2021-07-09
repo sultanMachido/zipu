@@ -1,0 +1,17 @@
+.title-nav-wrapper {
+	background-color: #240555;
+	padding: 3em;
+
+	@media (max-width: 768.98px) {
+		display: none;
+	}
+}
+
+.inner-wrapper {
+	align-items: center;
+	display: flex;
+
+	a {
+		margin-right: 2em;
+	}
+}
