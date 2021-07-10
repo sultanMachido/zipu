@@ -1,0 +1,29 @@
+.toggle {
+	align-items: center;
+	background: rgba(39, 174, 96, 0.2);
+	border: 1px solid #e3eaed;
+	border-radius: 100px;
+	display: flex;
+	height: 50px;
+
+	.active,
+	.disabled {
+		align-items: center;
+		border-radius: 100px;
+		color: #2e7b32;
+		cursor: pointer;
+		display: flex;
+		font-weight: 500;
+		height: 100%;
+		justify-content: center;
+		padding: 0 1em;
+		text-align: center;
+		transition: width 0.5s linear;
+		width: 90px;
+	}
+
+	.activate {
+		background: white;
+		color: #e3eaed;
+	}
+}
