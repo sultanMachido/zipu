@@ -1,0 +1,29 @@
+.admin-wrapper {
+	h3 {
+		padding-bottom: 0.5em;
+	}
+
+	p {
+		padding-bottom: 2rem;
+	}
+
+	.input-group {
+		margin-bottom: 2em;
+	}
+
+	.form-button-container {
+		margin: 5em 0;
+	}
+
+	.social--cta {
+		margin-bottom: 2rem;
+
+		button {
+			background-color: transparent;
+
+			&:not(:last-child) {
+				margin-right: 2rem;
+			}
+		}
+	}
+}

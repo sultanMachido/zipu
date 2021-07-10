@@ -1,5 +1,5 @@
 import classnames from 'classnames/bind';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Text, View } from 'ui/atoms/components/Typography';
 import { DownArrowIcon } from 'ui/svgs';
 
