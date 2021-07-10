@@ -17,7 +17,7 @@ export const Routes = () => {
 				<Route exact path="/customer/register" component={RegisterPage} />
 				<Route exact path="/customer/forgot-password" component={ForgotPage} />
 				<Route exact path="/customer/reset-password" component={ResetPage} />
-				<Route exact path="/support" component={SupportPage} />
+				<Route exact path="/help-support" component={SupportPage} />
 				<Route exact path="/profile" component={TransportType} />
 
 				<Route exact path="/reg" component={TransportType} />
