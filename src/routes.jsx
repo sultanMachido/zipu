@@ -3,6 +3,7 @@ import LoginPage from 'pages/Customer/Auth/login';
 import RegisterPage from 'pages/Customer/Auth/register';
 import ResetPage from 'pages/Customer/Auth/reset';
 import HomePage from 'pages/Customer/Home/index';
+import ProfilePage from 'pages/Customer/Profile';
 import SupportPage from 'pages/Customer/Support/index';
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -18,7 +19,7 @@ export const Routes = () => {
 				<Route exact path="/customer/forgot-password" component={ForgotPage} />
 				<Route exact path="/customer/reset-password" component={ResetPage} />
 				<Route exact path="/help-support" component={SupportPage} />
-				<Route exact path="/profile" component={TransportType} />
+				<Route path="/customer" component={ProfilePage} />
 
 				<Route exact path="/reg" component={TransportType} />
 				<Route exact path="/search" component={TransportType} />

@@ -1,0 +1,28 @@
+@import '../../../../atoms/styles/basestyles';
+
+.nav--container {
+	background-color: $white;
+	border: 1px solid #e3eaed;
+	border-radius: 10px;
+
+	li {
+		padding: 2rem 3rem;
+
+		&:not(:last-child) {
+			border-bottom: 1px solid #e3eaed;
+
+			@include respond(tab-port) {
+				border: 0;
+			}
+		}
+	}
+}
+
+.user-nav-link {
+	@include font-normal(1.6rem, 2rem, $black);
+
+	&:hover {
+		color: $brand2;
+		text-decoration: none;
+	}
+}
