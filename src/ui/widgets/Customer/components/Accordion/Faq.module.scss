@@ -1,0 +1,45 @@
+@import '../../../../atoms/styles/basestyles';
+
+.faqs--content--answers-item {
+	background-color: $white;
+	border: 1px solid #e3eaed;
+	margin-bottom: 2rem;
+	min-height: 1rem;
+	min-height: 0;
+	padding: 2rem 3.4rem;
+	padding-bottom: 2rem;
+
+	button {
+		align-items: flex-start;
+		background: transparent;
+		background-color: $white;
+		border: 0;
+		cursor: pointer;
+		display: flex;
+		justify-content: space-between;
+		outline: none;
+		overflow: hidden;
+		padding-bottom: 0.6rem;
+		text-align: start;
+		transition: all 0.3s ease;
+		width: 100%;
+
+		p {
+			@include font-normal(1.6rem, 2.4rem, $black);
+		}
+	}
+}
+
+.faqs--content--answers-item--icon {
+	transition: transform 0.3s ease;
+
+	&.rotate {
+		transform: rotate(90deg);
+		transition: transform 0.3s ease;
+	}
+
+	&.rotate-back {
+		transform: rotate(0deg);
+		transition: transform 0.3s ease;
+	}
+}
