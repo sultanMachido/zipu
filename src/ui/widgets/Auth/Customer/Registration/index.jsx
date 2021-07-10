@@ -3,7 +3,6 @@ import React from 'react';
 import { FormButton } from 'ui/atoms/components/Button';
 import { TextInput } from 'ui/atoms/components/TextInput';
 import { Text, View } from 'ui/atoms/components/Typography';
-import { RingIcon1 } from 'ui/svgs';
 
 import AuthCard from '../../AuthCard';
 import style from './index.module.scss';
@@ -12,14 +11,9 @@ let styles = classnames.bind(style);
 
 const CustomerRegistration = () => {
 	return (
-		<AuthCard>
-			<View className={styles('card-title')} display="flex" alignItems="center">
-				<RingIcon1 />
-				<View className={styles('col-2')}>
-					<Text variant="h4">Company registration</Text>
-					<Text>Next: Transport type</Text>
-				</View>
-			</View>
+		<AuthCard className={styles('admin-wrapper')}>
+			<Text variant="h3">Sign Up</Text>
+			<Text variant="h6">Sign up on Zipu to start boking your trips</Text>
 
 			<form className={styles('form-container')}>
 				<View className={styles('input-group')}>
