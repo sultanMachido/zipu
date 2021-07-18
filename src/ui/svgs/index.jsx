@@ -21,5 +21,4 @@ export { CloseIcon } from './CloseIcon';
 export { DownArrowIcon } from './DownArrowIcon';
 export { ReturnIcon } from './ReturnIcon';
 export { NotificationIcon } from './NotificationIcon';
-export { MailBox } from './MailBox';
-export { ReturnLeftIcon } from './ReturnLeftIcon';
+export { SearchIcon } from './SearchIcon';
