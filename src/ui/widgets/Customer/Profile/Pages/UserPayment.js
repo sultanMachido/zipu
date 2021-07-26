@@ -1,4 +1,4 @@
-import { Form } from 'antd';
+// import { Form } from 'antd';
 import classnames from 'classnames/bind';
 import React, { Fragment } from 'react';
 import { View } from 'ui/atoms/components/Typography';
@@ -10,16 +10,16 @@ let styles = classnames.bind(style);
 
 // import {EmailField, SubmitButton} from 'components/FormField';
 
-const inputSize = 'small';
+// const inputSize = 'small';
 
 // import './index.scss';
 
-const UserPayment = (props) => {
-	const [form] = Form.useForm();
+const UserPayment = () => {
+	// const [form] = Form.useForm();
 
-	const onFinish = async (_values) => {
-		alert('Coupon Applied');
-	};
+	// const onFinish = async (_values) => {
+	// 	alert('Coupon Applied');
+	// };
 
 	return (
 		<Fragment>

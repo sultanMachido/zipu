@@ -1,0 +1,23 @@
+.trip-info {
+  color: #323d44;
+  font-size: 0.8rem;
+  font-weight: bold;
+
+  ul {
+    list-style-type: none;
+
+    li {
+      align-items: center;
+      display: flex;
+      margin-bottom: 0.7em;
+
+      span {
+        margin-left: 0.5em;
+      }
+    }
+  }
+
+  @media (max-width: 1024.98px) {
+    font-size: 0.6rem;
+  }
+}

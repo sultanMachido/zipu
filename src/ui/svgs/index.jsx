@@ -6,6 +6,8 @@ export { RingIcon2 } from './RingIcon2';
 export { CarIcon } from './CarIcon';
 export { BusIcon } from './BusIcon';
 export { SeatIcon } from './SeatIcon';
+export { HeartIcon } from './HeartIcon';
+export { ShareIcon } from './ShareIcon';
 export { EmailIcon } from './EmailIcon';
 export { RingIcon3 } from './RingIcon3';
 export { RingIcon4 } from './RingIcon4';
