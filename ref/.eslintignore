@@ -1,0 +1,9 @@
+.storybook
+node_modules
+package.json
+jsconfig.json
+tsconfig.json
+app
+data
+scripts
+public/**/*

@@ -1,0 +1,63 @@
+@import '../../../../../atoms/styles/basestyles';
+
+.booking--fwrapper {
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 3rem;
+  padding-right: 3rem;
+  width: 100%;
+}
+
+.booking--header {
+  flex-basis: 25%;
+  flex-shrink: 0;
+}
+
+.booking--filter {
+  flex-basis: 70%;
+  flex-shrink: 0;
+}
+
+.booking--ul {
+  justify-content: space-between;
+  width: 100%;
+
+  li {
+    @include font-normal(1.8rem, 2.4rem, #637a87);
+
+    background-color: #f6f8f9;
+    border-radius: 4px;
+    flex-basis: 20%;
+    flex-basis: 19rem;
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding: 0.5rem 1rem;
+
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+
+    p {
+      @include font-normal(1.8rem, 2.4rem, #637a87);
+    }
+
+    figure {
+      margin-right: 1.5rem;
+    }
+
+    input,
+    select {
+      background-color: transparent;
+      border: 0;
+      color: #637a87;
+      cursor: pointer;
+
+      &:focus,
+      &:active {
+        background-color: transparent;
+        border: 0;
+        outline: 0;
+      }
+    }
+  }
+}

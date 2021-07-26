@@ -1,23 +1,9 @@
 .btn {
-	@include btnGeneric;
-	@include flexCenter;
+	@include btn-generic;
+	@include flex-center;
 
 	color: $white;
 	padding: 1rem 2rem;
-
-	// span {
-	// 	width: 2rem;
-	// 	height: 2rem;
-	// 	border-radius: 50%;
-	// 	background-color: transparent;
-	// 	border: 2px solid $white;
-	// 	border-left-color: transparent;
-	// 	border-top-color: transparent;
-	// 	animation: spin 1s;
-	// 	animation-iteration-count: infinite;
-	// 	animation-fill-mode: forwards;
-	// 	animation-timing-function: linear;
-	// }
 
 	&-brand-2 {
 		background-image: linear-gradient(180deg, #fade90 0%, #f3b348 93.23%, #cb820b 100%);

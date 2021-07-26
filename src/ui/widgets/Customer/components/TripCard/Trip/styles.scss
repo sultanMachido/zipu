@@ -1,0 +1,67 @@
+.trip-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 1em 0;
+
+  .right-arrow {
+    margin: 0 0.5em;
+    width: 80px;
+  }
+
+  .time {
+    align-self: flex-start;
+    // font-size: 0.5rem;
+    color: #637a87;
+    font-size: 12px;
+    font-weight: bold;
+
+    @media (max-width: 1024.98px) {
+      font-size: 0.5rem;
+    }
+
+    @media (max-width: 576.98px) {
+      display: none;
+    }
+  }
+
+  p {
+    align-items: center;
+    display: flex;
+
+    span {
+      margin-left: 0.7em;
+    }
+  }
+}
+
+.trip-info {
+  margin-bottom: 0.8em;
+  text-align: left;
+
+  p,
+  h2 {
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  @media (max-width: 1024.98px) {
+    p {
+      span {
+        color: #637a87;
+        font-size: 8.64198px;
+      }
+    }
+  }
+}
+
+@media (max-width: 576.98px) {
+  .right-arrow {
+    margin: 0 0.5em;
+    width: 50px;
+  }
+}
