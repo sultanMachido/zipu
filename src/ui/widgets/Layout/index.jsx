@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
 			<View variant="header" className={styles('header')}>
 				<Header />
 			</View>
-			<View variant="main" className={styles('main')}>
+			<View variant="main" className={`${styles('main')} ${styles('full-main')}`}>
 				{children}
 			</View>
 			<View className={styles('footer')}>
