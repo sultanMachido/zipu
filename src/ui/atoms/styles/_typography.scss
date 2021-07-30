@@ -5,12 +5,12 @@
 --------------------------- */
 
 html {
-	box-sizing: border-box;
-	font-size: 62.5%;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	scroll-behavior: smooth;
-	text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+  font-size: 62.5%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
 }
 
 // @media only screen and (min-width: 112.5em) {
@@ -20,21 +20,21 @@ html {
 // }
 
 @media only screen and (max-width: 75em) {
-	html {
-		font-size: 56.25%;
-	}
+  html {
+    font-size: 56.25%;
+  }
 }
 
 @media only screen and (max-width: 56.25em) {
-	html {
-		font-size: 50%;
-	}
+  html {
+    font-size: 50%;
+  }
 }
 
 @media only screen and (max-width: 320.98px) {
-	html {
-		font-size: 25%;
-	}
+  html {
+    font-size: 25%;
+  }
 }
 
 h1,
@@ -43,108 +43,112 @@ h3,
 h4,
 h5,
 h6 {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-	font-family: $primary-font;
-	font-weight: 300;
-	// line-height: 2rem;
+  font-family: $primary-font;
+  font-weight: 300;
+  // line-height: 2rem;
 }
 
 .h-1 {
-	@include font-bold(5rem, 6rem, $black);
+  @include font-bold(5rem, 6rem, $black);
 
-	font-weight: 700;
+  font-weight: 700;
 }
 
 .title-sm {
-	@include font-normal(1.9rem, 2.4rem, $black);
+  @include font-normal(1.9rem, 2.4rem, $black);
 }
 
 .title-lg {
-	@include font-bold(2.8rem, 4.4rem, $black);
+  @include font-bold(2.8rem, 4.4rem, $black);
 }
 
 .body-2-lg {
-	@include font-normal(1.4rem, 2rem, #637a87);
+  @include font-normal(1.4rem, 2rem, #637a87);
 }
 
 .body-2-sm {
-	@include font-normal(1.2rem, 2rem, #637a87);
+  @include font-normal(1.2rem, 2rem, #637a87);
 }
 
 .h2-lg {
-	@include font-bold(5rem, 5.6rem, #323d44);
+  @include font-bold(5rem, 5.6rem, #323d44);
 }
 
 .h3-lg {
-	@include font-bold(4rem, 4.4rem, #323d44);
+  @include font-bold(4rem, 4.4rem, #323d44);
 }
 
 .p-lg {
-	@include font-normal(1.6rem, 2.4rem, #637a87);
+  @include font-normal(1.6rem, 2.4rem, #637a87);
 }
 
 .p-md {
-	@include font-normal(1.8rem, 2rem, $black);
+  @include font-normal(1.8rem, 2rem, $black);
 
-	font-weight: 500;
+  font-weight: 500;
 }
 
 .p-sm {
-	@include font-normal(1.8rem, 3.2rem, $black);
+  @include font-normal(1.8rem, 3.2rem, $black);
 
-	font-weight: 600;
+  font-weight: 600;
 }
 
 .p-xs {
-	@include font-normal(1rem, 1.2rem, $white);
+  @include font-normal(1rem, 1.2rem, $white);
 }
 
 .sub-lg {
-	@include font-bold(2.5rem, 3.2rem, $grey-4);
+  @include font-bold(2.5rem, 3.2rem, $grey-4);
 }
 
 .sub-sm {
-	@include font-normal(2.5rem, 3.2rem, $grey-4);
+  @include font-normal(2.5rem, 3.2rem, $grey-4);
+}
+
+.sub-md {
+  @include font-normal(2rem, 2.5rem, $black);
 }
 
 .action-sm {
-	@include font-bold(1.6rem, 2.4rem, $grey-4);
+  @include font-bold(1.6rem, 2.4rem, $grey-4);
 }
 
 .action-lg {
-	@include font-bold(1.6rem, 2rem, $grey-4);
+  @include font-bold(1.6rem, 2rem, $grey-4);
 }
 
 .action-xs {
-	@include font-normal(1.6rem, 2rem, $grey-4);
+  @include font-normal(1.6rem, 2rem, $grey-4);
 }
 
 .font-100 {
-	font-weight: 100;
+  font-weight: 100;
 }
 
 .font-300 {
-	font-style: normal;
-	font-weight: 300;
+  font-style: normal;
+  font-weight: 300;
 }
 
 .font-400 {
-	font-style: normal;
-	font-weight: 400;
+  font-style: normal;
+  font-weight: 400;
 }
 
 .font-500 {
-	font-weight: 500;
+  font-weight: 500;
 }
 
 .font-600 {
-	font-weight: 600;
+  font-weight: 600;
 }
 
 .font-700 {
-	font-weight: 700;
+  font-weight: 700;
 }

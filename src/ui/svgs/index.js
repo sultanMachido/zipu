@@ -20,3 +20,6 @@ export { NotificationIcon } from './NotificationIcon';
 export { RingIcon2 } from './RingIcon2';
 export { TwitterIcon } from './TwitterIcon';
 export { YoutubeIcon } from './YoutubeIcon';
+export { ReturnIcon } from './ReturnIcon';
+export { MailBox } from './MailBox';
+export { ReturnLeftIcon } from './ReturnLeftIcon';

@@ -3,9 +3,13 @@ import LoginPage from 'pages/Customer/Auth/login';
 import RegisterPage from 'pages/Customer/Auth/register';
 import ResetPage from 'pages/Customer/Auth/reset';
 import BookingHistoryPage from 'pages/Customer/Booking/BookingHistory';
+import CompanyPage from 'pages/Customer/Company';
 import HomePage from 'pages/Customer/Home/index';
 import ProfilePage from 'pages/Customer/Profile';
+import SearchTripsPage from 'pages/Customer/Search/trips';
+import SearchVehiclesPage from 'pages/Customer/Search/vehicles';
 import SupportPage from 'pages/Customer/Support/index';
+import BookTripPage from 'pages/Customer/Trip/book';
 import SavedTripsPage from 'pages/Customer/Trip/index';
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -22,9 +26,12 @@ export const Routes = () => {
 				<Route exact path="/customer/reset-password" component={ResetPage} />
 				<Route exact path="/customer/booking-history" component={BookingHistoryPage} />
 				<Route exact path="/customer/trips/saved" component={SavedTripsPage} />
+				<Route exact path="/customer/trips/book" component={BookTripPage} />
 				<Route exact path="/help-support" component={SupportPage} />
+				<Route exact path="/company" component={CompanyPage} />
 				<Route path="/customer" component={ProfilePage} />
-				<Route exact path="/trips" component={TransportType} />
+				<Route exact path="/search/trips" component={SearchTripsPage} />
+				<Route exact path="/search/vehicles" component={SearchVehiclesPage} />
 				<Route exact path="/reg" component={TransportType} />
 				<Route exact path="/vehicle" component={TransportType} />
 			</Switch>

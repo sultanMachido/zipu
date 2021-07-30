@@ -1,0 +1,28 @@
+.transcopage-wrapper {
+  padding: 0;
+  margin: 0 auto;
+  width: 85%;
+
+  .title {
+    font-weight: 500;
+    font-size: 1.7rem;
+    color: #323d44;
+  }
+  .row {
+    margin-top: 3em;
+    display: grid;
+    grid-template-columns: 0.7fr 2fr;
+    grid-gap: 2em;
+    .vehicle-hire {
+      margin-top: 2em;
+    }
+  }
+  @media (max-width: 768.98px) {
+    .row {
+      display: block;
+    }
+    h2 {
+      font-size: 1.2rem;
+    }
+  }
+}

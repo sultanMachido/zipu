@@ -1,54 +1,54 @@
 @import '../../../../atoms/styles/basestyles';
 
 .user--details {
-	border-top: 1px solid #e3eaed;
+  border-top: 1px solid #e3eaed;
 }
 
 .user--details--item {
-	border-bottom: 1px solid #e3eaed;
-	padding: 1.8rem 0;
+  border-bottom: 1px solid #e3eaed;
+  padding: 1.8rem 0;
 
-	p {
-		color: $black;
-	}
+  p {
+    color: $black;
+  }
 }
 
 .qtrow {
-	flex-basis: 25%;
+  flex-basis: 25%;
 }
 
 .fullrow {
-	flex-basis: 70%;
+  flex-basis: 70%;
 }
 
 .btn-cta {
-	@include font-normal(1.6rem, 2.4rem, $brand2);
+  @include font-normal(1.6rem, 2.4rem, $brand2);
 
-	background-color: transparent;
-	border: 0;
-	margin-left: 3rem;
-	outline: none;
-	white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+  margin-left: 3rem;
+  outline: none;
+  white-space: nowrap;
 }
 
 .user--card {
-	background-color: #ffbc00;
-	border: 1px solid #ffbc00;
-	border-radius: 10px;
-	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.08);
-	height: 14rem;
-	padding: 2rem;
-	width: 100%;
+  background-color: #ffbc00;
+  border: 1px solid #ffbc00;
+  border-radius: 10px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.08);
+  height: 14rem;
+  padding: 2rem;
+  width: 100%;
 
-	h2 {
-		@include font-bold(1rem, 2.4rem, $black);
-	}
+  h2 {
+    @include font-bold(1rem, 2.4rem, $black);
+  }
 
-	h3 {
-		@include font-normal(1.6rem, 2.4rem, $white);
-	}
+  h3 {
+    @include font-normal(1.6rem, 2.4rem, $white);
+  }
 
-	h4 {
-		@include font-normal(1rem, 2.4rem, $black);
-	}
+  h4 {
+    @include font-normal(1rem, 2.4rem, $black);
+  }
 }

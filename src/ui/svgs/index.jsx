@@ -19,4 +19,7 @@ export { FacebookIcon } from './FacebookIcon';
 export { TwitterIcon } from './TwitterIcon';
 export { CloseIcon } from './CloseIcon';
 export { DownArrowIcon } from './DownArrowIcon';
+export { ReturnIcon } from './ReturnIcon';
 export { NotificationIcon } from './NotificationIcon';
+export { MailBox } from './MailBox';
+export { ReturnLeftIcon } from './ReturnLeftIcon';

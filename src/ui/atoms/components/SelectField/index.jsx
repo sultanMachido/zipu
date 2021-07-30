@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import classnames from 'classnames/bind';
 import React, { useImperativeHandle, useRef } from 'react';
 import { HTMLStarIcon } from 'ui/svgs';
