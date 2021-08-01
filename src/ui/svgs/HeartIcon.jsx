@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React from 'react';
 
 export function HeartIcon({ width = '16', height = '17', color = 'black', className }) {
@@ -9,8 +8,7 @@ export function HeartIcon({ width = '16', height = '17', color = 'black', classN
 			height={height}
 			viewBox="0 0 16 17"
 			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-		>
+			xmlns="http://www.w3.org/2000/svg">
 			<g clipPath="url(#clip0)">
 				<path
 					opacity="0.4"

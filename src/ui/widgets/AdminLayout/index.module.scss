@@ -1,0 +1,54 @@
+.admin-layout-wrapper {
+	background: #f1f3f4;
+}
+
+.admin-header {
+	ul {
+		margin: auto;
+		-ms-overflow-style: none;
+		overflow-x: scroll;
+		overflow-y: hidden;
+		text-align: center;
+		white-space: nowrap;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		li {
+			display: inline-block;
+		}
+
+		p {
+			color: #323d44;
+			font-size: 20px !important;
+			line-height: 24px;
+		}
+
+		small {
+			color: #637a87;
+			font-size: 12px;
+			line-height: 20px;
+		}
+
+		a {
+			background: transparent;
+			border-radius: 10px 10px 0 0;
+			display: inline-block;
+			font-weight: 500;
+			padding: 2em;
+			text-align: center;
+		}
+
+		li:nth-of-type(8) {
+			a {
+				background: white;
+			}
+		}
+	}
+}
+
+.body {
+	background: white;
+	padding-top: 3em;
+}

@@ -1,12 +1,15 @@
 select {
-  border: 1px solid #637a87;
-  border-radius: 2px;
-  display: block;
-  height: 45px;
-  outline: none;
-  padding-left: 2em;
-  padding-right: 2em;
-  width: 100%;
+	appearance: none;
+	background: url('../../../../assets/svg/warning.svg') no-repeat right white;
+	background-position-x: 97%;
+	border: 1px solid #637a87;
+	border-radius: 2px;
+	display: block;
+	height: 45px;
+	outline: none;
+	padding-left: 2em;
+	padding-right: 2em;
+	width: 100%;
 
   @media (max-width: 576.98px) {
     height: 45px;

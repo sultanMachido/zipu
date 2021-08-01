@@ -3,32 +3,276 @@
 	display: flex;
 	justify-content: space-between;
 
-	.input {
-		position: relative;
+	@media (max-width: 576.98px) {
+		flex-direction: column;
+		justify-content: center;
+	}
+}
+
+.input {
+	align-items: center;
+	background-color: #f6f8f9;
+	border-radius: 4px;
+	display: flex;
+	padding: 0 0.5em;
+	position: relative;
+	width: 100%;
+
+	p {
+		color: #637a87;
+		font-size: 18px;
+		line-height: 24px;
+	}
+}
+
+.search {
+	input,
+	select {
+		background-color: #f6f8f9;
+		border: 0;
+		border-radius: 4px;
+		height: 32px;
+		padding: 0 2em;
 		width: 100%;
 
-		svg {
-			left: 5px;
-			position: absolute;
-			top: 20%;
-			z-index: 1;
+		&::placeholder {
+			color: #637a87;
+			font-size: 18px;
+			line-height: 24px;
+		}
+
+		@media (max-width: 768.98px) {
+			padding: 0 2em 0 0.7em;
+		}
+	}
+}
+
+.input-group {
+	margin: 2em;
+	// width: 100%;
+}
+
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.table {
+	margin-top: 3em;
+	-ms-overflow-style: none;
+	overflow-x: scroll;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+.table-container {
+	background: #fff;
+	border: 1px solid #e3eaed;
+	border-radius: 8px;
+	padding: 2em;
+
+	h4 {
+		font-size: 16px !important;
+		font-weight: 500;
+		line-height: 19px;
+	}
+
+	h2 {
+		color: #1c1c1c;
+		font-size: 24px !important;
+		font-weight: normal;
+		line-height: 29px;
+		margin-top: 0.8em;
+	}
+}
+
+.table-header,
+.table-row {
+	margin: auto;
+	// width: 1400px;
+	padding: 2em;
+
+	ul {
+		align-items: center;
+		display: flex;
+		justify-content: space-around;
+	}
+}
+
+.table-row {
+	border: 1px solid #e3eaed;
+	border-radius: 10px;
+	margin-bottom: 2em;
+
+	p {
+		font-weight: 500;
+		line-height: 32px;
+		padding-bottom: 0.4em;
+	}
+
+	li {
+		p:nth-of-type(1) {
+			color: #323d44;
+			font-size: 16px !important;
+		}
+
+		p:nth-of-type(2) {
+			color: #637a87;
 		}
 	}
 
-	.search {
-		input {
-			background: #f6f8f9;
-			border: 0;
-			border-radius: 4px;
-			height: 32px;
-			padding: 0 3em;
-			width: 100%;
+	a {
+		color: #ffbc00;
+		font-size: 14px;
+		line-height: 32px;
+	}
 
-			&::placeholder {
-				color: #637a87;
-				font-size: 18px;
-				line-height: 24px;
+	.status {
+		align-items: center;
+		background: rgba(39, 174, 96, 0.2);
+		border-radius: 100px;
+		color: #2e7b32 !important;
+		display: flex;
+		justify-content: center;
+		padding-bottom: 0;
+		width: 100px;
+	}
+
+	button {
+		background: white;
+		border: 1px solid #a8a8a8;
+		border-radius: 100px;
+		padding: 0.5em 1em;
+	}
+}
+
+.table-header {
+	p {
+		color: #8d8d8d;
+		line-height: 17px;
+	}
+}
+
+.row {
+	display: grid;
+	grid-gap: 2em;
+	grid-template-columns: 2fr 0.8fr;
+
+	@media (max-width: 768.98px) {
+		grid-template-columns: 1fr;
+
+		.second-column {
+			grid-row: 1;
+			margin-top: 2em;
+		}
+	}
+}
+
+.vehicles {
+	border: 1px solid #e3eaed;
+	border-radius: 8px;
+	margin-bottom: 2em;
+	padding: 1em;
+
+	h4 {
+		color: #8d8d8d;
+		font-size: 14px !important;
+		font-weight: bold;
+		line-height: 17px;
+	}
+
+	.number-group {
+		display: flex;
+		justify-content: space-between;
+		margin-top: 2em;
+
+		.numbers {
+			h4 {
+				color: #000;
+				font-size: 14px !important;
+				font-weight: 500;
+				line-height: 17px;
 			}
+
+			p {
+				color: #8d8d8d;
+				font-size: 10px !important;
+				font-weight: 500;
+				line-height: 15px;
+			}
+		}
+	}
+
+	.progress-row {
+		align-items: center;
+		display: grid;
+		grid-gap: 2em;
+		grid-template-columns: 1fr 2fr;
+	}
+
+	.bar {
+		margin-bottom: 1em;
+	}
+
+	.link {
+		color: #8d8d8d;
+		display: block;
+		font-size: 14px !important;
+		font-weight: bold;
+		line-height: 17px;
+		text-align: center;
+	}
+
+	.texts {
+		display: flex;
+		justify-content: space-between;
+
+		h4 {
+			color: #323d44;
+			font-size: 14px !important;
+			font-weight: 500;
+			line-height: 17px;
+		}
+
+		p {
+			color: #323d44;
+			font-size: 14px !important;
+			font-weight: 500;
+			line-height: 17px;
+
+			span {
+				color: #c4c4c4;
+			}
+		}
+	}
+
+	.pie {
+		height: 130px;
+		position: relative;
+		width: 100px;
+	}
+
+	.pie-label {
+		left: 35%;
+		position: absolute;
+		text-align: center;
+		top: 40%;
+
+		h4 {
+			color: #000;
+			font-size: 14px !important;
+			font-weight: 500;
+			line-height: 17px;
+		}
+
+		p {
+			color: #8d8d8d;
+			font-size: 12px !important;
+			font-weight: 500;
+			line-height: 15px;
 		}
 	}
 }

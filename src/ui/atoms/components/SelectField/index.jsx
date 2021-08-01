@@ -77,9 +77,11 @@ export const SelectField = React.forwardRef((props, ref) => {
 					ref={inputRef}
 					name={name}
 					{...props}>
-					<option disabled selected hidden value="" className={styles('disabled')}>
-						{placeholder}
-					</option>
+					{placeholder && (
+						<option disabled selected hidden value="" className={styles('disabled')}>
+							{placeholder}
+						</option>
+					)}
 					{options.map((option) => (
 						<option key={option.name} value={option.value ? option.value : option.name}>
 							{option.name}

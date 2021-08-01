@@ -1,0 +1,168 @@
+.header {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 4em;
+}
+
+.row {
+	display: grid;
+	grid-gap: 3em;
+	grid-template-columns: 1fr 1fr;
+
+	@media (max-width: 768.98px) {
+		display: block;
+
+		.second-column {
+			margin-top: 8em;
+		}
+	}
+}
+
+.input-group {
+	margin: 2em 0;
+
+	.field {
+		input,
+		select {
+			border: 1px solid rgba(168, 168, 168, 0.32);
+		}
+	}
+}
+
+.terminal {
+	border: 1px solid rgba(168, 168, 168, 0.32);
+	padding: 2em;
+
+	.terminal-field {
+		input {
+			border: 1px solid rgba(168, 168, 168, 0.32);
+			height: 30px;
+		}
+	}
+}
+
+.terminals-group {
+	height: 300px;
+	-ms-overflow-style: none;
+	overflow-y: scroll;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+.check {
+	align-items: center;
+	display: flex;
+
+	input[type='checkbox'] {
+		height: 20px;
+		margin-right: 0.8em;
+		width: 20px;
+	}
+
+	label {
+		color: black;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 19px;
+	}
+}
+
+.button-container {
+	width: 40%;
+
+	button {
+		color: #323d44;
+		font-size: 14px;
+		font-weight: 700;
+		height: auto;
+		letter-spacing: 0.45px;
+		line-height: 20px;
+		padding: 1em;
+		text-transform: uppercase;
+	}
+}
+
+@media (max-width: 576.98px) {
+	.header {
+		flex-direction: column;
+
+		h4 {
+			margin-bottom: 2em;
+		}
+	}
+
+	.button-container {
+		width: 100%;
+	}
+}
+
+.input {
+	position: relative;
+	width: 100%;
+
+	svg {
+		left: 5px;
+		position: absolute;
+		top: 20%;
+		z-index: 1;
+	}
+}
+
+.search {
+	input {
+		background: #f6f8f9;
+		border: 0;
+		border-radius: 4px;
+		height: 32px;
+		padding: 0 3em;
+		width: 100%;
+
+		&::placeholder {
+			color: #637a87;
+			font-size: 18px;
+			line-height: 24px;
+		}
+	}
+}
+
+.input-row {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+
+	@media (max-width: 576.98px) {
+		flex-direction: column;
+	}
+}
+
+.input {
+	position: relative;
+	width: 100%;
+
+	svg {
+		left: 5px;
+		position: absolute;
+		top: 20%;
+		z-index: 1;
+	}
+}
+
+.search {
+	input {
+		background: #f6f8f9;
+		border: 0;
+		border-radius: 4px;
+		height: 32px;
+		padding: 0 3em;
+		width: 100%;
+
+		&::placeholder {
+			color: #637a87;
+			font-size: 18px;
+			line-height: 24px;
+		}
+	}
+}

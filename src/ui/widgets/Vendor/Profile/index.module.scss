@@ -1,0 +1,151 @@
+.profile-wrapper {
+	.banner {
+		background: rgba(255, 211, 1, 0.05);
+		border: 1px solid #f6f8f9;
+		border-radius: 10px;
+		margin: auto;
+		mix-blend-mode: normal;
+		padding: 1em;
+		text-align: center;
+
+		a {
+			color: #ffbc00;
+			font-size: 16px !important;
+			font-weight: bold;
+			line-height: 24px;
+			padding-left: 2em;
+		}
+
+		p {
+			color: #323d44;
+			font-size: 16px !important;
+			line-height: 24px;
+		}
+	}
+
+	.row {
+		display: grid;
+		grid-gap: 3em;
+		grid-template-columns: 0.7fr 2fr;
+		margin-top: 3em;
+	}
+
+	.header,
+	.action-container {
+		align-items: center;
+		display: flex;
+	}
+
+	.header {
+		justify-content: space-between;
+
+		.text-container {
+			p {
+				padding-top: 1em;
+			}
+		}
+	}
+
+	.action-container {
+		a {
+			color: #ffbc00;
+			font-size: 16px !important;
+			line-height: 24px;
+			padding-right: 1em;
+		}
+	}
+
+	.image-container {
+		border-radius: 50%;
+		height: 40px;
+		overflow: hidden;
+		width: 40px;
+
+		img {
+			height: 100%;
+			object-fit: cover;
+			width: 100%;
+		}
+	}
+
+	.first-column {
+		ul {
+			border: 1px solid #e3eaed;
+			border-radius: 10px;
+
+			li {
+				border-bottom: 1px solid #e3eaed;
+
+				a {
+					align-items: center;
+					display: block;
+					display: flex;
+					height: 100%;
+					padding: 1.5em;
+					width: 100%;
+				}
+
+				span {
+					color: #323d44;
+					font-size: 16px;
+					line-height: 24px;
+					margin-left: 2em;
+				}
+			}
+
+			li:last-child {
+				border-bottom: 0;
+			}
+		}
+	}
+
+	.second-column {
+		ul {
+			border-bottom: 1px solid #e3eaed;
+			border-top: 1px solid #e3eaed;
+			margin-top: 2em;
+		}
+
+		li {
+			align-items: center;
+			border-bottom: 1px solid #e3eaed;
+			display: flex;
+			justify-content: space-between;
+			padding: 2em;
+
+			p {
+				flex: 1;
+			}
+
+			a {
+				flex: 0.5;
+				text-align: right;
+			}
+		}
+
+		li:last-child {
+			border-bottom: 0;
+		}
+	}
+}
+
+@media (max-width: 768.98px) {
+	.profile-wrapper {
+		.banner {
+			a,
+			p {
+				display: block;
+			}
+		}
+		// .header {
+		// 	font-size: 10px !important;
+		// }
+		.row {
+			display: block;
+
+			.first-column {
+				margin-bottom: 6em;
+			}
+		}
+	}
+}

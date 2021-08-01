@@ -1,0 +1,292 @@
+.company-wrapper {
+	.row {
+		display: grid;
+		grid-gap: 2em;
+		grid-template-columns: 0.7fr 2fr;
+		margin-top: 3em;
+
+		@media (max-width: 576.98px) {
+			display: block;
+		}
+	}
+
+	.first-column {
+		.input-group {
+			margin-bottom: 2em;
+
+			label {
+				color: #ffbc00;
+				cursor: pointer;
+				font-size: 16px;
+				line-height: 24px;
+			}
+
+			input {
+				display: none;
+			}
+
+			.icon {
+				height: 100px;
+				overflow: hidden;
+				width: 200px;
+
+				img {
+					height: 100%;
+					object-fit: cover;
+					width: 100%;
+				}
+			}
+
+			@media (max-width: 576.98px) {
+				text-align: center;
+
+				.icon {
+					margin: auto;
+				}
+			}
+		}
+
+		.company-image {
+			width: 274px;
+
+			label {
+				background: #240555;
+				color: white;
+				display: block;
+				font-size: 16px;
+				line-height: 24px;
+				padding: 1em 0;
+				text-align: center;
+				width: 100%;
+			}
+
+			.image {
+				height: 330px;
+				margin: 0;
+				overflow: hidden;
+
+				img {
+					height: 100%;
+					object-fit: cover;
+					width: 100%;
+				}
+			}
+
+			@media (max-width: 576.98px) {
+				width: 100%;
+			}
+		}
+
+		.action {
+			margin-top: 3em;
+
+			button {
+				background: linear-gradient(180deg, #fade90 0%, #f3b348 93.23%, #cb820b 100%);
+				border-radius: 6px;
+				color: #323d44;
+				display: block;
+				font-size: 14px;
+				font-weight: bold;
+				letter-spacing: 0.45px;
+				line-height: 20px;
+				padding: 12px 32px;
+				text-transform: uppercase;
+				width: 100%;
+			}
+		}
+	}
+
+	.second-column {
+		width: 80%;
+
+		@media (max-width: 768.98px) {
+			width: 100%;
+		}
+
+		.group {
+			h3 {
+				color: #000;
+				font-size: 20px !important;
+				font-weight: bold;
+				line-height: 24px;
+				margin-top: 2em;
+			}
+		}
+
+		.stats {
+			margin-bottom: 2em;
+
+			.grid {
+				.card {
+					padding: 1em 2em;
+					text-align: left;
+
+					p {
+						color: #8d8d8d;
+						font-size: 14px;
+						font-weight: normal;
+						line-height: 17px;
+						margin-bottom: 0.6em;
+						text-align: left;
+					}
+				}
+
+				.icon-card {
+					align-items: center;
+					display: flex;
+					justify-content: space-between;
+				}
+
+				@media (max-width: 576.98px) {
+					display: block;
+
+					.card {
+						margin-top: 2em;
+					}
+				}
+			}
+		}
+
+		.grid {
+			display: grid;
+			grid-gap: 2em;
+			grid-template-columns: 1fr 1fr;
+			margin-top: 2em;
+
+			.card {
+				border: 1px solid #e3eaed;
+				border-radius: 8px;
+				box-sizing: border-box;
+				padding: 3em 1em;
+				text-align: center;
+
+				p {
+					color: #637a87;
+					font-size: 14px !important;
+					font-weight: bold;
+					letter-spacing: 0.45px;
+					line-height: 20px;
+					text-align: center;
+					text-transform: capitalize;
+				}
+			}
+		}
+
+		.company-info {
+			display: grid;
+			grid-gap: 2em;
+			grid-template-columns: 1fr 1fr;
+
+			.text-container {
+				margin-top: 1em;
+
+				h4 {
+					color: #323d44;
+					font-size: 14px !important;
+					font-weight: 500;
+					line-height: 20px;
+				}
+
+				ul {
+					margin-top: 2em;
+
+					li {
+						align-items: center;
+						display: flex;
+						font-size: 14px;
+						margin-bottom: 1em;
+
+						span {
+							margin-left: 1em;
+						}
+					}
+				}
+			}
+
+			.second-column {
+				.grouping {
+					margin-bottom: 2em;
+
+					h4 {
+						font-size: 14px !important;
+						font-weight: 500;
+						line-height: 20px;
+					}
+
+					ul {
+						li {
+							align-items: center;
+							display: flex;
+							font-size: 14px;
+							justify-content: space-between;
+							margin-top: 0.5em;
+
+							h4 {
+								font-size: 13px !important;
+							}
+						}
+					}
+
+					.download {
+						li {
+							margin-top: 2em;
+						}
+
+						button {
+							align-items: center;
+							background: #e3eaed;
+							border: 1px solid #dde3e9;
+							border-radius: 4px;
+							box-sizing: border-box;
+							color: rgba(0, 0, 0, 0.25);
+							cursor: pointer;
+							display: flex;
+							font-size: 14px;
+							line-height: 22px;
+
+							span {
+								margin-left: 0.5em;
+							}
+						}
+					}
+				}
+			}
+
+			@media (max-width: 576.98px) {
+				display: block;
+				margin-top: 5em;
+
+				.second-column {
+					margin: 5em 0;
+				}
+			}
+		}
+
+		.settings {
+			margin-top: 3em;
+
+			ul {
+				margin: 2em 0;
+
+				li {
+					align-items: center;
+					border-bottom: 1px solid #e4e4e4;
+					display: flex;
+					padding: 2em 0;
+
+					span {
+						color: #323d44;
+						font-size: 20px;
+						font-weight: 500;
+						line-height: 24px;
+						margin-right: 1em;
+					}
+				}
+
+				li:last-child {
+					border-bottom: 0;
+				}
+			}
+		}
+	}
+}

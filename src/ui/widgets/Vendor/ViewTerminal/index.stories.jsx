@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ViewTerminal from '.';
-// import { mockData_ViewTerminal } from './MOCK_DATA';
+import { mockData_ViewTerminal } from './MOCK_DATA';
 
 export default {
 	title: 'Widgets/Vendor/ViewTerminal',
@@ -14,5 +14,5 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-	// ...mockData_ViewTerminal
+	...mockData_ViewTerminal
 };
