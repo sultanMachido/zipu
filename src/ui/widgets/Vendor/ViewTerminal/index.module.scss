@@ -73,6 +73,12 @@
 	border: 1px solid #e3eaed;
 	border-radius: 8px;
 	padding: 2em;
+	-ms-overflow-style: none;
+	overflow-x: scroll;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
 
 	h4 {
 		font-size: 16px !important;
@@ -99,6 +105,10 @@
 		align-items: center;
 		display: flex;
 		justify-content: space-around;
+	}
+	@media (max-width: 576.98px) {
+		width: 1000px;
+		overflow-x: scroll;
 	}
 }
 
@@ -159,10 +169,13 @@
 .row {
 	display: grid;
 	grid-gap: 2em;
-	grid-template-columns: 2fr 0.8fr;
+	grid-template-columns: 0.8fr 2fr;
 
 	@media (max-width: 1024.98px) {
+		display: block;
+		margin: auto;
 		grid-template-columns: 1fr;
+		grid-gap: 0;
 
 		.second-column {
 			grid-row: 1;

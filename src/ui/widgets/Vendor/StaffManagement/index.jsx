@@ -42,7 +42,7 @@ const StaffManagement = ({ staff = mockData_StaffManagement.staff }) => {
 							<Text>Terminal: </Text> <Dropdown dropList={dropList} text="All terminals" />
 						</View>
 						<View className={styles('button-container')}>
-							<button>ADD NEW STAFF</button>
+							<button onClick={() => history.push('/vendor/add-staff')}>ADD NEW STAFF</button>
 						</View>
 					</View>
 				</View>

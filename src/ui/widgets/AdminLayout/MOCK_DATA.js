@@ -18,7 +18,7 @@ export const mockData_AdminHeader = {
 		{
 			title: 'Car listing',
 			text: 'Car/Bus managemnt',
-			url: '/vendor/car-listing'
+			url: '/vendor/vehicle-listing'
 		},
 		{
 			title: 'Staff',

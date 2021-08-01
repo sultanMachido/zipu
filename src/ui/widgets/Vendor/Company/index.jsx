@@ -1,5 +1,6 @@
 import classnames from 'classnames/bind';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { FormButton } from 'ui/atoms/components/Button';
 import Container from 'ui/atoms/components/Container';
 import { Text, View } from 'ui/atoms/components/Typography';
@@ -17,6 +18,7 @@ const styles = classnames.bind(style);
 const Company = () => {
 	const [icon, setIcon] = useState(car);
 	const [image, setImage] = useState(cars);
+	const history = useHistory();
 
 	const changeImage = (e) => {
 		const [file] = e.target.files;
@@ -53,7 +55,7 @@ const Company = () => {
 							<label htmlFor="companyImage">Edit cover image</label>
 							<input type="file" name="image" id="companyImage" onChange={changeImage} />
 							<View className={styles('action')}>
-								<button>edit information</button>
+								<button onClick={() => history.push('/vendor/profile')}>edit information</button>
 							</View>
 						</View>
 					</View>

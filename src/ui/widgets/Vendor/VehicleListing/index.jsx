@@ -11,6 +11,7 @@ import { LocationIcon } from 'ui/svgs/LocationIcon';
 import AdminLayout from 'ui/widgets/AdminLayout';
 
 import car from '../../../../assets/img/trip.png';
+import { mockData_TerminalManagement } from '../TerminalManagement/MOCK_DATA';
 import style from './index.module.scss';
 const dropList = [
 	{ text: 'link', url: '/' },
@@ -26,7 +27,7 @@ const btnInfo = {
 };
 const styles = classnames.bind(style);
 
-const VehicleListing = ({ terminals = [] }) => {
+const VehicleListing = ({ terminals = mockData_TerminalManagement.terminals }) => {
 	const [showFilter, setShowFilter] = useState(false);
 
 	return (

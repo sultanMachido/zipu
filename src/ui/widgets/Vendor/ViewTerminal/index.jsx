@@ -88,44 +88,6 @@ const ViewTerminal = ({ buses = mockData_ViewTerminal.buses }) => {
 						</View>
 					</View>
 					<View className={styles('row')}>
-						<View className={styles('first-column')}>
-							<View className={styles('table-container')}>
-								<View className={styles('heading')}>
-									<Text variant="h4">Buses</Text>
-									<Text variant="h2">234 total buses</Text>
-								</View>
-								<View className={styles('table')}>
-									{buses.map((each, index) => (
-										<View className={styles('table-row')} key={index}>
-											<ul>
-												<li>
-													<Text>#{each.number}</Text>
-												</li>
-												<li>
-													<Text>{each.name}</Text>
-												</li>
-												<li>
-													<Text>{each.travel}</Text>
-												</li>
-												<li>
-													<Text>{each.plate}</Text>
-												</li>
-												<li>
-													<StarRating rating={each.rating} />
-												</li>
-												<li>
-													<Text className={styles('status')}>{each.status}</Text>
-												</li>
-												<li>
-													{/* <button>Edit roles</button> */}
-													<ChevRightIcon />
-												</li>
-											</ul>
-										</View>
-									))}
-								</View>
-							</View>
-						</View>
 						<View className={styles('second-column')}>
 							<View className={styles('vehicles')}>
 								<Text variant="h4">Vehicles</Text>
@@ -249,6 +211,44 @@ const ViewTerminal = ({ buses = mockData_ViewTerminal.buses }) => {
 								<Link className={styles('link')} to="/">
 									View terminal staff
 								</Link>
+							</View>
+						</View>
+						<View className={styles('first-column')}>
+							<View className={styles('table-container')}>
+								<View className={styles('heading')}>
+									<Text variant="h4">Buses</Text>
+									<Text variant="h2">234 total buses</Text>
+								</View>
+								<View className={styles('table')}>
+									{buses.map((each, index) => (
+										<View className={styles('table-row')} key={index}>
+											<ul>
+												<li>
+													<Text>#{each.number}</Text>
+												</li>
+												<li>
+													<Text>{each.name}</Text>
+												</li>
+												<li>
+													<Text>{each.travel}</Text>
+												</li>
+												<li>
+													<Text>{each.plate}</Text>
+												</li>
+												<li>
+													<StarRating rating={each.rating} />
+												</li>
+												<li>
+													<Text className={styles('status')}>{each.status}</Text>
+												</li>
+												<li>
+													{/* <button>Edit roles</button> */}
+													<ChevRightIcon />
+												</li>
+											</ul>
+										</View>
+									))}
+								</View>
 							</View>
 						</View>
 					</View>
