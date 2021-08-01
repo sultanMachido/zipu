@@ -1,4 +1,4 @@
-import cars from '../../../assets/img/cars.jpg';
+import cars from 'assets/img/cars.jpg';
 
 export const mockData_CompanyInfo = {
 	description:

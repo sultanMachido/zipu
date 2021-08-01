@@ -12,7 +12,6 @@
     "number-leading-zero": null,
     "max-nesting-depth": 10,
     "color-named": null,
-    "scss/selector-no-redundant-nesting-selector": true,
     "at-rule-no-unknown": null,
     "scss/at-rule-no-unknown": true,
     declaration-block-trailing-semicolon: "always",
@@ -21,6 +20,7 @@
     selector-max-compound-selectors: 10,
     block-no-empty: null,
     no-duplicate-selectors: null,
-    selector-no-qualifying-type: null
+    selector-no-qualifying-type: null,
+    scss/selector-no-redundant-nesting-selector: null
   }
 }

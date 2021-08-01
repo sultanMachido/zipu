@@ -1,6 +1,6 @@
+import GIGM from 'assets/img/GIGMLogo.png';
 import React from 'react';
 
-import GIGM from '../../assets/img/GIGMLogo.png';
 import Company from '.';
 
 export default {

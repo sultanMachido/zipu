@@ -41,7 +41,7 @@
 			line-height: 24px;
 		}
 
-		@media (max-width: 768.98px) {
+		@media (max-width: 1024.98px) {
 			padding: 0 2em 0 0.7em;
 		}
 	}
@@ -161,7 +161,7 @@
 	grid-gap: 2em;
 	grid-template-columns: 2fr 0.8fr;
 
-	@media (max-width: 768.98px) {
+	@media (max-width: 1024.98px) {
 		grid-template-columns: 1fr;
 
 		.second-column {

@@ -1,4 +1,4 @@
-import UsersGroupIcon from '../../assets/img/userGroupIcon.png';
+import UsersGroupIcon from 'assets/img/userGroupIcon.png';
 
 export const howItWorks = {
 	id: 4,

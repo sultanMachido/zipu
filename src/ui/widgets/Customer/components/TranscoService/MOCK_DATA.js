@@ -1,4 +1,4 @@
-import TripCar from '../../assets/img/tripCar.png';
+import TripCar from 'assets/img/tripCar.png';
 export const mockData_TranscoService = {
 	transcoService: {
 		id: 3,
