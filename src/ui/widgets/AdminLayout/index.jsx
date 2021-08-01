@@ -1,3 +1,5 @@
+import './index.scss';
+
 import classNames from 'classnames/bind';
 import React from 'react';
 import { NavLink } from 'react-router-dom';

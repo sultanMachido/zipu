@@ -1,5 +1,6 @@
 import classnames from 'classnames/bind';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { FormButton } from 'ui/atoms/components/Button';
 import { TextInput } from 'ui/atoms/components/TextInput';
 import { Text, View } from 'ui/atoms/components/Typography';
@@ -37,6 +38,11 @@ const options = [
 
 const TransportType = () => {
 	const [values, setValues] = useState(initialValues);
+	const history = useHistory();
+
+	const onSubmit = () => {
+		history.push('/vendor/auth/cac');
+	};
 	const handleInputChange = (e) => {
 		const target = e.target;
 		const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -66,7 +72,7 @@ const TransportType = () => {
 				</View>
 			</View>
 
-			<form className={styles('form-container')}>
+			<form className={styles('form-container')} onSubmit={onSubmit}>
 				<View>
 					<View className={styles('input-group')}>
 						<Text fontWeight="bold" className={styles('label')}>

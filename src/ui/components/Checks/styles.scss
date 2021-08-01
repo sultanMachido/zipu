@@ -1,19 +1,19 @@
 .trip-info {
-  font-weight: bold;
-  font-size: 0.8rem;
-  color: #323d44;
-  ul {
-    list-style-type: none;
-    li {
-      display: flex;
-      align-items: center;
-      margin-bottom: 0.7em;
-      span {
-        margin-left: 0.5em;
-      }
-    }
-  }
-  @media (max-width: 1024.98px) {
-    font-size: 0.6rem;
-  }
+	font-weight: bold;
+	font-size: 0.8rem;
+	color: #323d44;
+	ul {
+		list-style-type: none;
+		li {
+			display: flex;
+			align-items: center;
+			margin-bottom: 0.7em;
+			span {
+				margin-left: 0.5em;
+			}
+		}
+	}
+	@media (max-width: 1024.98px) {
+		font-size: 0.6rem;
+	}
 }

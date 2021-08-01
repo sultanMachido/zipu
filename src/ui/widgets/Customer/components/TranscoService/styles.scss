@@ -1,22 +1,22 @@
 .transcoServiceWrapper {
-  background-color: #f8eac2;
-  border-radius: 10px;
+	background-color: #f8eac2;
+	border-radius: 10px;
 
-  .titleAndContent {
-    width: 100%;
-    padding: 4rem;
-    text-align: center;
-  }
+	.titleAndContent {
+		width: 100%;
+		padding: 4rem;
+		text-align: center;
+	}
 
-  .imgBG {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    padding-bottom: 4rem;
+	.imgBG {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		align-items: center;
+		padding-bottom: 4rem;
 
-    .btn {
-      padding: 1.8rem 2rem;
-    }
-  }
+		.btn {
+			padding: 1.8rem 2rem;
+		}
+	}
 }

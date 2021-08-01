@@ -1,31 +1,31 @@
 @import '../../../atoms/styles/basestyles';
 
 .user--container {
-  background-color: $white;
-  display: flex;
-  justify-content: space-between;
-  padding: 5rem 14rem;
+	background-color: $white;
+	display: flex;
+	justify-content: space-between;
+	padding: 5rem 14rem;
 
-  @include respond(tab-port) {
-    flex-wrap: wrap;
-    padding: 5rem 4rem;
-  }
+	@include respond(tab-port) {
+		flex-wrap: wrap;
+		padding: 5rem 4rem;
+	}
 }
 
 .user--nav {
-  background-color: transparent;
-  flex-basis: 26rem;
-  flex-shrink: 0;
-  margin-right: 2.6rem;
+	background-color: transparent;
+	flex-basis: 26rem;
+	flex-shrink: 0;
+	margin-right: 2.6rem;
 
-  @include respond(tab-port) {
-    flex-basis: 100%;
-    margin: 0;
-    margin-bottom: 2rem;
-  }
+	@include respond(tab-port) {
+		flex-basis: 100%;
+		margin: 0;
+		margin-bottom: 2rem;
+	}
 }
 
 .user--info {
-  flex-basis: auto;
-  flex-grow: 1;
+	flex-basis: auto;
+	flex-grow: 1;
 }

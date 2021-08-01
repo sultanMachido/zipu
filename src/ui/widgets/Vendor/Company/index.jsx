@@ -14,7 +14,7 @@ import style from './index.module.scss';
 
 const styles = classnames.bind(style);
 
-const Profile = () => {
+const Company = () => {
 	const [icon, setIcon] = useState(car);
 	const [image, setImage] = useState(cars);
 
@@ -221,4 +221,4 @@ const Profile = () => {
 	);
 };
 
-export default Profile;
+export default Company;

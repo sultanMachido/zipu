@@ -1,79 +1,79 @@
 @import '../../../atoms/styles/basestyles';
 
 .hero {
-  &--header {
-    background-color: $brand1;
-    padding: 9rem 14rem;
-    position: relative;
+	&--header {
+		background-color: $brand1;
+		padding: 9rem 14rem;
+		position: relative;
 
-    @include respond(tab-port) {
-      height: auto;
-      padding: 4rem;
-      padding-bottom: 8rem;
-    }
+		@include respond(tab-port) {
+			height: auto;
+			padding: 4rem;
+			padding-bottom: 8rem;
+		}
 
-    &.search-tab {
-      padding: 3rem 14rem;
-      height: auto;
-    }
+		&.search-tab {
+			padding: 3rem 14rem;
+			height: auto;
+		}
 
-    h2 {
-      @include font-bold(4.8rem, 6rem, $white);
+		h2 {
+			@include font-bold(4.8rem, 6rem, $white);
 
-      font-weight: 800;
-    }
-  }
+			font-weight: 800;
+		}
+	}
 }
 
 .herotab--content {
-  min-height: 5rem;
+	min-height: 5rem;
 }
 
 .booking--container {
-  margin: 4rem auto;
-  width: 85%;
-  display: flex;
-  justify-content: space-between;
+	margin: 4rem auto;
+	width: 85%;
+	display: flex;
+	justify-content: space-between;
 }
 
 .booking--main {
-  flex-basis: 65%;
-  border: 1px solid #e3eaed;
-  border-radius: 10px;
-  padding: 24px;
+	flex-basis: 65%;
+	border: 1px solid #e3eaed;
+	border-radius: 10px;
+	padding: 24px;
 }
 
 .booking--side {
-  flex-basis: 30%;
-  background: #ffffff;
+	flex-basis: 30%;
+	background: #ffffff;
 }
 
 .booking-aside-item {
-  padding: 24px;
+	padding: 24px;
 }
 
 .booking--refund {
-  background: #f6f8f9;
-  border-radius: 10px;
+	background: #f6f8f9;
+	border-radius: 10px;
 }
 
 .booking--form {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .bordered--bottom {
-  border-bottom: 1px solid #e3eaed;
+	border-bottom: 1px solid #e3eaed;
 }
 
 .btn--return {
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  height: 4rem;
+	background-color: transparent;
+	display: flex;
+	align-items: center;
+	height: 4rem;
 
-  span {
-    margin-left: 1rem;
-    @include font-normal(2.5rem, 3.2rem, $white);
-  }
+	span {
+		margin-left: 1rem;
+		@include font-normal(2.5rem, 3.2rem, $white);
+	}
 }

@@ -5,10 +5,11 @@ import Container from 'ui/atoms/components/Container';
 import { Text, View } from 'ui/atoms/components/Typography';
 
 import style from './index.module.scss';
+import { mockData_StaffActivity } from './MOCK_DATA';
 
 const styles = classnames.bind(style);
 
-const StaffActivity = ({ profile }) => {
+const StaffActivity = ({ profile = mockData_StaffActivity.profile }) => {
 	return (
 		<View className={styles('staff-activity-wrapper')}>
 			<Container className={styles('inner-wrapper')}>

@@ -7,37 +7,37 @@
 html,
 body,
 #root {
-  height: 100%;
+	height: 100%;
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 p {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 a {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 button {
-  border: 0;
-  cursor: pointer;
-  outline: none;
+	border: 0;
+	cursor: pointer;
+	outline: none;
 }
 
 body {
-  font-family: $primary-font;
-  font-weight: 300;
-  // line-height: 1.6rem;
-  overflow-x: hidden;
+	font-family: $primary-font;
+	font-weight: 300;
+	// line-height: 1.6rem;
+	overflow-x: hidden;
 }

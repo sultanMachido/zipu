@@ -1,5 +1,6 @@
 import classnames from 'classnames/bind';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { FormButton } from 'ui/atoms/components/Button';
 import { SelectField } from 'ui/atoms/components/SelectField';
 import { Text, View } from 'ui/atoms/components/Typography';
@@ -28,6 +29,11 @@ const options = [
 
 const CAC = () => {
 	const [values, setValues] = useState(initialValues);
+	const history = useHistory();
+
+	const onSubmit = () => {
+		history.push('/vendor/auth/business');
+	};
 
 	const handleInputChange = (e) => {
 		const target = e.target;
@@ -49,7 +55,7 @@ const CAC = () => {
 				</View>
 			</View>
 
-			<form className={styles('form-container')}>
+			<form className={styles('form-container')} onSubmit={onSubmit}>
 				<View>
 					<View className={styles('input-group')}>
 						<SelectField

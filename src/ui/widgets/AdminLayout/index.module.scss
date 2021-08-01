@@ -38,13 +38,16 @@
 			font-weight: 500;
 			padding: 2em;
 			text-align: center;
-		}
-
-		li:nth-of-type(8) {
-			a {
-				background: white;
+			&:hover {
+				text-decoration: none;
 			}
 		}
+
+		// li:nth-of-type(8) {
+		// 	a {
+
+		// 	}
+		// }
 	}
 }
 

@@ -1,47 +1,47 @@
 .btn {
-  @include btn-generic;
-  @include flex-center;
+	@include btn-generic;
+	@include flex-center;
 
-  color: $white;
-  padding: 1rem 2rem;
+	color: $white;
+	padding: 1rem 2rem;
 
-  &-brand-2 {
-    background-image: linear-gradient(180deg, #fade90 0%, #f3b348 93.23%, #cb820b 100%);
-    border-radius: 6px;
-  }
+	&-brand-2 {
+		background-image: linear-gradient(180deg, #fade90 0%, #f3b348 93.23%, #cb820b 100%);
+		border-radius: 6px;
+	}
 
-  &-white {
-    background-image: linear-gradient(180deg, #fefefe 0%, #e4e4e4 100%);
-    border-radius: 6px;
-    color: $black;
-  }
+	&-white {
+		background-image: linear-gradient(180deg, #fefefe 0%, #e4e4e4 100%);
+		border-radius: 6px;
+		color: $black;
+	}
 
-  &-blue {
-    background-color: $blue;
+	&-blue {
+		background-color: $blue;
 
-    &:hover {
-      background-color: rgba($blue, 0.7);
-    }
-  }
+		&:hover {
+			background-color: rgba($blue, 0.7);
+		}
+	}
 
-  &-dark {
-    background-color: #3d4159;
+	&-dark {
+		background-color: #3d4159;
 
-    &:hover {
-      background-color: rgba(#3d4159, 0.7);
-    }
-  }
+		&:hover {
+			background-color: rgba(#3d4159, 0.7);
+		}
+	}
 
-  &-dark-2 {
-    background-color: #00114d;
+	&-dark-2 {
+		background-color: #00114d;
 
-    &:hover {
-      background-color: rgba(#00114d, 0.7);
-    }
-  }
+		&:hover {
+			background-color: rgba(#00114d, 0.7);
+		}
+	}
 
-  &-outline {
-    background-color: transparent;
-    border: 1px solid $black;
-  }
+	&-outline {
+		background-color: transparent;
+		border: 1px solid $black;
+	}
 }

@@ -1,5 +1,6 @@
 import classnames from 'classnames/bind';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { FormButton } from 'ui/atoms/components/Button';
 import { TextInput } from 'ui/atoms/components/TextInput';
 import { Text, View } from 'ui/atoms/components/Typography';
@@ -11,6 +12,11 @@ import style from './index.module.scss';
 let styles = classnames.bind(style);
 
 const Registration = () => {
+	const history = useHistory();
+
+	const onSubmit = () => {
+		history.push('/vendor/auth/otp');
+	};
 	return (
 		<AuthCard>
 			<View className={styles('card-title')} display="flex" alignItems="center">
@@ -21,7 +27,7 @@ const Registration = () => {
 				</View>
 			</View>
 
-			<form className={styles('form-container')}>
+			<form className={styles('form-container')} onSubmit={onSubmit}>
 				<View className={styles('input-group')}>
 					<TextInput type="email" isRequired placeholder="Your email address" />
 				</View>

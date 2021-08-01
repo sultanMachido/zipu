@@ -9,6 +9,7 @@ import Empty from 'ui/components/Empty';
 import { ExportIcon, PersonIcon, SearchIcon } from 'ui/svgs';
 import AdminLayout from 'ui/widgets/AdminLayout';
 
+import { mockData_StaffManagement } from '../StaffManagement/MOCK_DATA';
 import style from './index.module.scss';
 
 const styles = classnames.bind(style);
@@ -35,11 +36,11 @@ const btnInfo = {
 	title: 'List is empty',
 	description: 'When you create a staff profile, they will appear here',
 	btnText: 'CREATE STAFF PROFILE',
-	btnLink: '/',
+	btnLink: '/vendor/add-staff',
 	component: PersonIcon
 };
 
-const PassengerManagement = ({ staff = [] }) => {
+const PassengerManagement = ({ staff = mockData_StaffManagement.staff }) => {
 	const [values, setValues] = useState(initialValues);
 	const handleInputChange = (e) => {
 		const target = e.target;

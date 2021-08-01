@@ -3,42 +3,42 @@ export const mockData_AdminHeader = {
 		{
 			title: 'Bookings',
 			text: 'management',
-			url: '/'
+			url: '/vendor/booking-management'
 		},
 		{
 			title: 'Passenger',
 			text: 'management',
-			url: '/'
+			url: '/vendor/passenger-management'
 		},
 		{
 			title: 'Trip',
 			text: 'management',
-			url: '/'
+			url: '/vendor/trip-management'
 		},
 		{
 			title: 'Car listing',
 			text: 'Car/Bus managemnt',
-			url: '/'
+			url: '/vendor/car-listing'
 		},
 		{
 			title: 'Staff',
 			text: 'management',
-			url: '/'
+			url: '/vendor/staff-management'
 		},
 		{
 			title: 'Reports',
 			text: '& Analytics system',
-			url: '/'
+			url: '/vendor/reports'
 		},
 		{
 			title: 'Terminal',
 			text: 'management',
-			url: '/'
+			url: '/vendor/terminal-management'
 		},
 		{
 			title: 'Company',
 			text: 'Details and settings',
-			url: '/'
+			url: '/vendor/company'
 		}
 	]
 };

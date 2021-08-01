@@ -1,126 +1,126 @@
 @import '../../../atoms/styles/basestyles';
 
 @mixin li-tab {
-  li {
-    @include flex-center;
-    @include font-bold(2.5rem, 3.2rem, $black);
+	li {
+		@include flex-center;
+		@include font-bold(2.5rem, 3.2rem, $black);
 
-    flex-basis: 25%;
-    flex-grow: 1;
-    flex-shrink: 1;
-    padding: 2rem;
+		flex-basis: 25%;
+		flex-grow: 1;
+		flex-shrink: 1;
+		padding: 2rem;
 
-    @include respond(lsc) {
-      flex-basis: 45%;
-    }
+		@include respond(lsc) {
+			flex-basis: 45%;
+		}
 
-    @include respond(phone) {
-      flex-basis: 100%;
-    }
+		@include respond(phone) {
+			flex-basis: 100%;
+		}
 
-    &:not(:last-child) {
-      border-right: 1px solid $grey;
+		&:not(:last-child) {
+			border-right: 1px solid $grey;
 
-      @include respond(phone) {
-        border: 0;
-      }
-    }
+			@include respond(phone) {
+				border: 0;
+			}
+		}
 
-    a {
-      color: $black;
-    }
+		a {
+			color: $black;
+		}
 
-    select {
-      background-color: transparent;
-      border: 0;
+		select {
+			background-color: transparent;
+			border: 0;
 
-      option {
-        @include font-normal(1.5rem, 2rem, $black);
-      }
-    }
+			option {
+				@include font-normal(1.5rem, 2rem, $black);
+			}
+		}
 
-    svg {
-      margin: 0 1.5rem;
-    }
+		svg {
+			margin: 0 1.5rem;
+		}
 
-    .btn {
-      color: $black;
-    }
-  }
+		.btn {
+			color: $black;
+		}
+	}
 }
 
 .hero {
-  &__header {
-    background-color: $brand1;
-    height: 38rem;
-    padding: 9rem 14rem;
-    position: relative;
+	&__header {
+		background-color: $brand1;
+		height: 38rem;
+		padding: 9rem 14rem;
+		position: relative;
 
-    @include respond(tab-port) {
-      height: auto;
-      padding: 4rem;
-      padding-bottom: 8rem;
-    }
+		@include respond(tab-port) {
+			height: auto;
+			padding: 4rem;
+			padding-bottom: 8rem;
+		}
 
-    h2 {
-      @include font-bold(4.8rem, 6rem, $white);
+		h2 {
+			@include font-bold(4.8rem, 6rem, $white);
 
-      font-weight: 800;
-    }
-  }
+			font-weight: 800;
+		}
+	}
 }
 
 .herotab {
-  bottom: 0;
-  left: 14rem;
-  position: absolute;
+	bottom: 0;
+	left: 14rem;
+	position: absolute;
 
-  @include respond(tab-port) {
-    left: 4rem;
-  }
+	@include respond(tab-port) {
+		left: 4rem;
+	}
 
-  .btn {
-    background-color: $near-white;
-    border-radius: 0;
+	.btn {
+		background-color: $near-white;
+		border-radius: 0;
 
-    &:first-child {
-      border-radius: 8px 0 0;
-    }
+		&:first-child {
+			border-radius: 8px 0 0;
+		}
 
-    &:last-child {
-      border-radius: 0 8px 0 0;
-    }
+		&:last-child {
+			border-radius: 0 8px 0 0;
+		}
 
-    &:hover,
-    &.active {
-      background-color: $white;
-      color: $brand1;
-    }
+		&:hover,
+		&.active {
+			background-color: $white;
+			color: $brand1;
+		}
 
-    &.btn-white {
-      background-image: none;
-    }
-  }
+		&.btn-white {
+			background-image: none;
+		}
+	}
 }
 
 .herotab--content {
-  margin: 0 14rem;
-  min-height: 5rem;
+	margin: 0 14rem;
+	min-height: 5rem;
 
-  @include respond(tab-port) {
-    margin: 0 4rem;
-  }
+	@include respond(tab-port) {
+		margin: 0 4rem;
+	}
 
-  ul {
-    @include li-tab;
+	ul {
+		@include li-tab;
 
-    @include respond(lsc) {
-      flex-wrap: wrap;
-    }
+		@include respond(lsc) {
+			flex-wrap: wrap;
+		}
 
-    @include respond(phone) {
-      flex-direction: column;
-      flex-wrap: nowrap;
-    }
-  }
+		@include respond(phone) {
+			flex-direction: column;
+			flex-wrap: nowrap;
+		}
+	}
 }

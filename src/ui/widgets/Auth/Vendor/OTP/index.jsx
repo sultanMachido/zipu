@@ -1,6 +1,7 @@
 import classnames from 'classnames/bind';
 import React, { useState } from 'react';
 import OtpInput from 'react-otp-input';
+import { useHistory } from 'react-router-dom';
 import { FormButton } from 'ui/atoms/components/Button';
 import { Text, View } from 'ui/atoms/components/Typography';
 import { EmailIcon } from 'ui/svgs';
@@ -10,8 +11,13 @@ import style from './index.module.scss';
 
 let styles = classnames.bind(style);
 
-const Registration = () => {
+const OTP = () => {
 	const [value, setValue] = useState('');
+	const history = useHistory();
+
+	const onSubmit = () => {
+		history.push('/vendor/auth/transport-type');
+	};
 
 	return (
 		<AuthCard className={styles('container')}>
@@ -26,7 +32,7 @@ const Registration = () => {
 				</Text>
 			</View>
 			<View className={styles('form-container')}>
-				<form>
+				<form onSubmit={onSubmit}>
 					<OtpInput
 						value={value}
 						onChange={(otp) => setValue(otp)}
@@ -52,4 +58,4 @@ const Registration = () => {
 	);
 };
 
-export default Registration;
+export default OTP;

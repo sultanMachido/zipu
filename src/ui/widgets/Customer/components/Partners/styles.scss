@@ -1,26 +1,26 @@
 @import '../../../../atoms/styles/basestyles';
 
 .partnersWrapper {
-  width: 100%;
-  margin: 5rem 0;
+	width: 100%;
+	margin: 5rem 0;
 
-  .partnersGallery {
-    display: grid;
-    grid-template-columns: repeat(4, 25rem);
-    grid-gap: 2rem;
-    margin-top: 2rem;
+	.partnersGallery {
+		display: grid;
+		grid-template-columns: repeat(4, 25rem);
+		grid-gap: 2rem;
+		margin-top: 2rem;
 
-    @include respond(lsc) {
-      grid-template-columns: repeat(2, 1fr);
-    }
+		@include respond(lsc) {
+			grid-template-columns: repeat(2, 1fr);
+		}
 
-    @include respond(phone) {
-      grid-template-columns: repeat(1, 1fr);
-    }
+		@include respond(phone) {
+			grid-template-columns: repeat(1, 1fr);
+		}
 
-    &__item {
-      @include flex-center;
-      flex-direction: column;
-    }
-  }
+		&__item {
+			@include flex-center;
+			flex-direction: column;
+		}
+	}
 }

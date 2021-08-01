@@ -1,5 +1,6 @@
 import classnames from 'classnames/bind';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { FormButton } from 'ui/atoms/components/Button';
 import Container from 'ui/atoms/components/Container';
 import { Text, View } from 'ui/atoms/components/Typography';
@@ -9,6 +10,7 @@ import { FilterIcon, WarningIcon } from 'ui/svgs';
 import AdminLayout from 'ui/widgets/AdminLayout';
 
 import style from './index.module.scss';
+import { mockData_TerminalManagement } from './MOCK_DATA';
 const dropList = [
 	{ text: 'link', url: '/' },
 	{ text: 'link', url: '/' },
@@ -23,8 +25,10 @@ const btnInfo = {
 };
 const styles = classnames.bind(style);
 
-const TerminalManagement = ({ terminals = [] }) => {
+const TerminalManagement = ({ terminals = mockData_TerminalManagement.terminals }) => {
 	const [showFilter, setShowFilter] = useState(false);
+
+	const history = useHistory();
 
 	return (
 		<AdminLayout>
@@ -50,7 +54,7 @@ const TerminalManagement = ({ terminals = [] }) => {
 								</button>
 							</View>
 							<View className={styles('button-container')}>
-								<button>ADD NEW</button>
+								<button onClick={() => history.push('/vendor/create-terminal')}>ADD NEW</button>
 							</View>
 						</View>
 					)}
@@ -116,7 +120,11 @@ const TerminalManagement = ({ terminals = [] }) => {
 										<Text>{terminal.name}</Text>
 										<Text variant="small">{terminal.bus}</Text>
 										<Text variant="small">{terminal.staff}</Text>
-										<Text className={styles('badge')}>View terminal</Text>
+										<Text
+											className={styles('badge')}
+											onClick={() => history.push('/vendor/view-terminal')}>
+											View terminal
+										</Text>
 									</View>
 									<View className={styles('second-column')}>
 										<Text className={styles('status-badge')}>{terminal.status}</Text>

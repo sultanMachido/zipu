@@ -40,3 +40,7 @@ export { StarIcon } from './StarIcon';
 export { ChevRightIcon } from './ChevRightIcon';
 export { ShareIcon } from './ShareIcon';
 export { ReturnIcon } from './ReturnIcon';
+export { CheckIcon } from './CheckIcon';
+export { PIcon } from './PIcon';
+export { ReturnLeftIcon } from './ReturnLeftIcon';
+export { RightArrow } from './RightArrow';

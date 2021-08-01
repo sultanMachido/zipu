@@ -1,59 +1,59 @@
 .company-wrapper {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-  .image-container {
-    width: 100px;
+	.image-container {
+		width: 100px;
 
-    img {
-      height: 100%;
-      object-fit: cover;
-      width: 100%;
-    }
-  }
+		img {
+			height: 100%;
+			object-fit: cover;
+			width: 100%;
+		}
+	}
 
-  p {
-    color: #323d44;
-    font-size: 0.8rem;
-    font-weight: bold;
-  }
+	p {
+		color: #323d44;
+		font-size: 0.8rem;
+		font-weight: bold;
+	}
 
-  .rating-review {
-    span {
-      font-size: 1rem;
-      font-weight: 500;
-      letter-spacing: 0.45px;
-      text-transform: uppercase;
-    }
+	.rating-review {
+		span {
+			font-size: 1rem;
+			font-weight: 500;
+			letter-spacing: 0.45px;
+			text-transform: uppercase;
+		}
 
-    small {
-      color: #637a87;
-      font-size: 0.8rem;
-      font-weight: bold;
-    }
-  }
+		small {
+			color: #637a87;
+			font-size: 0.8rem;
+			font-weight: bold;
+		}
+	}
 
-  @media (max-width: 1024.98px) {
-    p {
-      font-size: 0.7rem;
-      margin: 0;
-    }
+	@media (max-width: 1024.98px) {
+		p {
+			font-size: 0.7rem;
+			margin: 0;
+		}
 
-    .rating-review {
-      small {
-        font-size: 0.5rem;
-      }
-    }
-  }
+		.rating-review {
+			small {
+				font-size: 0.5rem;
+			}
+		}
+	}
 
-  @media (max-width: 576.98px) {
-    p {
-      display: none;
-    }
+	@media (max-width: 576.98px) {
+		p {
+			display: none;
+		}
 
-    .star {
-      height: 16px;
-      width: 16px;
-    }
-  }
+		.star {
+			height: 16px;
+			width: 16px;
+		}
+	}
 }

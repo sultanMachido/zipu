@@ -9,9 +9,11 @@ import { TextInput } from 'ui/atoms/components/TextInput';
 import { Text, View } from 'ui/atoms/components/Typography';
 import StarRating from 'ui/components/StarRating';
 import { ArrowRightIcon, ChevRightIcon, SearchIcon } from 'ui/svgs';
+import ActivityLayout from 'ui/widgets/ActivityLayout';
 import AdminLayout from 'ui/widgets/AdminLayout';
 
 import style from './index.module.scss';
+import { mockData_ViewTerminal } from './MOCK_DATA';
 
 const styles = classnames.bind(style);
 
@@ -29,7 +31,7 @@ const initialValues = {
 	platformOptions: ''
 };
 
-const ViewTerminal = ({ buses = [] }) => {
+const ViewTerminal = ({ buses = mockData_ViewTerminal.buses }) => {
 	const [values, setValues] = useState(initialValues);
 	const handleInputChange = (e) => {
 		const target = e.target;
@@ -41,7 +43,7 @@ const ViewTerminal = ({ buses = [] }) => {
 		});
 	};
 	return (
-		<AdminLayout>
+		<ActivityLayout>
 			<View className={styles('view-terminal-wrapper')}>
 				<Container className={styles('inner-wrapper')}>
 					<View className={styles('header')}>
@@ -179,7 +181,7 @@ const ViewTerminal = ({ buses = [] }) => {
 									Modify terminal
 								</Link>
 							</View>
-							<View className={styles('vehicles')}>
+							<View className={styles('vehicles', 'odd')}>
 								<Text>Average number of passengers</Text>
 								<View className={styles('number-group')}>
 									<View className={styles('numbers')}>
@@ -252,7 +254,7 @@ const ViewTerminal = ({ buses = [] }) => {
 					</View>
 				</Container>
 			</View>
-		</AdminLayout>
+		</ActivityLayout>
 	);
 };
 

@@ -1,68 +1,68 @@
 @import '../../../atoms/styles/basestyles';
 
 .searchContainer {
-  padding: 5rem 14rem;
-  background-color: rgba($near-white, 0.5);
-  display: flex;
-  justify-content: space-between;
+	padding: 5rem 14rem;
+	background-color: rgba($near-white, 0.5);
+	display: flex;
+	justify-content: space-between;
 
-  .searchFilter {
-    background-color: transparent;
-    flex-basis: 26rem;
-    margin-right: 2.6rem;
+	.searchFilter {
+		background-color: transparent;
+		flex-basis: 26rem;
+		margin-right: 2.6rem;
 
-    .filterBlock {
-      border-bottom: 1px solid #e3eaed;
-      background-color: $white;
-      padding: 3rem 2rem;
+		.filterBlock {
+			border-bottom: 1px solid #e3eaed;
+			background-color: $white;
+			padding: 3rem 2rem;
 
-      &:first-child {
-        border-radius: 10px 10px 0px 0px;
-      }
+			&:first-child {
+				border-radius: 10px 10px 0px 0px;
+			}
 
-      &:last-child {
-        border: none;
-        border-radius: 0px 0px 10px 10px;
-      }
+			&:last-child {
+				border: none;
+				border-radius: 0px 0px 10px 10px;
+			}
 
-      &--check {
-        margin-bottom: 1rem;
-        align-items: center;
+			&--check {
+				margin-bottom: 1rem;
+				align-items: center;
 
-        input {
-          margin-right: 8px;
-        }
-      }
-    }
+				input {
+					margin-right: 8px;
+				}
+			}
+		}
 
-    h2 {
-      @include font-normal(1.8rem, 2rem, $black);
-      margin-bottom: 2rem;
-    }
-  }
+		h2 {
+			@include font-normal(1.8rem, 2rem, $black);
+			margin-bottom: 2rem;
+		}
+	}
 
-  .searchItems {
-    flex-basis: auto;
-    flex-grow: 1;
+	.searchItems {
+		flex-basis: auto;
+		flex-grow: 1;
 
-    &__tabs {
-      button {
-        outline: none;
-        border: none;
-        background-color: $near-white;
-        padding: 1.6rem 3.2rem;
-        @include flex-center;
-        @include font-normal(1.6rem, 2.4rem, $black);
+		&__tabs {
+			button {
+				outline: none;
+				border: none;
+				background-color: $near-white;
+				padding: 1.6rem 3.2rem;
+				@include flex-center;
+				@include font-normal(1.6rem, 2.4rem, $black);
 
-        &:first-child {
-          border-radius: 8px 0px 0px 8px;
-        }
+				&:first-child {
+					border-radius: 8px 0px 0px 8px;
+				}
 
-        &.activeBtn {
-          color: $brand2;
-          background-color: $white;
-        }
-      }
-    }
-  }
+				&.activeBtn {
+					color: $brand2;
+					background-color: $white;
+				}
+			}
+		}
+	}
 }

@@ -1,66 +1,66 @@
 @import '../../../../atoms/styles/basestyles';
 
 .faqWrapper {
-  width: 100%;
-  margin: 5rem 0;
+	width: 100%;
+	margin: 5rem 0;
 
-  .faqContainer {
-    @include respond(lsc) {
-      flex-wrap: wrap;
-      .col_2 {
-        flex-basis: 100%;
-      }
-    }
+	.faqContainer {
+		@include respond(lsc) {
+			flex-wrap: wrap;
+			.col_2 {
+				flex-basis: 100%;
+			}
+		}
 
-    .col_2 {
-      flex-basis: 50%;
-    }
+		.col_2 {
+			flex-basis: 50%;
+		}
 
-    .faqItems {
-      padding-right: 2rem;
-    }
+		.faqItems {
+			padding-right: 2rem;
+		}
 
-    .faqGallery {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 16px;
-      width: 100%;
+		.faqGallery {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-gap: 16px;
+			width: 100%;
 
-      @include respond(phone) {
-        grid-template-columns: repeat(1, 1fr);
-      }
+			@include respond(phone) {
+				grid-template-columns: repeat(1, 1fr);
+			}
 
-      &__item {
-        height: 17.8rem;
-        border-radius: 10px;
-        justify-content: flex-end;
-        padding: 1.6rem;
-        background-repeat: no-repeat;
+			&__item {
+				height: 17.8rem;
+				border-radius: 10px;
+				justify-content: flex-end;
+				padding: 1.6rem;
+				background-repeat: no-repeat;
 
-        @include respond(phone) {
-          background-size: cover;
-        }
+				@include respond(phone) {
+					background-size: cover;
+				}
 
-        &.item-1 {
-          background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 54.21%, #000000 100%),
-            url('../../../../../assets/img/faq1.png');
-        }
+				&.item-1 {
+					background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 54.21%, #000000 100%),
+						url('../../../../../assets/img/faq1.png');
+				}
 
-        &.item-2 {
-          background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 54.21%, #000000 100%),
-            url('../../../../../assets/img/faq2.png');
-        }
+				&.item-2 {
+					background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 54.21%, #000000 100%),
+						url('../../../../../assets/img/faq2.png');
+				}
 
-        &.item-3 {
-          background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 54.21%, #000000 100%),
-            url('../../../../../assets/img/faq2.png');
-        }
+				&.item-3 {
+					background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 54.21%, #000000 100%),
+						url('../../../../../assets/img/faq2.png');
+				}
 
-        &.item-4 {
-          background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 54.21%, #000000 100%),
-            url('../../../../../assets/img/faq1.png');
-        }
-      }
-    }
-  }
+				&.item-4 {
+					background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 54.21%, #000000 100%),
+						url('../../../../../assets/img/faq1.png');
+				}
+			}
+		}
+	}
 }

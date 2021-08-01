@@ -1,6 +1,6 @@
 import classnames from 'classnames/bind';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Text, View } from 'ui/atoms/components/Typography';
 import Dropdown from 'ui/components/Dropdown';
 import Empty from 'ui/components/Empty';
@@ -8,6 +8,7 @@ import { PersonIcon } from 'ui/svgs';
 import AdminLayout from 'ui/widgets/AdminLayout';
 
 import style from './index.module.scss';
+import { mockData_StaffManagement } from './MOCK_DATA';
 
 const styles = classnames.bind(style);
 
@@ -25,7 +26,8 @@ const btnInfo = {
 	component: PersonIcon
 };
 
-const StaffManagement = ({ staff = [] }) => {
+const StaffManagement = ({ staff = mockData_StaffManagement.staff }) => {
+	const history = useHistory();
 	return (
 		<AdminLayout>
 			<View className={styles('staff-management-wrapper')}>
@@ -97,7 +99,7 @@ const StaffManagement = ({ staff = [] }) => {
 										<Text className={styles('status')}>{each.status}</Text>
 									</li>
 									<li>
-										<button>Edit roles</button>
+										<button onClick={() => history.push('/vendor/staff')}>Edit roles</button>
 									</li>
 								</ul>
 							</View>

@@ -1,50 +1,50 @@
 .company-wrapper {
-  display: flex;
-  flex-direction: column;
-  .image-container {
-    width: 100px;
-    img {
-      object-fit: cover;
-      height: 100%;
-      width: 100%;
-    }
-  }
-  p {
-    font-weight: bold;
-    font-size: 0.8rem;
-    color: #323d44;
-  }
-  .rating-review {
-    span {
-      font-weight: 500;
-      font-size: 1rem;
-      letter-spacing: 0.45px;
-      text-transform: uppercase;
-    }
-    small {
-      font-weight: bold;
-      font-size: 0.8rem;
-      color: #637a87;
-    }
-  }
-  @media (max-width: 1024.98px) {
-    p {
-      margin: 0;
-      font-size: 0.7rem;
-    }
-    .rating-review {
-      small {
-        font-size: 0.5rem;
-      }
-    }
-  }
-  @media (max-width: 576.98px) {
-    p {
-      display: none;
-    }
-    .star {
-      width: 16px;
-      height: 16px;
-    }
-  }
+	display: flex;
+	flex-direction: column;
+	.image-container {
+		width: 100px;
+		img {
+			object-fit: cover;
+			height: 100%;
+			width: 100%;
+		}
+	}
+	p {
+		font-weight: bold;
+		font-size: 0.8rem;
+		color: #323d44;
+	}
+	.rating-review {
+		span {
+			font-weight: 500;
+			font-size: 1rem;
+			letter-spacing: 0.45px;
+			text-transform: uppercase;
+		}
+		small {
+			font-weight: bold;
+			font-size: 0.8rem;
+			color: #637a87;
+		}
+	}
+	@media (max-width: 1024.98px) {
+		p {
+			margin: 0;
+			font-size: 0.7rem;
+		}
+		.rating-review {
+			small {
+				font-size: 0.5rem;
+			}
+		}
+	}
+	@media (max-width: 576.98px) {
+		p {
+			display: none;
+		}
+		.star {
+			width: 16px;
+			height: 16px;
+		}
+	}
 }

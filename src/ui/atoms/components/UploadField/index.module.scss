@@ -1,52 +1,52 @@
 .label {
-  align-items: center;
-  border: 0;
-  border: 1px solid #637a87;
-  border-radius: 2px;
-  display: flex;
-  height: 45px;
-  justify-content: flex-start;
-  outline: none;
-  overflow: hidden;
-  padding: 1em 2em;
-  width: 100%;
+	align-items: center;
+	border: 0;
+	border: 1px solid #637a87;
+	border-radius: 2px;
+	display: flex;
+	height: 45px;
+	justify-content: flex-start;
+	outline: none;
+	overflow: hidden;
+	padding: 1em 2em;
+	width: 100%;
 
-  .placeholder-container {
-    align-items: center;
-    background: #e3eaed;
-    border: 1px solid #dde3e9;
-    border-radius: 4px;
-    display: flex;
-    justify-content: flex-start;
-    max-width: 99%;
-    padding: 0.5em 1em;
+	.placeholder-container {
+		align-items: center;
+		background: #e3eaed;
+		border: 1px solid #dde3e9;
+		border-radius: 4px;
+		display: flex;
+		justify-content: flex-start;
+		max-width: 99%;
+		padding: 0.5em 1em;
 
-    span {
-      color: rgba(0, 0, 0, 0.25);
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 22px;
-      margin-left: 0.5em;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-  }
+		span {
+			color: rgba(0, 0, 0, 0.25);
+			font-size: 14px;
+			font-weight: 500;
+			line-height: 22px;
+			margin-left: 0.5em;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	}
 
-  @media (max-width: 576.98px) {
-    height: 45px;
-  }
+	@media (max-width: 576.98px) {
+		height: 45px;
+	}
 }
 
 .input-error-message {
-  color: red;
-  margin-top: 1em;
+	color: red;
+	margin-top: 1em;
 }
 
 .input {
-  display: none;
+	display: none;
 }
 
 .inner-wrapper {
-  position: relative;
+	position: relative;
 }
