@@ -10,7 +10,7 @@ const TripFilter = () => {
 		<Fragment>
 			<ul className="d-flex relative">
 				<li>
-					<div className="d-flex align-center">
+					<div className="d-flex w-100 align-center">
 						<select>
 							<option value="grapefruit">Trip 2</option>
 							<option value="lime">Akure</option>

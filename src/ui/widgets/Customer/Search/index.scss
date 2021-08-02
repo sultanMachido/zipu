@@ -6,10 +6,24 @@
 	display: flex;
 	justify-content: space-between;
 
+	@include respond(tab-port) {
+		padding: 5rem 8rem;
+	}
+
+	@include respond(lsc) {
+		flex-wrap: wrap;
+		padding: 5rem;
+	}
+
 	.searchFilter {
 		background-color: transparent;
 		flex-basis: 26rem;
 		margin-right: 2.6rem;
+
+		@include respond(lsc) {
+			flex-basis: 100%;
+			margin-right: 0;
+		}
 
 		.filterBlock {
 			border-bottom: 1px solid #e3eaed;
@@ -45,7 +59,15 @@
 		flex-basis: auto;
 		flex-grow: 1;
 
+		@include respond(lsc) {
+			flex-basis: 100%;
+			overflow: hidden;
+		}
+
 		&__tabs {
+			@include respond(lsc) {
+				margin-top: 2rem;
+			}
 			button {
 				outline: none;
 				border: none;

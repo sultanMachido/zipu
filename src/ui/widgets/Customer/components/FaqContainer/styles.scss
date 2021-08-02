@@ -5,19 +5,23 @@
 	margin: 5rem 0;
 
 	.faqContainer {
+		.col_2 {
+			flex-basis: 50%;
+		}
+
 		@include respond(lsc) {
 			flex-wrap: wrap;
+
 			.col_2 {
 				flex-basis: 100%;
 			}
 		}
 
-		.col_2 {
-			flex-basis: 50%;
-		}
-
 		.faqItems {
 			padding-right: 2rem;
+			@include respond(lsc) {
+				padding-right: 0;
+			}
 		}
 
 		.faqGallery {
