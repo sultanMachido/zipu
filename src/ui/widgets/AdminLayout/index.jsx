@@ -16,7 +16,7 @@ const AdminLayout = ({ children }) => {
 	return (
 		<View className={styles('admin-layout-wrapper')}>
 			<View className={styles('admin-header')}>
-				<ul>
+				<ul className="header-linkss">
 					{links.length &&
 						links.map((link) => (
 							<li key={link.title}>
