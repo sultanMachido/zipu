@@ -44,3 +44,4 @@ export { CheckIcon } from './CheckIcon';
 export { PIcon } from './PIcon';
 export { ReturnLeftIcon } from './ReturnLeftIcon';
 export { RightArrow } from './RightArrow';
+export { DateIcon } from './DateIcon';

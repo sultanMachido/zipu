@@ -22,6 +22,7 @@ import Registration from 'ui/widgets/Auth/Vendor/Registration';
 import TransportType from 'ui/widgets/Auth/Vendor/TransportType';
 import AdminWelcome from 'ui/widgets/Auth/Vendor/Welcome';
 import AddStaff from 'ui/widgets/Vendor/AddStaffActivity';
+import BookingsList from 'ui/widgets/Vendor/BookingsList';
 import Company from 'ui/widgets/Vendor/Company';
 import CreateTerminal from 'ui/widgets/Vendor/CreateTerminal';
 import PassengerManagement from 'ui/widgets/Vendor/PassengerManagement';
@@ -70,6 +71,7 @@ export const Routes = () => {
 				<Route exact path="/vendor/staff-terminal" component={TerminalStaff} />
 				<Route exact path="/vendor/vehicle-listing" component={VehicleListing} />
 				<Route exact path="/vendor/view-terminal" component={ViewTerminal} />
+				<Route exact path="/vendor/booking-management" component={BookingsList} />
 			</Switch>
 		</BrowserRouter>
 	);
