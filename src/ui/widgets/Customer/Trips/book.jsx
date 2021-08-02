@@ -1,16 +1,27 @@
 /* eslint-disable no-unused-vars */
 // import TripSearchItem from 'components/TripSearchItem';
+import GIGM from 'assets/img/GIGMLogo.png';
 import classnames from 'classnames/bind';
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { View } from 'ui/atoms/components/Typography';
+import Company from 'ui/components/Company';
 import { ReturnLeftIcon } from 'ui/svgs';
+import { CircleIcon, NextIcon, PreviousIcon, TimeIcon } from 'ui/svgs';
+import { MapIcon } from 'ui/svgs/MapIcon';
+import { PIcon } from 'ui/svgs/PIcon';
 
 import TripCard from '../components/TripCard';
 import style from './booking.module.scss';
 import { mockData_TripCard } from './MOCK_DATA';
 let styles = classnames.bind(style);
 
+let companyInfo = {
+	imgUrl: GIGM,
+	tripsCompleted: '',
+	rating: 5,
+	reviewCount: 70
+};
 const BookTrip = () => {
 	return (
 		<Fragment>
@@ -23,6 +34,146 @@ const BookTrip = () => {
 				<View className={styles('herotab--content')}>
 					<View className={styles('booking--container')}>
 						<View className={styles('booking--main')}>
+							<View className={` ${styles('booking--trip')} d-flex mb-sm pb-sm`}>
+								<div className="w-25 mr-lg">
+									<Company className="w-100" companyInfo={companyInfo} />
+								</div>
+								<div className="tscol w-100">
+									<div className="tsrow justify-between w-100 mb-xs">
+										<div className="tsrow">
+											<div className="tscol mr-sm">
+												<figure>
+													<img src={GIGM} alt="motor" />
+												</figure>
+											</div>
+											<div className="tscol">
+												<h2 className="p-md font-500 lack">GIGM Jet Plus</h2>
+												<p className="font-500 body-2-lg  grey-dark"> Departure trip</p>
+											</div>
+										</div>
+										<div className="tsrow">
+											<p className="tsrow">
+												<span className="sub-md font-700 black">₦5,500</span>
+											</p>
+										</div>
+									</div>
+
+									<div className="d-flex justify-between w-100 mb-xs">
+										<div className="tsrow">
+											<p className="tsrow">
+												<span className="body-2-lg black">Pick-up terminal</span>{' '}
+											</p>
+										</div>
+										<div className="tsrow">
+											<p className="tsrow">
+												<span className="body-2-lg black">Drop-off terminal</span>
+											</p>
+										</div>
+									</div>
+
+									<div className="d-flex justify-between w-100 mb-xs">
+										<div className="tsrow">
+											<p className="tsrow">
+												<TimeIcon className="mr-xs" />
+												<span className="body-2-lg black">07:00am</span>{' '}
+											</p>
+										</div>
+										<div className="tsrow">
+											<p className="tsrow">
+												<TimeIcon className="mr-xs" />
+												<span className="body-2-lg black">07:00am</span>
+											</p>
+										</div>
+									</div>
+
+									<div className="d-flex justify-between w-100 mb-xs">
+										<div className="tsrow">
+											<p className="tsrow">
+												<MapIcon className="mr-xs" />
+												<span className="p-md">Ojota moto park</span>{' '}
+											</p>
+										</div>
+										<div className="tsrow">
+											<p className="tsrow">
+												<MapIcon className="mr-xs" />
+												<span className="p-md">Ekpoma park</span>
+											</p>
+										</div>
+									</div>
+								</div>
+							</View>
+
+							<View
+								className={`${styles('booking-form')} ${styles('bordered--bottom')} mb-sm pb-sm`}>
+								<h4 className="body-2-lg black">Your Trip details</h4>
+								<p className="body-2-lg ">
+									Click
+									<span className={`${styles('clickable')} black clickable brand-1`}>
+										&nbsp;Here&nbsp;
+									</span>
+									to modify your trip selection
+								</p>
+							</View>
+
+							<View
+								className={`${styles('date--selector')} ${styles('bordered--bottom')} mb-sm pb-sm`}>
+								<div className="tsrow">
+									<p className="body-2-lg black">Selected travel date</p>
+								</div>
+								<div className="tsrow">
+									<button className="action--btn pr-sm">
+										<PreviousIcon />
+									</button>
+									<button className="action--btn">
+										<NextIcon />
+									</button>
+								</div>
+							</View>
+
+							<View className={`tscol mb-sm pb-sm`}>
+								<div className="d-flex">
+									<CircleIcon className="mt-y mr-md" />
+									<div className="tscol">
+										<div className="tsrow mb-1">
+											<h2 className="p-lg  font-500 black">7:00AM Lagos - Benin</h2>
+										</div>
+										<div className="tsrow mb-1">
+											<PIcon className="mr-xs" />
+											<p className="body-2-sm black">Ojota moto park, Lagos</p>
+										</div>
+										<div className="tsrow mb-1">
+											<PIcon className="mr-xs" />
+											<p className="body-2-sm black">Premium - ₦7,700 </p>
+										</div>
+										<div className="tsrow mt-xs mb-1">
+											<div className="info--badge">4 seat left, book now!</div>
+										</div>
+									</div>
+								</div>
+							</View>
+
+							<View className={`tscol mb-sm pb-sm`}>
+								<div className="d-flex">
+									<CircleIcon className="mt-y mr-md" />
+									<div className="tscol">
+										<div className="tsrow mb-1">
+											<h2 className="p-lg  font-500 black">7:00AM Lagos - Benin</h2>
+										</div>
+										<div className="tsrow mb-1">
+											<PIcon className="mr-xs" />
+											<p className="body-2-sm black">Ojota moto park, Lagos</p>
+										</div>
+										<div className="tsrow mb-1">
+											<PIcon className="mr-xs" />
+											<p className="body-2-sm black">Premium - ₦7,700 </p>
+										</div>
+										<div className="tsrow mt-xs mb-1">
+											<div className="info--badge">4 seat left, book now!</div>
+										</div>
+									</div>
+								</div>
+							</View>
+
 							<View
 								className={`${styles('booking-form')} ${styles('bordered--bottom')} mb-sm pb-sm`}>
 								<p className="body-2-lg black mb-1">Personal Details</p>

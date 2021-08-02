@@ -14,6 +14,10 @@
 	margin-bottom: 7px;
 }
 
+.mt-y {
+	margin-top: 4px;
+}
+
 .mt-xs {
 	margin-top: 1rem;
 }
@@ -154,6 +158,10 @@
 	width: 100%;
 }
 
+.w-25 {
+	width: 25%;
+}
+
 .h-20 {
 	height: 20rem;
 }
@@ -233,6 +241,10 @@
 }
 
 //Colors
+
+.clickable {
+	cursor: pointer;
+}
 
 .dark {
 	color: black;
@@ -411,4 +423,17 @@ input {
 	option {
 		color: $black;
 	}
+}
+
+.action--btn {
+	background-color: transparent;
+}
+
+.info--badge {
+	background: #f8eac2;
+	border-radius: 100px;
+	padding: 6px 16px;
+	color: #c76100;
+	font-size: 1.2rem;
+	line-height: 2rem;
 }

@@ -7,10 +7,10 @@ import style from './index.module.scss';
 let styles = classnames.bind(style);
 import './index.scss';
 
-import { ReactComponent as Bus } from 'assets/svg/carbus.svg';
 import React, { Fragment } from 'react';
 
 import TripCard from '../components/TripCard';
+import TripFilter from './components/TripFilter';
 import { mockData_TripCard } from './MOCK_DATA';
 
 const SearchVehicles = () => {
@@ -25,13 +25,8 @@ const SearchVehicles = () => {
 	return (
 		<Fragment>
 			<View className={styles('hero')}>
-				<View className={styles('hero__header')}>
-					<View display="flex" className={styles('heroTab')}>
-						<button className={`btn btn-white black`}>
-							<Bus className="pr-xs" />
-							Seat Booking
-						</button>
-					</View>
+				<View className={`${styles('hero__header')} ${styles('search-tab')}`}>
+					<TripFilter />
 				</View>
 				<View className={styles('heroTab__content')}>
 					{/* <TripCard tripInfo={mockData_TripCard} /> */}

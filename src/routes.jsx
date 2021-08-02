@@ -38,6 +38,8 @@ export const Routes = () => {
 	return (
 		<BrowserRouter>
 			<Switch>
+				<Route exact path="/customer" component={ProfilePage} />
+
 				<Route exact path="/" component={HomePage} />
 				<Route exact path="/customer/login" component={LoginPage} />
 				<Route exact path="/customer/register" component={RegisterPage} />
@@ -48,7 +50,6 @@ export const Routes = () => {
 				<Route exact path="/customer/trips/book" component={BookTripPage} />
 				<Route exact path="/help-support" component={SupportPage} />
 				<Route exact path="/company" component={CompanyPage} />
-				<Route path="/customer" component={ProfilePage} />
 				<Route exact path="/search/trips" component={SearchTripsPage} />
 				<Route exact path="/search/vehicles" component={SearchVehiclesPage} />
 				<Route exact path="/reg" component={TransportType} />
