@@ -36,14 +36,12 @@ const TripTab = () => {
 				<li>
 					<div className="d-flex align-center">
 						<select>
-							<option value="grapefruit">Trip 2</option>
 							<option value="lime">Akure</option>
 							<option value="lime">Enugu</option>
 							<option value="lime">Lagos</option>
 						</select>
-						<ReturnIcon width="25px" height="25px" />
+						<ReturnIcon width="40px" height="40px" />
 						<select>
-							<option value="grapefruit">Trip 2</option>
 							<option value="lime">Lagos</option>
 							<option value="lime">Akure</option>
 							<option value="lime">Abuja</option>

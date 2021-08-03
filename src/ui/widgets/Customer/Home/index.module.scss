@@ -4,6 +4,7 @@
 	li {
 		@include flex-center;
 		@include font-bold(2.5rem, 3.2rem, $black);
+		@include font-normal(1.5rem, 2rem, $black);
 
 		flex-basis: 25%;
 		flex-grow: 1;
@@ -136,10 +137,10 @@
 			flex-wrap: wrap;
 		}
 
-		@include respond(phone) {
-			flex-direction: column;
-			flex-wrap: nowrap;
-		}
+		// @include respond(phone) {
+		// 	flex-direction: column;
+		// 	flex-wrap: nowrap;
+		// }
 
 		@include li-tab;
 	}
