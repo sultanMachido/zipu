@@ -2,12 +2,19 @@
 import { DatePicker } from 'antd';
 import moment from 'moment';
 import React, { Fragment } from 'react';
+import { useHistory } from 'react-router';
 // const {RangePicker} = DatePicker;
 import { ReturnIcon } from 'ui/svgs';
 
 const dateFormat = 'YYYY/MM/DD';
 
 const VehicleTab = () => {
+	let history = useHistory();
+
+	const redirect = () => {
+		history.push('/search/trips');
+	};
+
 	return (
 		<Fragment>
 			{/* <ul className="d-flex">
@@ -34,7 +41,7 @@ const VehicleTab = () => {
 			</ul> */}
 			<ul className="d-flex relative">
 				<li>
-					<div className="d-flex align-center">
+					<div className="d-flex  w-100 align-center">
 						<select>
 							<option value="lime">Enugu</option>
 							<option value="lime">Lagos</option>
@@ -65,7 +72,9 @@ const VehicleTab = () => {
 					</select>
 				</li>
 				<li>
-					<button className="btn btn-brand-2 ">SHOW VEHICLES</button>
+					<button onClick={redirect} className="btn btn-brand-2 ">
+						SHOW VEHICLES
+					</button>
 				</li>
 			</ul>
 		</Fragment>

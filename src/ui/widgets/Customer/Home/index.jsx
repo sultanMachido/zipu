@@ -17,8 +17,6 @@ import HowItWorks from '../components/HowItWorks';
 import MobileCta from '../components/MobileCta';
 import Newsletter from '../components/Newsletter';
 import Partners from '../components/Partners';
-// // import TripSearchTab from '../components/TripSearchTab';
-// import VehicleSearchTab from '../components/SearchTab/VehicleSearchtab';
 import TripPackages from '../components/TripPackages';
 import TripTab from './TripTab';
 import VehicleTab from './VehicleTab';

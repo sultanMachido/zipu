@@ -26,6 +26,7 @@
 
 		p {
 			@include font-normal(1.6rem, 2.4rem, $black);
+			padding-right: 2rem;
 		}
 	}
 }

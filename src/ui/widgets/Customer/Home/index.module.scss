@@ -3,8 +3,7 @@
 @mixin li-tab {
 	li {
 		@include flex-center;
-		@include font-bold(2.5rem, 3.2rem, $black);
-		@include font-normal(1.5rem, 2rem, $black);
+		@include font-normal(1.6rem, 2rem, $black);
 
 		flex-basis: 25%;
 		flex-grow: 1;
@@ -12,18 +11,15 @@
 		padding: 2rem;
 
 		@include respond(lsc) {
-			flex-basis: 45%;
-		}
-
-		@include respond(phone) {
 			flex-basis: 100%;
 		}
 
 		&:not(:last-child) {
 			border-right: 1px solid $grey;
 
-			@include respond(phone) {
-				border: 0;
+			@include respond(lsc) {
+				border-right: 0;
+				border-bottom: 1px solid $grey;
 			}
 		}
 
@@ -34,6 +30,8 @@
 		select {
 			background-color: transparent;
 			border: 0;
+			padding: 0;
+			padding-right: 1rem;
 
 			option {
 				@include font-normal(1.5rem, 2rem, $black);
@@ -78,6 +76,7 @@
 
 	@include respond(tab-port) {
 		left: 4rem;
+		width: calc(100% - 4rem);
 	}
 
 	.btn {
@@ -136,11 +135,6 @@
 		@include respond(lsc) {
 			flex-wrap: wrap;
 		}
-
-		// @include respond(phone) {
-		// 	flex-direction: column;
-		// 	flex-wrap: nowrap;
-		// }
 
 		@include li-tab;
 	}

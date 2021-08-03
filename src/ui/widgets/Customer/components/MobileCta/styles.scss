@@ -26,6 +26,7 @@
 			@include respond(phone) {
 				flex-basis: 100%;
 				margin-bottom: 1.5rem;
+				margin-right: 0;
 			}
 			svg {
 				width: 3rem;
