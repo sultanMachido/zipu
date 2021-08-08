@@ -31,6 +31,7 @@
 		"react-app-rewired": "^2.1.8",
 		"react-datepicker": "^4.1.1",
 		"react-dom": "^16.13.1",
+		"react-hot-toast": "^2.1.0",
 		"react-icons": "^4.1.0",
 		"react-minimal-pie-chart": "^8.2.0",
 		"react-otp-input": "^2.4.0",

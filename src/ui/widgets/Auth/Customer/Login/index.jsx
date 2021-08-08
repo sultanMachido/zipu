@@ -1,8 +1,14 @@
+/* eslint-disable no-unused-vars */
+import { message } from 'antd';
 import { ReactComponent as IconFacebook } from 'assets/svg/IconFacebook.svg';
 import { ReactComponent as IconGoogle } from 'assets/svg/IconGoogle.svg';
 import classnames from 'classnames/bind';
-import React from 'react';
-import { FormButton } from 'ui/atoms/components/Button';
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { loginCustomer } from 'redux/actions/login/login.actions';
+import { Button } from 'ui/atoms/components/Button/Button';
 import { TextInput } from 'ui/atoms/components/TextInput';
 import { Text, View } from 'ui/atoms/components/Typography';
 
@@ -11,20 +17,61 @@ import style from './index.module.scss';
 
 let styles = classnames.bind(style);
 
-const CustomerLogin = () => {
+const CustomerLogin = ({ login: { loginLoading }, ...props }) => {
+	const [user, setUser] = useState({
+		email: '',
+		password: ''
+	});
+
+	const onChange = (e) => {
+		setUser({
+			...user,
+			[e.target.name]: e.target.value
+		});
+	};
+
+	const onLogin = async (e) => {
+		e.preventDefault();
+		try {
+			let userData = await props.loginCustomer(user);
+			console.log('userStatus', userData);
+			if (userData?.loginStatus === false) {
+				toast.error(userData?.message || 'Error');
+			} else {
+				props.history.push('/customer/booking-history');
+			}
+		} catch (error) {
+			message.error('Error occured');
+		}
+	};
+
 	return (
 		<AuthCard className={styles('admin-wrapper')}>
 			<Text variant="h3">Sign In</Text>
 			<Text>Sign in to your Zipu account with your registred email and password</Text>
-			<form className={styles('form-container')}>
+			<form onSubmit={onLogin} className={styles('form-container')}>
 				<View className={styles('input-group')}>
-					<TextInput type="email" isRequired placeholder="Your email address" />
+					<TextInput
+						name="email"
+						onChange={onChange}
+						type="email"
+						isRequired
+						placeholder="Your email address"
+					/>
 				</View>
 				<View className={styles('input-group')}>
-					<TextInput type="password" isRequired placeholder="Enter password" />
+					<TextInput
+						name="password"
+						type="password"
+						onChange={onChange}
+						isRequired
+						placeholder="Enter password"
+					/>
 				</View>
 				<View className={styles('form-button-container')}>
-					<FormButton>LOGIN</FormButton>
+					<Button type="submit" loading={loginLoading} loadingText="Authenticating....">
+						LOGIN
+					</Button>
 				</View>
 			</form>
 			<View className={styles('create-account-text')}>
@@ -58,4 +105,12 @@ const CustomerLogin = () => {
 	);
 };
 
-export default CustomerLogin;
+const mapStateToProps = (state) => ({
+	login: state.login
+});
+
+const mapDispatchToProps = {
+	loginCustomer
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CustomerLogin));
