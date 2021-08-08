@@ -20,3 +20,8 @@ export const verifyEmailSuccess = (otpInfo) => ({
 	type: verifyEmailTypes.VERIFY_EMAIL_SUCCESS,
 	payload: otpInfo
 });
+
+export const setErrFlag = (status) => ({
+	type: verifyEmailTypes.VERIFY_EMAIL_ERRFLAG,
+	payload: status
+});
