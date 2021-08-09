@@ -27,7 +27,7 @@ const initialValues = {
 	accountName: ''
 };
 
-const AddBooking = () => {
+const AddVehicleRental = () => {
 	const [values, setValues] = useState(initialValues);
 
 	const handleInputChange = (e) => {
@@ -134,4 +134,4 @@ const AddBooking = () => {
 	);
 };
 
-export default AddBooking;
+export default AddVehicleRental;

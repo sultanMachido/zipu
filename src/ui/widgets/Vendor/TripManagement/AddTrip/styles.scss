@@ -1,0 +1,13 @@
+.addTripsWrapper {
+	p {
+		font-family: Inter;
+		font-style: normal;
+		font-size: 14px;
+		line-height: 20px;
+		color: #323d44;
+		margin-bottom: 0px;
+		&.bold {
+			font-weight: 500;
+		}
+	}
+}

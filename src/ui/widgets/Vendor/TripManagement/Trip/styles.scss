@@ -1,0 +1,71 @@
+.tripWrapper {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 0.3fr 0.3fr 6fr;
+	justify-content: center;
+
+	.tripTime {
+		p {
+			padding: 0px;
+			margin: 0px;
+			font-size: 12px;
+			color: #8d8d8d;
+		}
+	}
+
+	.separator {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		.circle {
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+		}
+		.completed {
+			background-color: #6fcf97;
+		}
+		.notCompleted {
+			border: 1px solid #637a87;
+		}
+
+		.dottedLine {
+			width: 10px;
+			min-height: 15rem;
+			margin-left: -1rem;
+		}
+		.dottedCompleted {
+			border-right: 1px dotted #6fcf97;
+		}
+		.dottedNotCompleted {
+			border-right: 1px dotted #637a87;
+		}
+	}
+
+	.tripDetailsWrapper {
+		border-top: 1px solid #dde3e9;
+		padding: 0.5rem 0rem;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-gap: 2rem;
+
+		.tripDetails {
+			margin-right: 50px;
+
+			p {
+				color: #637a87;
+				font-size: 10px;
+				padding: 0;
+				margin: 0;
+			}
+			a {
+				font-size: 10px;
+				color: #ffbc00 !important;
+				padding: 0;
+				margin: 0;
+			}
+		}
+	}
+}

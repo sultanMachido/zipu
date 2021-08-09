@@ -24,12 +24,14 @@ import OTP from 'ui/widgets/Auth/Vendor/OTP';
 import Registration from 'ui/widgets/Auth/Vendor/Registration';
 import TransportType from 'ui/widgets/Auth/Vendor/TransportType';
 import AdminWelcome from 'ui/widgets/Auth/Vendor/Welcome';
+import AddVehicleRental from 'ui/widgets/Vendor/AddBooking/Rental';
 import AddStaff from 'ui/widgets/Vendor/AddStaffActivity';
 import BookingsList from 'ui/widgets/Vendor/BookingsList';
 import Company from 'ui/widgets/Vendor/Company';
 import CreateTerminal from 'ui/widgets/Vendor/CreateTerminal';
 import PassengerManagement from 'ui/widgets/Vendor/PassengerManagement';
 import Profile from 'ui/widgets/Vendor/Profile';
+import Report from 'ui/widgets/Vendor/Report';
 import StaffActivity from 'ui/widgets/Vendor/StaffActivity';
 import StaffManagement from 'ui/widgets/Vendor/StaffManagement';
 import TerminalManagement from 'ui/widgets/Vendor/TerminalManagement';
@@ -40,53 +42,47 @@ import { GuestCustomer, PrivateCustomer } from 'utils/AuthHelper';
 
 export const Routes = () => {
 	return (
-		<Fragment>
-			<Toaster />
-			<BrowserRouter>
-				<Switch>
-					<Route exact path="/customer" component={ProfilePage} />
-
-					<Route exact path="/" component={HomePage} />
-					<Route exact path="/customer/register" component={GuestCustomer(RegisterPage)} />
-					<Route exact path="/customer/verify" component={GuestCustomer(CustomerOTPpage)} />
-					<Route exact path="/customer/resend" component={GuestCustomer(CustomerResendpage)} />
-					<Route exact path="/customer/login" component={GuestCustomer(LoginPage)} />
-					<Route exact path="/customer/forgot-password" component={GuestCustomer(ForgotPage)} />
-					<Route exact path="/customer/reset-password" component={GuestCustomer(ResetPage)} />
-					<Route
-						exact
-						path="/customer/booking-history"
-						component={BookingHistoryPage}
-						// component={PrivateCustomer(BookingHistoryPage)}
-					/>
-					<Route exact path="/customer/trips/saved" component={PrivateCustomer(SavedTripsPage)} />
-					<Route exact path="/customer/trips/book" component={PrivateCustomer(BookTripPage)} />
-					<Route exact path="/help-support" component={SupportPage} />
-					<Route exact path="/company" component={CompanyPage} />
-					<Route exact path="/search/trips" component={SearchTripsPage} />
-					<Route exact path="/search/vehicles" component={SearchVehiclesPage} />
-					<Route exact path="/vendor/auth/login" component={AdminLogin} />
-					<Route exact path="/vendor/auth/register" component={Registration} />
-					<Route exact path="/vendor/auth/otp" component={OTP} />
-					<Route exact path="/vendor/auth/cac" component={CAC} />
-					<Route exact path="/vendor/auth/business" component={BusinessDetails} />
-					<Route exact path="/vendor/auth/transport-type" component={TransportType} />
-					<Route exact path="/vendor/auth/welcome" component={AdminWelcome} />
-					<Route exact path="/vendor/add-staff" component={AddStaff} />
-					<Route exact path="/vendor/company" component={Company} />
-					<Route exact path="/vendor/create-terminal" component={CreateTerminal} />
-					<Route exact path="/vendor/passenger-management" component={PassengerManagement} />
-					<Route exact path="/vendor/profile" component={Profile} />
-					<Route exact path="/vendor/staff" component={StaffActivity} />
-					<Route exact path="/vendor/staff-management" component={StaffManagement} />
-					<Route exact path="/vendor/terminal-management" component={TerminalManagement} />
-					<Route exact path="/vendor/staff-terminal" component={TerminalStaff} />
-					<Route exact path="/vendor/vehicle-listing" component={VehicleListing} />
-					<Route exact path="/vendor/view-terminal" component={ViewTerminal} />
-					<Route exact path="/vendor/booking-management" component={BookingsList} />
-				</Switch>
-			</BrowserRouter>
-		</Fragment>
+		<BrowserRouter>
+			<Switch>
+				<Route exact path="/" component={HomePage} />
+				<Route exact path="/customer/login" component={LoginPage} />
+				<Route exact path="/customer/register" component={RegisterPage} />
+				<Route exact path="/customer/forgot-password" component={ForgotPage} />
+				<Route exact path="/customer/reset-password" component={ResetPage} />
+				<Route exact path="/customer/booking-history" component={BookingHistoryPage} />
+				<Route exact path="/customer/trips/saved" component={SavedTripsPage} />
+				<Route exact path="/customer/trips/book" component={BookTripPage} />
+				<Route exact path="/help-support" component={SupportPage} />
+				<Route exact path="/company" component={CompanyPage} />
+				<Route path="/customer" component={ProfilePage} />
+				<Route exact path="/search/trips" component={SearchTripsPage} />
+				<Route exact path="/search/vehicles" component={SearchVehiclesPage} />
+				<Route exact path="/reg" component={TransportType} />
+				<Route exact path="/vehicle" component={TransportType} />
+				<Route exact path="/vendor/auth/login" component={AdminLogin} />
+				<Route exact path="/vendor/auth/register" component={Registration} />
+				<Route exact path="/vendor/auth/otp" component={OTP} />
+				<Route exact path="/vendor/auth/cac" component={CAC} />
+				<Route exact path="/vendor/auth/business" component={BusinessDetails} />
+				<Route exact path="/vendor/auth/transport-type" component={TransportType} />
+				<Route exact path="/vendor/auth/welcome" component={AdminWelcome} />
+				<Route exact path="/vendor/add-staff" component={AddStaff} />
+				<Route exact path="/vendor/company" component={Company} />
+				<Route exact path="/vendor/create-terminal" component={CreateTerminal} />
+				<Route exact path="/vendor/passenger-management" component={PassengerManagement} />
+				<Route exact path="/vendor/profile" component={Profile} />
+				<Route exact path="/vendor/staff" component={StaffActivity} />
+				<Route exact path="/vendor/staff-management" component={StaffManagement} />
+				<Route exact path="/vendor/terminal-management" component={TerminalManagement} />
+				<Route exact path="/vendor/staff-terminal" component={TerminalStaff} />
+				<Route exact path="/vendor/vehicle-listing" component={VehicleListing} />
+				<Route exact path="/vendor/view-terminal" component={ViewTerminal} />
+				<Route exact path="/vendor/booking-management" component={BookingsList} />
+				<Route exact path="/vendor/add-vehicle/rental" component={AddVehicleRental} />
+				<Route exact path="/vendor/add-vehicle/booking" component={BookingsList} />
+				<Route exact path="/vendor/reports" component={Report} />
+			</Switch>
+		</BrowserRouter>
 	);
 };
 
