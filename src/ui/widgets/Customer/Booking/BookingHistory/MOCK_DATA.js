@@ -1,6 +1,7 @@
 /* eslint-disable react/display-name */
 import { ReactComponent as RightArrow } from 'assets/svg/RightArrow.svg';
 import React from 'react';
+import { formatDate, formatDayString } from 'utils/dateParser';
 
 export const mockData = {
 	columns: [
@@ -8,10 +9,10 @@ export const mockData = {
 			title: 'Origin',
 			dataIndex: 'origin',
 			key: 'origin',
-			render: (_, { originState, originPark }) => (
+			render: (_, { trip: { origin_terminal } }) => (
 				<>
-					<p>{originState}</p>
-					<span>{originPark}</span>
+					<p>{origin_terminal?.state}</p>
+					<span>{origin_terminal?.name}</span>
 				</>
 			)
 		},
@@ -19,10 +20,10 @@ export const mockData = {
 			title: 'Origin Date',
 			dataIndex: 'originDate',
 			key: 'originDate',
-			render: (_, { originDay, originDate }) => (
+			render: (_, { trip: { origin_terminal } }) => (
 				<>
-					<p>{originDay}</p>
-					<span>{originDate}</span>
+					<p>{formatDayString(origin_terminal?.created_at)}</p>
+					<span>{formatDate(origin_terminal?.created_at)}</span>
 				</>
 			)
 		},
@@ -40,10 +41,10 @@ export const mockData = {
 			title: 'Arrival',
 			dataIndex: 'arrival',
 			key: 'arrival',
-			render: (_, { arrivalState, arrivalPark }) => (
+			render: (_, { trip: { destination_terminal } }) => (
 				<>
-					<p>{arrivalState}</p>
-					<span>{arrivalPark}</span>
+					<p>{destination_terminal?.state}</p>
+					<span>{destination_terminal?.name}</span>
 				</>
 			)
 		},
@@ -51,10 +52,10 @@ export const mockData = {
 			title: 'Arrival Date',
 			dataIndex: 'arrivalDate',
 			key: 'arrivalDate',
-			render: (_, { arrivalDay, arrivalDate }) => (
+			render: (_, { trip: { destination_terminal } }) => (
 				<>
-					<p>{arrivalDay}</p>
-					<span>{arrivalDate}</span>
+					<p>{formatDayString(destination_terminal?.created_at)}</p>
+					<span>{formatDate(destination_terminal?.created_at)}</span>
 				</>
 			)
 		},
@@ -63,7 +64,7 @@ export const mockData = {
 			dataIndex: 'cost',
 			key: 'cost',
 			// eslint-disable-next-line react/display-name
-			render: (_, { cost }) => (
+			render: (_, { trip: { cost } }) => (
 				<>
 					<p>{cost}</p>
 				</>
@@ -80,42 +81,6 @@ export const mockData = {
 	],
 
 	dataSource: [
-		{
-			key: '1',
-			originPark: 'Ojota motor park',
-			originState: 'Lagos',
-			originDay: 'Sunday',
-			originDate: '25th Dec 2020',
-			arrivalState: 'Ile-Ife',
-			arrivalPark: 'OAU school gate motor park',
-			arrivalDay: 'Sunday',
-			arrivalDate: '25th Dec 2020',
-			cost: '500,000'
-		},
-		{
-			key: '1',
-			originPark: 'Ojota motor park',
-			originState: 'Lagos',
-			originDay: 'Sunday',
-			originDate: '25th Dec 2020',
-			arrivalState: 'Ile-Ife',
-			arrivalPark: 'OAU school gate motor park',
-			arrivalDay: 'Sunday',
-			arrivalDate: '25th Dec 2020',
-			cost: '500,000'
-		},
-		{
-			key: '1',
-			originPark: 'Ojota motor park',
-			originState: 'Lagos',
-			originDay: 'Sunday',
-			originDate: '25th Dec 2020',
-			arrivalState: 'Ile-Ife',
-			arrivalPark: 'OAU school gate motor park',
-			arrivalDay: 'Sunday',
-			arrivalDate: '25th Dec 2020',
-			cost: '500,000'
-		},
 		{
 			key: '1',
 			originPark: 'Ojota motor park',

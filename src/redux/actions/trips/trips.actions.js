@@ -2,7 +2,6 @@
 /** @format */
 
 import toast from 'react-hot-toast';
-import trips from 'ui/widgets/Customer/Search/trips';
 
 import { APIService } from '../../../config/apiConfig';
 import {
