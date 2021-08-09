@@ -1,4 +1,8 @@
+/* eslint-disable prettier/prettier */
 /** @format */
+
+import toast from 'react-hot-toast';
+import trips from 'ui/widgets/Customer/Search/trips';
 
 import { APIService } from '../../../config/apiConfig';
 import {
@@ -112,5 +116,68 @@ export const fetchSingleTrip = (id) => async (dispatch) => {
 		dispatch(fetchSingleTripErrors(message));
 		dispatch(fetchSingleTripLoading(false));
 		return { fetchTripStatus: false, message: message || SOMETHING_WENT_WRONG };
+	}
+};
+
+export const searchTrips = (payload) => async (dispatch) => {
+	console.log('Callung search trips');
+	dispatch(clearFetchAllTripsErrors());
+	dispatch(fetchAllTripsLoading());
+	try {
+		// const response = await APIService.get(
+		// 	`/search-trip?origin_state=${payload.origin}&destination_state=${payload.destination}&trip_date=${payload.date}`
+		// );]
+		const response = await APIService.get(
+			`/search-trip?origin_state=${payload.origin}&destination_state=${payload.destination}&trip_date=${payload.date}`
+		);
+		if (response.data.status === 'Success') {
+			console.log('Callung search successs');
+
+			const promoCodes = response.data.data.promocodes;
+			dispatch(fetchAllTripsLoading(false));
+			dispatch(fetchAllTripsSuccess());
+			return { fetchTripsStatus: true, message: 'All Trips Fetched Successfully' };
+		} else {
+			console.log('Callung search error');
+
+			dispatch(fetchAllTripsErrors('Error occured fetching Trips'));
+			dispatch(fetchAllTripsLoading(false));
+			return { fetchTripsStatus: false, message: 'hi' };
+		}
+	} catch (error) {
+		console.log('Callung search failed');
+		const message = error.response?.data?.message;
+		toast.error(message || 'Error Occured');
+		dispatch(fetchAllTripsErrors(message));
+		dispatch(fetchAllTripsLoading(false));
+		return { fetchTripsStatus: false, message: message || SOMETHING_WENT_WRONG };
+	}
+};
+
+export const searchGroupedTrips = (payload) => async (dispatch) => {
+	dispatch(clearFetchAllTripsErrors());
+	dispatch(fetchAllTripsLoading());
+	try {
+		const response = await APIService.get(
+			`/search-trips-grouped?origin_state=${payload.origin}&destination_state=${payload.destination}&round_trip=${payload.round_trip}`
+		);
+		if (response.data.status === 'Success') {
+			const responseObj = response.data.data;
+			const tripsObj = responseObj[Object.keys(responseObj)[0]][1];
+			dispatch(fetchAllTripsLoading(false));
+			dispatch(fetchAllTripsSuccess(tripsObj));
+			return { fetchTripsStatus: true, message: 'All Trips Fetched Successfully' };
+		} else {
+			dispatch(fetchAllTripsErrors('Error occured fetching Trips'));
+			dispatch(fetchAllTripsLoading(false));
+			return { fetchTripsStatus: false, message: 'hi' };
+		}
+	} catch (error) {
+		console.log('Callung search failed');
+		const message = error.response?.data?.message;
+		toast.error(message || 'Error Occured');
+		dispatch(fetchAllTripsErrors(message));
+		dispatch(fetchAllTripsLoading(false));
+		return { fetchTripsStatus: false, message: message || SOMETHING_WENT_WRONG };
 	}
 };

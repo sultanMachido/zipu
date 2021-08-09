@@ -9,9 +9,8 @@ import './index.scss';
 
 import React, { Fragment } from 'react';
 
-import TripCard from '../components/TripCard';
 import TripFilter from './components/TripFilter';
-import { mockData_TripCard } from './MOCK_DATA';
+import TripSearchItem from './components/TripSearchItem/index';
 
 const SearchVehicles = () => {
 	function onChange(value) {
@@ -77,7 +76,7 @@ const SearchVehicles = () => {
 								</div>
 
 								<div className="searchItems__results">
-									<TripCard tripInfo={mockData_TripCard} />
+									<TripSearchItem />
 								</div>
 							</div>
 						</div>

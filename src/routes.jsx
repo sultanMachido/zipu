@@ -56,7 +56,8 @@ export const Routes = () => {
 					<Route
 						exact
 						path="/customer/booking-history"
-						component={PrivateCustomer(BookingHistoryPage)}
+						component={BookingHistoryPage}
+						// component={PrivateCustomer(BookingHistoryPage)}
 					/>
 					<Route exact path="/customer/trips/saved" component={PrivateCustomer(SavedTripsPage)} />
 					<Route exact path="/customer/trips/book" component={PrivateCustomer(BookTripPage)} />
