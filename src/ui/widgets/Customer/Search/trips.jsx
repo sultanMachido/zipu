@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-undef */
 import { Slider } from 'antd';
@@ -36,11 +38,11 @@ const SearchTrips = ({ trips: { trips, fetchAllTripsLoading }, ...props }) => {
 		props.searchGroupedTrips(dateFilter);
 	}, []);
 
-	useEffect(() => {
-		console.log('trips: chsnged ', trips);
-		trips && trips.length > 0 && console.log('first item', trips[0]);
-		console.log('///////////////////////');
-	}, [trips]);
+	// useEffect(() => {
+	// 	console.log('trips: chsnged ', trips);
+	// 	trips && trips.length > 0 && console.log('first item', trips[0]);
+	// 	console.log('///////////////////////');
+	// }, [trips]);
 
 	function onChange(value) {
 		console.log('onChange: ', value);

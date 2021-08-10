@@ -1,3 +1,4 @@
+import { bookingsReducer } from './bookings/bookings.reducer';
 import { businessDetailsReducer } from './businessDetails/businessDetails.reducer';
 import { loginReducer } from './login/login.reducer';
 import { permitSubmissionReducer } from './permitSubmission/permitSubmission.reducer';
@@ -16,6 +17,7 @@ export default {
 	login: loginReducer,
 	promoCodes: promoCodesReducer,
 	trips: tripsReducer,
+	bookings: bookingsReducer,
 	transportTypes: transportReducer,
 	permitSubmission: permitSubmissionReducer,
 	businessDetails: businessDetailsReducer,

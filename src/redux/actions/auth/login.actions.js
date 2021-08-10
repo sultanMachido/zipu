@@ -20,6 +20,7 @@ export const loginUser = (userData) => async (dispatch) => {
 			localStorage.setItem('transcoId', loginRequest.data.data.user.transco_id);
 			dispatch(loginLoading(false));
 			dispatch(loginSuccess(loginRequest.data.data.user));
+			window.location.href = '/customer/bcooking-history';
 			return { loginStatus: true, tokenValid: true, message: 'Login successful' };
 		} else {
 			dispatch(loginLoading(false));

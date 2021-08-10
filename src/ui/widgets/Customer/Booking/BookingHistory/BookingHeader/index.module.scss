@@ -3,8 +3,7 @@
 .booking--fwrapper {
 	justify-content: space-between;
 	overflow: hidden;
-	padding: 3rem;
-	padding-right: 3rem;
+	padding: 3rem 14rem;
 	width: 100%;
 }
 
@@ -39,10 +38,15 @@
 
 		p {
 			@include font-normal(1.8rem, 2.4rem, #637a87);
+			margin: 0;
 		}
 
 		figure {
+			margin: 0;
 			margin-right: 1.5rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 
 		input,
