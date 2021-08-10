@@ -3,26 +3,23 @@
 @mixin li-tab {
 	li {
 		@include flex-center;
-		@include font-bold(2.5rem, 3.2rem, $black);
+		@include font-normal(1.6rem, 2rem, $black);
 
 		flex-basis: 25%;
 		flex-grow: 1;
 		flex-shrink: 1;
-		padding: 1rem 2rem;
+		padding: 2rem;
 
 		@include respond(lsc) {
-			flex-basis: 45%;
-		}
-
-		@include respond(phone) {
 			flex-basis: 100%;
 		}
 
 		&:not(:last-child) {
 			border-right: 1px solid $grey;
 
-			@include respond(phone) {
-				border: 0;
+			@include respond(lsc) {
+				border-right: 0;
+				border-bottom: 1px solid $grey;
 			}
 		}
 
@@ -33,6 +30,8 @@
 		select {
 			background-color: transparent;
 			border: 0;
+			padding: 0;
+			padding-right: 1rem;
 
 			option {
 				@include font-normal(1.5rem, 2rem, $black);
@@ -58,7 +57,7 @@
 
 		@include respond(tab-port) {
 			height: auto;
-			padding: 4rem;
+			padding: 5rem;
 			padding-bottom: 8rem;
 		}
 
@@ -67,11 +66,19 @@
 			height: auto;
 			background-color: $brand1;
 
+			@include respond(lsc) {
+				padding: 5rem;
+			}
+
 			ul {
 				background-color: $white;
 				border-radius: 10px;
 				display: flex;
 				@include li-tab;
+
+				@include respond(lsc) {
+					flex-wrap: wrap;
+				}
 
 				li {
 					appearance: none;
@@ -87,39 +94,6 @@
 	}
 }
 
-// .herotab {
-//   bottom: 0;
-//   left: 14rem;
-//   position: absolute;
-
-//   @include respond(tab-port) {
-//     left: 4rem;
-//   }
-
-//   .btn {
-//     background-color: $near-white;
-//     border-radius: 0;
-
-//     &:first-child {
-//       border-radius: 8px 0 0;
-//     }
-
-//     &:last-child {
-//       border-radius: 0 8px 0 0;
-//     }
-
-//     &:hover,
-//     &.active {
-//       background-color: $white;
-//       color: $brand1;
-//     }
-
-//     &.btn-white {
-//       background-image: none;
-//     }
-//   }
-// }
-
 .herotab--content {
 	background-color: $white;
 	border-radius: 0 0 10px 10px;
@@ -129,5 +103,20 @@
 
 	@include respond(tab-port) {
 		margin: 0 4rem;
+	}
+}
+
+.empty--state {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 30rem;
+
+	figure {
+		margin: 0;
+	}
+	svg {
 	}
 }

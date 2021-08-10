@@ -1,3 +1,5 @@
+import toast from 'react-hot-toast';
+
 import { APIService } from '../../../config/apiConfig';
 import {
 	clearLoginErrors,
@@ -26,6 +28,33 @@ export const loginUser = (userData) => async (dispatch) => {
 			return { loginStatus: false, message: 'hi' };
 		}
 	} catch (error) {
+		const message = error.response?.data?.message;
+		dispatch(loginError(message));
+		dispatch(loginLoading(false));
+		return { loginStatus: false, message: message || SOMETHING_WENT_WRONG };
+	}
+};
+
+export const loginCustomer = (userData) => async (dispatch) => {
+	dispatch(clearLoginErrors());
+	dispatch(loginLoading());
+	try {
+		const loginRequest = await APIService.post('/login-customer', { ...userData });
+		if (loginRequest.data.status === 'Success') {
+			localStorage.setItem('zipuJWTToken', loginRequest.data.data.token.plainTextToken);
+			localStorage.setItem('zipuUser', JSON.stringify(loginRequest.data.data.user));
+			localStorage.setItem('transcoId', loginRequest.data.data.user.transco_id);
+			dispatch(loginLoading(false));
+			dispatch(loginSuccess(loginRequest.data.data.user));
+			toast.success('Login Succesfull');
+			console.log('loginRequest.data.data.user', loginRequest.data.data.user);
+			return { loginStatus: true, tokenValid: true, message: 'Login successful' };
+		} else {
+			dispatch(loginLoading(false));
+			return { loginStatus: false, message: 'hi' };
+		}
+	} catch (error) {
+		toast.error('Login Failed');
 		const message = error.response?.data?.message;
 		dispatch(loginError(message));
 		dispatch(loginLoading(false));

@@ -116,8 +116,11 @@
 }
 
 .input-group {
-	margin: 2em;
+	margin: 0 1em;
 	// width: 100%;
+	p {
+		margin-bottom: 0 !important;
+	}
 }
 
 .actions {

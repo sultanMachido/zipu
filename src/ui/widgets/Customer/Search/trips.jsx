@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-key */
+/* eslint-disable no-undef */
 import { Slider } from 'antd';
 import classnames from 'classnames/bind';
 import { View } from 'ui/atoms/components/Typography';
@@ -7,15 +9,39 @@ import style from './index.module.scss';
 let styles = classnames.bind(style);
 import './index.scss';
 
-import React, { Fragment } from 'react';
-
+import { Spin } from 'antd';
+import React, { Fragment, useEffect, useState } from 'react';
 // import TripSearchTab from '../components/TripSearchTab';
 // import VehicleSearchTab from '../components/VehicleSearchtab';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { searchGroupedTrips } from 'redux/actions/trips/trips.actions';
+import { dateFilterParser } from 'utils/dateFilter';
+
 import TripCard from '../components/TripCard';
 import TripFilter from './components/TripFilter';
+import VehicleSearchItem from './components/VehicleSearchItem';
+import EmptyState from './empty';
 import { mockData_TripCard } from './MOCK_DATA';
 
-const SearchTrips = () => {
+const SearchTrips = ({ trips: { trips, fetchAllTripsLoading }, ...props }) => {
+	const { startDate: _startDate, endDate: _endDate } = dateFilterParser('day');
+	const [dateFilter, setDateFilter] = useState({
+		origin: 'lagos',
+		destination: 'enugu',
+		round_trip: 0
+	});
+
+	useEffect(() => {
+		props.searchGroupedTrips(dateFilter);
+	}, []);
+
+	useEffect(() => {
+		console.log('trips: chsnged ', trips);
+		trips && trips.length > 0 && console.log('first item', trips[0]);
+		console.log('///////////////////////');
+	}, [trips]);
+
 	function onChange(value) {
 		console.log('onChange: ', value);
 	}
@@ -71,7 +97,23 @@ const SearchTrips = () => {
 						<div className="searchItems">
 							<div className="tscol">
 								<div className="searchItems__results">
-									<TripCard tripInfo={mockData_TripCard} />
+									{/* <TripCard tripInfo={mockData_TripCard} /> */}
+									<VehicleSearchItem />
+									{/* {fetchAllTripsLoading ? (
+										<Fragment>
+											<Spin size="large" />
+										</Fragment>
+									) : trips && trips.length > 0 ? (
+										<Fragment>
+											{trips.map((item, index) => {
+												return <VehicleSearchItem   key={index} trip={item} />
+											})}
+										</Fragment>
+									) : (
+										<Fragment>
+											<EmptyState />
+										</Fragment>
+									)} */}
 								</div>
 							</div>
 						</div>
@@ -82,4 +124,12 @@ const SearchTrips = () => {
 	);
 };
 
-export default SearchTrips;
+const mapStateToProps = (state) => ({
+	trips: state.trips
+});
+
+const mapDispatchToProps = {
+	searchGroupedTrips
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchTrips));

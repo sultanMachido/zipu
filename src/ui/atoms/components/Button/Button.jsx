@@ -5,21 +5,30 @@ import style from './index.module.scss';
 
 let styles = classnames.bind(style);
 
-const Button = ({ theme, children, loading, className, ...props }) => {
+export const Button = ({
+	type,
+	theme,
+	children,
+	loading,
+	loadingText,
+	className,
+	onClick,
+	...props
+}) => {
 	return (
 		<button
+			type={type ? type : 'button'}
+			onClick={onClick}
 			className={styles({
 				[`button-theme-default`]: !theme,
 				[`button-theme-${theme}`]: theme,
 				[`${className}`]: className
 			})}
 			{...props}>
-			{loading ? <h6>Loading ..</h6> : children}
+			{loading ? <h6>{loadingText ? loadingText : 'Loading....'}</h6> : children}
 		</button>
 	);
 };
-
-export default Button;
 
 // import './button.scss';
 

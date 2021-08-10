@@ -1,0 +1,116 @@
+@import '../../../../../atoms/styles/basestyles';
+
+.VehicleSearchItemWrapper {
+	width: 100%;
+	margin-bottom: 2rem;
+	background-color: $white;
+	border-radius: 10px;
+
+	.vsPad {
+		padding: 3.1rem 3.6rem;
+
+		@include respond(tab-md) {
+			padding: 2rem;
+		}
+
+		&:first-child {
+			border-bottom: 1px solid #e3eaed;
+		}
+	}
+
+	.vehicleSearchFirm {
+		flex-basis: 25%;
+		li {
+			display: flex;
+			align-items: center;
+
+			svg {
+				margin-right: 5px;
+			}
+		}
+	}
+
+	.vehicleSearchInfo {
+		margin-left: 5rem;
+		flex-basis: auto;
+		flex-grow: 1;
+
+		@include respond(tab-md) {
+			margin-left: 0;
+		}
+
+		p {
+			svg {
+				width: 2rem;
+				height: 2rem;
+			}
+		}
+
+		ul {
+			flex-basis: 33%;
+			li {
+				display: flex;
+				align-items: center;
+
+				svg {
+					margin-right: 5px;
+				}
+			}
+		}
+
+		.parkDetails {
+			margin-bottom: 3rem;
+
+			@include respond(tab-md) {
+				h6 {
+					font-size: 1.4rem;
+				}
+				p {
+					font-size: 1.2rem;
+				}
+			}
+		}
+
+		.vehicleSearchCta {
+			margin-left: 5rem;
+			flex-basis: auto;
+			justify-content: space-between;
+			flex-grow: 1;
+
+			@include respond(tab-md) {
+				margin-left: 0;
+			}
+
+			&--Pricing {
+				@include respond(tab-md) {
+					align-items: flex-start;
+				}
+				p.badgeItem {
+					background: rgba(176, 0, 32, 0.1);
+					border-radius: 100px;
+					padding: 0.6rem 1.6rem;
+				}
+			}
+
+			.vsBtnContainer {
+				button {
+					width: 100%;
+					color: $black;
+				}
+			}
+		}
+	}
+}
+
+.phone-hide {
+	@include respond(tab-md) {
+		display: none !important;
+	}
+}
+
+svg.trip-arrow {
+	@include respond(tab-md) {
+		width: 3rem;
+		margin: auto 2rem;
+	}
+}

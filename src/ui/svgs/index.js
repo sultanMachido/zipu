@@ -45,3 +45,8 @@ export { PIcon } from './PIcon';
 export { ReturnLeftIcon } from './ReturnLeftIcon';
 export { RightArrow } from './RightArrow';
 export { DateIcon } from './DateIcon';
+export { PreviousIcon } from './PreviousIcon';
+export { NextIcon } from './NextIcon';
+export { CircleIcon } from './CircleIcon';
+export { TimeIcon } from './TimeIcon';
+export { MapIcon } from './MapIcon';

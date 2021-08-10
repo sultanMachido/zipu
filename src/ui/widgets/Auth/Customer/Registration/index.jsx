@@ -1,5 +1,10 @@
+/* eslint-disable no-unused-vars */
 import classnames from 'classnames/bind';
-import React from 'react';
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { registerCustomer } from 'redux/actions/registration/register.actions';
 import { FormButton } from 'ui/atoms/components/Button';
 import { TextInput } from 'ui/atoms/components/TextInput';
 import { Text, View } from 'ui/atoms/components/Typography';
@@ -9,24 +14,67 @@ import style from './index.module.scss';
 
 let styles = classnames.bind(style);
 
-const CustomerRegistration = () => {
+const CustomerRegistration = (props) => {
+	const [user, setUser] = useState({
+		email: '',
+		password: '',
+		phone: ''
+	});
+
+	const onChange = (e) => {
+		setUser({
+			...user,
+			[e.target.name]: e.target.value
+		});
+	};
+
+	const onRegister = async (e) => {
+		e.preventDefault();
+		try {
+			await props.registerCustomer(user);
+			props.history.push('/customer/verify');
+		} catch (error) {
+			toast.error('Error occured');
+		}
+	};
+
 	return (
 		<AuthCard className={styles('admin-wrapper')}>
 			<Text variant="h3">Sign Up</Text>
-			<Text variant="h6">Sign up on Zipu to start boking your trips</Text>
+			<Text className={styles('auth-h6')} variant="h6">
+				Sign up on Zipu to start boking your trips
+			</Text>
 
-			<form className={styles('form-container')}>
+			<form onSubmit={onRegister} className={styles('form-container')}>
 				<View className={styles('input-group')}>
-					<TextInput type="email" isRequired placeholder="Your email address" />
+					<TextInput
+						name="email"
+						onChange={onChange}
+						type="email"
+						isRequired
+						placeholder="Your email address"
+					/>
 				</View>
 				<View className={styles('input-group')}>
-					<TextInput type="tel" isRequired placeholder="Phone number" />
+					<TextInput
+						name="phone"
+						type="number"
+						isRequired
+						onChange={onChange}
+						placeholder="Phone number"
+					/>
 				</View>
 				<View className={styles('input-group')}>
-					<TextInput type="password" isRequired placeholder="Enter password" />
+					<TextInput
+						onChange={onChange}
+						name="password"
+						type="password"
+						isRequired
+						placeholder="Enter password"
+					/>
 				</View>
 				<View className={styles('form-button-container')}>
-					<FormButton>CREATE ACCOUNT</FormButton>
+					<FormButton type="submit">CREATE ACCOUNT</FormButton>
 				</View>
 			</form>
 			<View className={styles('verification-text')}>
@@ -50,4 +98,12 @@ const CustomerRegistration = () => {
 	);
 };
 
-export default CustomerRegistration;
+const mapStateToProps = (state) => ({
+	register: state.register
+});
+
+const mapDispatchToProps = {
+	registerCustomer
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CustomerRegistration));

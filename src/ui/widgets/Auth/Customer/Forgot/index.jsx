@@ -1,6 +1,11 @@
+import { message } from 'antd';
 import classnames from 'classnames/bind';
-import React from 'react';
-import { FormButton } from 'ui/atoms/components/Button';
+import React, { useState } from 'react';
+import { toast } from 'react-hot-toast';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { requestPasswordReset } from 'redux/actions/registration/register.actions';
+import { Button } from 'ui/atoms/components/Button/Button';
 import { TextInput } from 'ui/atoms/components/TextInput';
 import { Text, View } from 'ui/atoms/components/Typography';
 
@@ -9,17 +14,34 @@ import style from './index.module.scss';
 
 let styles = classnames.bind(style);
 
-const CustomerForgot = () => {
+const CustomerForgot = ({ register: { registerLoading }, ...props }) => {
+	const [email, setEmail] = useState('');
+	const [loading, setLoading] = useState(false);
+
+	const onSubmit = async (e) => {
+		setLoading(true);
+		e.preventDefault();
+		await props.requestPasswordReset(email);
+	};
+
 	return (
 		<AuthCard className={styles('admin-wrapper')}>
 			<Text variant="h3">Forgot Password</Text>
 			<Text>Enter your details to create password reset link</Text>
-			<form className={styles('form-container')}>
+			<form onSubmit={onSubmit} className={styles('form-container')}>
 				<View className={styles('input-group')}>
-					<TextInput type="email" isRequired placeholder="Your email address" />
+					<TextInput
+						name="email"
+						onChange={(e) => setEmail(e.target.value)}
+						type="email"
+						isRequired
+						placeholder="Your email address"
+					/>
 				</View>
 				<View className={styles('form-button-container')}>
-					<FormButton>FORGOT PASSWORD</FormButton>
+					<Button type="submit" loading={registerLoading} loadingText="Sending....">
+						SEND CODE
+					</Button>
 				</View>
 			</form>
 			<View className={styles('create-account-text')}>
@@ -34,4 +56,12 @@ const CustomerForgot = () => {
 	);
 };
 
-export default CustomerForgot;
+const mapStateToProps = (state) => ({
+	register: state.register
+});
+
+const mapDispatchToProps = {
+	requestPasswordReset
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CustomerForgot));

@@ -21,6 +21,7 @@
     block-no-empty: null,
     no-duplicate-selectors: null,
     selector-no-qualifying-type: null,
-    scss/selector-no-redundant-nesting-selector: null
+    scss/selector-no-redundant-nesting-selector: null,
+    font-family-no-missing-generic-family-keyword: null
   }
 }

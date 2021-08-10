@@ -1,6 +1,8 @@
 import ForgotPage from 'pages/Customer/Auth/forgot';
 import LoginPage from 'pages/Customer/Auth/login';
+import CustomerOTPpage from 'pages/Customer/Auth/otp';
 import RegisterPage from 'pages/Customer/Auth/register';
+import CustomerResendpage from 'pages/Customer/Auth/resend';
 import ResetPage from 'pages/Customer/Auth/reset';
 import BookingHistoryPage from 'pages/Customer/Booking/BookingHistory';
 import CompanyPage from 'pages/Customer/Company';
@@ -12,8 +14,9 @@ import SupportPage from 'pages/Customer/Support/index';
 import BookTripPage from 'pages/Customer/Trip/book';
 import SavedTripsPage from 'pages/Customer/Trip/index';
 import React from 'react';
+// import { Fragment } from 'react';
+// import { Toaster } from 'react-hot-toast';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Welcome from 'ui/widgets/Auth/Customer/Welcome';
 import BusinessDetails from 'ui/widgets/Auth/Vendor/BusinessDetails';
 import CAC from 'ui/widgets/Auth/Vendor/CAC';
 import AdminLogin from 'ui/widgets/Auth/Vendor/Login';
@@ -21,18 +24,21 @@ import OTP from 'ui/widgets/Auth/Vendor/OTP';
 import Registration from 'ui/widgets/Auth/Vendor/Registration';
 import TransportType from 'ui/widgets/Auth/Vendor/TransportType';
 import AdminWelcome from 'ui/widgets/Auth/Vendor/Welcome';
+import AddVehicleRental from 'ui/widgets/Vendor/AddBooking/Rental';
 import AddStaff from 'ui/widgets/Vendor/AddStaffActivity';
 import BookingsList from 'ui/widgets/Vendor/BookingsList';
 import Company from 'ui/widgets/Vendor/Company';
 import CreateTerminal from 'ui/widgets/Vendor/CreateTerminal';
 import PassengerManagement from 'ui/widgets/Vendor/PassengerManagement';
 import Profile from 'ui/widgets/Vendor/Profile';
+import Report from 'ui/widgets/Vendor/Report';
 import StaffActivity from 'ui/widgets/Vendor/StaffActivity';
 import StaffManagement from 'ui/widgets/Vendor/StaffManagement';
 import TerminalManagement from 'ui/widgets/Vendor/TerminalManagement';
 import TerminalStaff from 'ui/widgets/Vendor/TerminalStaff';
 import VehicleListing from 'ui/widgets/Vendor/VehicleListing';
 import ViewTerminal from 'ui/widgets/Vendor/ViewTerminal';
+import { GuestCustomer, PrivateCustomer } from 'utils/AuthHelper';
 
 export const Routes = () => {
 	return (
@@ -72,6 +78,9 @@ export const Routes = () => {
 				<Route exact path="/vendor/vehicle-listing" component={VehicleListing} />
 				<Route exact path="/vendor/view-terminal" component={ViewTerminal} />
 				<Route exact path="/vendor/booking-management" component={BookingsList} />
+				<Route exact path="/vendor/add-vehicle/rental" component={AddVehicleRental} />
+				<Route exact path="/vendor/add-vehicle/booking" component={BookingsList} />
+				<Route exact path="/vendor/reports" component={Report} />
 			</Switch>
 		</BrowserRouter>
 	);

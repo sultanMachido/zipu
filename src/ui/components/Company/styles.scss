@@ -1,6 +1,7 @@
 .company-wrapper {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	.image-container {
 		width: 100px;
 		img {
@@ -9,11 +10,19 @@
 			width: 100%;
 		}
 	}
+
 	p {
 		font-weight: bold;
 		font-size: 0.8rem;
 		color: #323d44;
+
+		&.rating {
+			font-weight: bold;
+			font-size: 1.8rem;
+			line-height: 2rem;
+		}
 	}
+
 	.rating-review {
 		span {
 			font-weight: 500;
@@ -48,3 +57,5 @@
 		}
 	}
 }
+
+// xlink

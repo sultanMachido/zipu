@@ -13,7 +13,7 @@ const MobileCta = () => {
 					Download the zipu app from the app <br></br>store or play store for faster booking
 				</p>
 				<div className="tsrow btnContainer mt-sm">
-					<button className="tsrow btn btn-outline  black mr-xs">
+					<button className="tsrow btn btn-outline black mr-xs">
 						<GooglePlay className="pr-xs" />
 						<span className="black">Google Play</span>
 					</button>

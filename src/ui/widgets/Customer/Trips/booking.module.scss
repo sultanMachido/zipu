@@ -40,7 +40,7 @@
 	flex-basis: 65%;
 	border: 1px solid #e3eaed;
 	border-radius: 10px;
-	padding: 24px;
+	padding: 24px 54px;
 }
 
 .booking--side {
@@ -62,6 +62,10 @@
 	flex-direction: column;
 }
 
+.booking--trip {
+	// background-color: turquoise;
+}
+
 .bordered--bottom {
 	border-bottom: 1px solid #e3eaed;
 }
@@ -77,3 +81,21 @@
 		@include font-normal(2.5rem, 3.2rem, $white);
 	}
 }
+
+.clickable {
+	cursor: pointer;
+}
+
+.date--selector {
+	opacity: 0.5;
+	border: 1px solid #e3eaed;
+	border-radius: 10px;
+	padding: 1.4rem 2.4rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+// className={className}
+// 			width={width}
+// 			height={height}

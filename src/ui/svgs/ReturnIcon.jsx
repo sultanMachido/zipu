@@ -6,8 +6,6 @@ export function ReturnIcon({ width = '110', height = '13', className }) {
 			className={className}
 			width={width}
 			height={height}
-			// width="20"
-			// height="26"
 			viewBox="0 0 20 26"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg">

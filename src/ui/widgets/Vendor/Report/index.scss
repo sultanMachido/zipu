@@ -1,0 +1,23 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+p {
+	margin-bottom: 0 !important;
+}
+// @import './styles/abstract/base';
+
+.ant-modal-confirm-btns {
+	display: none;
+}
+.ant-modal-confirm-content {
+	text-align: center;
+}
+.ant-modal-confirm-success .ant-modal-confirm-body > .anticon {
+	color: #f9ca45;
+	font-size: 30px;
+	display: flex;
+	align-items: center;
+	margin-top: 0.8rem;
+}
