@@ -45,20 +45,22 @@ export const Routes = () => {
 		<BrowserRouter>
 			<Switch>
 				<Route exact path="/" component={HomePage} />
-				<Route exact path="/customer/login" component={LoginPage} />
-				<Route exact path="/customer/register" component={RegisterPage} />
-				<Route exact path="/customer/forgot-password" component={ForgotPage} />
-				<Route exact path="/customer/reset-password" component={ResetPage} />
-				<Route exact path="/customer/booking-history" component={BookingHistoryPage} />
-				<Route exact path="/customer/trips/saved" component={SavedTripsPage} />
+				<Route exact path="/customer/login" component={GuestCustomer(LoginPage)} />
+				<Route exact path="/customer/register" component={GuestCustomer(RegisterPage)} />
+				<Route exact path="/customer/forgot-password" component={GuestCustomer(ForgotPage)} />
+				<Route exact path="/customer/reset-password" component={GuestCustomer(ResetPage)} />
+				<Route
+					exact
+					path="/customer/booking-history"
+					component={PrivateCustomer(BookingHistoryPage)}
+				/>
+				<Route exact path="/customer/trips/saved" component={PrivateCustomer(SavedTripsPage)} />
 				<Route exact path="/customer/trips/book" component={BookTripPage} />
 				<Route exact path="/help-support" component={SupportPage} />
 				<Route exact path="/company" component={CompanyPage} />
-				<Route path="/customer" component={ProfilePage} />
+				<Route path="/customer" component={PrivateCustomer(ProfilePage)} />
 				<Route exact path="/search/trips" component={SearchTripsPage} />
 				<Route exact path="/search/vehicles" component={SearchVehiclesPage} />
-				<Route exact path="/reg" component={TransportType} />
-				<Route exact path="/vehicle" component={TransportType} />
 				<Route exact path="/vendor/auth/login" component={AdminLogin} />
 				<Route exact path="/vendor/auth/register" component={Registration} />
 				<Route exact path="/vendor/auth/otp" component={OTP} />
