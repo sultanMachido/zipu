@@ -6,7 +6,7 @@ import classnames from 'classnames/bind';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useHistory, withRouter } from 'react-router-dom';
 import { loginCustomer } from 'redux/actions/login/login.actions';
 import { Button } from 'ui/atoms/components/Button/Button';
 import { TextInput } from 'ui/atoms/components/TextInput';
@@ -18,6 +18,7 @@ import style from './index.module.scss';
 let styles = classnames.bind(style);
 
 const CustomerLogin = ({ login: { loginLoading }, ...props }) => {
+	let history = useHistory();
 	const [user, setUser] = useState({
 		email: '',
 		password: ''
@@ -35,10 +36,11 @@ const CustomerLogin = ({ login: { loginLoading }, ...props }) => {
 		try {
 			let userData = await props.loginCustomer(user);
 			console.log('userStatus', userData);
-			if (userData?.loginStatus === false) {
-				toast.error(userData?.message || 'Error');
+			if (userData?.loginStatus === true) {
+				console.log('userStatus in success block', userData);
+				history.push('/customer/booking-history');
 			} else {
-				props.history.push('/customer/booking-history');
+				toast.error(userData?.message || 'Error');
 			}
 		} catch (error) {
 			message.error('Error occured');
