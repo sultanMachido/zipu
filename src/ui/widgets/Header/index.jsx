@@ -1,5 +1,6 @@
 import classnames from 'classnames/bind';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 import Container from 'ui/atoms/components/Container';
 import { Text, View } from 'ui/atoms/components/Typography';
 import Navigation from 'ui/components/Navigation';
@@ -16,30 +17,31 @@ const navLinks = [
 		text: 'Top Destinations',
 		type: 'dropdown',
 		dropList: [
-			{ text: 'link', url: '/' },
-			{ text: 'link', url: '/' },
-			{ text: 'link', url: '/' }
+			{ text: 'Abuja', url: '/' },
+			{ text: 'Lagos', url: '/' },
+			{ text: 'Enugu', url: '/' }
 		]
 	},
 	{
 		text: 'Partners',
 		type: 'dropdown',
 		dropList: [
-			{ text: 'link', url: '/' },
-			{ text: 'link', url: '/' },
-			{ text: 'link', url: '/' }
+			{ text: 'CAF', url: '/' },
+			{ text: 'NIFES', url: '/' },
+			{ text: 'UNESCO', url: '/' }
 		]
 	},
-	{ text: 'Check your booking', url: '/hello' },
-	{ text: 'FAQ', url: '/' },
-	{ text: 'Blog', url: '/' },
-	{ text: 'Sign in', action: 'login' },
-	{ text: 'Sign up', action: 'sign-up' }
+	{ text: 'Check your booking', url: '/customer/booking-history' },
+	{ text: 'FAQ', url: '/help-support' },
+	{ text: 'Sign In', url: '/customer/login' },
+	{ text: 'Sign Up', btnLink: '/customer/register', isBtn: true }
 ];
 
 const Header = () => {
+	let history = useHistory();
 	const [open, setOpen] = useState(false);
-	const admin = true;
+	// const admin = true;
+	const admin = false;
 	return (
 		<View className={styles('header-wrapper')}>
 			<Container className={styles('header-container')}>
@@ -63,7 +65,7 @@ const Header = () => {
 						<Text color="white">Hello, Taiwo</Text>
 					</View>
 				</View>
-				<View className={styles('logo-column')}>
+				<View onClick={() => history.push('/')} className={styles('logo-column')}>
 					<LogoIcon color="#240555" />
 				</View>
 				<View className={styles('nav-column')}>

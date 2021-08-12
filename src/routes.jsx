@@ -41,26 +41,27 @@ import TerminalStaff from 'ui/widgets/Vendor/TerminalStaff';
 import VehicleListing from 'ui/widgets/Vendor/VehicleListing';
 import ViewTerminal from 'ui/widgets/Vendor/ViewTerminal';
 import CustomerGuard, { GuestCustomer, PrivateCustomer } from 'utils/AuthHelper';
+import PublicRoute from 'utils/PublicRoute';
 
 export const Routes = () => {
 	return (
 		<BrowserRouter>
 			<Switch>
 				<Route exact path="/" component={HomePage} />
-				<Route exact path="/customer/login" component={LoginPage} />
-				<Route exact path="/customer/register" component={RegisterPage} />
-				<Route exact path="/customer/verify" component={CustomerOTPpage} />
-				<Route exact path="/customer/resend" component={CustomerResendpage} />
-				<Route exact path="/customer/forgot-password" component={ForgotPage} />
-				<Route exact path="/customer/reset-password" component={ResetPage} />
+				<Route exact path="/company" component={CompanyPage} />
+				<Route exact path="/customer/trips/book" component={BookTripPage} />
+				<Route exact path="/help-support" component={SupportPage} />
+				<Route exact path="/search/trips" component={SearchTripsPage} />
+				<Route exact path="/search/vehicles" component={SearchVehiclesPage} />
+				<PublicRoute exact path="/customer/login" component={LoginPage} />
+				<PublicRoute exact path="/customer/register" component={RegisterPage} />
+				<PublicRoute exact path="/customer/verify" component={CustomerOTPpage} />
+				<PublicRoute exact path="/customer/resend" component={CustomerResendpage} />
+				<PublicRoute exact path="/customer/forgot-password" component={ForgotPage} />
+				<PublicRoute exact path="/customer/reset-password" component={ResetPage} />
 				<CustomerGuard exact path="/customer/booking-history" component={BookingHistoryPage} />
 				<CustomerGuard exact path="/customer/trips/saved" component={SavedTripsPage} />
 				<CustomerGuard exact path="/customer" component={ProfilePage} />
-				<Route exact path="/customer/trips/book" component={BookTripPage} />
-				<Route exact path="/help-support" component={SupportPage} />
-				<Route exact path="/company" component={CompanyPage} />
-				<Route exact path="/search/trips" component={SearchTripsPage} />
-				<Route exact path="/search/vehicles" component={SearchVehiclesPage} />
 				<Route exact path="/vendor/auth/login" component={AdminLogin} />
 				<Route exact path="/vendor/auth/register" component={Registration} />
 				<Route exact path="/vendor/auth/otp" component={OTP} />

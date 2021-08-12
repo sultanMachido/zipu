@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
 
+const mapStateToProps = (state) => ({
+	login: state.login
+});
+
 export function GuestCustomer(WrappedComponent) {
 	const ACCESS_TOKEN = window.localStorage.getItem('zipuJWTToken');
 	return class extends Component {
@@ -46,9 +50,5 @@ const CustomerGuard = ({ component: Component, login: { token, isAuthenticated }
 		/>
 	);
 };
-
-const mapStateToProps = (state) => ({
-	login: state.login
-});
 
 export default connect(mapStateToProps, {})(CustomerGuard);
