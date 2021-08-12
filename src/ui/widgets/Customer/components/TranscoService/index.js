@@ -17,7 +17,7 @@ const TranscoService = ({ transcoService }) => {
 					backgroundPosition: 'center right',
 					height: '30rem'
 				}}>
-				<button className="btn btn-brand-2">SHOW TRIPS</button>
+				<button className="btn">SHOW TRIPS</button>
 			</div>
 		</div>
 	);
