@@ -2,34 +2,48 @@
 /* eslint-disable no-unused-vars */
 import './styles.scss';
 
-import React, { useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
+import VehicleSearchItem from 'ui/widgets/Customer/Search/components/VehicleSearchItem/index';
 
-import TripCard from '../TripCard';
-import VehicleHireCard from '../VehicleHireCard';
 import CompanyInfo from './CompanyInfo';
 import TranscoHeader from './TranscoHeader';
-
-function TransoProfile({ companyDescription, companyHeader, tripDetails, hireDetails }) {
-	useEffect(() => {
-		console.log('tripdetails', tripDetails);
-	}, []);
+function TransoProfile({ transcoObj, companyDescription, companyHeader, transcoInfo }) {
 	return (
 		<div className="transcopage-wrapper">
-			<TranscoHeader {...companyHeader} />
-			<div className="row">
-				<CompanyInfo {...companyDescription} />
+			<TranscoHeader transcoInfo={transcoInfo} {...companyHeader} />
+			<div className="tprow">
+				<CompanyInfo transcoInfo={transcoInfo} {...companyDescription} />
 				<div className="car-infos">
 					<div className="trips">
-						<h2 className="title">Trips by God is good motors</h2>
-						{/* {tripDetails.length > 0 &&
-							tripDetails.map((trip, index) => <TripCard key={index} {...trip} />)} */}
+						<h2 className="mb-4 sub-lg black">Trips by {transcoInfo?.name}</h2>
+						{/* <VehicleSearchItem bordered={true} /> */}
+						{transcoObj?.trips?.data?.length > 0 ? (
+							<Fragment>
+								{transcoObj?.trips?.data?.map((item, index) => {
+									return <VehicleSearchItem key={index} trip={item} />;
+								})}
+							</Fragment>
+						) : (
+							<Fragment>
+								<h2 className="mb-4 sub-lg black">No Trips yet</h2>
+							</Fragment>
+						)}
 					</div>
 					<div className="vehicle-hire">
-						<h2 className="title">Vehicles for hire</h2>
-						{hireDetails.length &&
-							hireDetails.map((hireDetail, index) => (
-								<VehicleHireCard key={index} {...hireDetail} />
-							))}
+						<h2 className="mb-4 sub-lg black">Vehicles for hire</h2>
+						{transcoObj?.vehicles?.data?.length > 0 ? (
+							<Fragment>
+								<h2 className="mb-4 sub-lg black">Vehicles</h2>
+								{transcoObj?.trips?.data?.map((item, index) => {
+									return <VehicleSearchItem key={index} trip={item} />;
+								})}
+							</Fragment>
+						) : (
+							<Fragment>
+								<h2 className="mb-4 sub-lg black">No Vehicles yet</h2>
+							</Fragment>
+						)}
+						{/* <VehicleSearchItem bordered={true} /> */}
 					</div>
 				</div>
 			</div>

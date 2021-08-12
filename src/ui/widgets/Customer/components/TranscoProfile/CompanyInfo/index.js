@@ -19,8 +19,8 @@ function CompanyInfo(props) {
 				<img src={imgUrl} alt="company" />
 			</div>
 			<div className="company-info">
-				<h2>Company Information</h2>
-				<p>{description}</p>
+				<h2 className="sub-lg black">Company Information</h2>
+				<p className="body-2-lg grey-dark">{description}</p>
 			</div>
 			<div className="car-info">
 				<ul>
@@ -41,19 +41,19 @@ function CompanyInfo(props) {
 				</ul>
 			</div>
 			<div className="contact-info">
-				<h4>Contact Information</h4>
+				<h4 className="body-2-lg black"> Contact Information</h4>
 				<p>{contactInfo}</p>
 			</div>
 			<div className="park-address">
-				<h4>Park Address</h4>
+				<h4 className="body-2-lg black">Park Address</h4>
 				<p>{parkAddress}</p>
 			</div>
 			<div className="emergency-number">
-				<h4>Emergency number</h4>
+				<h4 className="body-2-lg black"> Emergency number</h4>
 				<p>{emergencyNumber}</p>
 			</div>
 			<div className="special-packages">
-				<h4>Ads and special packages?</h4>
+				<h4 className="body-2-lg black">Ads and special packages?</h4>
 				<p>{adsAndSpecialPackages}</p>
 			</div>
 		</div>

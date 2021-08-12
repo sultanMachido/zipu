@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /** @format */
 import toast from 'react-hot-toast';
 

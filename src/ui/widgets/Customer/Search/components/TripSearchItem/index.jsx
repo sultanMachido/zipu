@@ -14,7 +14,7 @@ import { ReactComponent as Virus } from 'assets/svg/virus.svg';
 // import ViewReviewsModal from 'components/Modals/ViewReviewsModal';
 import React, { Fragment, useState } from 'react';
 
-const TripSearchItem = () => {
+const TripSearchItem = ({ bordered }) => {
 	const [showReview, setShowReview] = useState(false);
 
 	const handleShow = () => {
@@ -23,7 +23,7 @@ const TripSearchItem = () => {
 
 	return (
 		<Fragment>
-			<div className="TripSearchItemWrapper tscol">
+			<div className={`TripSearchItemWrapper tscol ${bordered === true ? 'vsbordered' : ''}`}>
 				<div className="d-flex tripSearchCar justify-between">
 					<div className="tripSearchCarWrapper d-flex justify-between">
 						<figure className="phone-hide">

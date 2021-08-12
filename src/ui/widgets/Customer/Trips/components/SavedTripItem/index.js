@@ -16,26 +16,22 @@ import { Fragment } from 'react';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { saveTrip } from 'redux/actions/trips/trips.actions';
+import { getCustomerSavedTrips } from 'redux/actions/customer/customer.actions';
+import { unSaveTrip } from 'redux/actions/trips/trips.actions';
 
-import trips from '../../trips';
-
-const VehicleSearchItem = ({ trip, bordered, login: { isAuthenticated }, ...props }) => {
+const SavedTripItem = ({ trip, bordered, login: { isAuthenticated }, ...props }) => {
 	const [loading, setLoading] = useState(false);
 
-	const saveTrip = async () => {
-		if (isAuthenticated) {
-			setLoading(true);
-			let request = await props.saveTrip(trip?.id);
-			if (request.status === true) {
-				message.success('Trip Saved Successfully');
-			} else {
-				message.error(request.message);
-			}
-			setLoading(false);
+	const unSaveTrip = async () => {
+		setLoading(true);
+		let request = await props.unSaveTrip(trip?.trip_id);
+		if (request.status === true) {
+			message.success('Trip removed Successfully');
+			props.getCustomerSavedTrips();
 		} else {
-			props.history.push('/customer/login', { from: props.history.location.pathname });
+			message.error(request.message);
 		}
+		setLoading(false);
 	};
 
 	return (
@@ -108,16 +104,16 @@ const VehicleSearchItem = ({ trip, bordered, login: { isAuthenticated }, ...prop
 					</ul>
 					<div className="d-flex vehicleSearchCta">
 						<div className="tscol align-end vehicleSearchCta--Pricing">
-							<h2 className="sub-lg black">₦ {trip?.cost}</h2>
-							<p className="body-sm-2 greyDark">{trip?.vehicle?.vehicle_make}</p>
-							{trips?.available_seats > 0 ? (
-								trips?.available_seats > 5 ? (
+							<h2 className="sub-lg black">₦ {trip?.trip?.cost}</h2>
+							<p className="body-sm-2 greyDark">{trip?.trip?.vehicle?.vehicle_make}</p>
+							{trip?.trip?.available_seats > 0 ? (
+								trip?.trip?.available_seats > 5 ? (
 									<p className="body-sm-2 danger badgeItem badgeGreen">
-										{trips?.available_seats} Seats Available
+										{trip?.trip?.available_seats} Seats Available
 									</p>
 								) : (
 									<p className="body-sm-2 danger badgeItem badgeYellow">
-										{trips?.available_seats} left, Book Now!
+										{trip?.trip?.available_seats} left, Book Now!
 									</p>
 								)
 							) : (
@@ -126,12 +122,12 @@ const VehicleSearchItem = ({ trip, bordered, login: { isAuthenticated }, ...prop
 						</div>
 						<div className="vsBtnContainer">
 							<button className="btn btn-brand-2 mb-xs">BOOK TRIP</button>
-							<button onClick={saveTrip} className="btn btn-white mb-xs">
+							<button onClick={unSaveTrip} className="btn btn-white mb-xs">
 								{loading ? (
 									<Spin size="small" />
 								) : (
 									<Fragment>
-										<Like className="mr-xs" /> SAVE{' '}
+										<Like className="mr-xs" /> UNSAVE{' '}
 									</Fragment>
 								)}
 							</button>
@@ -148,7 +144,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-	saveTrip
+	unSaveTrip,
+	getCustomerSavedTrips
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(VehicleSearchItem));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SavedTripItem));

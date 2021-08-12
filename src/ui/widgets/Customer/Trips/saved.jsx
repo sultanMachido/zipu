@@ -1,14 +1,26 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // import TripSearchItem from 'components/TripSearchItem';
+import { Spin } from 'antd';
 import classnames from 'classnames/bind';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Fragment } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { getCustomerSavedTrips } from 'redux/actions/customer/customer.actions';
 import { View } from 'ui/atoms/components/Typography';
 
-import TripCard from '../components/TripCard';
+import SavedTripItem from './components/SavedTripItem';
 import style from './index.module.scss';
-import { mockData_TripCard } from './MOCK_DATA';
 let styles = classnames.bind(style);
 
-const SavedTrips = () => {
+const SavedTrips = ({
+	customer: { fetchCustomerSavedTripsSuccess, fetchCustomerSavedTripsLoading },
+	...props
+}) => {
+	useEffect(() => {
+		props.getCustomerSavedTrips();
+	}, []);
+
 	return (
 		<View className={styles('stWrapper')}>
 			<View className="tscol justify-start align-center center mb-sm">
@@ -18,12 +30,33 @@ const SavedTrips = () => {
 				</p>
 			</View>
 			<View className={`tscol ${styles('stItems')}`}>
-				{/* <TripSearchItem />
-				<TripSearchItem /> */}
-				<TripCard tripInfo={mockData_TripCard} />
+				{fetchCustomerSavedTripsLoading ? (
+					<Fragment>
+						<Spin size="large" />
+					</Fragment>
+				) : (
+					<Fragment>
+						{fetchCustomerSavedTripsSuccess.length > 0 ? (
+							fetchCustomerSavedTripsSuccess.map((item, index) => {
+								console.log('trup', item);
+								return <SavedTripItem bordered={true} key={index} trip={item} />;
+							})
+						) : (
+							<h2>No Saved Trips fo you yet</h2>
+						)}
+					</Fragment>
+				)}
 			</View>
 		</View>
 	);
 };
 
-export default SavedTrips;
+const mapStateToProps = (state) => ({
+	customer: state.customer
+});
+
+const mapDispatchToProps = {
+	getCustomerSavedTrips
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SavedTrips));

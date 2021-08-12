@@ -1,0 +1,35 @@
+export const transco = {
+	id: 2,
+	email: 'chibuokemibezim@gmail.com',
+	name: 'Transco name',
+	phone: null,
+	state: null,
+	city: null,
+	address: null,
+	picture:
+		'http://localhost:8080/storage/uploads/transcos/comapny_picture/company-picture-2_1624946960.jpg',
+	icon: null,
+	number_of_staff: '20',
+	number_of_terminals: null,
+	number_of_buses: null,
+	cac: 'http://localhost:8080/storage/uploads/transcos/cac/company-cac-2_1623682430.pdf',
+	permit: 'http://localhost:8080/storage/uploads/transcos/permit/company-permit-2_1623682430.pdf',
+	bank: 'Zenith bank',
+	account_name: 'Chibuokem ibezim',
+	account_number: '2080322348',
+	bank_code: null,
+	privacy_policy:
+		'http://localhost:8080/storage/uploads/transcos/privacy_policy/company-privacy-policy-2_1623682555.pdf',
+	customer_care_policy:
+		'http://localhost:8080/storage/uploads/transcos/customer_care_cpolicy/company-customer-care-policy-2_1623682555.pdf',
+	company_size: 60,
+	operations: "['seat booking', 'vehicle renting', 'vehicle hire']",
+	reservation_window: 2,
+	email_verified: 1,
+	verified: 0,
+	primary_admin: 1,
+	transport_type: null,
+	status: 1,
+	created_at: '2021-06-14T14:48:12.000000Z',
+	updated_at: '2021-06-29T06:09:20.000000Z'
+};

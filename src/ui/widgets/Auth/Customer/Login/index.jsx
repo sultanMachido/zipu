@@ -3,11 +3,12 @@ import { message } from 'antd';
 import { ReactComponent as IconFacebook } from 'assets/svg/IconFacebook.svg';
 import { ReactComponent as IconGoogle } from 'assets/svg/IconGoogle.svg';
 import classnames from 'classnames/bind';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { connect } from 'react-redux';
 import { useHistory, withRouter } from 'react-router-dom';
 import { loginCustomer } from 'redux/actions/login/login.actions';
+import { setErrFlag } from 'redux/actions/verifyEmail/verifyEmail.actionsCreators';
 import { Button } from 'ui/atoms/components/Button/Button';
 import { TextInput } from 'ui/atoms/components/TextInput';
 import { Text, View } from 'ui/atoms/components/Typography';
@@ -24,6 +25,17 @@ const CustomerLogin = ({ login: { loginLoading }, ...props }) => {
 		password: ''
 	});
 
+	const [authError, setError] = useState('');
+	const [prevPath, setPrevPath] = useState('');
+
+	useEffect(() => {
+		if (history.location.state?.from) {
+			console.log('prev path', history.location.state?.from);
+			setPrevPath(history.location.state?.from);
+		}
+		// eslint-disable-next-line
+	}, []);
+
 	const onChange = (e) => {
 		setUser({
 			...user,
@@ -35,11 +47,15 @@ const CustomerLogin = ({ login: { loginLoading }, ...props }) => {
 		e.preventDefault();
 		try {
 			let userData = await props.loginCustomer(user);
-			console.log('userStatus', userData);
 			if (userData?.loginStatus === true) {
-				console.log('userStatus in success block', userData);
-				history.push('/customer/booking-history');
+				setError('');
+				if (prevPath.length > 0) {
+					history.push(prevPath);
+				} else {
+					history.push('/customer/booking-history');
+				}
 			} else {
+				setError(userData?.message || 'Error');
 				toast.error(userData?.message || 'Error');
 			}
 		} catch (error) {
@@ -51,6 +67,7 @@ const CustomerLogin = ({ login: { loginLoading }, ...props }) => {
 		<AuthCard className={styles('admin-wrapper')}>
 			<Text variant="h3">Sign In</Text>
 			<Text>Sign in to your Zipu account with your registred email and password</Text>
+			<Text>{authError}</Text>
 			<form onSubmit={onLogin} className={styles('form-container')}>
 				<View className={styles('input-group')}>
 					<TextInput
@@ -115,4 +132,4 @@ const mapDispatchToProps = {
 	loginCustomer
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CustomerLogin));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withRouter(CustomerLogin)));

@@ -1,18 +1,25 @@
 /* eslint-disable no-unused-vars */
 import { DatePicker } from 'antd';
 import moment from 'moment';
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { useHistory } from 'react-router';
 // const {RangePicker} = DatePicker;
 import { ReturnIcon } from 'ui/svgs';
+
+const { RangePicker } = DatePicker;
 
 const dateFormat = 'YYYY/MM/DD';
 
 const VehicleTab = () => {
 	let history = useHistory();
+	const [dates, setDates] = useState([null, null]);
 
 	const redirect = () => {
 		history.push('/search/trips');
+	};
+
+	const handleDateChange = (dates) => {
+		setDates(dates);
 	};
 
 	return (
@@ -64,12 +71,7 @@ const VehicleTab = () => {
 				</li>
 				<li>
 					{/* <DatePicker defaultValue={moment('2015/01/01', dateFormat)} format={dateFormat} /> */}
-					<select>
-						<option value="grapefruit">Trip 2</option>
-						<option value="lime">Akure to Lagos</option>
-						<option value="lime">Benin to Lagos</option>
-						<option value="lime">Abuja to Lagos</option>
-					</select>
+					<RangePicker onChange={handleDateChange} />
 				</li>
 				<li>
 					<button onClick={redirect} className="btn btn-brand-2 ">
