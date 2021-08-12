@@ -2,9 +2,14 @@
 
 import loginTypes from '../../types/loginTypes';
 
+const cachedUser = localStorage && JSON?.parse(localStorage.getItem('zipuUser'));
+const cachedToken = localStorage && localStorage.getItem('zipuJWTToken');
+const cachedAuthorization = cachedUser && cachedToken;
+
 export const loginInitialState = {
-	isAuthenticated: false,
-	userInfo: null,
+	isAuthenticated: cachedAuthorization ? true : false,
+	token: cachedToken ? cachedToken : null,
+	userInfo: cachedUser ? cachedUser : null,
 	loginLoading: false,
 	error: ''
 };
@@ -25,6 +30,11 @@ export const loginReducer = (state = loginInitialState, action) => {
 			return {
 				...state,
 				loginLoading: action.payload
+			};
+		case loginTypes.TOKEN_SUCCESS:
+			return {
+				...state,
+				token: action.payload
 			};
 		case loginTypes.LOGIN_SUCCESS:
 			return {

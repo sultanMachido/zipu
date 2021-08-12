@@ -19,6 +19,11 @@ export const loginSuccess = (userInfo) => ({
 	payload: userInfo
 });
 
+export const tokenSuccess = (token) => ({
+	type: loginTypes.TOKEN_SUCCESS,
+	payload: token
+});
+
 export const logOutUserSuccess = () => ({
 	type: loginTypes.LOG_OUT_USER
 });

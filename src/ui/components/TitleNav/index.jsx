@@ -10,7 +10,7 @@ import style from './index.module.scss';
 
 const styles = classnames.bind(style);
 
-const TitleNav = ({ url, text }) => {
+const TitleNav = ({ text }) => {
 	const history = useHistory();
 	return (
 		<View className={styles('title-nav-wrapper')}>

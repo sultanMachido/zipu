@@ -47,9 +47,8 @@ const TripTab = () => {
 					</select>
 				</li>
 				<li>
-					<button className="btn btn-brand-2 ">SHOW TRIPS</button>
 					<button onClick={redirect} className="btn btn-brand-2 ">
-						SHOW VEHICLES
+						SHOW TRIPS
 					</button>
 				</li>
 			</ul>

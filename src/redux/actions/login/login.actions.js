@@ -6,7 +6,8 @@ import {
 	loginError,
 	loginLoading,
 	loginSuccess,
-	logOutUserSuccess
+	logOutUserSuccess,
+	tokenSuccess
 } from './login.actionCreators';
 
 const SOMETHING_WENT_WRONG = 'Something went wrong';
@@ -43,11 +44,10 @@ export const loginCustomer = (userData) => async (dispatch) => {
 		if (loginRequest.data.status === 'Success') {
 			localStorage.setItem('zipuJWTToken', loginRequest.data.data.token.plainTextToken);
 			localStorage.setItem('zipuUser', JSON.stringify(loginRequest.data.data.user));
-			localStorage.setItem('transcoId', loginRequest.data.data.user.transco_id);
 			dispatch(loginLoading(false));
 			dispatch(loginSuccess(loginRequest.data.data.user));
+			dispatch(tokenSuccess(loginRequest.data.data.token.plainTextToken));
 			toast.success('Login Succesfull');
-			console.log('loginRequest.data.data.user', loginRequest.data.data.user);
 			return { loginStatus: true, tokenValid: true, message: 'Login successful' };
 		} else {
 			dispatch(loginLoading(false));

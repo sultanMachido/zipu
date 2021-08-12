@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import classnames from 'classnames/bind';
 import React from 'react';
 import { Link } from 'react-router-dom';

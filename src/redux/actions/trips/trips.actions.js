@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
 /** @format */
 
+import { message } from 'antd';
 import toast from 'react-hot-toast';
 
 import { APIService } from '../../../config/apiConfig';
@@ -8,6 +10,8 @@ import {
 	clearCreateTripErrors,
 	clearFetchAllTripsErrors,
 	clearFetchSingleTripErrors,
+	clearSaveTripErrors,
+	clearUnSaveTripErrors,
 	clearUpdateTripErrors,
 	createTripErrors,
 	createTripLoading,
@@ -18,6 +22,12 @@ import {
 	fetchSingleTripErrors,
 	fetchSingleTripLoading,
 	fetchSingleTripSuccess,
+	saveTripErrors,
+	saveTripLoading,
+	saveTripSuccess,
+	unSaveTripErrors,
+	unSaveTripLoading,
+	unSaveTripSuccess,
 	updateTripErrors,
 	updateTripLoading,
 	updateTripSuccess
@@ -160,6 +170,7 @@ export const searchGroupedTrips = (payload) => async (dispatch) => {
 		const response = await APIService.get(
 			`/search-trips-grouped?origin_state=${payload.origin}&destination_state=${payload.destination}&round_trip=${payload.round_trip}`
 		);
+
 		if (response.data.status === 'Success') {
 			const responseObj = response.data.data;
 			const tripsObj = responseObj[Object.keys(responseObj)[0]][1];
@@ -178,5 +189,36 @@ export const searchGroupedTrips = (payload) => async (dispatch) => {
 		dispatch(fetchAllTripsErrors(message));
 		dispatch(fetchAllTripsLoading(false));
 		return { fetchTripsStatus: false, message: message || SOMETHING_WENT_WRONG };
+	}
+};
+
+//Save Trip
+
+export const saveTrip = (tripId) => async (dispatch) => {
+	try {
+		const response = await APIService.post(`/save-trip`, { trip_id: tripId });
+		if (response.data.status === 'Success') {
+			return { message: 'Trip Saved Successfully', status: true };
+		} else {
+			return { status: false, message: 'hi' };
+		}
+	} catch (error) {
+		const message = error.response?.data?.message;
+		return { status: false, message: message || SOMETHING_WENT_WRONG };
+	}
+};
+
+// Unsave Trip
+export const unSaveTrip = (tripId) => async (dispatch) => {
+	try {
+		const response = await APIService.post(`/unsave-trip`, { trip_id: tripId });
+		if (response.data.status === 'Success') {
+			return { message: 'Trip removed Successfully', status: true };
+		} else {
+			return { status: false, message: 'hi' };
+		}
+	} catch (error) {
+		const message = error.response?.data?.message;
+		return { status: false, message: message || SOMETHING_WENT_WRONG };
 	}
 };

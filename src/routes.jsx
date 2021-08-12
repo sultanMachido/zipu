@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import ForgotPage from 'pages/Customer/Auth/forgot';
 import LoginPage from 'pages/Customer/Auth/login';
 import CustomerOTPpage from 'pages/Customer/Auth/otp';
@@ -17,6 +18,7 @@ import React from 'react';
 // import { Fragment } from 'react';
 // import { Toaster } from 'react-hot-toast';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+// import CustomerGuard from 'routes';
 import BusinessDetails from 'ui/widgets/Auth/Vendor/BusinessDetails';
 import CAC from 'ui/widgets/Auth/Vendor/CAC';
 import AdminLogin from 'ui/widgets/Auth/Vendor/Login';
@@ -38,27 +40,25 @@ import TerminalManagement from 'ui/widgets/Vendor/TerminalManagement';
 import TerminalStaff from 'ui/widgets/Vendor/TerminalStaff';
 import VehicleListing from 'ui/widgets/Vendor/VehicleListing';
 import ViewTerminal from 'ui/widgets/Vendor/ViewTerminal';
-import { GuestCustomer, PrivateCustomer } from 'utils/AuthHelper';
+import CustomerGuard, { GuestCustomer, PrivateCustomer } from 'utils/AuthHelper';
 
 export const Routes = () => {
 	return (
 		<BrowserRouter>
 			<Switch>
 				<Route exact path="/" component={HomePage} />
-				<Route exact path="/customer/login" component={GuestCustomer(LoginPage)} />
-				<Route exact path="/customer/register" component={GuestCustomer(RegisterPage)} />
-				<Route exact path="/customer/forgot-password" component={GuestCustomer(ForgotPage)} />
-				<Route exact path="/customer/reset-password" component={GuestCustomer(ResetPage)} />
-				<Route
-					exact
-					path="/customer/booking-history"
-					component={PrivateCustomer(BookingHistoryPage)}
-				/>
-				<Route exact path="/customer/trips/saved" component={PrivateCustomer(SavedTripsPage)} />
+				<Route exact path="/customer/login" component={LoginPage} />
+				<Route exact path="/customer/register" component={RegisterPage} />
+				<Route exact path="/customer/verify" component={CustomerOTPpage} />
+				<Route exact path="/customer/resend" component={CustomerResendpage} />
+				<Route exact path="/customer/forgot-password" component={ForgotPage} />
+				<Route exact path="/customer/reset-password" component={ResetPage} />
+				<CustomerGuard exact path="/customer/booking-history" component={BookingHistoryPage} />
+				<CustomerGuard exact path="/customer/trips/saved" component={SavedTripsPage} />
+				<CustomerGuard exact path="/customer" component={ProfilePage} />
 				<Route exact path="/customer/trips/book" component={BookTripPage} />
 				<Route exact path="/help-support" component={SupportPage} />
 				<Route exact path="/company" component={CompanyPage} />
-				<Route path="/customer" component={PrivateCustomer(ProfilePage)} />
 				<Route exact path="/search/trips" component={SearchTripsPage} />
 				<Route exact path="/search/vehicles" component={SearchVehiclesPage} />
 				<Route exact path="/vendor/auth/login" component={AdminLogin} />

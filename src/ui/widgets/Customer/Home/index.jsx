@@ -33,7 +33,7 @@ const Home = () => {
 					<View display="flex" className={styles('herotab')}>
 						<button
 							onClick={() => setActiveTab('seat')}
-							className={`${styles('btn')} ${styles('btn-white')} ${styles('black')} ${
+							className={`${styles('btn')} ${styles('black')} ${styles('btn-white')}  ${
 								activeTab === 'seat' ? 'active' : ''
 							} `}>
 							<Bus className="pr-xs" />
@@ -41,16 +41,16 @@ const Home = () => {
 						</button>
 						<button
 							onClick={() => setActiveTab('hire')}
-							className={`${styles('btn')} ${styles('btn-white')} ${styles('black')} ${
-								activeTab === 'hire' ? 'active' : ''
-							} `}>
+							className={`${styles('btn')} ${styles('black')} ${styles('btn-white')} ${styles(
+								'black'
+							)} ${activeTab === 'hire' ? 'active' : ''} `}>
 							<Car className="pr-xs" />
 							Hire a Car
 						</button>
 					</View>
 				</View>
 				<View className={styles('hero--tab--content')}>
-					{activeTab === 'seat' ? <VehicleTab /> : <TripTab />}
+					{activeTab === 'seat' ? <TripTab /> : <VehicleTab />}
 				</View>
 				<View className={styles('herotab--content')}>
 					<BookTrip />

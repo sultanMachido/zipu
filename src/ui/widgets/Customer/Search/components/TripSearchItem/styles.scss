@@ -6,6 +6,10 @@
 	background-color: $white;
 	border-radius: 10px;
 
+	&.vsbordered {
+		border: 1px solid #e3eaed;
+	}
+
 	.tripSearchCar {
 		border-bottom: 1px solid #e3eaed;
 		padding: 3.1rem 3.6rem;

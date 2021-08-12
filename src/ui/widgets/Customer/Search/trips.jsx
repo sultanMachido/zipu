@@ -29,8 +29,8 @@ import { mockData_TripCard } from './MOCK_DATA';
 const SearchTrips = ({ trips: { trips, fetchAllTripsLoading }, ...props }) => {
 	const { startDate: _startDate, endDate: _endDate } = dateFilterParser('day');
 	const [dateFilter, setDateFilter] = useState({
-		origin: 'lagos',
-		destination: 'enugu',
+		origin: 'enugu',
+		destination: 'lagos',
 		round_trip: 0
 	});
 
@@ -63,7 +63,7 @@ const SearchTrips = ({ trips: { trips, fetchAllTripsLoading }, ...props }) => {
 						<div className="searchFilter">
 							<div className="tscol">
 								<div className="tscol filterBlock">
-									<h2>Price</h2>
+									<h2>Pricxe</h2>
 									<Slider
 										range
 										step={10}
@@ -100,22 +100,22 @@ const SearchTrips = ({ trips: { trips, fetchAllTripsLoading }, ...props }) => {
 							<div className="tscol">
 								<div className="searchItems__results">
 									{/* <TripCard tripInfo={mockData_TripCard} /> */}
-									<VehicleSearchItem />
-									{/* {fetchAllTripsLoading ? (
+									{/* <VehicleSearchItem /> */}
+									{fetchAllTripsLoading ? (
 										<Fragment>
 											<Spin size="large" />
 										</Fragment>
 									) : trips && trips.length > 0 ? (
 										<Fragment>
 											{trips.map((item, index) => {
-												return <VehicleSearchItem   key={index} trip={item} />
+												return <VehicleSearchItem key={index} trip={item} />;
 											})}
 										</Fragment>
 									) : (
 										<Fragment>
 											<EmptyState />
 										</Fragment>
-									)} */}
+									)}
 								</div>
 							</div>
 						</div>

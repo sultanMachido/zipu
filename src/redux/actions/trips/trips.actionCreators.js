@@ -79,3 +79,43 @@ export const fetchSingleTripErrors = (error) => ({
 export const clearFetchSingleTripErrors = () => ({
 	type: tripsTypes.CLEAR_FETCH_SINGLE_TRIP_ERRORS
 });
+
+/** Save Trip */
+export const saveTripLoading = (loadingState = true) => ({
+	type: tripsTypes.SAVE_TRIP_LOADING,
+	payload: loadingState
+});
+
+export const saveTripSuccess = () => ({
+	type: tripsTypes.SAVE_TRIP_SUCCESS,
+	payload: true
+});
+
+export const saveTripErrors = (error) => ({
+	type: tripsTypes.SAVE_TRIP_ERROR,
+	payload: error
+});
+
+export const clearSaveTripErrors = () => ({
+	type: tripsTypes.CLEAR_SAVE_TRIP_ERRORS
+});
+
+/** UnSave Trip */
+export const unSaveTripLoading = (loadingState = true) => ({
+	type: tripsTypes.UNSAVE_TRIP_LOADING,
+	payload: loadingState
+});
+
+export const unSaveTripSuccess = (trip) => ({
+	type: tripsTypes.UNSAVE_TRIP_SUCCESS,
+	payload: true
+});
+
+export const unSaveTripErrors = (error) => ({
+	type: tripsTypes.UNSAVE_TRIP_ERROR,
+	payload: error
+});
+
+export const clearUnSaveTripErrors = () => ({
+	type: tripsTypes.CLEAR_UNSAVE_TRIP_ERRORS
+});

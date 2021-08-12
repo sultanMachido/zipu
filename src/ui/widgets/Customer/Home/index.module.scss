@@ -89,13 +89,19 @@
 		}
 
 		&:hover,
-		&.active {
+		&.active,
+		&:focus {
 			background-color: $white;
 			color: $brand1;
+			outline: none;
 		}
 
 		&.btn-white {
 			background-image: none;
+
+			&.active {
+				background-color: $white;
+			}
 		}
 	}
 }

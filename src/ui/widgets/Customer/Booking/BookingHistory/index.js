@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-// import { Button, Empty } from 'antd';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -24,20 +23,6 @@ const BookingHistory = ({
 		bookings && bookings.length > 0 && filterCustomerBookingHistory([...bookings]);
 	}, [bookings]);
 
-	// const EmptyState = (
-	// 	<Empty
-	// 		image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
-	// 		imageStyle={{
-	// 			height: 60
-	// 		}}
-	// 		description={
-	// 			<span>
-	// 				Customize <a href="#API">Description</a>
-	// 			</span>
-	// 		}>
-	// 		<Button type="primary">Create Now</Button>
-	// 	</Empty>
-	// );
 	return (
 		<>
 			<BookingHeader />

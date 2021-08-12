@@ -1,5 +1,6 @@
 import { bookingsReducer } from './bookings/bookings.reducer';
 import { businessDetailsReducer } from './businessDetails/businessDetails.reducer';
+import { customerReducer } from './customer/customer.reducer';
 import { loginReducer } from './login/login.reducer';
 import { permitSubmissionReducer } from './permitSubmission/permitSubmission.reducer';
 import { promoCodesReducer } from './promoCodes/promoCodes.reducer';
@@ -23,5 +24,6 @@ export default {
 	businessDetails: businessDetailsReducer,
 	vehicles: vehiclesReducer,
 	staffData: staffReducer,
-	terminals: terminalsReducer
+	terminals: terminalsReducer,
+	customer: customerReducer
 };
