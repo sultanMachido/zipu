@@ -2,6 +2,14 @@
 	background-color: #f8eac2;
 	border-radius: 10px;
 
+	&:hover {
+		.imgBG {
+			.btn {
+				opacity: 1;
+			}
+		}
+	}
+
 	.titleAndContent {
 		width: 100%;
 		padding: 4rem;
@@ -16,7 +24,16 @@
 		padding-bottom: 4rem;
 
 		.btn {
-			padding: 1.8rem 2rem;
+			background: linear-gradient(180deg, #fade90 0%, #f3b348 93.23%, #cb820b 100%);
+			border-radius: 6px;
+			padding: 1.8rem 3.2rem;
+			font-size: 2rem;
+			line-height: 2rem;
+			letter-spacing: 0.45px;
+			text-transform: uppercase;
+			color: #323d44;
+			opacity: 0;
+			transition: opacity ease-in-out 0.3s;
 		}
 	}
 }
