@@ -2,17 +2,36 @@
 import { DatePicker } from 'antd';
 import moment from 'moment';
 import React, { Fragment, useState } from 'react';
+import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
+import { withRouter } from 'react-router-dom';
+import { searchGroupedTrips } from 'redux/actions/trips/trips.actions';
 // const {RangePicker} = DatePicker;
 import { ReturnIcon } from 'ui/svgs';
+import { dateFilterParser } from 'utils/dateFilter';
+import { fromStates, toStates } from 'utils/states';
 
 const { RangePicker } = DatePicker;
 
 const dateFormat = 'YYYY/MM/DD';
 
-const VehicleTab = () => {
+const VehicleTab = ({ trips: { trips, fetchAllTripsLoading }, ...props }) => {
 	let history = useHistory();
 	const [dates, setDates] = useState([null, null]);
+
+	const { startDate: _startDate, endDate: _endDate } = dateFilterParser('day');
+	const [dateFilter, setDateFilter] = useState({
+		origin: fromStates[0],
+		destination: toStates[0],
+		round_trip: 0
+	});
+
+	const handleChange = (e) => {
+		setDateFilter({
+			...dateFilter,
+			[e.target.name]: e.target.value
+		});
+	};
 
 	const redirect = () => {
 		history.push('/search/trips');
@@ -24,28 +43,6 @@ const VehicleTab = () => {
 
 	return (
 		<Fragment>
-			{/* <ul className="d-flex">
-				<li>
-					<select>
-						<option value="grapefruit">Trip 2</option>
-						<option value="lime">Akure to Lagos</option>
-						<option value="lime">Benin to Lagos</option>
-						<option value="lime">Abuja to Lagos</option>
-					</select>
-				</li>
-				<li>
-					<select>
-						<option value="grapefruit">Return</option>
-						<option value="lime">One Way</option>
-					</select>
-				</li>
-				<li>
-					<DatePicker defaultValue={moment('2015/01/01', dateFormat)} format={dateFormat} />
-				</li>
-				<li>
-					<button className="btn btn-brand-2 ">SHOW TRIPS</button>
-				</li>
-			</ul> */}
 			<ul className="d-flex relative">
 				<li>
 					<div className="d-flex  w-100 align-center">
@@ -74,7 +71,7 @@ const VehicleTab = () => {
 					<RangePicker onChange={handleDateChange} />
 				</li>
 				<li>
-					<button onClick={redirect} className="btn btn-brand-2 ">
+					<button onClick={() => props.searchGroupedTrips(dateFilter)} className="btn btn-brand-2 ">
 						SHOW VEHICLES
 					</button>
 				</li>
@@ -83,4 +80,12 @@ const VehicleTab = () => {
 	);
 };
 
-export default VehicleTab;
+const mapStateToProps = (state) => ({
+	trips: state.trips
+});
+
+const mapDispatchToProps = {
+	searchGroupedTrips
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(VehicleTab));

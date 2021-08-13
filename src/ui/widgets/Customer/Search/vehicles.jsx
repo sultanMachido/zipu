@@ -1,4 +1,4 @@
-import { Slider } from 'antd';
+import { Slider, Spin } from 'antd';
 import classnames from 'classnames/bind';
 import { View } from 'ui/atoms/components/Typography';
 
@@ -8,11 +8,16 @@ let styles = classnames.bind(style);
 import './index.scss';
 
 import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { searchGroupedTrips } from 'redux/actions/trips/trips.actions';
 
 import TripFilter from './components/TripFilter';
 import TripSearchItem from './components/TripSearchItem/index';
+import VehicleSearchItem from './components/VehicleSearchItem';
+import EmptyState from './empty';
 
-const SearchVehicles = () => {
+const SearchVehicles = ({ trips: { trips, fetchAllTripsLoading }, ...props }) => {
 	function onChange(value) {
 		console.log('onChange: ', value);
 	}
@@ -76,7 +81,22 @@ const SearchVehicles = () => {
 								</div>
 
 								<div className="searchItems__results">
-									<TripSearchItem />
+									{/* <TripSearchItem /> */}
+									{fetchAllTripsLoading ? (
+										<Fragment>
+											<Spin size="large" />
+										</Fragment>
+									) : trips && trips.length > 0 ? (
+										<Fragment>
+											{trips.map((item, index) => {
+												return <TripSearchItem key={index} trip={item} />;
+											})}
+										</Fragment>
+									) : (
+										<Fragment>
+											<EmptyState />
+										</Fragment>
+									)}
 								</div>
 							</div>
 						</div>
@@ -87,4 +107,12 @@ const SearchVehicles = () => {
 	);
 };
 
-export default SearchVehicles;
+const mapStateToProps = (state) => ({
+	trips: state.trips
+});
+
+const mapDispatchToProps = {
+	searchGroupedTrips
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchVehicles));

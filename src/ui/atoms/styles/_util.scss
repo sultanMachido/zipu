@@ -364,6 +364,11 @@ label {
 	&-brand-2 {
 		background-image: linear-gradient(180deg, #fade90 0%, #f3b348 93.23%, #cb820b 100%);
 		border-radius: 6px;
+		color: $black;
+
+		&:hover {
+			color: rgba($black, 0.6);
+		}
 	}
 
 	&-white {
