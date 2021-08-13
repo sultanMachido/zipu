@@ -13,12 +13,9 @@ import './index.scss';
 
 import { Spin } from 'antd';
 import React, { Fragment, useEffect, useState } from 'react';
-// import TripSearchTab from '../components/TripSearchTab';
-// import VehicleSearchTab from '../components/VehicleSearchtab';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { searchGroupedTrips } from 'redux/actions/trips/trips.actions';
-import { dateFilterParser } from 'utils/dateFilter';
 
 import TripCard from '../components/TripCard';
 import TripFilter from './components/TripFilter';
@@ -27,23 +24,6 @@ import EmptyState from './empty';
 import { mockData_TripCard } from './MOCK_DATA';
 
 const SearchTrips = ({ trips: { trips, fetchAllTripsLoading }, ...props }) => {
-	const { startDate: _startDate, endDate: _endDate } = dateFilterParser('day');
-	const [dateFilter, setDateFilter] = useState({
-		origin: 'enugu',
-		destination: 'lagos',
-		round_trip: 0
-	});
-
-	useEffect(() => {
-		props.searchGroupedTrips(dateFilter);
-	}, []);
-
-	// useEffect(() => {
-	// 	console.log('trips: chsnged ', trips);
-	// 	trips && trips.length > 0 && console.log('first item', trips[0]);
-	// 	console.log('///////////////////////');
-	// }, [trips]);
-
 	function onChange(value) {
 		console.log('onChange: ', value);
 	}
@@ -51,7 +31,6 @@ const SearchTrips = ({ trips: { trips, fetchAllTripsLoading }, ...props }) => {
 	function onAfterChange(value) {
 		console.log('onAfterChange: ', value);
 	}
-
 	return (
 		<Fragment>
 			<View className={styles('hero')}>
@@ -63,7 +42,7 @@ const SearchTrips = ({ trips: { trips, fetchAllTripsLoading }, ...props }) => {
 						<div className="searchFilter">
 							<div className="tscol">
 								<div className="tscol filterBlock">
-									<h2>Pricxe</h2>
+									<h2>Price</h2>
 									<Slider
 										range
 										step={10}

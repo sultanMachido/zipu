@@ -55,7 +55,7 @@ export const loginCustomer = (userData) => async (dispatch) => {
 		}
 	} catch (error) {
 		toast.error('Login Failed');
-		const message = error.response?.data?.message;
+		const message = JSON.stringify(error.response?.data?.message);
 		dispatch(loginError(message));
 		dispatch(loginLoading(false));
 		return { loginStatus: false, message: message || SOMETHING_WENT_WRONG };

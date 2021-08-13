@@ -1,53 +1,73 @@
+/* eslint-disable jsx-a11y/no-onchange */
 /* eslint-disable no-unused-vars */
 import { DatePicker } from 'antd';
 import moment from 'moment';
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
+import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
+import { withRouter } from 'react-router-dom';
+import { searchGroupedTrips } from 'redux/actions/trips/trips.actions';
 // const {RangePicker} = DatePicker;
 import { ReturnIcon } from 'ui/svgs';
+import { dateFilterParser } from 'utils/dateFilter';
+import { fromStates, toStates } from 'utils/states';
 
 const dateFormat = 'YYYY/MM/DD';
 
-const TripTab = () => {
+const TripTab = ({ trips: { trips, fetchAllTripsLoading }, ...props }) => {
 	let history = useHistory();
 
-	const redirect = () => {
-		history.push('/search/trips');
+	const { startDate: _startDate, endDate: _endDate } = dateFilterParser('day');
+	const [dateFilter, setDateFilter] = useState({
+		origin: fromStates[0],
+		destination: toStates[0],
+		round_trip: 0
+	});
+
+	const handleChange = (e) => {
+		setDateFilter({
+			...dateFilter,
+			[e.target.name]: e.target.value
+		});
 	};
+
 	return (
 		<Fragment>
 			<ul className="d-flex relative">
 				<li>
 					<div className="d-flex  w-100 align-center">
-						<select>
-							<option value="lime">Enugu</option>
-							<option value="lime">Lagos</option>
-							<option value="lime">Akure</option>
+						<select name="origin" onChange={handleChange}>
+							{fromStates.map((item, index) => {
+								return (
+									<option key={index} value={item}>
+										{item}
+									</option>
+								);
+							})}
 						</select>
 						<ReturnIcon width="40px" height="40px" />
-						<select>
-							<option value="lime">Lagos</option>
-							<option value="lime">Akure</option>
-							<option value="lime">Abuja</option>
+						<select name="destination" onChange={handleChange}>
+							{toStates.map((item, index) => {
+								return (
+									<option key={index} value={item}>
+										{item}
+									</option>
+								);
+							})}
 						</select>
 					</div>
 				</li>
 				<li>
-					<select>
-						<option value="grapefruit">Return</option>
-						<option value="lime">One Way</option>
+					<select name="round_trip" onChange={handleChange}>
+						<option value="0">Round Trip</option>
+						<option value="1">One Way</option>
 					</select>
 				</li>
 				<li>
-					<select>
-						<option value="grapefruit">Trip 2</option>
-						<option value="lime">Akure to Lagos</option>
-						<option value="lime">Benin to Lagos</option>
-						<option value="lime">Abuja to Lagos</option>
-					</select>
+					<DatePicker defaultValue={moment('2015/01/01', dateFormat)} format={dateFormat} />
 				</li>
 				<li>
-					<button onClick={redirect} className="btn btn-brand-2 ">
+					<button onClick={() => props.searchGroupedTrips(dateFilter)} className="btn btn-brand-2 ">
 						SHOW TRIPS
 					</button>
 				</li>
@@ -56,4 +76,12 @@ const TripTab = () => {
 	);
 };
 
-export default TripTab;
+const mapStateToProps = (state) => ({
+	trips: state.trips
+});
+
+const mapDispatchToProps = {
+	searchGroupedTrips
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TripTab));
