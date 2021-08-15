@@ -1,0 +1,201 @@
+.tripManagementWrapper {
+	width: 100%;
+
+	.tripManagementHeader {
+		width: 100%;
+		margin-bottom: 2rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		h5.title {
+			font-family: Inter;
+			font-style: normal;
+			font-weight: 500;
+			font-size: 20px;
+			line-height: 32px;
+			color: #323d44;
+			padding: 0;
+			margin: 0;
+		}
+
+		.tripManagementSelectWrapper {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 1rem;
+
+			.datePicker {
+				margin-top: -2.5rem;
+			}
+		}
+	}
+
+	.tripManagementContent {
+		width: 100%;
+		.tripDate {
+			width: 100%;
+			padding: 0.5rem 0rem;
+			display: grid;
+			grid-template-columns: 0.3fr 0.3fr 6fr;
+			justify-content: center;
+			.tripTime {
+				width: 60px;
+			}
+
+			p {
+				margin-top: -5px;
+				padding: 0;
+			}
+
+			.seperator {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+
+				.circle {
+					width: 10px;
+					height: 10px;
+					border-radius: 50%;
+					background-color: #6fcf97;
+				}
+				.dottedLine {
+					width: 10px;
+					min-height: 5rem;
+					margin-left: -1rem;
+					border-right: 1px dotted #6fcf97;
+				}
+			}
+		}
+	}
+}
+
+.header {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 4em;
+
+	@media (max-width: 1024.98px) {
+		display: block;
+	}
+	@media (max-width: 768.98px) {
+		// color: red;
+	}
+
+	@media (max-width: 576.98px) {
+		flex-direction: column;
+	}
+}
+.title {
+	span {
+		color: #637a87;
+	}
+
+	@media (max-width: 576.98px) {
+		margin: 1em 0;
+	}
+}
+
+.actions {
+	align-items: center;
+	display: flex;
+
+	.button-container {
+		height: 44px;
+		width: 208px;
+
+		button {
+			background: linear-gradient(180deg, #fade90 0%, #f3b348 93.23%, #cb820b 100%);
+			border-radius: 6px;
+			color: #323d44;
+			font-size: 14px;
+			font-weight: bold;
+			height: 100%;
+			letter-spacing: 0.45px;
+			line-height: 20px;
+			text-transform: uppercase;
+			width: 100%;
+
+			&:hover {
+				opacity: 0.9;
+			}
+		}
+	}
+
+	@media (max-width: 576.98px) {
+		// flex-direction: column;
+
+		button {
+			margin: 1em 0;
+		}
+	}
+}
+
+.input {
+	align-items: center;
+	background-color: #f6f8f9;
+	border-radius: 4px;
+	display: flex;
+	padding: 0 0.5em;
+	position: relative;
+	width: 100%;
+	height: 30px;
+	margin-top: 1em;
+	input {
+		background: transparent;
+		border: 0;
+		height: 100%;
+	}
+
+	p {
+		color: #637a87;
+		font-size: 18px;
+		line-height: 24px;
+	}
+}
+
+.search {
+	// input[type='date']::-webkit-calendar-picker-indicator {
+	// 	color: rgba(0, 0, 0, 0);
+	// 	display: block;
+	// 	background: url(https://mywildalberta.ca/images/GFX-MWA-Parks-Reservations.png) no-repeat;
+	// 	width: 20px;
+	// 	height: 20px;
+	// 	border-width: thin;
+	// }
+	input,
+	select {
+		background-color: transparent !important;
+		border: 0;
+		border-radius: 4px;
+		height: 32px;
+		padding: 0 2em;
+		width: 100%;
+
+		&::placeholder {
+			color: #637a87;
+			font-size: 18px;
+			line-height: 24px;
+		}
+
+		@media (max-width: 1024.98px) {
+			padding: 0 2em 0 0.7em;
+		}
+	}
+}
+
+.input-group {
+	margin: 0 1em;
+	// width: 100%;
+	p {
+		margin-bottom: 0 !important;
+	}
+}
+
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}

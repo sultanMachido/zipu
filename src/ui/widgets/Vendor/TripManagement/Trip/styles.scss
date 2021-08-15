@@ -2,9 +2,10 @@
 	width: 100%;
 	display: grid;
 	grid-template-columns: 0.3fr 0.3fr 6fr;
-	justify-content: center;
+	justify-content: space-between;
 
 	.tripTime {
+		width: 60px;
 		p {
 			padding: 0px;
 			margin: 0px;
@@ -38,9 +39,11 @@
 		}
 		.dottedCompleted {
 			border-right: 1px dotted #6fcf97;
+			height: 100%;
 		}
 		.dottedNotCompleted {
 			border-right: 1px dotted #637a87;
+			height: 100%;
 		}
 	}
 
@@ -66,6 +69,10 @@
 				padding: 0;
 				margin: 0;
 			}
+		}
+		@media (max-width: 576.98px) {
+			grid-template-columns: 1fr;
+			padding: 1em;
 		}
 	}
 }

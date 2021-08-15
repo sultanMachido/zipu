@@ -1,6 +1,7 @@
 import classnames from 'classnames/bind';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { SelectField } from 'ui/atoms/components/SelectField';
 import { Text, View } from 'ui/atoms/components/Typography';
 import Dropdown from 'ui/components/Dropdown';
 import Empty from 'ui/components/Empty';
@@ -25,9 +26,32 @@ const btnInfo = {
 	btnLink: '/',
 	component: PersonIcon
 };
-
+const options = [
+	{ name: 'All' },
+	{ name: 'All' },
+	{ name: 'All' },
+	{ name: 'All' },
+	{ name: 'All' }
+];
+const initialValues = {
+	CACDocument: 'upload Upload CAC documents',
+	reservationWindow: '',
+	uploadPermit: 'Upload permit',
+	platformOptions: ''
+};
 const StaffManagement = ({ staff = mockData_StaffManagement.staff }) => {
 	const history = useHistory();
+	const [values, setValues] = useState(initialValues);
+	const [startDate, setStartDate] = useState(null);
+	const handleInputChange = (e) => {
+		const target = e.target;
+		const name = target.name;
+		const value = target.type !== 'file' ? target.value : target.files[0];
+		setValues({
+			...values,
+			[name]: value
+		});
+	};
 	return (
 		<AdminLayout>
 			<View className={styles('staff-management-wrapper')}>
@@ -38,8 +62,18 @@ const StaffManagement = ({ staff = mockData_StaffManagement.staff }) => {
 						</Text>
 					</View>
 					<View className={styles('actions')}>
-						<View className={styles('dropdown')}>
-							<Text>Terminal: </Text> <Dropdown dropList={dropList} text="All terminals" />
+						<View className={styles('input-group')}>
+							<View className={styles('input')}>
+								<Text>Terminal:</Text>
+								<SelectField
+									options={options}
+									value={values.reservationWindow}
+									onChange={handleInputChange}
+									name="reservationWindow"
+									wrapperClass={styles('search')}
+									isRequired
+								/>
+							</View>
 						</View>
 						<View className={styles('button-container')}>
 							<button onClick={() => history.push('/vendor/add-staff')}>ADD NEW STAFF</button>

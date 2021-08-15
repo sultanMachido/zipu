@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import Container from 'ui/atoms/components/Container';
 import { Text, View } from 'ui/atoms/components/Typography';
 
+import Header from '../Header';
 import style from './index.module.scss';
 import { mockData_AdminHeader } from './MOCK_DATA';
 
@@ -15,6 +16,7 @@ const AdminLayout = ({ children }) => {
 	const { links } = mockData_AdminHeader;
 	return (
 		<View className={styles('admin-layout-wrapper')}>
+			<Header />
 			<View className={styles('admin-header')}>
 				<ul className="header-linkss">
 					{links.length &&
