@@ -192,6 +192,36 @@ export const searchGroupedTrips = (payload) => async (dispatch) => {
 	}
 };
 
+
+export const getTrip = (id) => async (dispatch) => {
+	dispatch(clearFetchSingleTripErrors());
+	dispatch(fetchSingleTripLoading());
+	try {
+		const response = await APIService.get(`/tripdetail?trip_id=${id}`);
+
+		if (response.data.status === 'Success') {
+			const responseObj = response.data.data;
+			console.log('responseObj',responseObj)
+			dispatch(fetchSingleTripLoading(false));
+			dispatch(fetchSingleTripSuccess(responseObj?.trip));
+			return { fetchTripsStatus: true, message: 'All Trips Fetched Successfully' };
+		} else {
+			dispatch(fetchSingleTripErrors('Error occured fetching Trips'));
+			dispatch(fetchSingleTripLoading(false));
+			return { fetchTripsStatus: false, message: 'hi' };
+		}
+	} catch (error) {
+		const message = error.response?.data?.message;
+		console.log('message',message)
+		toast.error(message || 'Error Occured');
+		dispatch(fetchSingleTripErrors(message));
+		dispatch(fetchSingleTripLoading(false));
+		return { fetchTripsStatus: false, message: message || SOMETHING_WENT_WRONG };
+	}
+};
+
+
+
 //Save Trip
 
 export const saveTrip = (tripId) => async (dispatch) => {

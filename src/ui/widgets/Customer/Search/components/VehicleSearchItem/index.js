@@ -38,6 +38,10 @@ const VehicleSearchItem = ({ trip, bordered, login: { isAuthenticated }, ...prop
 		}
 	};
 
+	const handleBooking = () => {
+		props.history.push(`/customer/trips/book/${trip?.id}`);
+	};
+
 	return (
 		<section className={`VehicleSearchItemWrapper tscol ${bordered === true ? 'vsbordered' : ''}`}>
 			<div className="d-flex justify-between align-center vsPad">
@@ -125,7 +129,9 @@ const VehicleSearchItem = ({ trip, bordered, login: { isAuthenticated }, ...prop
 							)}
 						</div>
 						<div className="vsBtnContainer">
-							<button className="btn btn-brand-2 mb-xs">BOOK TRIP</button>
+							<button onClick={handleBooking} className="btn btn-brand-2 mb-xs">
+								BOOK TRIP
+							</button>
 							<button onClick={saveTrip} className="btn btn-white mb-xs">
 								{loading ? (
 									<Spin size="small" />

@@ -22,7 +22,6 @@ export function GuestCustomer(WrappedComponent) {
 
 export function PrivateCustomer(WrappedComponent) {
 	const ACCESS_TOKEN = window.localStorage.getItem('zipuJWTToken');
-	console.log('code go here', ACCESS_TOKEN);
 	return class extends Component {
 		render() {
 			return ACCESS_TOKEN ? (
@@ -36,7 +35,6 @@ export function PrivateCustomer(WrappedComponent) {
 
 const CustomerGuard = ({ component: Component, login: { token, isAuthenticated }, ...rest }) => {
 	let isLoggedIn = false;
-	console.log('reached here in cusG');
 	if (token && isAuthenticated) {
 		isLoggedIn = true;
 	}
