@@ -66,9 +66,9 @@ export const fetchSingleTripLoading = (loadingState = true) => ({
 	payload: loadingState
 });
 
-export const fetchSingleTripSuccess = (userInfo) => ({
+export const fetchSingleTripSuccess = (tripInfo) => ({
 	type: tripsTypes.FETCH_SINGLE_TRIP_SUCCESS,
-	payload: userInfo
+	payload: tripInfo
 });
 
 export const fetchSingleTripErrors = (error) => ({

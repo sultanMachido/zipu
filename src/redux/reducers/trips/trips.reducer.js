@@ -5,7 +5,7 @@ import tripsTypes from '../../types/tripsTypes';
 
 export const initialState = {
 	trips: [],
-	trip: null,
+	trip: {},
 	createTripLoading: false,
 	updateTripLoading: false,
 	fetchAllTripsLoading: false,
@@ -73,7 +73,7 @@ export const tripsReducer = (state = initialState, action) => {
 		case tripsTypes.CLEAR_FETCH_ALL_TRIPS_ERRORS:
 			return {
 				...state,
-				fetchAllTripsError: ''
+				fetchAllTripsError: 'Error Occured'
 			};
 		case tripsTypes.FETCH_ALL_TRIPS_LOADING:
 			return {

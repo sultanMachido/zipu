@@ -47,9 +47,8 @@ export const Routes = () => {
 	return (
 		<BrowserRouter>
 			<Switch>
-				<Route exact path="/" component={HomePage} />
 				<Route exact path="/company" component={CompanyPage} />
-				<Route exact path="/customer/trips/book" component={BookTripPage} />
+				<Route exact path="/customer/trips/book/:id" component={BookTripPage} />
 				<Route exact path="/help-support" component={SupportPage} />
 				<Route exact path="/search/trips" component={SearchTripsPage} />
 				<Route exact path="/search/vehicles" component={SearchVehiclesPage} />
@@ -61,7 +60,8 @@ export const Routes = () => {
 				<PublicRoute exact path="/customer/reset-password" component={ResetPage} />
 				<CustomerGuard exact path="/customer/booking-history" component={BookingHistoryPage} />
 				<CustomerGuard exact path="/customer/trips/saved" component={SavedTripsPage} />
-				<CustomerGuard exact path="/customer" component={ProfilePage} />
+				<Route exact path="/" component={HomePage} />
+				<CustomerGuard path="/customer" component={ProfilePage} />
 				<Route exact path="/vendor/auth/login" component={AdminLogin} />
 				<Route exact path="/vendor/auth/register" component={Registration} />
 				<Route exact path="/vendor/auth/otp" component={OTP} />

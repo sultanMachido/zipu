@@ -17,12 +17,7 @@ const PublicRoute = ({ component: Component, login: { token, isAuthenticated }, 
 		<Route
 			{...rest}
 			render={(props) =>
-				isLoggedIn ? (
-					//   <Redirect to={roleToRoute(user_roles[0].name)} />
-					<Redirect to="/customer/booking-history" />
-				) : (
-					<Component {...props} />
-				)
+				isLoggedIn ? <Redirect to="/customer/booking-history" /> : <Component {...props} />
 			}
 		/>
 	);

@@ -1,2 +1,2 @@
-export const toStates = ['Lagos', 'Abuja', 'Imo', 'Enugu'];
-export const fromStates = ['Benin', 'Lagos', 'Aba', 'Taraba'];
+export const toStates = ['Enugu', 'Abuja', 'Imo'];
+export const fromStates = ['Lagos', 'Aba', 'Taraba'];
