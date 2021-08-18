@@ -6,10 +6,6 @@
 	display: flex;
 	justify-content: space-between;
 
-	@media (max-width: 768.98px) {
-		color: red;
-	}
-
 	@media (max-width: 576.98px) {
 		flex-direction: column;
 	}
@@ -192,7 +188,7 @@
 }
 
 .input-group {
-	margin: 2em;
+	margin: 1em;
 	// width: 100%;
 }
 

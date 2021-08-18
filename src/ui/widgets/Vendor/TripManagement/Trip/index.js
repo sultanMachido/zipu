@@ -1,8 +1,9 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
 import './styles.scss';
 
-const Trip = props => {
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const Trip = (props) => {
 	const urlParam = props?.record?.vehiclePlateNumber.split(' ').join('-');
 	return (
 		<div className="tripWrapper">
@@ -13,15 +14,11 @@ const Trip = props => {
 				<div
 					className={`circle ${
 						props?.record?.tripStatus === 'completed' ? 'completed' : 'notCompleted'
-					}`}
-				></div>
+					}`}></div>
 				<div
 					className={`dottedLine ${
-						props?.record?.tripStatus === 'completed'
-							? 'dottedCompleted'
-							: 'dottedNotCompleted'
-					}`}
-				></div>
+						props?.record?.tripStatus === 'completed' ? 'dottedCompleted' : 'dottedNotCompleted'
+					}`}></div>
 			</div>
 			<div className="tripDetailsWrapper">
 				<div className="tripDetails">
