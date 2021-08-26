@@ -46,7 +46,8 @@
 	align-items: center;
 	display: flex;
 	justify-content: flex-end;
-	margin-bottom: 0;
+	// margin-bottom: 0;
+	margin-bottom: 0 !important;
 
 	li {
 		margin-right: 3em;
@@ -71,6 +72,7 @@
 		top: 0;
 		transition: 0.3s;
 		width: 100%;
+		z-index: 1000;
 
 		li {
 			margin: 3em 0;

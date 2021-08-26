@@ -39,6 +39,7 @@ import StaffActivity from 'ui/widgets/Vendor/StaffActivity';
 import StaffManagement from 'ui/widgets/Vendor/StaffManagement';
 import TerminalManagement from 'ui/widgets/Vendor/TerminalManagement';
 import TerminalStaff from 'ui/widgets/Vendor/TerminalStaff';
+import TripManagement from 'ui/widgets/Vendor/TripManagement';
 import VehicleListing from 'ui/widgets/Vendor/VehicleListing';
 import ViewTerminal from 'ui/widgets/Vendor/ViewTerminal';
 import CustomerGuard, { GuestCustomer, PrivateCustomer } from 'utils/AuthHelper';
@@ -86,6 +87,7 @@ export const Routes = () => {
 				<Route exact path="/vendor/add-vehicle/rental" component={AddVehicleRental} />
 				<Route exact path="/vendor/add-vehicle/booking" component={BookingsList} />
 				<Route exact path="/vendor/reports" component={Report} />
+				<Route exact path="/vendor/trip-management" component={TripManagement} />
 			</Switch>
 		</BrowserRouter>
 	);
