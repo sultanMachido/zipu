@@ -2,7 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-	margin-top: -5rem;
+	margin-top: -7rem;
 }
 
 .header {
@@ -23,8 +23,12 @@
 		width: 100%;
 	}
 
+	@media (max-width: 1200px) {
+		margin-top: 9em;
+	}
+
 	@media (max-width: 768.98px) {
-		margin-top: 16em;
+		margin-top: 14em;
 	}
 }
 

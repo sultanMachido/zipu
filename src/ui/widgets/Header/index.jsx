@@ -1,14 +1,18 @@
 import classnames from 'classnames/bind';
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
+import { withRouter } from 'react-router-dom';
+import { loginCustomer, logUserOut } from 'redux/actions/login/login.actions';
 import Container from 'ui/atoms/components/Container';
 import { Text, View } from 'ui/atoms/components/Typography';
 import Navigation from 'ui/components/Navigation';
 import { NotificationIcon } from 'ui/svgs';
 import { LogoIcon } from 'ui/svgs';
 
+import CustomerHeader from './Customer';
 import style from './index.module.scss';
-import VendorHeader from './Vendor';
+// import VendorHeader from './Vendor';
 
 const styles = classnames.bind(style);
 
@@ -17,18 +21,18 @@ const navLinks = [
 		text: 'Top Destinations',
 		type: 'dropdown',
 		dropList: [
-			{ text: 'Abuja', url: '/' },
-			{ text: 'Lagos', url: '/' },
-			{ text: 'Enugu', url: '/' }
+			{ action: '', text: 'Abuja', url: '/search/trips' },
+			{ action: '', text: 'Lagos', url: '/search/trips' },
+			{ action: '', text: 'Enugu', url: '/search/trips' }
 		]
 	},
 	{
 		text: 'Partners',
 		type: 'dropdown',
 		dropList: [
-			{ text: 'CAF', url: '/' },
-			{ text: 'NIFES', url: '/' },
-			{ text: 'UNESCO', url: '/' }
+			{ action: '', text: 'CAF', url: '/' },
+			{ action: '', text: 'NIFES', url: '/' },
+			{ action: '', text: 'UNESCO', url: '/' }
 		]
 	},
 	{ text: 'Check your booking', url: '/customer/booking-history' },
@@ -37,10 +41,9 @@ const navLinks = [
 	{ text: 'Sign Up', btnLink: '/customer/register', isBtn: true }
 ];
 
-const Header = () => {
+const Header = ({ login: { userInfo, isAuthenticated }, ...props }) => {
 	let history = useHistory();
 	const [open, setOpen] = useState(false);
-	// const admin = true;
 	const admin = false;
 	return (
 		<View className={styles('header-wrapper')}>
@@ -69,10 +72,14 @@ const Header = () => {
 					<LogoIcon color="#240555" />
 				</View>
 				<View className={styles('nav-column')}>
-					{admin ? (
-						<VendorHeader className={styles({ ['open']: open })} />
+					{isAuthenticated ? (
+						<CustomerHeader logout={logUserOut} className={styles({ ['open']: open })} />
 					) : (
-						<Navigation navLinks={navLinks} className={styles({ ['open']: open })} />
+						<Navigation
+							logout={logUserOut}
+							navLinks={navLinks}
+							className={styles({ ['open']: open })}
+						/>
 					)}
 				</View>
 				<View className={styles('notification')}>
@@ -91,4 +98,13 @@ const Header = () => {
 	);
 };
 
-export default Header;
+const mapStateToProps = (state) => ({
+	login: state.login
+});
+
+const mapDispatchToProps = {
+	loginCustomer,
+	logUserOut
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withRouter(Header)));

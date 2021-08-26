@@ -1,8 +1,10 @@
 import './styles.scss';
 
 import React from 'react';
+import { useHistory } from 'react-router';
 
 const TranscoService = ({ transcoService }) => {
+	let history = useHistory();
 	return (
 		<div className="transcoServiceWrapper" key={transcoService?.id}>
 			<div className="titleAndContent">
@@ -17,7 +19,9 @@ const TranscoService = ({ transcoService }) => {
 					backgroundPosition: 'center right',
 					height: '30rem'
 				}}>
-				<button className="btn">SHOW TRIPS</button>
+				<button onClick={() => history.push('/search/trips')} className="btn">
+					SHOW TRIPS
+				</button>
 			</div>
 		</div>
 	);

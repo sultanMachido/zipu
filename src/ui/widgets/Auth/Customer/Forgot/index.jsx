@@ -22,6 +22,7 @@ const CustomerForgot = ({ register: { registerLoading }, ...props }) => {
 		setLoading(true);
 		e.preventDefault();
 		await props.requestPasswordReset(email);
+		props.history.push('/customer/reset-password');
 	};
 
 	return (
@@ -46,9 +47,8 @@ const CustomerForgot = ({ register: { registerLoading }, ...props }) => {
 			</form>
 			<View className={styles('create-account-text')}>
 				<Text textAlign="center">
-					Back to Login
-					<Text variant="a" fontWeight="bold" href="/customer/login">
-						&nbsp;Create account
+					<Text variant="a" fontWeight="bold" href="/customer/resend">
+						&nbsp;Resend code
 					</Text>
 				</Text>
 			</View>

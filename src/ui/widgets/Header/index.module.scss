@@ -13,9 +13,20 @@
 	align-items: center;
 	display: flex;
 	justify-content: space-between;
-	padding: 1em 0;
-	// padding: 1em 14rem;
-	// width: 100%;
+	padding: 1em 14rem;
+	width: 100%;
+
+	@media (max-width: 1200px) {
+		padding: 1rem 4rem;
+	}
+
+	// @media (max-width: 1024px) {
+	// 	padding: 1rem 8rem;
+	// }
+
+	// @media (max-width: 768.98px) {
+	// 	padding: 1rem 5rem;
+	// }
 }
 
 .logo-column {

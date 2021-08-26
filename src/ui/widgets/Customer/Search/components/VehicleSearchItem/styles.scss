@@ -28,7 +28,6 @@
 		figure {
 			width: 100%;
 			height: 10rem;
-			background-color: green;
 
 			img {
 				width: 100%;
@@ -78,14 +77,14 @@
 		.parkDetails {
 			margin-bottom: 3rem;
 
-			@include respond(tab-md) {
-				h6 {
-					font-size: 1.4rem;
-				}
-				p {
-					font-size: 1.2rem;
-				}
-			}
+			// @include respond(tab-md) {
+			// 	h6 {
+			// 		font-size: 1.4rem;
+			// 	}
+			// 	p {
+			// 		font-size: 1.2rem;
+			// 	}
+			// }
 		}
 
 		.vehicleSearchCta {
@@ -97,12 +96,16 @@
 
 			@include respond(tab-md) {
 				margin-left: 0;
+				justify-content: space-between;
 			}
 
 			&--Pricing {
 				margin-right: 5rem;
 				@include respond(tab-md) {
+					width: 100%;
 					align-items: flex-start;
+					margin-right: 0;
+					flex-basis: 45%;
 				}
 				p,
 				h2 {
@@ -126,6 +129,9 @@
 			}
 
 			.vsBtnContainer {
+				@include respond(tab-md) {
+					flex-basis: 45%;
+				}
 				button {
 					width: 100%;
 					color: $black;
@@ -143,7 +149,7 @@
 
 svg.trip-arrow {
 	@include respond(tab-md) {
-		width: 3rem;
+		// width: 3rem;
 		margin: auto 2rem;
 	}
 }

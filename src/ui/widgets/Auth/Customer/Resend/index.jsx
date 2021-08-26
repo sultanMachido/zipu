@@ -53,9 +53,8 @@ const CustomerResend = ({ verifyEmail: { otpErrFlag, otpDataLoading }, ...props 
 			</form>
 			<View className={styles('create-account-text')}>
 				<Text textAlign="center">
-					Back to Login
 					<Text variant="a" fontWeight="bold" href="/customer/login">
-						&nbsp;Create account
+						&nbsp; Back to Login
 					</Text>
 				</Text>
 			</View>

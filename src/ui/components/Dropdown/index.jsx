@@ -1,5 +1,8 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import classnames from 'classnames/bind';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 import { Text, View } from 'ui/atoms/components/Typography';
 import { DownArrowIcon } from 'ui/svgs';
 
@@ -7,8 +10,15 @@ import style from './index.module.scss';
 
 const styles = classnames.bind(style);
 
-const Dropdown = ({ dropList, text, imgUrl }) => {
+const Dropdown = ({ dropList, text, imgUrl, logout }) => {
 	const [open, setOpen] = useState(false);
+	let history = useHistory();
+
+	const handleLogOut = async () => {
+		console.log('ffff');
+		await logout();
+		history.push('/customer/login');
+	};
 	return (
 		<View
 			className={styles('dropdown-wrapper')}
@@ -29,13 +39,23 @@ const Dropdown = ({ dropList, text, imgUrl }) => {
 				<View className={styles('dropdown-links')}>
 					<ul>
 						{dropList.length &&
-							dropList.map(({ url, text }) => (
-								<li key={url}>
-									<Text variant="Link" to={url}>
-										{text}
-									</Text>
-								</li>
-							))}
+							dropList.map(({ url, action, text }) => {
+								if (action && action === 'logout') {
+									return (
+										<li key={url}>
+											<h6 onClick={handleLogOut}>{text}</h6>
+										</li>
+									);
+								} else {
+									return (
+										<li key={url}>
+											<Text variant="Link" to={url}>
+												{text}
+											</Text>
+										</li>
+									);
+								}
+							})}
 					</ul>
 				</View>
 			)}

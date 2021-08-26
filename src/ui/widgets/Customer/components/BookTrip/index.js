@@ -49,15 +49,15 @@ const BookTrip = ({ trips: { trips, fetchAllTripsLoading }, ...props }) => {
 			</div>
 
 			<div className="vehicleCards">
-				{/* {transcoServices.map((transcoService) => {
+				{transcoServices.map((transcoService) => {
 					return (
 						<Fragment key={transcoService.id}>
 							<TranscoService transcoService={transcoService} />
 						</Fragment>
 					);
-				})} */}
+				})}
 
-				{fetchAllTripsLoading ? (
+				{/* {fetchAllTripsLoading ? (
 					<Fragment>
 						<Spin size="large" />
 					</Fragment>
@@ -71,7 +71,7 @@ const BookTrip = ({ trips: { trips, fetchAllTripsLoading }, ...props }) => {
 					<Fragment>
 						<h2 className="sub-lg black">No Result Found</h2>
 					</Fragment>
-				)}
+				)} */}
 			</div>
 		</div>
 	);

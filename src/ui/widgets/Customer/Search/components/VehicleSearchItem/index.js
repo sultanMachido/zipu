@@ -39,7 +39,11 @@ const VehicleSearchItem = ({ trip, bordered, login: { isAuthenticated }, ...prop
 	};
 
 	const handleBooking = () => {
-		props.history.push(`/customer/trips/book/${trip?.id}`);
+		if (isAuthenticated) {
+			props.history.push(`/customer/trips/book/${trip?.id}`);
+		} else {
+			props.history.push('/customer/login', { from: props.history.location.pathname });
+		}
 	};
 
 	return (

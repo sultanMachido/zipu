@@ -1,10 +1,11 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react/jsx-key */
-/* eslint-disable no-undef */
+// /* eslint-disable no-unused-vars */
+// /* eslint-disable react-hooks/exhaustive-deps */
+// /* eslint-disable react/jsx-key */
+// /* eslint-disable no-undef */
 import { Slider } from 'antd';
 import classnames from 'classnames/bind';
 import { View } from 'ui/atoms/components/Typography';
+import { useQuery } from 'utils/URLSearchParam';
 
 import style from './index.module.scss';
 
@@ -17,11 +18,11 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { searchGroupedTrips } from 'redux/actions/trips/trips.actions';
 
-import TripCard from '../components/TripCard';
+// import TripCard from '../components/TripCard';
 import TripFilter from './components/TripFilter';
 import VehicleSearchItem from './components/VehicleSearchItem';
 import EmptyState from './empty';
-import { mockData_TripCard } from './MOCK_DATA';
+// import { mockData_TripCard } from './MOCK_DATA';
 
 const SearchTrips = ({ trips: { trips, fetchAllTripsLoading }, ...props }) => {
 	function onChange(value) {
@@ -44,22 +45,28 @@ const SearchTrips = ({ trips: { trips, fetchAllTripsLoading }, ...props }) => {
 								<div className="tscol filterBlock">
 									<h2>Price</h2>
 									<Slider
-										range
-										step={10}
-										defaultValue={[20, 50]}
+										range={false}
+										min={1000}
+										max={50000}
+										step={1000}
+										defaultValue={[1000, 5000]}
 										onChange={onChange}
 										onAfterChange={onAfterChange}
 									/>
 								</div>
 								<div className="tscol filterBlock">
-									<h2>Vehicle Request</h2>
+									<h2>Time</h2>
 									<div className="d-flex filterBlock--check">
-										<input type="checkbox" value="ac" />
-										<label htmlFor="sc"> AC</label>
+										<input type="checkbox" name="time" value="ac" />
+										<label htmlFor="sc">Morning</label>
 									</div>
 									<div className="d-flex filterBlock--check">
-										<input type="checkbox" value="ac" />
-										<label htmlFor="sc">AC</label>
+										<input type="checkbox" name="time" value="ac" />
+										<label htmlFor="sc">Afternoon</label>
+									</div>
+									<div className="d-flex filterBlock--check">
+										<input type="checkbox" name="time" value="ac" />
+										<label htmlFor="sc">Evening</label>
 									</div>
 								</div>
 								<div className="tscol filterBlock">
