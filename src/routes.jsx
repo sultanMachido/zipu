@@ -15,6 +15,7 @@ import SupportPage from 'pages/Customer/Support/index';
 import BookTripPage from 'pages/Customer/Trip/book';
 import SavedTripsPage from 'pages/Customer/Trip/index';
 import React from 'react';
+import { Toaster } from 'react-hot-toast';
 // import { Fragment } from 'react';
 // import { Toaster } from 'react-hot-toast';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -46,9 +47,9 @@ import PublicRoute from 'utils/PublicRoute';
 export const Routes = () => {
 	return (
 		<BrowserRouter>
+			<Toaster />
 			<Switch>
 				<Route exact path="/company" component={CompanyPage} />
-				<Route exact path="/customer/trips/book/:id" component={BookTripPage} />
 				<Route exact path="/help-support" component={SupportPage} />
 				<Route exact path="/search/trips" component={SearchTripsPage} />
 				<Route exact path="/search/vehicles" component={SearchVehiclesPage} />
@@ -59,9 +60,10 @@ export const Routes = () => {
 				<PublicRoute exact path="/customer/forgot-password" component={ForgotPage} />
 				<PublicRoute exact path="/customer/reset-password" component={ResetPage} />
 				<CustomerGuard exact path="/customer/booking-history" component={BookingHistoryPage} />
+				<CustomerGuard exact path="/customer/trips/book/:id" component={BookTripPage} />
 				<CustomerGuard exact path="/customer/trips/saved" component={SavedTripsPage} />
-				<Route exact path="/" component={HomePage} />
 				<CustomerGuard path="/customer" component={ProfilePage} />
+				<Route exact path="/" component={HomePage} />
 				<Route exact path="/vendor/auth/login" component={AdminLogin} />
 				<Route exact path="/vendor/auth/register" component={Registration} />
 				<Route exact path="/vendor/auth/otp" component={OTP} />

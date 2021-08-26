@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { DatePicker } from 'antd';
 import moment from 'moment';
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
 import { withRouter } from 'react-router-dom';
@@ -18,6 +18,7 @@ const dateFormat = 'YYYY/MM/DD';
 const VehicleTab = ({ trips: { trips, fetchAllTripsLoading }, ...props }) => {
 	let history = useHistory();
 	const [dates, setDates] = useState([null, null]);
+	const [queryString, setQueryString] = useState('');
 
 	const { startDate: _startDate, endDate: _endDate } = dateFilterParser('day');
 	const [dateFilter, setDateFilter] = useState({
@@ -41,22 +42,38 @@ const VehicleTab = ({ trips: { trips, fetchAllTripsLoading }, ...props }) => {
 		setDates(dates);
 	};
 
+	const handleBlur = () => {
+		setQueryString(
+			`/search/trips?origin=${dateFilter?.origin}&destination=${dateFilter?.destination}`
+		);
+	};
+
+	const redirectToSearch = () => {
+		props.history.push(queryString);
+	};
+
+	useEffect(() => {
+		handleBlur();
+	}, []);
+
 	return (
 		<Fragment>
 			<ul className="d-flex relative">
 				<li>
-					<div className="d-flex  w-100 align-center">
-						<select>
-							<option value="lime">Enugu</option>
-							<option value="lime">Lagos</option>
-							<option value="lime">Akure</option>
-						</select>
-						<ReturnIcon width="40px" height="40px" />
-						<select>
-							<option value="lime">Lagos</option>
-							<option value="lime">Akure</option>
-							<option value="lime">Abuja</option>
-						</select>
+					<div className="d-flex align-center datefilter-input">
+						<input
+							name="origin"
+							value={dateFilter?.origin}
+							onBlur={handleBlur}
+							onChange={handleChange}
+						/>
+						<ReturnIcon width="25px" height="25px" />
+						<input
+							name="destination"
+							value={dateFilter?.destination}
+							onBlur={handleBlur}
+							onChange={handleChange}
+						/>
 					</div>
 				</li>
 				<li>
@@ -71,7 +88,8 @@ const VehicleTab = ({ trips: { trips, fetchAllTripsLoading }, ...props }) => {
 					<RangePicker onChange={handleDateChange} />
 				</li>
 				<li>
-					<button onClick={() => props.searchGroupedTrips(dateFilter)} className="btn btn-brand-2 ">
+					{/* <button onClick={() => props.searchGroupedTrips(dateFilter)} className="btn btn-brand-2 "> */}
+					<button onClick={redirectToSearch} className="btn btn-brand-2 ">
 						SHOW VEHICLES
 					</button>
 				</li>

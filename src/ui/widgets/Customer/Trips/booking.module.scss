@@ -15,6 +15,10 @@
 		&.search-tab {
 			padding: 3rem 14rem;
 			height: auto;
+
+			@media (max-width: 1200px) {
+				padding: 3rem 4rem;
+			}
 		}
 
 		h2 {
@@ -31,9 +35,17 @@
 
 .booking--container {
 	margin: 4rem auto;
-	width: 85%;
+	width: 80%;
 	display: flex;
 	justify-content: space-between;
+
+	@media (max-width: 1200px) {
+		width: 90%;
+	}
+
+	@include respond(tab-port) {
+		flex-wrap: wrap;
+	}
 }
 
 .booking--main {
@@ -41,11 +53,24 @@
 	border: 1px solid #e3eaed;
 	border-radius: 10px;
 	padding: 24px 54px;
+
+	@include respond(tab-port) {
+		flex-basis: 100%;
+	}
+
+	@include respond(phone) {
+		padding: 24px;
+	}
 }
 
 .booking--side {
 	flex-basis: 30%;
 	background: #ffffff;
+
+	@include respond(tab-port) {
+		flex-basis: 100%;
+		margin-top: 2rem;
+	}
 }
 
 .booking-aside-item {
@@ -96,6 +121,66 @@
 	align-items: center;
 }
 
-// className={className}
-// 			width={width}
-// 			height={height}
+.booking-bus {
+	min-height: 15rem;
+	// width: 50rem;
+	// margin-left: 5rem;
+	display: flex;
+}
+
+.boooking-seat-container {
+	flex-basis: 45%;
+	margin-left: auto;
+
+	@include respond(tab-md) {
+		flex-basis: 100%;
+		margin-top: 2rem;
+	}
+}
+
+.booking-row {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	flex-basis: 10%;
+}
+
+.booking-seat {
+	background-color: #e3eaed;
+	width: 18px;
+	height: 18px;
+	margin-bottom: 8px;
+	border-radius: 16px 0px 0px 16px;
+	cursor: pointer;
+
+	@include respond(tab-md) {
+		width: 25px;
+		height: 25px;
+	}
+}
+
+.selected {
+	background-color: #ff9633;
+}
+
+.reserved {
+	background-color: #240555;
+	// pointer-events: none;
+}
+
+p.badgeItem {
+	background: rgba(176, 0, 32, 0.1);
+	border-radius: 100px;
+	padding: 0.6rem 1.6rem;
+
+	&.badgeGreen {
+		background-color: rgba(111, 207, 151, 0.2);
+		color: #2e7b32;
+	}
+
+	&.badgeYellow {
+		background-color: #f8eac2;
+		color: #c76100;
+	}
+}

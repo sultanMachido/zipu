@@ -23,11 +23,11 @@ const Company = () => {
 
 	const loadContent = async () => {
 		try {
-			const transcoRequest = await APIService.get(`/transcodetail/2`);
-			const transcoTrips = await APIService.get(`/transcotrips/2`);
-			// console.log('transco obj', { ...transcoRequest.data.data.transco });
-			// console.log('trnasco trips', { ...transcoTrips.data.data });
-			// setInfo({ ...transcoRequest.data.data.transco });
+			const transcoRequest = await APIService.get(`/transcodetail/4`);
+			const transcoTrips = await APIService.get(`/transcotrips/4`);
+			console.log('transco obj', { ...transcoRequest.data.data.transco });
+			console.log('trnasco trips', { ...transcoTrips.data.data });
+			setInfo({ ...transcoRequest.data.data.transco });
 			setObj({ ...transcoTrips.data.data });
 			setLoading(false);
 		} catch (error) {

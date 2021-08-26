@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { registerCustomer } from 'redux/actions/registration/register.actions';
-import { FormButton } from 'ui/atoms/components/Button';
+import { Button } from 'ui/atoms/components/Button/Button';
 import { TextInput } from 'ui/atoms/components/TextInput';
 import { Text, View } from 'ui/atoms/components/Typography';
 
@@ -14,7 +14,7 @@ import style from './index.module.scss';
 
 let styles = classnames.bind(style);
 
-const CustomerRegistration = (props) => {
+const CustomerRegistration = ({ register: { registerLoading }, ...props }) => {
 	const [user, setUser] = useState({
 		email: '',
 		password: '',
@@ -31,8 +31,12 @@ const CustomerRegistration = (props) => {
 	const onRegister = async (e) => {
 		e.preventDefault();
 		try {
-			await props.registerCustomer(user);
-			props.history.push('/customer/verify');
+			let registerRequest = await props.registerCustomer(user);
+			if (registerRequest?.status === true) {
+				props.history.push('/customer/verify');
+			} else {
+				toast.error('An error occured accepting your details, please check an check again');
+			}
 		} catch (error) {
 			toast.error('Error occured');
 		}
@@ -74,7 +78,10 @@ const CustomerRegistration = (props) => {
 					/>
 				</View>
 				<View className={styles('form-button-container')}>
-					<FormButton type="submit">CREATE ACCOUNT</FormButton>
+					{/* <FormButton type="submit">CREATE ACCOUNT</FormButton> */}
+					<Button type="submit" loading={registerLoading} loadingText="Registering User....">
+						CREATE ACCOUNT
+					</Button>
 				</View>
 			</form>
 			<View className={styles('verification-text')}>
@@ -83,15 +90,22 @@ const CustomerRegistration = (props) => {
 				</Text>
 			</View>
 			<View className={styles('create-account-text')}>
+				<Text textAlign="center">
+					<Text variant="a" fontWeight="bold" href="/customer/login">
+						&nbsp;Have an account, Login to your account
+					</Text>
+				</Text>
+			</View>
+			<View className={styles('create-account-text')}>
 				<Text textAlign="center" color="grey-dark">
 					By signing in or creating an account, you agree with our{' '}
 					<Text variant="a" fontWeight="normal" href="/">
 						Terms & Conditions
-					</Text>{' '}
-					and{' '}
+					</Text>
+					&nbsp; and &nbsp;
 					<Text variant="a" fontWeight="normal" href="/">
 						Privacy Statement
-					</Text>{' '}
+					</Text>
 				</Text>
 			</View>
 		</AuthCard>

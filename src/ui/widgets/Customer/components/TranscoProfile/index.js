@@ -7,7 +7,7 @@ import VehicleSearchItem from 'ui/widgets/Customer/Search/components/VehicleSear
 
 import CompanyInfo from './CompanyInfo';
 import TranscoHeader from './TranscoHeader';
-function TransoProfile({ transcoObj, companyDescription, companyHeader, transcoInfo }) {
+function TransoProfile({ transcoObj, transcoInfo, companyDescription, companyHeader }) {
 	return (
 		<div className="transcopage-wrapper">
 			<TranscoHeader transcoInfo={transcoInfo} {...companyHeader} />

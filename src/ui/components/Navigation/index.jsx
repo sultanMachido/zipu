@@ -10,7 +10,7 @@ import style from './index.module.scss';
 
 const styles = classnames.bind(style);
 
-const Navigation = ({ navLinks, className }) => {
+const Navigation = ({ navLinks, className, logout }) => {
 	let history = useHistory();
 	const { showModal } = useContext(ModalContext);
 
@@ -53,7 +53,12 @@ const Navigation = ({ navLinks, className }) => {
 									</Text>
 								)}
 								{type === 'dropdown' && (
-									<Dropdown dropList={dropList} text={text} imgUrl={imgUrl} />
+									<Dropdown
+										logout={logout && logout}
+										dropList={dropList}
+										text={text}
+										imgUrl={imgUrl}
+									/>
 								)}
 							</li>
 						)

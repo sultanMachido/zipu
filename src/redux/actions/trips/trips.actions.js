@@ -192,7 +192,6 @@ export const searchGroupedTrips = (payload) => async (dispatch) => {
 	}
 };
 
-
 export const getTrip = (id) => async (dispatch) => {
 	dispatch(clearFetchSingleTripErrors());
 	dispatch(fetchSingleTripLoading());
@@ -201,7 +200,6 @@ export const getTrip = (id) => async (dispatch) => {
 
 		if (response.data.status === 'Success') {
 			const responseObj = response.data.data;
-			console.log('responseObj',responseObj)
 			dispatch(fetchSingleTripLoading(false));
 			dispatch(fetchSingleTripSuccess(responseObj?.trip));
 			return { fetchTripsStatus: true, message: 'All Trips Fetched Successfully' };
@@ -212,15 +210,13 @@ export const getTrip = (id) => async (dispatch) => {
 		}
 	} catch (error) {
 		const message = error.response?.data?.message;
-		console.log('message',message)
+		console.log('message', message);
 		toast.error(message || 'Error Occured');
 		dispatch(fetchSingleTripErrors(message));
 		dispatch(fetchSingleTripLoading(false));
 		return { fetchTripsStatus: false, message: message || SOMETHING_WENT_WRONG };
 	}
 };
-
-
 
 //Save Trip
 
@@ -244,6 +240,137 @@ export const unSaveTrip = (tripId) => async (dispatch) => {
 		const response = await APIService.post(`/unsave-trip`, { trip_id: tripId });
 		if (response.data.status === 'Success') {
 			return { message: 'Trip removed Successfully', status: true };
+		} else {
+			return { status: false, message: 'hi' };
+		}
+	} catch (error) {
+		const message = error.response?.data?.message;
+		return { status: false, message: message || SOMETHING_WENT_WRONG };
+	}
+};
+
+// Book Trip
+
+export const bookTrip = (payload) => async (dispatch) => {
+	try {
+		const response = await APIService.post(`/book-trip`, {
+			...payload
+		});
+		if (response.data.status === 'Success') {
+			let payment = await initiatePayment(response.data.data.reference);
+
+			console.log('messs esucccess', {
+				message:
+					'Trip booked, seat will be released after 15 minutes if payment isnt made and confirmed by the system',
+				status: true,
+				link: payment.link
+			});
+
+			return {
+				message:
+					'Trip booked, seat will be released after 15 minutes if payment isnt made and confirmed by the system',
+				status: true,
+				link: payment.link,
+				amount: response.data.data.amount,
+				reference: response.data.data.reference
+			};
+		} else {
+			return { status: false, message: 'hi' };
+		}
+	} catch (error) {
+		const message = error.response?.data?.message;
+		console.log('messs eror', message);
+		
+		return { status: false, message: JSON.stringify(message) || SOMETHING_WENT_WRONG };
+	}
+};
+
+
+export const bookTripWithPickup = (payload) => async (dispatch) => {
+	try {
+		const response = await APIService.post(`/book-trip`, {
+			...payload
+		});
+		if (response.data.status === 'Success') {
+			let payment = await initiatePayment(response.data.data.reference);
+
+			console.log('messs esucccess', {
+				message:
+					'Trip booked, seat will be released after 15 minutes if payment isnt made and confirmed by the system',
+				status: true,
+				link: payment.link
+			});
+
+			return {
+				message:
+					'Trip booked, seat will be released after 15 minutes if payment isnt made and confirmed by the system',
+				status: true,
+				link: payment.link,
+				amount: response.data.data.amount,
+				reference: response.data.data.reference
+			};
+		} else {
+			return { status: false, message: 'hi' };
+		}
+	} catch (error) {
+		const message = error.response?.data?.message;
+		console.log('messs eror', message);
+		return { status: false, message: JSON.stringify(message) || SOMETHING_WENT_WRONG };
+	}
+};
+
+export const initiatePayment = (reference) => async (dispatch) => {
+	try {
+		const response = await APIService.post(`/initiate-payment`, { reference: reference });
+		if (response.data.status === 'Success') {
+			return {
+				message: 'Payment initiated',
+				link: response.data.data.payment_details.payment_link,
+				status: true
+			};
+		} else {
+			return { status: false, message: 'hi' };
+		}
+	} catch (error) {
+		const message = error.response?.data?.message;
+		return { status: false, message: message || SOMETHING_WENT_WRONG };
+	}
+};
+
+export const verifyPayment = (reference) => async (dispatch) => {
+	try {
+		const response = await APIService.post(`/verifytxwithref`, { reference: reference });
+		if (response.data.status === 'Success') {
+			return {
+				message:
+					'Trip booked, seat will be released after 15 minutes if payment isnt made and confirmed by the system',
+				status: true,
+				amount: 2100,
+				reference: 'N823Y84'
+			};
+		} else {
+			return { status: false, message: 'hi' };
+		}
+	} catch (error) {
+		const message = error.response?.data?.message;
+		return { status: false, message: message || SOMETHING_WENT_WRONG };
+	}
+};
+
+export const verifyTransaction = (reference, transaction_id) => async (dispatch) => {
+	try {
+		const response = await APIService.post(`/verifytxwithrefandtxid`, {
+			reference: reference,
+			transaction_id: transaction_id
+		});
+		if (response.data.status === 'Success') {
+			return {
+				message:
+					'Trip booked, seat will be released after 15 minutes if payment isnt made and confirmed by the system',
+				status: true,
+				amount: 2100,
+				reference: 'N823Y84'
+			};
 		} else {
 			return { status: false, message: 'hi' };
 		}

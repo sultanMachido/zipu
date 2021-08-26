@@ -47,21 +47,19 @@ export const registerCustomer = (customerData) => async (dispatch) => {
 			toast.success('Registration successful,check your email for verification');
 			localStorage.setItem('zipuJWTToken', registerRequest.data.data.token.plainTextToken);
 			localStorage.setItem('zipuUser', JSON.stringify(registerRequest.data.data.user));
-			localStorage.setItem('transcoId', registerRequest.data.data.user.transco_id);
 			dispatch(registerLoading());
 			dispatch(registerSuccess(registerRequest.data));
 			return { registerStatus: true, tokenValid: true, message: 'Registration successful' };
 		} else {
 			toast.success('Registration successful,check your email for verification');
 			dispatch(registerLoading(false));
-			message.error('Error occured');
+			toast.error('Error occured');
 			return { registerStatus: false, message: SOMETHING_WENT_WRONG };
 		}
 	} catch (error) {
 		const message = error.response?.data?.message;
 		dispatch(registerError(message));
 		dispatch(registerLoading(false));
-		message.error('Error occured');
 		return { registerStatus: false, message: message || SOMETHING_WENT_WRONG };
 	}
 };

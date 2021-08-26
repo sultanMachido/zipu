@@ -1,6 +1,8 @@
 import { ReactComponent as Mail } from 'assets/svg/mail.svg';
 import classnames from 'classnames/bind';
 import { Fragment } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import { View } from 'ui/atoms/components/Typography';
 import FAQS from 'ui/widgets/Customer/components/Faqs';
@@ -9,7 +11,7 @@ import style from './index.module.scss';
 
 let styles = classnames.bind(style);
 
-const Support = () => (
+const Support = ({ login: { isAuthenticated }, ...props }) => (
 	// let [activeTab, setActiveTab] = useState('seat');
 
 	<Fragment>
@@ -28,9 +30,12 @@ const Support = () => (
 						View all of your bookings, make changes and get help if you need it.
 					</p>
 					<View className="d-flex">
-						<Link to="/login" className="link link-brand-2 mr-sm">
-							SIGN IN
-						</Link>
+						{!isAuthenticated && (
+							<Link to="/login" className="link link-brand-2 mr-sm">
+								SIGN IN
+							</Link>
+						)}
+
 						<Link to="/login" className="link link-white">
 							Use Booking Details
 						</Link>
@@ -61,4 +66,12 @@ const Support = () => (
 	</Fragment>
 );
 
-export default Support;
+// export default Support;
+
+const mapStateToProps = (state) => ({
+	login: state.login
+});
+
+// const mapDispatchToProps = {};
+
+export default withRouter(connect(mapStateToProps, {})(Support));

@@ -11,6 +11,7 @@ import { searchGroupedTrips } from 'redux/actions/trips/trips.actions';
 import { ReturnIcon } from 'ui/svgs';
 import { dateFilterParser } from 'utils/dateFilter';
 import { fromStates, toStates } from 'utils/states';
+import { useQuery } from 'utils/URLSearchParam';
 
 const TripFilter = ({ ...props }) => {
 	const { startDate: _startDate, endDate: _endDate } = dateFilterParser('day');
@@ -19,6 +20,7 @@ const TripFilter = ({ ...props }) => {
 		destination: toStates[0],
 		round_trip: 0
 	});
+	let query = useQuery();
 
 	const handleChange = (e) => {
 		setDateFilter({
@@ -27,33 +29,51 @@ const TripFilter = ({ ...props }) => {
 		});
 	};
 
+	const handleBlur = () => {
+		props.history.push(
+			`/search/trips?origin=${dateFilter?.origin}&destination=${dateFilter?.destination}`
+		);
+	};
+
 	useEffect(() => {
-		props.searchGroupedTrips(dateFilter);
+		query.get('origin') &&
+			query.get('destination') &&
+			setDateFilter({
+				...dateFilter,
+				origin: query.get('origin'),
+				destination: query.get('destination')
+			});
+	}, []);
+
+	useEffect(() => {
+		if (query.get('origin') && query.get('destination')) {
+			props.searchGroupedTrips({
+				origin: query.get('origin'),
+				destination: query.get('destination'),
+				round_trip: 0
+			});
+		} else {
+			props.searchGroupedTrips(dateFilter);
+		}
 	}, []);
 	return (
 		<Fragment>
 			<ul className="d-flex relative">
 				<li>
-					<div className="d-flex w-100 align-center">
-						<select name="origin" onChange={handleChange}>
-							{fromStates.map((item, index) => {
-								return (
-									<option key={index} value={item}>
-										{item}
-									</option>
-								);
-							})}
-						</select>
+					<div className="d-flex align-center datefilter-input">
+						<input
+							name="origin"
+							value={dateFilter?.origin}
+							onBlur={handleBlur}
+							onChange={handleChange}
+						/>
 						<ReturnIcon width="25px" height="25px" />
-						<select name="destination" onChange={handleChange}>
-							{toStates.map((item, index) => {
-								return (
-									<option key={index} value={item}>
-										{item}
-									</option>
-								);
-							})}
-						</select>
+						<input
+							name="destination"
+							value={dateFilter?.destination}
+							onBlur={handleBlur}
+							onChange={handleChange}
+						/>
 					</div>
 				</li>
 				<li>

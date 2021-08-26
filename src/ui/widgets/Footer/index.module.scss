@@ -1,6 +1,10 @@
 .footer-wrapper {
 	background: #0e0d30;
 	padding: 3em 14rem;
+
+	@media (max-width: 1200px) {
+		padding: 3rem 4rem;
+	}
 }
 
 .inner-wrapper {

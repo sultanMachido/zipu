@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { connect } from 'react-redux';
 import { useHistory, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { loginCustomer } from 'redux/actions/login/login.actions';
 import { setErrFlag } from 'redux/actions/verifyEmail/verifyEmail.actionsCreators';
 import { Button } from 'ui/atoms/components/Button/Button';
@@ -30,7 +31,6 @@ const CustomerLogin = ({ login: { loginLoading }, ...props }) => {
 
 	useEffect(() => {
 		if (history.location.state?.from) {
-			console.log('prev path', history.location.state?.from);
 			setPrevPath(history.location.state?.from);
 		}
 		// eslint-disable-next-line
@@ -93,9 +93,7 @@ const CustomerLogin = ({ login: { loginLoading }, ...props }) => {
 					</Button>
 				</View>
 			</form>
-			<View className={styles('create-account-text')}>
-				<Text textAlign="center">Or use any of the following services</Text>
-			</View>
+
 			<View
 				display="flex"
 				alignitems="center"
@@ -110,11 +108,18 @@ const CustomerLogin = ({ login: { loginLoading }, ...props }) => {
 			</View>
 			<View className={styles('create-account-text')}>
 				<Text textAlign="center">
+					<Text variant="a" fontWeight="bold" href="/customer/forgot-password">
+						&nbsp;Forgot Password
+					</Text>
+				</Text>
+			</View>
+			<View className={styles('create-account-text')}>
+				<Text textAlign="center">
 					By signing in or creating an account, you agree with our
 					<Text variant="a" fontWeight="bold" href="/">
 						&nbsp;Terms & Conditions&nbsp;
 					</Text>
-					and
+					&nbsp; and &nbsp;
 					<Text variant="a" fontWeight="bold" href="/">
 						&nbsp;Privacy Statement
 					</Text>

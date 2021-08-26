@@ -74,10 +74,9 @@ export const getAuthenticatedCustomer = () => async (dispatch) => {
 	dispatch(getUserLoading());
 	try {
 		const loginRequest = await APIService.get('/get-user');
-		console.log(loginRequest.data);
 		if (loginRequest.data.status === 'Success') {
 			localStorage.setItem('zipuUser', JSON.stringify(loginRequest.data.data.user));
-			console.log(loginRequest.data.data.user);
+			// console.log(loginRequest.data.data.user);
 			dispatch(getUserLoading(false));
 			dispatch(getUserSuccess(loginRequest.data.data.user));
 			toast.success('Login Succesfull');
@@ -168,17 +167,9 @@ export const updateAuthenticatedCustomerImage = (payload) => async (dispatch) =>
 	}
 };
 
-export const logUserOut =
-	(history = null) =>
-	async (dispatch) => {
-		try {
-			localStorage.clear();
-			if (history) {
-				history.push('/login');
-				window.location.reload();
-			}
-			return dispatch(logOutUserSuccess());
-		} catch (error) {
-			return { signedOut: false, error: error.message };
-		}
-	};
+export const logUserOut = () => {
+	console.log('log user');
+	localStorage.clear();
+	location.reload();
+};
+// (history = null) =>
