@@ -1,3 +1,4 @@
+import axios from 'axios';
 import classnames from 'classnames/bind';
 import { Formik } from 'formik';
 import React from 'react';
@@ -32,7 +33,8 @@ const Registration = () => {
 				initialValues={{
 					email: '',
 					password: '',
-					phone_number: ''
+					phone_number: '',
+					confirm_password: ''
 				}}
 				validate={(values) => {
 					const errors = {};
@@ -52,17 +54,16 @@ const Registration = () => {
 				onSubmit={async (values, { setSubmitting }) => {
 					console.log(values);
 					try {
-						// const result = await axios.post(
-						// 	`${process.env.REACT_APP_BASE_URL}/identity/resetpassword`,
-						// 	values,
-						// 	{
-						// 		headers: options
-						// 	}
-						// );
-						// if (result.status === 200) {
-						// 	// console.log('result!!')
-						// 	history.push('/login');
-						// }
+						const result = await axios.post(
+							`http://backend.zipu.ng/api/v1/register-transco`,
+							values
+						);
+						if (result.status === 'Success') {
+							// console.log('result!!')
+							history.push('/login');
+						} else {
+							console.log('failed');
+						}
 					} catch (error) {
 						//   notify.show(error.response.data.message, 'error');
 					}
@@ -107,6 +108,17 @@ const Registration = () => {
 								onChange={handleChange}
 								onBlur={handleBlur}
 								value={values.password}
+							/>
+						</View>
+						<View className={styles('input-group')}>
+							<TextInput
+								type="password"
+								isRequired
+								name="confirm_password"
+								placeholder="Confirm password"
+								onChange={handleChange}
+								onBlur={handleBlur}
+								value={values.confirm_password}
 							/>
 						</View>
 						<View className={styles('form-button-container')}>

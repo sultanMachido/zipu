@@ -1,8 +1,9 @@
 import axios from 'axios';
 import classnames from 'classnames/bind';
 import { Formik } from 'formik';
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Facebook } from 'react-spinners-css';
 import { FormButton } from 'ui/atoms/components/Button';
 import { TextInput } from 'ui/atoms/components/TextInput';
 import { Text, View } from 'ui/atoms/components/Typography';
@@ -14,7 +15,9 @@ let styles = classnames.bind(style);
 
 const AdminLogin = () => {
 	const history = useHistory();
-
+	const [authError, setAuthError] = useState(false);
+	const [authMessage, setAuthMessage] = useState('');
+	const [isLoading, setIsLoading] = useState(false);
 	const onSubmit = () => {
 		history.push('/vendor/company');
 	};
@@ -44,11 +47,19 @@ const AdminLogin = () => {
 				}}
 				onSubmit={async (values, { setSubmitting }) => {
 					console.log(values);
+					setIsLoading(true);
+
 					try {
-						const result = await axios.post(`http://backend.zipu.ng/api/v1/login-transco`, values);
-						if (result.status === "Success") {
+						const result = await axios.post('http://backend.zipu.ng/api/v1/login-transco', values);
+						console.log(result, 'result');
+						if (result.status === 'Success') {
 							// console.log('result!!')
+							setIsLoading(false);
 							history.push('/vendor/company');
+						} else {
+							setIsLoading(false);
+							setAuthError(true);
+							setAuthMessage(result.message);
 						}
 					} catch (error) {
 						//   notify.show(error.response.data.message, 'error');
@@ -63,6 +74,7 @@ const AdminLogin = () => {
 					/* and other goodies */
 				}) => (
 					<form className={styles('form-container')} onSubmit={handleSubmit}>
+						{authError ? <Text>{authMessage}</Text> : ''}
 						<View className={styles('input-group')}>
 							<TextInput
 								type="email"
@@ -86,7 +98,7 @@ const AdminLogin = () => {
 							/>
 						</View>
 						<View className={styles('form-button-container')}>
-							<FormButton>LOGIN</FormButton>
+							{isLoading ? <Facebook /> : <FormButton>LOGIN</FormButton>}
 						</View>
 					</form>
 				)}
