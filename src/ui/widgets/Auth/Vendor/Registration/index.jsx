@@ -1,4 +1,5 @@
 import classnames from 'classnames/bind';
+import { Formik } from 'formik';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { FormButton } from 'ui/atoms/components/Button';
@@ -27,20 +28,94 @@ const Registration = () => {
 				</View>
 			</View>
 
-			<form className={styles('form-container')} onSubmit={onSubmit}>
-				<View className={styles('input-group')}>
-					<TextInput type="email" isRequired placeholder="Your email address" />
-				</View>
-				<View className={styles('input-group')}>
-					<TextInput type="tel" isRequired placeholder="Phone number" />
-				</View>
-				<View className={styles('input-group')}>
-					<TextInput type="password" isRequired placeholder="Enter password" />
-				</View>
-				<View className={styles('form-button-container')}>
-					<FormButton>CREATE ACCOUNT</FormButton>
-				</View>
-			</form>
+			<Formik
+				initialValues={{
+					email: '',
+					password: '',
+					phone_number: ''
+				}}
+				validate={(values) => {
+					const errors = {};
+					if (!values.email) {
+						errors.email = 'Required';
+					} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+						errors.email = 'Invalid email address';
+					}
+					if (!values.password) {
+						errors.password = 'Required';
+					}
+					// if (!values.newpassword) {
+					// 	errors.newpassword = 'Required';
+					// }
+					// return errors;
+				}}
+				onSubmit={async (values, { setSubmitting }) => {
+					console.log(values);
+					try {
+						// const result = await axios.post(
+						// 	`${process.env.REACT_APP_BASE_URL}/identity/resetpassword`,
+						// 	values,
+						// 	{
+						// 		headers: options
+						// 	}
+						// );
+						// if (result.status === 200) {
+						// 	// console.log('result!!')
+						// 	history.push('/login');
+						// }
+					} catch (error) {
+						//   notify.show(error.response.data.message, 'error');
+					}
+				}}>
+				{({
+					values,
+					handleChange,
+					handleBlur,
+					handleSubmit,
+					isSubmitting
+					/* and other goodies */
+				}) => (
+					<form className={styles('form-container')} onSubmit={handleSubmit}>
+						<View className={styles('input-group')}>
+							<TextInput
+								type="email"
+								isRequired
+								name="email"
+								placeholder="Your email address"
+								onChange={handleChange}
+								onBlur={handleBlur}
+								value={values.email}
+							/>
+						</View>
+						<View className={styles('input-group')}>
+							<TextInput
+								type="tel"
+								isRequired
+								name="phone_number"
+								placeholder="Phone number"
+								onChange={handleChange}
+								onBlur={handleBlur}
+								value={values.phone_number}
+							/>
+						</View>
+						<View className={styles('input-group')}>
+							<TextInput
+								type="password"
+								isRequired
+								name="password"
+								placeholder="Enter password"
+								onChange={handleChange}
+								onBlur={handleBlur}
+								value={values.password}
+							/>
+						</View>
+						<View className={styles('form-button-container')}>
+							<FormButton>CREATE ACCOUNT</FormButton>
+						</View>
+					</form>
+				)}
+			</Formik>
+
 			<View className={styles('verification-text')}>
 				<Text textAlign="center" fontWeight="500" color="grey-dark">
 					A verification message will be sent to your email

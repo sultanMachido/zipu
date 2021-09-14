@@ -1,8 +1,9 @@
-import client from '../../utils/Api';
-import moment from 'moment';
-import ResolveErrorMessage from '../../utils/ResolveErrorMessage';
 import { message } from 'antd';
+import moment from 'moment';
 import Swal from 'sweetalert2';
+
+import client from '../../utils/Api';
+import ResolveErrorMessage from '../../utils/ResolveErrorMessage';
 
 export const login = (payload) => {
 	return (dispatch) => {

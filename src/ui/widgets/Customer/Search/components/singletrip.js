@@ -10,13 +10,10 @@ export const trip = {
 	cost: 2000,
 	allowed_luggage_space_per_customer: 5,
 
-
 	extra_luggage_cost_per_kg: 1000,
-
 
 	allows_pickup: 'yes',
 	pickup_cost: 100,
-
 
 	trip_date_time: '2021-07-27 09:00:00',
 	status: 'Loading',
