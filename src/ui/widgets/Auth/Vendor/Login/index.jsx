@@ -51,8 +51,8 @@ const AdminLogin = () => {
 
 					try {
 						const result = await axios.post('http://backend.zipu.ng/api/v1/login-transco', values);
-						console.log(result, 'result');
-						if (result.status === 'Success') {
+						// console.log(result.data.status, 'result');
+						if (result.data.status === 'Success') {
 							// console.log('result!!')
 							setIsLoading(false);
 							history.push('/vendor/company');
@@ -98,7 +98,13 @@ const AdminLogin = () => {
 							/>
 						</View>
 						<View className={styles('form-button-container')}>
-							{isLoading ? <Facebook /> : <FormButton>LOGIN</FormButton>}
+							{isLoading ? (
+								<View style={{ margin: '0 auto', width: '100%' }}>
+									<Facebook />
+								</View>
+							) : (
+								<FormButton>LOGIN</FormButton>
+							)}
 						</View>
 					</form>
 				)}
