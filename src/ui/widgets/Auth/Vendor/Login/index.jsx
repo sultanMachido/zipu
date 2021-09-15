@@ -50,7 +50,7 @@ const AdminLogin = () => {
 					setIsLoading(true);
 
 					try {
-						const result = await axios.post('http://backend.zipu.ng/api/v1/login-transco', values);
+						const result = await axios.post('https://backend.zipu.ng/api/v1/login-transco', values);
 						// console.log(result.data.status, 'result');
 						if (result.data.status === 'Success') {
 							// console.log('result!!')
