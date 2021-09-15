@@ -16,6 +16,7 @@ import { Text, View } from 'ui/atoms/components/Typography';
 
 import AuthCard from '../../AuthCard';
 import style from './index.module.scss';
+// import ZipuLogo from '../../../../../assets/img/zipu-logo.svg';
 
 let styles = classnames.bind(style);
 

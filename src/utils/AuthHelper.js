@@ -1,4 +1,5 @@
 /* eslint-disable react/display-name */
+import LocaleProvider from 'antd/lib/locale-provider';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
@@ -45,6 +46,27 @@ const CustomerGuard = ({ component: Component, login: { token, isAuthenticated }
 			render={(props) => {
 				return isLoggedIn ? <Component {...props} /> : <Redirect to="/customer/login" />;
 			}}
+		/>
+	);
+};
+
+export const VendorGuard = ({ children, ...rest }) => {
+	const vendorToken = localStorage.getItem('vendorToken');
+	return (
+		<Route
+			{...rest}
+			render={({ location }) =>
+				vendorToken ? (
+					children
+				) : (
+					<Redirect
+						to={{
+							pathname: '/vendor/auth/login',
+							state: { from: location }
+						}}
+					/>
+				)
+			}
 		/>
 	);
 };

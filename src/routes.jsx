@@ -42,7 +42,7 @@ import TerminalStaff from 'ui/widgets/Vendor/TerminalStaff';
 import TripManagement from 'ui/widgets/Vendor/TripManagement';
 import VehicleListing from 'ui/widgets/Vendor/VehicleListing';
 import ViewTerminal from 'ui/widgets/Vendor/ViewTerminal';
-import CustomerGuard, { GuestCustomer, PrivateCustomer } from 'utils/AuthHelper';
+import CustomerGuard, { GuestCustomer, PrivateCustomer, VendorGuard } from 'utils/AuthHelper';
 import PublicRoute from 'utils/PublicRoute';
 
 export const Routes = () => {
@@ -71,9 +71,16 @@ export const Routes = () => {
 				<Route exact path="/vendor/auth/cac" component={CAC} />
 				<Route exact path="/vendor/auth/business" component={BusinessDetails} />
 				<Route exact path="/vendor/auth/transport-type" component={TransportType} />
-				<Route exact path="/vendor/auth/welcome" component={AdminWelcome} />
-				<Route exact path="/vendor/add-staff" component={AddStaff} />
-				<Route exact path="/vendor/company" component={Company} />
+
+				<VendorGuard exact path="/vendor/auth/welcome">
+					<AdminWelcome />
+				</VendorGuard>
+				<VendorGuard exact path="/vendor/add-staff">
+					<AddStaff />
+				</VendorGuard>
+				<VendorGuard exact path="/vendor/company">
+					<Company />
+				</VendorGuard>
 				<Route exact path="/vendor/create-terminal" component={CreateTerminal} />
 				<Route exact path="/vendor/passenger-management" component={PassengerManagement} />
 				<Route exact path="/vendor/profile" component={Profile} />
