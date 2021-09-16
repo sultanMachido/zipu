@@ -86,25 +86,25 @@ const AdminLogin = () => {
 					// return errors;
 				}}
 				onSubmit={async (values, { setSubmitting }) => {
-					console.log(values);
+					// console.log(values);
 					setIsLoading(true);
 
-					try {
-						const result = await axios.post('https://backend.zipu.ng/api/v1/login-transco', values);
-						// console.log(result.data.data.token.plainTextToken, 'result');
-						if (result.data.status === 'Success') {
-							// console.log('result!!')
-							localStorage.setItem('vendorToken', ` ${result.data.data.token.plainTextToken}`);
-							setIsLoading(false);
-							history.push('/vendor/company');
-						} else {
-							setIsLoading(false);
-							setAuthError(true);
-							setAuthMessage(result.message);
-						}
-					} catch (error) {
-						//   notify.show(error.response.data.message, 'error');
-					}
+					// try {
+					// 	const result = await axios.post('https://backend.zipu.ng/api/v1/login-transco', values);
+					// 	// console.log(result.data.data.token.plainTextToken, 'result');
+					// 	if (result.data.status === 'Success') {
+					// 		// console.log('result!!')
+					// 		localStorage.setItem('vendorToken', ` ${result.data.data.token.plainTextToken}`);
+					// 		setIsLoading(false);
+					// 		history.push('/vendor/company');
+					// 	} else {
+					// 		setIsLoading(false);
+					// 		setAuthError(true);
+					// 		setAuthMessage(result.message);
+					// 	}
+					// } catch (error) {
+					// 	//   notify.show(error.response.data.message, 'error');
+					// }
 				}}>
 				{({
 					values,
@@ -141,7 +141,7 @@ const AdminLogin = () => {
 						<View className={styles('form-button-container')}>
 							{isLoading ? (
 								<View style={{ margin: '0 auto', width: '100%' }}>
-									<Facebook />
+									<Facebook className={styles('loader')} />
 								</View>
 							) : (
 								<FormButton>LOGIN</FormButton>

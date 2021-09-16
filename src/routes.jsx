@@ -81,9 +81,22 @@ export const Routes = () => {
 				<VendorGuard exact path="/vendor/company">
 					<Company />
 				</VendorGuard>
-				<Route exact path="/vendor/create-terminal" component={CreateTerminal} />
-				<Route exact path="/vendor/passenger-management" component={PassengerManagement} />
-				<Route exact path="/vendor/profile" component={Profile} />
+				<VendorGuard exact path="/vendor/create-terminal">
+					<CreateTerminal />
+				</VendorGuard>
+				<VendorGuard exact path="/vendor/passenger-management">
+					<PassengerManagement />
+				</VendorGuard>
+				<VendorGuard exact path="/vendor/profile">
+					<Profile />
+				</VendorGuard>
+				<VendorGuard exact path="/vendor/staff">
+					<StaffActivity />
+				</VendorGuard>
+				<VendorGuard exact path="/vendor/staff-management">
+					<StaffManagement />
+				</VendorGuard>
+
 				<Route exact path="/vendor/staff" component={StaffActivity} />
 				<Route exact path="/vendor/staff-management" component={StaffManagement} />
 				<Route exact path="/vendor/terminal-management" component={TerminalManagement} />

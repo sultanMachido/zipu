@@ -33,7 +33,7 @@ const Registration = () => {
 				initialValues={{
 					email: '',
 					password: '',
-					phone_number: '',
+					phone: '',
 					confirm_password: ''
 				}}
 				validate={(values) => {
@@ -53,12 +53,25 @@ const Registration = () => {
 				}}
 				onSubmit={async (values, { setSubmitting }) => {
 					console.log(values);
+					let axiosConfig = {
+						headers: {
+							'content-type': 'application/json',
+							'Access-Control-Allow-Origin': '*'
+						}
+					};
 					try {
 						const result = await axios.post(
-							`http://backend.zipu.ng/api/v1/register-transco`,
-							values
+							'http://backend.zipu.ng/api/v1/register-transco',
+							values,
+							axiosConfig
 						);
-						if (result.status === 'Success') {
+
+						// const result = await fetch('http://backend.zipu.ng/api/v1/register-transco', {
+						// 	method: 'POST',
+						// 	body: JSON.stringify(values)
+						// });
+						console.log(result, 'result');
+						if (result.data.status === 'Success') {
 							// console.log('result!!')
 							history.push('/login');
 						} else {
@@ -66,6 +79,7 @@ const Registration = () => {
 						}
 					} catch (error) {
 						//   notify.show(error.response.data.message, 'error');
+						console.log(error);
 					}
 				}}>
 				{({
@@ -92,11 +106,11 @@ const Registration = () => {
 							<TextInput
 								type="tel"
 								isRequired
-								name="phone_number"
+								name="phone"
 								placeholder="Phone number"
 								onChange={handleChange}
 								onBlur={handleBlur}
-								value={values.phone_number}
+								value={values.phone}
 							/>
 						</View>
 						<View className={styles('input-group')}>

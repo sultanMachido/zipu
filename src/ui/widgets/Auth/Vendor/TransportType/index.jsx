@@ -1,3 +1,4 @@
+import axios from 'axios';
 import classnames from 'classnames/bind';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -40,13 +41,42 @@ const TransportType = () => {
 	const [values, setValues] = useState(initialValues);
 	const history = useHistory();
 
-	const onSubmit = () => {
-		history.push('/vendor/auth/cac');
+	const onSubmit = async (e) => {
+		e.preventDefault();
+		let payload = {
+			operations: [],
+			company_size: ''
+		};
+
+		const { seatBooking, companySize, vehicleHire, vehicleRenting } = values;
+
+		if (seatBooking) {
+			payload.operations.push('seat booking');
+		}
+
+		if (vehicleHire) {
+			payload.operations.push('vehicle hire');
+		}
+
+		if (vehicleRenting) {
+			payload.operations.push('vehicle renting');
+		}
+
+		if (companySize) {
+			payload.company_size = companySize;
+		}
+
+		console.log(payload, 'payload');
+
+		let result = await axios('http://backend.zipu.ng/api/v1/update-transport-type', payload);
+
+		// history.push('/vendor/auth/cac');
 	};
 	const handleInputChange = (e) => {
 		const target = e.target;
 		const value = target.type === 'checkbox' ? target.checked : target.value;
 		const name = target.name;
+
 		setValues({
 			...values,
 			[name]: value
@@ -72,7 +102,7 @@ const TransportType = () => {
 				</View>
 			</View>
 
-			<form className={styles('form-container')} onSubmit={onSubmit}>
+			<form className={styles('form-container')} onSubmit={(e) => onSubmit(e)}>
 				<View>
 					<View className={styles('input-group')}>
 						<Text fontWeight="bold" className={styles('label')}>
@@ -102,7 +132,7 @@ const TransportType = () => {
 					<View className={styles('input-group')}>
 						<TextInput
 							label="Company size"
-							type="tel"
+							type="text"
 							labelClass={styles('label')}
 							placeholder="0"
 							name="companySize"
