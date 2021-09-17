@@ -44,6 +44,8 @@
 				"aspects": ["invalidHref", "preferButton"]
 			}
 		],
-		"sort-imports": ["error", { "ignoreDeclarationSort": true }]
+		"sort-imports": ["error", { "ignoreDeclarationSort": true, "ignoreCase": true,
+			"ignoreMemberSort": true,
+			"memberSyntaxSortOrder": ["none", "all", "multiple", "single"] }]
 	}
 }

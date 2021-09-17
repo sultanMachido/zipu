@@ -2,6 +2,7 @@ import axios from 'axios';
 import classnames from 'classnames/bind';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Facebook } from 'react-spinners-css';
 import { FormButton } from 'ui/atoms/components/Button';
 import { TextInput } from 'ui/atoms/components/TextInput';
 import { Text, View } from 'ui/atoms/components/Typography';
@@ -39,9 +40,11 @@ const options = [
 
 const TransportType = () => {
 	const [values, setValues] = useState(initialValues);
+	const [isLoading, setIsLoading] = useState(false);
 	const history = useHistory();
 
 	const onSubmit = async (e) => {
+		setIsLoading(true);
 		e.preventDefault();
 		let payload = {
 			operations: [],
@@ -66,10 +69,27 @@ const TransportType = () => {
 			payload.company_size = companySize;
 		}
 
+		let token = localStorage.getItem('vendorToken');
+
 		console.log(payload, 'payload');
+		let options = {
+			headers: {
+				'content-type': 'application/json',
+				'Access-Control-Allow-Origin': '*',
+				Authorization: `Bearer ${token}`
+			}
+		};
 
-		let result = await axios('http://backend.zipu.ng/api/v1/update-transport-type', payload);
+		let result = await axios.post(
+			'http://backend.zipu.ng/api/v1/update-transport-type',
+			payload,
+			options
+		);
 
+		if (result.data.status === 'Success') {
+			setIsLoading(false);
+			history.push('/vendor/auth/cac');
+		}
 		// history.push('/vendor/auth/cac');
 	};
 	const handleInputChange = (e) => {
@@ -145,7 +165,13 @@ const TransportType = () => {
 				</View>
 
 				<View className={styles('form-button-container')}>
-					<FormButton>NEXT</FormButton>
+					{isLoading ? (
+						<View style={{ margin: '0 auto', width: '100%' }}>
+							<Facebook className={styles('loader')} />
+						</View>
+					) : (
+						<FormButton>NEXT</FormButton>
+					)}
 				</View>
 			</form>
 		</AuthCard>
