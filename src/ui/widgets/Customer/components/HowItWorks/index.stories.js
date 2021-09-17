@@ -8,6 +8,6 @@ export default {
 	component: HowItWorks
 };
 
-const Template = args => <HowItWorks {...args} />;
+const Template = (args) => <HowItWorks {...args} />;
 
 export const Default = Template.bind({});

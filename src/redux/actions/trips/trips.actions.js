@@ -280,11 +280,10 @@ export const bookTrip = (payload) => async (dispatch) => {
 	} catch (error) {
 		const message = error.response?.data?.message;
 		console.log('messs eror', message);
-		
+
 		return { status: false, message: JSON.stringify(message) || SOMETHING_WENT_WRONG };
 	}
 };
-
 
 export const bookTripWithPickup = (payload) => async (dispatch) => {
 	try {

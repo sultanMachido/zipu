@@ -1,8 +1,9 @@
 import axios from 'axios';
 import classnames from 'classnames/bind';
 import { Formik } from 'formik';
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Facebook } from 'react-spinners-css';
 import { FormButton } from 'ui/atoms/components/Button';
 import { TextInput } from 'ui/atoms/components/TextInput';
 import { Text, View } from 'ui/atoms/components/Typography';
@@ -15,6 +16,7 @@ let styles = classnames.bind(style);
 
 const Registration = () => {
 	const history = useHistory();
+	const [isLoading, setIsLoading] = useState(false);
 
 	const onSubmit = () => {
 		history.push('/vendor/auth/otp');
@@ -46,12 +48,19 @@ const Registration = () => {
 					if (!values.password) {
 						errors.password = 'Required';
 					}
+					if (!values.confirm_password) {
+						errors.confirm_password = 'Required';
+					}
+					if (!values.phone) {
+						errors.phone = 'Required';
+					}
 					// if (!values.newpassword) {
 					// 	errors.newpassword = 'Required';
 					// }
 					// return errors;
 				}}
 				onSubmit={async (values, { setSubmitting }) => {
+					setIsLoading(true);
 					console.log(values);
 					let axiosConfig = {
 						headers: {
@@ -73,7 +82,9 @@ const Registration = () => {
 						console.log(result, 'result');
 						if (result.data.status === 'Success') {
 							// console.log('result!!')
-							history.push('/login');
+							localStorage.setItem('vendorToken', ` ${result.data.data.token.plainTextToken}`);
+							setIsLoading(false);
+							history.push('/vendor/auth/transport-type');
 						} else {
 							console.log('failed');
 						}
@@ -136,7 +147,13 @@ const Registration = () => {
 							/>
 						</View>
 						<View className={styles('form-button-container')}>
-							<FormButton>CREATE ACCOUNT</FormButton>
+							{isLoading ? (
+								<View style={{ margin: '0 auto', width: '100%' }}>
+									<Facebook className={styles('loader')} />
+								</View>
+							) : (
+								<FormButton>CREATE ACCOUNT</FormButton>
+							)}
 						</View>
 					</form>
 				)}

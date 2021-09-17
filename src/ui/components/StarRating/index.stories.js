@@ -9,7 +9,7 @@ export default {
 	component: StarRating
 };
 
-const Template = args => <StarRating {...args} />;
+const Template = (args) => <StarRating {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

@@ -17,8 +17,7 @@ export const navItems = [
 	}
 ];
 
-
-export const  states = [
+export const states = [
 	{
 		code: 'FC',
 		name: 'Abuja'
@@ -168,6 +167,3 @@ export const  states = [
 		name: 'Zamfara'
 	}
 ];
-
-
-

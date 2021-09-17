@@ -22,7 +22,8 @@ import {
 	filterCustomerBookings,
 	updateBookingErrors,
 	updateBookingLoading,
-	updateBookingSuccess} from './bookings.actionCreators';
+	updateBookingSuccess
+} from './bookings.actionCreators';
 
 const SOMETHING_WENT_WRONG = 'Something went wrong';
 
