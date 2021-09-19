@@ -1,6 +1,8 @@
+import axios from 'axios';
 import classnames from 'classnames/bind';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Facebook } from 'react-spinners-css';
 import { FormButton } from 'ui/atoms/components/Button';
 import { SelectField } from 'ui/atoms/components/SelectField';
 import { TextInput } from 'ui/atoms/components/TextInput';
@@ -36,10 +38,11 @@ const noOfEmployees = [{ name: 10 }, { name: 20 }, { name: 30 }, { name: 50 }, {
 const BusinessDetails = () => {
 	const [values, setValues] = useState(initialValues);
 	const history = useHistory();
+	const [isLoading, setIsLoading] = useState(false);
 
-	const onSubmit = (e) => {
+	const onSubmit = async (e) => {
 		e.preventDefault();
-
+		setIsLoading(true);
 		const formData = new FormData();
 
 		formData.append('bank', values.bank);
@@ -53,7 +56,25 @@ const BusinessDetails = () => {
 
 		let token = localStorage.getItem('vendorToken');
 		console.log(formData);
-		// history.push('/vendor/auth/welcome');
+
+		let options = {
+			headers: {
+				'content-type': 'multipart/form-data',
+				'Access-Control-Allow-Origin': '*',
+				Authorization: `Bearer ${token}`
+			}
+		};
+
+		let result = await axios.post(
+			'https://backend.zipu.ng/api/v1/bank-policy-update',
+			formData,
+			options
+		);
+		console.log(result);
+		if (result.data.status === 'Success') {
+			setIsLoading(false);
+			history.push('/vendor/auth/welcome');
+		}
 	};
 
 	const handleInputChange = (e) => {
@@ -86,6 +107,7 @@ const BusinessDetails = () => {
 							placeholder="Name of Transport Service"
 							name="transportService"
 							value={values.transportService}
+							onChange={handleInputChange}
 						/>
 					</View>
 					<View className={styles('input-group')}>
@@ -118,6 +140,7 @@ const BusinessDetails = () => {
 							placeholder="Bank account number"
 							name="accountNumber"
 							value={values.accountNumber}
+							onChange={handleInputChange}
 						/>
 					</View>
 					<View className={styles('input-group')}>
@@ -125,6 +148,7 @@ const BusinessDetails = () => {
 							placeholder="Verify Account name "
 							name="accountName"
 							value={values.accountName}
+							onChange={handleInputChange}
 						/>
 					</View>
 				</View>
