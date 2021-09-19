@@ -2,6 +2,7 @@ import axios from 'axios';
 import classnames from 'classnames/bind';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Facebook } from 'react-spinners-css';
 import { FormButton } from 'ui/atoms/components/Button';
 import { SelectField } from 'ui/atoms/components/SelectField';
 import { Text, View } from 'ui/atoms/components/Typography';
@@ -27,43 +28,43 @@ const options = [
 	{ name: '1 week' }
 ];
 
-const formatReservationWindow =(time)=>{
-    
+const formatReservationWindow = (time) => {
 	if (time === 'same day') {
-		return 0
+		return 0;
 	}
 
-	if(time === '24 hours'){
-       return 24
+	if (time === '24 hours') {
+		return 24;
 	}
 
-	if(time === '48 hours'){
-       return 48
+	if (time === '48 hours') {
+		return 48;
 	}
 
-	if(time === '1 week'){
-       return 168
+	if (time === '1 week') {
+		return 168;
 	}
-}
+};
 
 const CAC = () => {
 	const [values, setValues] = useState(initialValues);
 	const history = useHistory();
 	const [inputError, setInputError] = useState({});
-	const [cac, setCAC] = useState({});
+	const [isLoading, setIsLoading] = useState(false);
 
-	const onSubmit = (e) => {
+	const onSubmit = async (e) => {
 		e.preventDefault();
+		setIsLoading(true);
 		const formData = new FormData();
 
-		let reservationWindow = formatReservationWindow(values.reservationWindow)
+		let reservationWindow = formatReservationWindow(values.reservationWindow);
 
 		formData.append('reservation_window', reservationWindow);
-		values.uploadPermit.files.map((file) => formData.append('permit', file));
-		values.CACDocument.files.map((file) => formData.append('cac', file));
+		// values.uploadPermit.files.map((file) => formData.append('permit', file));
+		// values.CACDocument.files.map((file) => formData.append('cac', file));
 		// formData.append('cac', values.fileBlob, 'cac');
-		// formData.append('permit', [...values.uploadPermit.files]);
-		// formData.append('cac', [...values.CACDocument.files]);
+		formData.append('permit', [...values.uploadPermit.files]);
+		formData.append('cac', [...values.CACDocument.files]);
 		let token = localStorage.getItem('vendorToken');
 		console.log(formData);
 		let options = {
@@ -74,9 +75,16 @@ const CAC = () => {
 			}
 		};
 
-		let result = axios.post('https://backend.zipu.ng/api/v1/cac-permit-update', formData, options);
+		let result = await axios.post(
+			'https://backend.zipu.ng/api/v1/cac-permit-update',
+			formData,
+			options
+		);
 		console.log(result);
-		// history.push('/vendor/auth/business');
+		if (result.data.status === 'Success') {
+			setIsLoading(false);
+			history.push('/vendor/auth/business');
+		}
 	};
 
 	const handleInputChange = (e) => {
@@ -206,7 +214,13 @@ const CAC = () => {
 				</View>
 
 				<View className={styles('form-button-container')}>
-					<FormButton>NEXT</FormButton>
+					{isLoading ? (
+						<View style={{ margin: '0 auto', width: '100%' }}>
+							<Facebook className={styles('loader')} />
+						</View>
+					) : (
+						<FormButton>NEXT</FormButton>
+					)}
 				</View>
 			</form>
 		</AuthCard>

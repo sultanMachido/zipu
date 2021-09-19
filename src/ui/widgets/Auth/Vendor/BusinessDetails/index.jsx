@@ -23,20 +23,37 @@ const initialValues = {
 	accountName: ''
 };
 
-const options = [
-	{ name: 'hello' },
-	{ name: 'hello' },
-	{ name: 'hello' },
-	{ name: 'hello' },
-	{ name: 'hello' }
+const banks = [
+	{ name: 'UBA' },
+	{ name: 'GT Bank' },
+	{ name: 'First Bank' },
+	{ name: 'Zenith Bank' },
+	{ name: 'Wema Bank' }
 ];
+
+const noOfEmployees = [{ name: 10 }, { name: 20 }, { name: 30 }, { name: 50 }, { name: 100 }];
 
 const BusinessDetails = () => {
 	const [values, setValues] = useState(initialValues);
 	const history = useHistory();
 
-	const onSubmit = () => {
-		history.push('/vendor/auth/business');
+	const onSubmit = (e) => {
+		e.preventDefault();
+
+		const formData = new FormData();
+
+		formData.append('bank', values.bank);
+		formData.append('name', values.transportService);
+		formData.append('account_name', values.accountName);
+		formData.append('account_number', values.accountNumber);
+		formData.append('number_of_staff', values.numberOfEmployees);
+		formData.append('number_of_staff', values.numberOfEmployees);
+		formData.append('privacy_policy', values.privacyPolicy);
+		formData.append('customer_care_policy', values.customerCarePolicy);
+
+		let token = localStorage.getItem('vendorToken');
+		console.log(formData);
+		// history.push('/vendor/auth/welcome');
 	};
 
 	const handleInputChange = (e) => {
@@ -73,7 +90,7 @@ const BusinessDetails = () => {
 					</View>
 					<View className={styles('input-group')}>
 						<SelectField
-							options={options}
+							options={noOfEmployees}
 							value={values.numberOfEmployees}
 							onChange={handleInputChange}
 							name="numberOfEmployees"
@@ -88,7 +105,7 @@ const BusinessDetails = () => {
 					</Text>
 					<View className={styles('input-group')}>
 						<SelectField
-							options={options}
+							options={banks}
 							value={values.bank}
 							onChange={handleInputChange}
 							name="bank"
@@ -113,7 +130,7 @@ const BusinessDetails = () => {
 				</View>
 				<View className={styles('form-section')}>
 					<Text color="grey-dark" fontWeight="bold">
-						Policy
+						Privacy Policy
 					</Text>
 					<View className={styles('input-group')}>
 						<UploadField
@@ -124,6 +141,9 @@ const BusinessDetails = () => {
 						/>
 					</View>
 					<View className={styles('input-group')}>
+						<Text color="grey-dark" fontWeight="bold">
+							Customer Care Policy
+						</Text>
 						<UploadField
 							label={values.customerCarePolicy}
 							name="customerCarePolicy"
