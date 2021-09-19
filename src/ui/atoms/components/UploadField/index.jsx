@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import classnames from 'classnames/bind';
-import React, { useImperativeHandle, useRef } from 'react';
+import React, { useImperativeHandle, useRef, useState } from 'react';
 import { HTMLStarIcon } from 'ui/svgs';
 import { UploadIcon } from 'ui/svgs/UploadIcon';
 
@@ -32,6 +32,9 @@ export const UploadField = React.forwardRef((props, ref) => {
 
 	const inputRef = useRef(null);
 
+	// const [files, setFiles] = useState([]);
+
+	// setFiles([...label]);
 	useImperativeHandle(ref, () => ({
 		focus: () => {
 			inputRef.current?.focus();
@@ -44,6 +47,10 @@ export const UploadField = React.forwardRef((props, ref) => {
 		onBlur?.(event);
 	};
 
+	const { length, ...files } = label;
+	let file = Object.values(files);
+	console.log(file[0].name, 'here');
+	// console.log(Object.values(files), 'label');
 	return (
 		<div className={styles('input-wrapper', { [`${wrapperClass}`]: wrapperClass })}>
 			<div className={styles('inner-wrapper')}>
@@ -52,9 +59,12 @@ export const UploadField = React.forwardRef((props, ref) => {
 						className={styles('label', { [`${className}`]: className })}
 						variant={variant}
 						htmlFor={id}>
-						<span className={styles('placeholder-container')}>
-							<UploadIcon /> <span>{label.name ? label.name : label}</span>
-						</span>
+						{/* <h1>{file[0].name}</h1> */}
+						{file.map((files, index) => {
+							<span className={styles('placeholder-container')}>{files.name}</span>;
+						})}
+						{/* <UploadIcon /> <span>{label.name ? label.name : label}</span> */}
+
 						{/* {isRequired && <HTMLStarIcon color="red" />} */}
 					</label>
 				)}

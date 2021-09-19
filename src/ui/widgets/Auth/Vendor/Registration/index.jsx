@@ -70,7 +70,7 @@ const Registration = () => {
 					};
 					try {
 						const result = await axios.post(
-							'http://backend.zipu.ng/api/v1/register-transco',
+							'https://backend.zipu.ng/api/v1/register-transco',
 							values,
 							axiosConfig
 						);
@@ -84,7 +84,7 @@ const Registration = () => {
 							// console.log('result!!')
 							localStorage.setItem('vendorToken', ` ${result.data.data.token.plainTextToken}`);
 							setIsLoading(false);
-							history.push('/vendor/auth/transport-type');
+							history.push('/vendor/auth/otp');
 						} else {
 							console.log('failed');
 						}

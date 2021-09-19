@@ -81,7 +81,7 @@ const TransportType = () => {
 		};
 
 		let result = await axios.post(
-			'http://backend.zipu.ng/api/v1/update-transport-type',
+			'https://backend.zipu.ng/api/v1/update-transport-type',
 			payload,
 			options
 		);

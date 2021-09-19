@@ -1,7 +1,9 @@
+import axios from 'axios';
 import classnames from 'classnames/bind';
 import React, { useState } from 'react';
 import OtpInput from 'react-otp-input';
 import { useHistory } from 'react-router-dom';
+import { Facebook } from 'react-spinners-css';
 import { FormButton } from 'ui/atoms/components/Button';
 import { Text, View } from 'ui/atoms/components/Typography';
 import { EmailIcon } from 'ui/svgs';
@@ -14,9 +16,36 @@ let styles = classnames.bind(style);
 const OTP = () => {
 	const [value, setValue] = useState('');
 	const history = useHistory();
+	const [isLoading, setIsLoading] = useState(false);
 
-	const onSubmit = () => {
-		history.push('/vendor/auth/transport-type');
+	const onSubmit = async (e) => {
+		e.preventDefault();
+
+		setIsLoading(true);
+
+		let payload = {
+			otp_code: value
+		};
+		let token = localStorage.getItem('vendorToken');
+		console.log(token);
+		let options = {
+			headers: {
+				'content-type': 'application/json',
+				'Access-Control-Allow-Origin': '*',
+				Authorization: `Bearer ${token}`
+			}
+		};
+
+		let result = await axios.post(
+			'https://backend.zipu.ng/api/v1/verify-transco-email',
+			payload,
+			options
+		);
+
+		if (result.data.status === 'Success') {
+			setIsLoading(false);
+			history.push('/vendor/auth/transport-type');
+		}
 	};
 
 	return (
@@ -32,7 +61,7 @@ const OTP = () => {
 				</Text>
 			</View>
 			<View className={styles('form-container')}>
-				<form onSubmit={onSubmit}>
+				<form onSubmit={(e) => onSubmit(e)}>
 					<OtpInput
 						value={value}
 						onChange={(otp) => setValue(otp)}
@@ -42,7 +71,13 @@ const OTP = () => {
 						separator={<span className={styles('separator')}></span>}
 					/>
 					<View className={styles('form-button-container')}>
-						<FormButton>CONFIRM OTP</FormButton>
+						{isLoading ? (
+							<View style={{ margin: '0 auto', width: '100%' }}>
+								<Facebook className={styles('loader')} />
+							</View>
+						) : (
+							<FormButton>CONFIRM OTP</FormButton>
+						)}
 					</View>
 				</form>
 			</View>
