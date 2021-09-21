@@ -214,13 +214,7 @@ const CAC = () => {
 				</View>
 
 				<View className={styles('form-button-container')}>
-					{isLoading ? (
-						<View style={{ margin: '0 auto', width: '100%' }}>
-							<Facebook className={styles('loader')} />
-						</View>
-					) : (
-						<FormButton>NEXT</FormButton>
-					)}
+					<FormButton loading={isLoading}>NEXT</FormButton>
 				</View>
 			</form>
 		</AuthCard>

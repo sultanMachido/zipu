@@ -178,13 +178,7 @@ const BusinessDetails = () => {
 				</View>
 
 				<View className={styles('form-button-container')}>
-					{isLoading ? (
-						<View style={{ margin: '0 auto', width: '100%' }}>
-							<Facebook className={styles('loader')} />
-						</View>
-					) : (
-						<FormButton>SUBMIT</FormButton>
-					)}
+					<FormButton loading={isLoading}>SUBMIT</FormButton>
 				</View>
 			</form>
 		</AuthCard>

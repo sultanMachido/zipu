@@ -151,7 +151,7 @@ const TransportType = () => {
 
 					<View className={styles('input-group')}>
 						<TextInput
-							label="Company size"
+							label="Number of Buses"
 							type="text"
 							labelClass={styles('label')}
 							placeholder="0"
@@ -165,13 +165,7 @@ const TransportType = () => {
 				</View>
 
 				<View className={styles('form-button-container')}>
-					{isLoading ? (
-						<View style={{ margin: '0 auto', width: '100%' }}>
-							<Facebook className={styles('loader')} />
-						</View>
-					) : (
-						<FormButton>NEXT</FormButton>
-					)}
+					<FormButton loading={isLoading}>NEXT</FormButton>
 				</View>
 			</form>
 		</AuthCard>
