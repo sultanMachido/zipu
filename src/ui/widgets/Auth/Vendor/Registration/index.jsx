@@ -9,6 +9,8 @@ import { TextInput } from 'ui/atoms/components/TextInput';
 import { Text, View } from 'ui/atoms/components/Typography';
 import { RingIcon1 } from 'ui/svgs';
 
+import { APIService } from '../../../../../config/apiConfig';
+import { getAPIError } from '../../../../../utils/errorHandler/apiErrors';
 import AuthCard from '../../AuthCard';
 import style from './index.module.scss';
 
@@ -17,7 +19,7 @@ let styles = classnames.bind(style);
 const Registration = () => {
 	const history = useHistory();
 	const [isLoading, setIsLoading] = useState(false);
-	const [authMessage, setAuthMessage] = useState('');
+	const [errorMessage, setErrorMessage] = useState('');
 
 	const onSubmit = () => {
 		history.push('/vendor/auth/otp');
@@ -58,34 +60,20 @@ const Registration = () => {
 				}}
 				onSubmit={async (values, { setSubmitting }) => {
 					console.log(values);
-					let axiosConfig = {
-						headers: {
-							'content-type': 'application/json',
-							'Access-Control-Allow-Origin': '*'
-						}
-					};
 
 					if (values.password !== values.confirm_password) {
-						setAuthMessage('Password and Confirm Password do not match');
+						setErrorMessage('Password and Confirm Password do not match');
 						return;
 					}
 
 					setIsLoading(true);
 					try {
-						const result = await axios.post(
-							'https://backend.zipu.ng/api/v1/register-transco',
-							values,
-							axiosConfig
-						);
+						const result = await APIService.post('/register-transco', values);
 
-						// const result = await fetch('http://backend.zipu.ng/api/v1/register-transco', {
-						// 	method: 'POST',
-						// 	body: JSON.stringify(values)
-						// });
 						console.log(result, 'result');
 						if (result.data.status === 'Success') {
 							// console.log('result!!')
-							localStorage.setItem('vendorToken', ` ${result.data.data.token.plainTextToken}`);
+							localStorage.setItem('zipuJWTToken', ` ${result.data.data.token.plainTextToken}`);
 							setIsLoading(false);
 							history.push('/vendor/auth/otp');
 						} else {
@@ -95,15 +83,12 @@ const Registration = () => {
 						console.log(error);
 						if (error.response) {
 							setIsLoading(false);
+							let errorMessage = getAPIError(error.response.data.message);
 
-							let err = Object.values(error.response.data.message);
-							let errArrayFlat = err.flat();
-							let errMessage = errArrayFlat.join('');
-							console.log(errMessage);
-							setAuthMessage(errMessage);
+							setErrorMessage(errorMessage);
 						} else if (error.request) {
 							setIsLoading(false);
-							setAuthMessage(error.request);
+							setErrorMessage(error.request);
 							// console.log(error.request);
 						} else {
 							console.log('Error', error.message);
@@ -119,7 +104,7 @@ const Registration = () => {
 					/* and other goodies */
 				}) => (
 					<form className={styles('form-container')} onSubmit={handleSubmit}>
-						{authMessage ? <Text>{authMessage}</Text> : ''}
+						{errorMessage ? <Text>{errorMessage}</Text> : ''}
 						<View className={styles('input-group')}>
 							<TextInput
 								type="email"

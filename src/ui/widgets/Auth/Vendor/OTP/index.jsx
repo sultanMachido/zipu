@@ -8,6 +8,8 @@ import { FormButton } from 'ui/atoms/components/Button';
 import { Text, View } from 'ui/atoms/components/Typography';
 import { EmailIcon } from 'ui/svgs';
 
+import { APIService } from '../../../../../config/apiConfig';
+import { getAPIError } from '../../../../../utils/errorHandler/apiErrors';
 import AuthCard from '../../AuthCard';
 import style from './index.module.scss';
 
@@ -17,7 +19,7 @@ const OTP = () => {
 	const [value, setValue] = useState('');
 	const history = useHistory();
 	const [isLoading, setIsLoading] = useState(false);
-	const [authMessage, setAuthMessage] = useState('');
+	const [errorMessage, setErrorMessage] = useState('');
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
@@ -27,21 +29,9 @@ const OTP = () => {
 		let payload = {
 			otp_code: value
 		};
-		let token = localStorage.getItem('vendorToken');
-		console.log(token);
-		let options = {
-			headers: {
-				'content-type': 'application/json',
-				'Access-Control-Allow-Origin': '*',
-				Authorization: `Bearer ${token}`
-			}
-		};
+
 		try {
-			let result = await axios.post(
-				'https://backend.zipu.ng/api/v1/verify-transco-email',
-				payload,
-				options
-			);
+			let result = await APIService.post('/verify-transco-email', payload);
 
 			if (result.data.status === 'Success') {
 				setIsLoading(false);
@@ -51,14 +41,11 @@ const OTP = () => {
 			if (error.response) {
 				setIsLoading(false);
 
-				let err = Object.values(error.response.data.message);
-				let errArrayFlat = err.flat();
-				let errMessage = errArrayFlat.join('');
-				console.log(errMessage);
-				setAuthMessage(errMessage);
+				let errorMessage = getAPIError(error.response.data.message);
+				setErrorMessage(errorMessage);
 			} else if (error.request) {
 				setIsLoading(false);
-				setAuthMessage(error.request);
+				setErrorMessage(error.request);
 				// console.log(error.request);
 			} else {
 				console.log('Error', error.message);
@@ -93,7 +80,7 @@ const OTP = () => {
 					</View>
 				</form>
 			</View>
-			{authMessage ? <Text>{authMessage}</Text> : ''}
+			{errorMessage ? <Text>{errorMessage}</Text> : ''}
 			<View className={styles('resend-text')}>
 				<Text textAlign="center">
 					Didnt get OTP?

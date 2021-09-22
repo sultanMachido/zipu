@@ -51,7 +51,7 @@ const CustomerGuard = ({ component: Component, login: { token, isAuthenticated }
 };
 
 export const VendorGuard = ({ children, ...rest }) => {
-	const vendorToken = localStorage.getItem('vendorToken');
+	const vendorToken = localStorage.getItem('zipuJWTToken');
 	return (
 		<Route
 			{...rest}

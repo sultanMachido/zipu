@@ -9,6 +9,8 @@ import { Text, View } from 'ui/atoms/components/Typography';
 import { UploadField } from 'ui/atoms/components/UploadField';
 import { RingIcon3 } from 'ui/svgs';
 
+import { APIService } from '../../../../../config/apiConfig';
+import { getAPIError } from '../../../../../utils/errorHandler/apiErrors';
 import AuthCard from '../../AuthCard';
 import style from './index.module.scss';
 
@@ -51,7 +53,7 @@ const CAC = () => {
 	const history = useHistory();
 	const [inputError, setInputError] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
-	const [authMessage, setAuthMessage] = useState('');
+	const [errorMessage, setErrorMessage] = useState('');
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
@@ -61,7 +63,7 @@ const CAC = () => {
 			!values.CACDocument.files.length ||
 			!values.reservationWindow
 		) {
-			setAuthMessage('All Fields are required');
+			setErrorMessage('All Fields are required');
 			return;
 		}
 		setIsLoading(true);
@@ -75,22 +77,11 @@ const CAC = () => {
 		// formData.append('cac', values.fileBlob, 'cac');
 		formData.append('permit', [...values.uploadPermit.files]);
 		formData.append('cac', [...values.CACDocument.files]);
-		let token = localStorage.getItem('vendorToken');
+
 		console.log(formData);
-		let options = {
-			headers: {
-				'content-type': 'multipart/form-data',
-				'Access-Control-Allow-Origin': '*',
-				Authorization: `Bearer ${token}`
-			}
-		};
 
 		try {
-			let result = await axios.post(
-				'https://backend.zipu.ng/api/v1/cac-permit-update',
-				formData,
-				options
-			);
+			let result = await APIService.postMultiPart('/cac-permit-update', formData);
 			console.log(result);
 			if (result.data.status === 'Success') {
 				setIsLoading(false);
@@ -100,14 +91,11 @@ const CAC = () => {
 			if (error.response) {
 				setIsLoading(false);
 
-				let err = Object.values(error.response.data.message);
-				let errArrayFlat = err.flat();
-				let errMessage = errArrayFlat.join('');
-				console.log(errMessage);
-				setAuthMessage(errMessage);
+				let errorMessage = getAPIError(error.response.data.message);
+				setErrorMessage(errorMessage);
 			} else if (error.request) {
 				setIsLoading(false);
-				setAuthMessage(error.request);
+				setErrorMessage(error.request);
 				// console.log(error.request);
 			} else {
 				console.log('Error', error.message);
@@ -155,7 +143,7 @@ const CAC = () => {
 			</View>
 
 			<form className={styles('form-container')} onSubmit={onSubmit}>
-				{authMessage ? <Text className={styles('error-text')}>{authMessage}</Text> : ''}
+				{errorMessage ? <Text className={styles('error-text')}>{errorMessage}</Text> : ''}
 				<View>
 					<View className={styles('input-group')}>
 						<SelectField

@@ -8,6 +8,8 @@ import { TextInput } from 'ui/atoms/components/TextInput';
 import { Text, View } from 'ui/atoms/components/Typography';
 import { BusIcon, CarIcon, RingIcon2, SeatIcon } from 'ui/svgs';
 
+import { APIService } from '../../../../../config/apiConfig';
+import { getAPIError } from '../../../../../utils/errorHandler/apiErrors';
 import AuthCard from '../../AuthCard';
 import style from './index.module.scss';
 
@@ -42,7 +44,7 @@ const TransportType = () => {
 	const [values, setValues] = useState(initialValues);
 	const [isLoading, setIsLoading] = useState(false);
 	const history = useHistory();
-	const [authMessage, setAuthMessage] = useState('');
+	const [errorMessage, setErrorMessage] = useState('');
 
 	const onSubmit = async (e) => {
 		setIsLoading(true);
@@ -70,23 +72,10 @@ const TransportType = () => {
 			payload.company_size = companySize;
 		}
 
-		let token = localStorage.getItem('vendorToken');
-
 		console.log(payload, 'payload');
-		let options = {
-			headers: {
-				'content-type': 'application/json',
-				'Access-Control-Allow-Origin': '*',
-				Authorization: `Bearer ${token}`
-			}
-		};
 
 		try {
-			let result = await axios.post(
-				'https://backend.zipu.ng/api/v1/update-transport-type',
-				payload,
-				options
-			);
+			let result = await APIService.post('/update-transport-type', values);
 
 			if (result.data.status === 'Success') {
 				setIsLoading(false);
@@ -96,14 +85,12 @@ const TransportType = () => {
 			if (error.response) {
 				setIsLoading(false);
 
-				let err = Object.values(error.response.data.message);
-				let errArrayFlat = err.flat();
-				let errMessage = errArrayFlat.join('');
-				console.log(errMessage);
-				setAuthMessage(errMessage);
+				let errorMessage = getAPIError(error.response.data.message);
+
+				setErrorMessage(errorMessage);
 			} else if (error.request) {
 				setIsLoading(false);
-				setAuthMessage(error.request);
+				setErrorMessage(error.request);
 				// console.log(error.request);
 			} else {
 				console.log('Error', error.message);
@@ -143,7 +130,7 @@ const TransportType = () => {
 			</View>
 
 			<form className={styles('form-container')} onSubmit={(e) => onSubmit(e)}>
-				{authMessage ? <Text>{authMessage}</Text> : ''}
+				{errorMessage ? <Text>{errorMessage}</Text> : ''}
 				<View>
 					<View className={styles('input-group')}>
 						<Text fontWeight="bold" className={styles('label')}>

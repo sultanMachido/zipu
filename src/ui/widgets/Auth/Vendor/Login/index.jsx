@@ -7,6 +7,8 @@ import { FormButton } from 'ui/atoms/components/Button';
 import { TextInput } from 'ui/atoms/components/TextInput';
 import { Text, View } from 'ui/atoms/components/Typography';
 
+import { APIService } from '../../../../../config/apiConfig';
+import { getAPIError } from '../../../../../utils/errorHandler/apiErrors';
 import AuthCard from '../../AuthCard';
 import style from './index.module.scss';
 
@@ -85,20 +87,22 @@ const AdminLogin = () => {
 					setIsLoading(true);
 
 					try {
-						const result = await axios.post('https://backend.zipu.ng/api/v1/login-transco', values);
+						const result = await APIService.post('/login-transco', values);
+						// const result = await axios.post('https://backend.zipu.ng/api/v1/login-transco', values);
 						// console.log(result.data.data.token.plainTextToken, 'result');
 						console.log(result);
 						if (result.data.status === 'Success') {
 							// console.log('result!!')
-							localStorage.setItem('vendorToken', ` ${result.data.data.token.plainTextToken}`);
+							localStorage.setItem('zipuJWTToken', ` ${result.data.data.token.plainTextToken}`);
 							setIsLoading(false);
 							history.push('/vendor/company');
 						}
 					} catch (error) {
 						if (error.response) {
 							setIsLoading(false);
+							let errorMessage = getAPIError(error.response.data.message);
 
-							setAuthMessage(error.response.data.message);
+							setAuthMessage(errorMessage);
 						} else if (error.request) {
 							setIsLoading(false);
 							setAuthMessage(error.request);

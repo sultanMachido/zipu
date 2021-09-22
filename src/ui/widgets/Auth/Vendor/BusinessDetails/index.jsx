@@ -1,5 +1,6 @@
 import axios from 'axios';
 import classnames from 'classnames/bind';
+import { format } from 'date-fns';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Facebook } from 'react-spinners-css';
@@ -10,6 +11,8 @@ import { Text, View } from 'ui/atoms/components/Typography';
 import { UploadField } from 'ui/atoms/components/UploadField';
 import { RingIcon4 } from 'ui/svgs';
 
+import { APIService } from '../../../../../config/apiConfig';
+import { getAPIError } from '../../../../../utils/errorHandler/apiErrors';
 import AuthCard from '../../AuthCard';
 import style from './index.module.scss';
 
@@ -58,20 +61,8 @@ const BusinessDetails = () => {
 		let token = localStorage.getItem('vendorToken');
 		console.log(formData);
 
-		let options = {
-			headers: {
-				'content-type': 'multipart/form-data',
-				'Access-Control-Allow-Origin': '*',
-				Authorization: `Bearer ${token}`
-			}
-		};
-
 		try {
-			let result = await axios.post(
-				'https://backend.zipu.ng/api/v1/bank-policy-update',
-				formData,
-				options
-			);
+			let result = await APIService('/bank-policy-update', formData);
 			console.log(result);
 			if (result.data.status === 'Success') {
 				setIsLoading(false);
@@ -81,11 +72,8 @@ const BusinessDetails = () => {
 			if (error.response) {
 				setIsLoading(false);
 
-				let err = Object.values(error.response.data.message);
-				let errArrayFlat = err.flat();
-				let errMessage = errArrayFlat.join('');
-				console.log(errMessage);
-				setErrorMessage(errMessage);
+				let errorMessage = getAPIError(error.response.data.message);
+				setErrorMessage(errorMessage);
 			} else if (error.request) {
 				setIsLoading(false);
 				setErrorMessage(error.request);
