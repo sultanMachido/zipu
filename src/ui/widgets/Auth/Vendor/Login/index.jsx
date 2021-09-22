@@ -14,7 +14,7 @@ let styles = classnames.bind(style);
 
 const AdminLogin = () => {
 	const history = useHistory();
-	const [authError, setAuthError] = useState(false);
+
 	const [authMessage, setAuthMessage] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
 	const onSubmit = () => {
@@ -79,31 +79,34 @@ const AdminLogin = () => {
 					if (!values.password) {
 						errors.password = 'Required';
 					}
-					// if (!values.newpassword) {
-					// 	errors.newpassword = 'Required';
-					// }
-					// return errors;
 				}}
 				onSubmit={async (values, { setSubmitting }) => {
 					// console.log(values);
 					setIsLoading(true);
 
-					// try {
-					// 	const result = await axios.post('https://backend.zipu.ng/api/v1/login-transco', values);
-					// 	// console.log(result.data.data.token.plainTextToken, 'result');
-					// 	if (result.data.status === 'Success') {
-					// 		// console.log('result!!')
-					// 		localStorage.setItem('vendorToken', ` ${result.data.data.token.plainTextToken}`);
-					// 		setIsLoading(false);
-					// 		history.push('/vendor/company');
-					// 	} else {
-					// 		setIsLoading(false);
-					// 		setAuthError(true);
-					// 		setAuthMessage(result.message);
-					// 	}
-					// } catch (error) {
-					// 	//   notify.show(error.response.data.message, 'error');
-					// }
+					try {
+						const result = await axios.post('https://backend.zipu.ng/api/v1/login-transco', values);
+						// console.log(result.data.data.token.plainTextToken, 'result');
+						console.log(result);
+						if (result.data.status === 'Success') {
+							// console.log('result!!')
+							localStorage.setItem('vendorToken', ` ${result.data.data.token.plainTextToken}`);
+							setIsLoading(false);
+							history.push('/vendor/company');
+						}
+					} catch (error) {
+						if (error.response) {
+							setIsLoading(false);
+
+							setAuthMessage(error.response.data.message);
+						} else if (error.request) {
+							setIsLoading(false);
+							setAuthMessage(error.request);
+							// console.log(error.request);
+						} else {
+							console.log('Error', error.message);
+						}
+					}
 				}}>
 				{({
 					values,
@@ -114,7 +117,7 @@ const AdminLogin = () => {
 					/* and other goodies */
 				}) => (
 					<form className={styles('form-container')} onSubmit={handleSubmit}>
-						{authError ? <Text>{authMessage}</Text> : ''}
+						{authMessage ? <Text className={styles('error-text')}>{authMessage}</Text> : ''}
 						<View className={styles('input-group')}>
 							<TextInput
 								type="email"

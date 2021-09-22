@@ -42,6 +42,7 @@ const TransportType = () => {
 	const [values, setValues] = useState(initialValues);
 	const [isLoading, setIsLoading] = useState(false);
 	const history = useHistory();
+	const [authMessage, setAuthMessage] = useState('');
 
 	const onSubmit = async (e) => {
 		setIsLoading(true);
@@ -80,16 +81,35 @@ const TransportType = () => {
 			}
 		};
 
-		let result = await axios.post(
-			'https://backend.zipu.ng/api/v1/update-transport-type',
-			payload,
-			options
-		);
+		try {
+			let result = await axios.post(
+				'https://backend.zipu.ng/api/v1/update-transport-type',
+				payload,
+				options
+			);
 
-		if (result.data.status === 'Success') {
-			setIsLoading(false);
-			history.push('/vendor/auth/cac');
+			if (result.data.status === 'Success') {
+				setIsLoading(false);
+				history.push('/vendor/auth/cac');
+			}
+		} catch (error) {
+			if (error.response) {
+				setIsLoading(false);
+
+				let err = Object.values(error.response.data.message);
+				let errArrayFlat = err.flat();
+				let errMessage = errArrayFlat.join('');
+				console.log(errMessage);
+				setAuthMessage(errMessage);
+			} else if (error.request) {
+				setIsLoading(false);
+				setAuthMessage(error.request);
+				// console.log(error.request);
+			} else {
+				console.log('Error', error.message);
+			}
 		}
+
 		// history.push('/vendor/auth/cac');
 	};
 	const handleInputChange = (e) => {
@@ -123,6 +143,7 @@ const TransportType = () => {
 			</View>
 
 			<form className={styles('form-container')} onSubmit={(e) => onSubmit(e)}>
+				{authMessage ? <Text>{authMessage}</Text> : ''}
 				<View>
 					<View className={styles('input-group')}>
 						<Text fontWeight="bold" className={styles('label')}>

@@ -17,6 +17,7 @@ const OTP = () => {
 	const [value, setValue] = useState('');
 	const history = useHistory();
 	const [isLoading, setIsLoading] = useState(false);
+	const [authMessage, setAuthMessage] = useState('');
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
@@ -35,16 +36,33 @@ const OTP = () => {
 				Authorization: `Bearer ${token}`
 			}
 		};
+		try {
+			let result = await axios.post(
+				'https://backend.zipu.ng/api/v1/verify-transco-email',
+				payload,
+				options
+			);
 
-		let result = await axios.post(
-			'https://backend.zipu.ng/api/v1/verify-transco-email',
-			payload,
-			options
-		);
+			if (result.data.status === 'Success') {
+				setIsLoading(false);
+				history.push('/vendor/auth/transport-type');
+			}
+		} catch (error) {
+			if (error.response) {
+				setIsLoading(false);
 
-		if (result.data.status === 'Success') {
-			setIsLoading(false);
-			history.push('/vendor/auth/transport-type');
+				let err = Object.values(error.response.data.message);
+				let errArrayFlat = err.flat();
+				let errMessage = errArrayFlat.join('');
+				console.log(errMessage);
+				setAuthMessage(errMessage);
+			} else if (error.request) {
+				setIsLoading(false);
+				setAuthMessage(error.request);
+				// console.log(error.request);
+			} else {
+				console.log('Error', error.message);
+			}
 		}
 	};
 
@@ -75,6 +93,7 @@ const OTP = () => {
 					</View>
 				</form>
 			</View>
+			{authMessage ? <Text>{authMessage}</Text> : ''}
 			<View className={styles('resend-text')}>
 				<Text textAlign="center">
 					Didnt get OTP?

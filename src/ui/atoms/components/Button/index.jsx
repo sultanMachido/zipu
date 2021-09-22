@@ -15,7 +15,7 @@ export const FormButton = ({ theme, children, className, loading, ...props }) =>
 				[`${className}`]: className
 			})}
 			{...props}>
-			{loading ? <Facebook style={{ width: '45px', height: '45px' }} /> : ''}
+			{loading ? <Facebook style={{ width: '45px', height: '45px' }} /> : children}
 			{/* {children} */}
 		</button>
 	);

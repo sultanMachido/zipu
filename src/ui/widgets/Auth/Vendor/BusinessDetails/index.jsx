@@ -39,6 +39,7 @@ const BusinessDetails = () => {
 	const [values, setValues] = useState(initialValues);
 	const history = useHistory();
 	const [isLoading, setIsLoading] = useState(false);
+	const [errorMessage, setErrorMessage] = useState('');
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
@@ -65,15 +66,33 @@ const BusinessDetails = () => {
 			}
 		};
 
-		let result = await axios.post(
-			'https://backend.zipu.ng/api/v1/bank-policy-update',
-			formData,
-			options
-		);
-		console.log(result);
-		if (result.data.status === 'Success') {
-			setIsLoading(false);
-			history.push('/vendor/auth/welcome');
+		try {
+			let result = await axios.post(
+				'https://backend.zipu.ng/api/v1/bank-policy-update',
+				formData,
+				options
+			);
+			console.log(result);
+			if (result.data.status === 'Success') {
+				setIsLoading(false);
+				history.push('/vendor/auth/welcome');
+			}
+		} catch (error) {
+			if (error.response) {
+				setIsLoading(false);
+
+				let err = Object.values(error.response.data.message);
+				let errArrayFlat = err.flat();
+				let errMessage = errArrayFlat.join('');
+				console.log(errMessage);
+				setErrorMessage(errMessage);
+			} else if (error.request) {
+				setIsLoading(false);
+				setErrorMessage(error.request);
+				// console.log(error.request);
+			} else {
+				console.log('Error', error.message);
+			}
 		}
 	};
 
@@ -98,6 +117,7 @@ const BusinessDetails = () => {
 			</View>
 
 			<form className={styles('form-container')} onSubmit={onSubmit}>
+				{errorMessage ? <Text className={styles('error-text')}>{errorMessage}</Text> : ''}
 				<View className={styles('form-section')}>
 					<Text color="grey-dark" fontWeight="bold">
 						Company details

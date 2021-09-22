@@ -17,6 +17,7 @@ let styles = classnames.bind(style);
 const Registration = () => {
 	const history = useHistory();
 	const [isLoading, setIsLoading] = useState(false);
+	const [authMessage, setAuthMessage] = useState('');
 
 	const onSubmit = () => {
 		history.push('/vendor/auth/otp');
@@ -54,13 +55,8 @@ const Registration = () => {
 					if (!values.phone) {
 						errors.phone = 'Required';
 					}
-					// if (!values.newpassword) {
-					// 	errors.newpassword = 'Required';
-					// }
-					// return errors;
 				}}
 				onSubmit={async (values, { setSubmitting }) => {
-					setIsLoading(true);
 					console.log(values);
 					let axiosConfig = {
 						headers: {
@@ -68,6 +64,13 @@ const Registration = () => {
 							'Access-Control-Allow-Origin': '*'
 						}
 					};
+
+					if (values.password !== values.confirm_password) {
+						setAuthMessage('Password and Confirm Password do not match');
+						return;
+					}
+
+					setIsLoading(true);
 					try {
 						const result = await axios.post(
 							'https://backend.zipu.ng/api/v1/register-transco',
@@ -89,8 +92,22 @@ const Registration = () => {
 							console.log('failed');
 						}
 					} catch (error) {
-						//   notify.show(error.response.data.message, 'error');
 						console.log(error);
+						if (error.response) {
+							setIsLoading(false);
+
+							let err = Object.values(error.response.data.message);
+							let errArrayFlat = err.flat();
+							let errMessage = errArrayFlat.join('');
+							console.log(errMessage);
+							setAuthMessage(errMessage);
+						} else if (error.request) {
+							setIsLoading(false);
+							setAuthMessage(error.request);
+							// console.log(error.request);
+						} else {
+							console.log('Error', error.message);
+						}
 					}
 				}}>
 				{({
@@ -102,6 +119,7 @@ const Registration = () => {
 					/* and other goodies */
 				}) => (
 					<form className={styles('form-container')} onSubmit={handleSubmit}>
+						{authMessage ? <Text>{authMessage}</Text> : ''}
 						<View className={styles('input-group')}>
 							<TextInput
 								type="email"

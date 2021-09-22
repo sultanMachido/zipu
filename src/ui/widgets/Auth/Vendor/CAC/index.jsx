@@ -30,7 +30,7 @@ const options = [
 
 const formatReservationWindow = (time) => {
 	if (time === 'same day') {
-		return 0;
+		return 1;
 	}
 
 	if (time === '24 hours') {
@@ -51,9 +51,19 @@ const CAC = () => {
 	const history = useHistory();
 	const [inputError, setInputError] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
+	const [authMessage, setAuthMessage] = useState('');
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
+
+		if (
+			!values.uploadPermit.files.length ||
+			!values.CACDocument.files.length ||
+			!values.reservationWindow
+		) {
+			setAuthMessage('All Fields are required');
+			return;
+		}
 		setIsLoading(true);
 		const formData = new FormData();
 
@@ -75,15 +85,33 @@ const CAC = () => {
 			}
 		};
 
-		let result = await axios.post(
-			'https://backend.zipu.ng/api/v1/cac-permit-update',
-			formData,
-			options
-		);
-		console.log(result);
-		if (result.data.status === 'Success') {
-			setIsLoading(false);
-			history.push('/vendor/auth/business');
+		try {
+			let result = await axios.post(
+				'https://backend.zipu.ng/api/v1/cac-permit-update',
+				formData,
+				options
+			);
+			console.log(result);
+			if (result.data.status === 'Success') {
+				setIsLoading(false);
+				history.push('/vendor/auth/business');
+			}
+		} catch (error) {
+			if (error.response) {
+				setIsLoading(false);
+
+				let err = Object.values(error.response.data.message);
+				let errArrayFlat = err.flat();
+				let errMessage = errArrayFlat.join('');
+				console.log(errMessage);
+				setAuthMessage(errMessage);
+			} else if (error.request) {
+				setIsLoading(false);
+				setAuthMessage(error.request);
+				// console.log(error.request);
+			} else {
+				console.log('Error', error.message);
+			}
 		}
 	};
 
@@ -95,13 +123,13 @@ const CAC = () => {
 		console.log(value, 'value', name);
 
 		value.length > 5 && target.type === 'file'
-			? setInputError({ [name]: 'Number of files should not be more than 5' })
+			? setInputError({ [name]: 'Files should not be more than 5' })
 			: '';
 
 		if (value.length <= 5 && target.type === 'file') {
 			const { length, ...rest } = value;
 			let uploadedFiles = Object.values(rest);
-			console.log(uploadedFiles, 'uploads');
+			// console.log(uploadedFiles, 'uploads');
 			setValues({
 				...values,
 				[name]: { title: value, files: [...uploadedFiles] }
@@ -127,6 +155,7 @@ const CAC = () => {
 			</View>
 
 			<form className={styles('form-container')} onSubmit={onSubmit}>
+				{authMessage ? <Text className={styles('error-text')}>{authMessage}</Text> : ''}
 				<View>
 					<View className={styles('input-group')}>
 						<SelectField
