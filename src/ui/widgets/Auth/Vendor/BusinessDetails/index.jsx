@@ -58,11 +58,10 @@ const BusinessDetails = () => {
 		formData.append('privacy_policy', values.privacyPolicy);
 		formData.append('customer_care_policy', values.customerCarePolicy);
 
-		let token = localStorage.getItem('vendorToken');
 		console.log(formData);
 
 		try {
-			let result = await APIService('/bank-policy-update', formData);
+			let result = await APIService.postMultiPart('/bank-policy-update', formData);
 			console.log(result);
 			if (result.data.status === 'Success') {
 				setIsLoading(false);
