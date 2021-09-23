@@ -94,6 +94,7 @@ const AdminLogin = () => {
 						if (result.data.status === 'Success') {
 							// console.log('result!!')
 							localStorage.setItem('zipuJWTToken', ` ${result.data.data.token.plainTextToken}`);
+							localStorage.setItem('userType', ` ${result.data.data.user.user_type}`);
 							setIsLoading(false);
 							history.push('/vendor/company');
 						}
