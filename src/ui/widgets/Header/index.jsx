@@ -46,9 +46,7 @@ const Header = ({ login: { userInfo, isAuthenticated }, ...props }) => {
 	const [open, setOpen] = useState(false);
 	const admin = false;
 
-	useEffect(() => {
-		let userInfo = JSON.parse(localStorage.zipuUser);
-	}, []);
+	
 
 	return (
 		<View className={styles('header-wrapper')}>
