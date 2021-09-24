@@ -1,7 +1,7 @@
 import './index.scss';
 
 import classNames from 'classnames/bind';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Container from 'ui/atoms/components/Container';
 import { Text, View } from 'ui/atoms/components/Typography';
@@ -14,9 +14,18 @@ let styles = classNames.bind(style);
 
 const AdminLayout = ({ children }) => {
 	const { links } = mockData_AdminHeader;
+	const initialState = {
+		userInfo: '',
+		isAuthenticated: ''
+	};
+	const [login, setLogin] = useState(initialState);
+	useEffect(() => {
+		localStorage.userType ? setLogin({ userInfo: '', isAuthenticated: true }) : '';
+		console.log(localStorage.userType);
+	}, []);
 	return (
 		<View className={styles('admin-layout-wrapper')}>
-			<Header />
+			<Header login={{ userInfo: '', isAuthenticated: true }} />
 			<View className={styles('admin-header')}>
 				<ul className="header-linkss">
 					{links.length &&

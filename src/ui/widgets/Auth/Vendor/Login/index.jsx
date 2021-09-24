@@ -93,8 +93,8 @@ const AdminLogin = () => {
 						console.log(result);
 						if (result.data.status === 'Success') {
 							// console.log('result!!')
-							localStorage.setItem('zipuJWTToken', ` ${result.data.data.token.plainTextToken}`);
-							localStorage.setItem('userType', ` ${result.data.data.user.user_type}`);
+							localStorage.setItem('zipuJWTToken', result.data.data.token.plainTextToken);
+							localStorage.setItem('zipuUser', JSON.stringify(result.data.data.user));
 							setIsLoading(false);
 							history.push('/vendor/company');
 						}

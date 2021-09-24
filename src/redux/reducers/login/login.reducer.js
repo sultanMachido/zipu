@@ -2,8 +2,12 @@
 
 import loginTypes from '../../types/loginTypes';
 
-const cachedUser = localStorage && JSON?.parse(localStorage.getItem('zipuUser'));
-const cachedToken = localStorage && localStorage.getItem('zipuJWTToken');
+// const cachedUser = localStorage && JSON?.parse(localStorage.getItem('zipuUser'));
+// const cachedToken = localStorage && localStorage.getItem('zipuJWTToken');
+
+const cachedUser = JSON.parse(localStorage.zipuUser) || '';
+const cachedToken = localStorage.zipuJWTToken || '';
+
 const cachedAuthorization = cachedUser && cachedToken;
 
 export const loginInitialState = {

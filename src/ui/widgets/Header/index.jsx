@@ -1,5 +1,5 @@
 import classnames from 'classnames/bind';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
 import { withRouter } from 'react-router-dom';
@@ -12,7 +12,7 @@ import { LogoIcon } from 'ui/svgs';
 
 import CustomerHeader from './Customer';
 import style from './index.module.scss';
-// import VendorHeader from './Vendor';
+import VendorHeader from './Vendor';
 
 const styles = classnames.bind(style);
 
@@ -45,6 +45,11 @@ const Header = ({ login: { userInfo, isAuthenticated }, ...props }) => {
 	let history = useHistory();
 	const [open, setOpen] = useState(false);
 	const admin = false;
+
+	useEffect(() => {
+		let userInfo = JSON.parse(localStorage.zipuUser);
+	}, []);
+
 	return (
 		<View className={styles('header-wrapper')}>
 			<Container className={styles('header-container')}>
@@ -73,7 +78,11 @@ const Header = ({ login: { userInfo, isAuthenticated }, ...props }) => {
 				</View>
 				<View className={styles('nav-column')}>
 					{isAuthenticated ? (
-						<CustomerHeader logout={logUserOut} className={styles({ ['open']: open })} />
+						userInfo.user_type === 'transco' ? (
+							<VendorHeader />
+						) : (
+							<CustomerHeader logout={logUserOut} className={styles({ ['open']: open })} />
+						)
 					) : (
 						<Navigation
 							logout={logUserOut}
