@@ -46,8 +46,6 @@ const Header = ({ login: { userInfo, isAuthenticated }, ...props }) => {
 	const [open, setOpen] = useState(false);
 	const admin = false;
 
-	
-
 	return (
 		<View className={styles('header-wrapper')}>
 			<Container className={styles('header-container')}>
