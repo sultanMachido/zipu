@@ -9,8 +9,8 @@ const styles = classnames.bind(style);
 
 const navLinks = [
 	{ text: 'Notification', url: '/hello' },
-	{ text: 'FAQ', url: '/' },
-	{ text: 'Support', url: '/' },
+	{ text: 'FAQ', url: '/help-support' },
+	{ text: 'Support', url: '/help-support' },
 	{
 		text: 'GIG Admin',
 		type: 'dropdown',

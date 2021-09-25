@@ -1,6 +1,7 @@
 import classnames from 'classnames/bind';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Spinner } from 'react-spinners-css';
 import { FormButton } from 'ui/atoms/components/Button';
 import Container from 'ui/atoms/components/Container';
 import { Text, View } from 'ui/atoms/components/Typography';
@@ -11,6 +12,8 @@ import AdminLayout from 'ui/widgets/AdminLayout';
 
 import cars from '../../../../assets/img/cars.jpg';
 import car from '../../../../assets/img/GIGMLogo.png';
+import { APIService } from '../../../../config/apiConfig';
+import { getAPIError } from '../../../../utils/errorHandler/apiErrors';
 import style from './index.module.scss';
 
 const styles = classnames.bind(style);
@@ -18,15 +21,68 @@ const styles = classnames.bind(style);
 const Company = () => {
 	const [icon, setIcon] = useState(car);
 	const [image, setImage] = useState(cars);
+	const [imageLoading, setImageLoading] = useState(false);
+	const [transcoDetails, setTranscoDetails] = useState({});
+	const [errorMessage, setErrorMessage] = useState('');
 	const history = useHistory();
 
-	const changeImage = (e) => {
+	useEffect(async () => {
+		try {
+			let result = await APIService.get('/get-user-transco');
+
+			if (result.data.status === 'Success') {
+				let { picture, ...rest } = result.data.data.transco;
+				setTranscoDetails({ ...rest });
+				setImage(picture);
+			}
+		} catch (error) {
+			if (error.response) {
+				setImageLoading(false);
+				let errorMessage = getAPIError(error.response.data.message);
+
+				setErrorMessage(errorMessage);
+			} else if (error.request) {
+				setImageLoading(false);
+				setErrorMessage(error.request);
+				// console.log(error.request);
+			} else {
+				console.log('Error', error.message);
+			}
+		}
+	}, []);
+
+	const changeImage = async (e) => {
+		setImageLoading(true);
 		const [file] = e.target.files;
 		const name = e.target.name;
+		const formData = new FormData();
+		formData.append('picture', file);
 		console.log(name);
 		if (file) {
 			if (name === 'image') {
-				setImage(URL.createObjectURL(file));
+				console.log(file);
+				try {
+					let result = await APIService.postMultiPart('/update-company-pic', formData);
+					console.log(result);
+					if (result.data.status === 'Success') {
+						let { picture } = result.data.data.transco;
+						setImage(picture);
+						setImageLoading(false);
+					}
+				} catch (error) {
+					if (error.response) {
+						setImageLoading(false);
+						let errorMessage = getAPIError(error.response.data.message);
+
+						setErrorMessage(errorMessage);
+					} else if (error.request) {
+						setImageLoading(false);
+						setErrorMessage(error.request);
+						// console.log(error.request);
+					} else {
+						console.log('Error', error.message);
+					}
+				}
 			} else {
 				setIcon(URL.createObjectURL(file));
 			}
@@ -50,7 +106,11 @@ const Company = () => {
 						</View>
 						<View className={styles('input-group', 'company-image')}>
 							<View className={styles('image')}>
-								<img src={image} alt="" />
+								{!imageLoading ? (
+									<img src={image} alt="" />
+								) : (
+									<Spinner className={styles('loader')} />
+								)}
 							</View>
 							<label htmlFor="companyImage">Edit cover image</label>
 							<input type="file" name="image" id="companyImage" onChange={changeImage} />
@@ -130,15 +190,15 @@ const Company = () => {
 									<ul>
 										<li>
 											<SeatIcon />
-											<span>40 Busses/Car</span>
+											<span>{transcoDetails.number_of_buses || 0} Busses/Car</span>
 										</li>
 										<li>
 											<LuggageIcon />
-											<span>207 Staff</span>
+											<span>{transcoDetails.number_of_staff || 0} Staff</span>
 										</li>
 										<li>
 											<DoorIcon />
-											<span>31 Terminals</span>
+											<span>{transcoDetails.number_of_terminals || 0} Terminals</span>
 										</li>
 									</ul>
 								</View>
@@ -147,9 +207,9 @@ const Company = () => {
 								<View className={styles('grouping')}>
 									<Text variant="h4">Contact information</Text>
 									<ul>
-										<li>Email: gigm@zipu.com</li>
-										<li>Phone number: 0810 000 0000</li>
-										<li>Address: Ayodeji abalomo street, Surulere, Lagos, Nigeria</li>
+										<li>Email: {transcoDetails.email || ''}</li>
+										<li>Phone number: {transcoDetails.phone || ''}</li>
+										<li>Address: {transcoDetails.address || ''}</li>
 									</ul>
 								</View>
 
@@ -189,8 +249,8 @@ const Company = () => {
 								<View className={styles('grouping')}>
 									<Text variant="h4">Bank details</Text>
 									<ul>
-										<li>Bank name: Firstbank Nigeria</li>
-										<li>Account number: 00000000000</li>
+										<li>Bank name: {transcoDetails.bank || ''}</li>
+										<li>Account number: {transcoDetails.account_number || ''}</li>
 									</ul>
 								</View>
 							</View>
