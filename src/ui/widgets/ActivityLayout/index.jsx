@@ -13,7 +13,7 @@ const ActivityLayout = ({ children }) => {
 		<View className={styles('activity-layout-wrapper')}>
 			<View variant="header" className={styles('header')}>
 				<Header />
-				<TitleNav text="Sample text" />
+				<TitleNav text="Go Back" />
 			</View>
 			<View variant="main" className={styles('main')}>
 				{children}

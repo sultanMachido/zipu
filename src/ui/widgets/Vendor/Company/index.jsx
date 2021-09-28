@@ -26,12 +26,17 @@ const Company = () => {
 	const [errorMessage, setErrorMessage] = useState('');
 	const history = useHistory();
 
-	useEffect(async () => {
+	useEffect(() => {
+		getTranscoDetails();
+	}, []);
+
+	const getTranscoDetails = async () => {
 		try {
 			let result = await APIService.get('/get-user-transco');
 
 			if (result.data.status === 'Success') {
 				let { picture, ...rest } = result.data.data.transco;
+				console.log(rest);
 				setTranscoDetails({ ...rest });
 				setImage(picture);
 			}
@@ -49,7 +54,7 @@ const Company = () => {
 				console.log('Error', error.message);
 			}
 		}
-	}, []);
+	};
 
 	const changeImage = async (e) => {
 		setImageLoading(true);
@@ -220,28 +225,44 @@ const Company = () => {
 											<Text variant="h4">CAC Documents</Text>
 											<button>
 												<UploadIcon />
-												<span>Download</span>
+												<span>
+													<a href={transcoDetails.cac || '#'} download>
+														Download
+													</a>
+												</span>
 											</button>
 										</li>
 										<li>
 											<Text variant="h4">Permit Documents</Text>
 											<button>
 												<UploadIcon />
-												<span>Download</span>
+												<span>
+													<a href={transcoDetails.permit || '#'} download>
+														Download
+													</a>
+												</span>
 											</button>
 										</li>
 										<li>
 											<Text variant="h4">Privacy Documents</Text>
 											<button>
 												<UploadIcon />
-												<span>Download</span>
+												<span>
+													<a href={transcoDetails.privacy_policy || '#'} download>
+														Download
+													</a>
+												</span>
 											</button>
 										</li>
 										<li>
 											<Text variant="h4">Customer care Documents</Text>
 											<button>
 												<UploadIcon />
-												<span>Download</span>
+												<span>
+													<a href={transcoDetails.customer_care_policy || '#'} download>
+														Download
+													</a>
+												</span>
 											</button>
 										</li>
 									</ul>
