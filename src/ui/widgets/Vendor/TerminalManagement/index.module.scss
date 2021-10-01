@@ -1,4 +1,25 @@
 .terminal-management-wrapper {
+	.pagination-style {
+		height: 50px;
+		// background-color: green;
+		display: block;
+		position: fixed;
+		bottom: 0;
+		right: 400px;
+		width: 500px;
+		padding: 10px;
+		text-align: center;
+		font-weight: bold;
+
+		.pagination-link-active {
+			color: blue;
+		}
+
+		a {
+			color: black;
+			padding: 5px;
+		}
+	}
 }
 
 .header {

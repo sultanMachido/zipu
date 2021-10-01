@@ -7,7 +7,7 @@ import loginTypes from '../../types/loginTypes';
 
 const cachedUser = JSON.parse(localStorage.zipuUser) || '';
 const cachedToken = localStorage.zipuJWTToken || '';
-
+console.log(cachedUser);
 const cachedAuthorization = cachedUser && cachedToken;
 
 export const loginInitialState = {

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import classnames from 'classnames/bind';
 import { Formik } from 'formik';
 import React, { useState } from 'react';
@@ -64,8 +63,8 @@ const AdminLogin = () => {
 					</defs>
 				</svg>
 			</div>
-			<Text variant="h3">Login</Text>
-			<Text>Enter your details and continue</Text>
+			{/* <Text variant="h3">Login</Text>
+			<Text>Enter your details and continue</Text> */}
 			<Formik
 				initialValues={{
 					email: '',
@@ -83,7 +82,7 @@ const AdminLogin = () => {
 					}
 				}}
 				onSubmit={async (values, { setSubmitting }) => {
-					// console.log(values);
+					console.log(values);
 					setIsLoading(true);
 
 					try {
@@ -152,14 +151,14 @@ const AdminLogin = () => {
 				)}
 			</Formik>
 
-			<View className={styles('create-account-text')}>
+			{/* <View className={styles('create-account-text')}>
 				<Text textAlign="center">
 					Do not have an account?{' '}
 					<Text variant="a" fontWeight="bold" href="/">
 						Create account
 					</Text>
 				</Text>
-			</View>
+			</View> */}
 		</AuthCard>
 	);
 };
