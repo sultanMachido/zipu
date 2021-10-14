@@ -10,6 +10,12 @@ import style from './index.module.scss';
 
 const styles = classnames.bind(style);
 
+const editHandler = (e) => {
+	e.preventDefault();
+	e.nativeEvent.target.previousSibling.contentEditable = true;
+	console.log(e.nativeEvent.target.previousSibling.contentEditable);
+};
+
 const Profile = () => {
 	return (
 		<AdminLayout>
@@ -70,13 +76,13 @@ const Profile = () => {
 						</View>
 						<View className={styles('body')}>
 							<ul>
-								<li>
+								{/* <li>
 									<Text>Title</Text>
 									<Text>Mr</Text>
 									<Text variant="a" href="/">
 										Edit
 									</Text>
-								</li>
+								</li> */}
 								<li>
 									<Text>Full Name</Text>
 									<Text>Oluwaleke Ojo</Text>
@@ -87,7 +93,7 @@ const Profile = () => {
 								<li>
 									<Text>Email address</Text>
 									<Text>ojopeta@gmail.com</Text>
-									<Text variant="a" href="/">
+									<Text variant="a" href="/" onClick={(e) => editHandler(e)}>
 										Edit
 									</Text>
 								</li>
@@ -98,20 +104,20 @@ const Profile = () => {
 										Edit
 									</Text>
 								</li>
-								<li>
+								{/* <li>
 									<Text>Date of birth</Text>
 									<Text>12-12-2020</Text>
 									<Text variant="a" href="/">
 										Edit
 									</Text>
-								</li>
-								<li>
+								</li> */}
+								{/* <li>
 									<Text>Nationality</Text>
 									<Text>Nigerian</Text>
 									<Text variant="a" href="/">
 										Edit
 									</Text>
-								</li>
+								</li> */}
 								<li>
 									<Text>Gender</Text>
 									<Text>Male now</Text>

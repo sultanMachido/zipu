@@ -17,9 +17,8 @@ const navLinks = [
 		imgUrl:
 			'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80',
 		dropList: [
-			{ text: 'link', url: '/' },
-			{ text: 'link', url: '/' },
-			{ text: 'link', url: '/' }
+			{ text: 'Profile', url: '/' },
+			{ text: 'Logout', url: '/' }
 		]
 	}
 ];

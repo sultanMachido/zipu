@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FormButton } from 'ui/atoms/components/Button';
 import Container from 'ui/atoms/components/Container';
+import { TextInput } from 'ui/atoms/components/TextInput';
 import { Text, View } from 'ui/atoms/components/Typography';
 import Dropdown from 'ui/components/Dropdown';
 import Empty from 'ui/components/Empty';
-import { FilterIcon, WarningIcon } from 'ui/svgs';
+import { FilterIcon, SearchIcon, WarningIcon } from 'ui/svgs';
 import AdminLayout from 'ui/widgets/AdminLayout';
 
 import { APIService } from '../../../../config/apiConfig';
@@ -117,7 +118,7 @@ const TerminalManagement = () => {
 					</View>
 					{terminals.length && (
 						<View className={styles('actions')}>
-							<View className={styles('dropdown')}>
+							{/* <View className={styles('dropdown')}>
 								<Text>Terminal: </Text> <Dropdown dropList={dropList} text="All terminals" />
 							</View>
 							<View className={styles('dropdown')}>
@@ -128,6 +129,16 @@ const TerminalManagement = () => {
 									<FilterIcon />
 									<span>Filter</span>
 								</button>
+							</View> */}
+							<View className={styles('input-group')}>
+								<View className={styles('input')}>
+									<SearchIcon />
+									<TextInput
+										type="text"
+										placeholder="Search terminals"
+										wrapperClass={styles('search')}
+									/>
+								</View>
 							</View>
 							<View className={styles('button-container')}>
 								<button onClick={() => history.push('/vendor/create-terminal')}>ADD NEW</button>
