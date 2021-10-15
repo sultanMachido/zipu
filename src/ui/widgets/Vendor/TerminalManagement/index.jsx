@@ -1,6 +1,7 @@
 import classnames from 'classnames/bind';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Facebook } from 'react-spinners-css';
 import { FormButton } from 'ui/atoms/components/Button';
 import Container from 'ui/atoms/components/Container';
 import { TextInput } from 'ui/atoms/components/TextInput';
@@ -31,7 +32,7 @@ const styles = classnames.bind(style);
 const TerminalManagement = () => {
 	const [showFilter, setShowFilter] = useState(false);
 	const [errorMessage, setErrorMessage] = useState('');
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 	const [terminals, setTerminals] = useState([]);
 	const [transco, setTransco] = useState({});
 	const [paginationLinks, setPaginationLinks] = useState([]);
@@ -116,9 +117,8 @@ const TerminalManagement = () => {
 							Terminal <span>All</span>
 						</Text>
 					</View>
-					{terminals.length && (
-						<View className={styles('actions')}>
-							{/* <View className={styles('dropdown')}>
+					<View className={styles('actions')}>
+						{/* <View className={styles('dropdown')}>
 								<Text>Terminal: </Text> <Dropdown dropList={dropList} text="All terminals" />
 							</View>
 							<View className={styles('dropdown')}>
@@ -130,23 +130,23 @@ const TerminalManagement = () => {
 									<span>Filter</span>
 								</button>
 							</View> */}
-							<View className={styles('input-group')}>
-								<View className={styles('input')}>
-									<SearchIcon />
-									<TextInput
-										type="text"
-										placeholder="Search terminals"
-										wrapperClass={styles('search')}
-									/>
-								</View>
-							</View>
-							<View className={styles('button-container')}>
-								<button onClick={() => history.push('/vendor/create-terminal')}>ADD NEW</button>
+						<View className={styles('input-group')}>
+							<View className={styles('input')}>
+								<SearchIcon />
+								<TextInput
+									type="text"
+									placeholder="Search terminals"
+									wrapperClass={styles('search')}
+								/>
 							</View>
 						</View>
-					)}
+						<View className={styles('button-container')}>
+							<button onClick={() => history.push('/vendor/create-terminal')}>ADD NEW</button>
+						</View>
+					</View>
 				</View>
-				{terminals.length ? (
+				{isLoading ? <Facebook /> : ''}
+				{terminals.length && !isLoading ? (
 					<View>
 						<View className={styles('row')}>
 							<View className={styles('filter', { ['active']: showFilter })}>
@@ -236,9 +236,9 @@ const TerminalManagement = () => {
 							))}
 						</View>
 					</View>
-				) : (
+				) : !terminals.length && !isLoading ? (
 					<Empty {...btnInfo} />
-				)}
+				) : null}
 			</View>
 		</AdminLayout>
 	);
