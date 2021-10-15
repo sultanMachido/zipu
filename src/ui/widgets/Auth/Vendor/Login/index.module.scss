@@ -19,6 +19,18 @@
 		width: 45px;
 		height: 45px;
 	}
+	.logo {
+		display: flex;
+		// justify-content: center;
+		margin-bottom: 10px;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.title {
+		font-weight: bold;
+		margin-bottom: 20px;
+	}
 }
 
 .error-text {

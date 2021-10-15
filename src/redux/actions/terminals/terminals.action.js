@@ -51,11 +51,11 @@ export const getTerminals = (data) => async (dispatch) => {
 	}
 };
 
-export const addTerminal = (termialData) => async (dispatch) => {
+export const addTerminal = (terminalData) => async (dispatch) => {
 	dispatch(clearTerminalsErrors());
 	dispatch(addTerminalsLoading());
 	try {
-		const addTerminalRequest = await APIService.post(`/terminals/add`, { ...termialData });
+		const addTerminalRequest = await APIService.post(`/terminals/add`, { ...terminalData });
 		if (addTerminalRequest.data.status === 'Success') {
 			dispatch(addTerminalsLoading());
 			dispatch(addTerminalsSuccess(addTerminalRequest.data));

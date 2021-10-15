@@ -1,5 +1,7 @@
 import classnames from 'classnames/bind';
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Facebook } from 'react-spinners-css';
 import { FormButton } from 'ui/atoms/components/Button';
@@ -10,6 +12,7 @@ import Dropdown from 'ui/components/Dropdown';
 import Empty from 'ui/components/Empty';
 import { FilterIcon, SearchIcon, WarningIcon } from 'ui/svgs';
 import AdminLayout from 'ui/widgets/AdminLayout';
+import { toStates } from 'utils/states';
 
 import { APIService } from '../../../../config/apiConfig';
 import { getAPIError } from '../../../../utils/errorHandler/apiErrors';
@@ -29,7 +32,7 @@ const btnInfo = {
 };
 const styles = classnames.bind(style);
 
-const TerminalManagement = () => {
+const TerminalManagement = (props) => {
 	const [showFilter, setShowFilter] = useState(false);
 	const [errorMessage, setErrorMessage] = useState('');
 	const [isLoading, setIsLoading] = useState(true);
@@ -41,6 +44,9 @@ const TerminalManagement = () => {
 
 	useEffect(() => {
 		getActiveTerminals();
+		// console.log(props.terminals.addTerminalsSuccess.message);
+		let message = props.terminals.addTerminalsSuccess.message || '';
+		toast.success(message);
 	}, []);
 
 	const getActiveTerminals = async () => {
@@ -244,4 +250,8 @@ const TerminalManagement = () => {
 	);
 };
 
-export default TerminalManagement;
+const mapStateToProps = (state) => ({
+	terminals: state.terminals
+});
+
+export default connect(mapStateToProps, null)(TerminalManagement);

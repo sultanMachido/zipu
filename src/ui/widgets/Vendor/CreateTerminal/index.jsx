@@ -1,5 +1,6 @@
 import classnames from 'classnames/bind';
 import React, { useRef, useState } from 'react';
+import toast from 'react-hot-toast';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
 import { FormButton } from 'ui/atoms/components/Button';
@@ -12,6 +13,7 @@ import { SearchIcon } from 'ui/svgs';
 import ActivityLayout from 'ui/widgets/ActivityLayout';
 
 import { APIService } from '../../../../config/apiConfig';
+import { addTerminal } from '../../../../redux/actions/terminals/terminals.action';
 import { getAPIError } from '../../../../utils/errorHandler/apiErrors';
 import style from './index.module.scss';
 
@@ -45,7 +47,7 @@ const initialValues = {
 
 const styles = classnames.bind(style);
 
-const CreateTerminal = () => {
+const CreateTerminal = (props) => {
 	const [active, setActive] = useState(false);
 	const [values, setValues] = useState(initialValues);
 	const [cities, setCities] = useState([]);
@@ -115,24 +117,29 @@ const CreateTerminal = () => {
 			id.push(Number(checkbox.id));
 		});
 		setValues({ ...values, vehicles: [...id] });
-
+		console.log(values, 'values');
 		try {
-			let result = await APIService.post('/terminals/add', values);
-			if (result.data.status === 'Success') {
+			let result = await props.addTerminal(values);
+			console.log(result);
+			console.log(result.addTerminalStatus);
+			if (result.addTerminalStatus) {
 				setIsLoading(false);
-				setSuccessMessage(result.data.message);
+				setSuccessMessage(result.message);
 				history.goBack();
+			} else {
+				setIsLoading(false);
+				toast.error(result.message);
 			}
 		} catch (error) {
 			if (error.response) {
 				setIsLoading(false);
 				let errorMessage = getAPIError(error.response.data.message);
-
+				console.log(errorMessage);
 				setErrorMessage(errorMessage);
 			} else if (error.request) {
 				setIsLoading(false);
 				setErrorMessage(error.request);
-				// console.log(error.request);
+				console.log(error.request);
 			} else {
 				setIsLoading(false);
 				console.log('Error', error.message);
@@ -264,4 +271,12 @@ const CreateTerminal = () => {
 	);
 };
 
-export default connect()(CreateTerminal);
+const mapStateToProps = (state) => ({
+	terminals: state.terminals
+});
+
+const mapDispatchToProps = {
+	addTerminal
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateTerminal);
