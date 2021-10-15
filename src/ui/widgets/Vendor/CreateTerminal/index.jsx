@@ -1,5 +1,7 @@
 import classnames from 'classnames/bind';
 import React, { useRef, useState } from 'react';
+import { connect } from 'react-redux';
+import { useHistory } from 'react-router';
 import { FormButton } from 'ui/atoms/components/Button';
 import Container from 'ui/atoms/components/Container';
 import { SelectField } from 'ui/atoms/components/SelectField';
@@ -52,6 +54,8 @@ const CreateTerminal = () => {
 	const [errorMessage, setErrorMessage] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
 	const [successMessage, setSuccessMessage] = useState('');
+
+	let history = useHistory();
 
 	const handleInputChange = (e) => {
 		console.log(e.nativeEvent.target);
@@ -117,6 +121,7 @@ const CreateTerminal = () => {
 			if (result.data.status === 'Success') {
 				setIsLoading(false);
 				setSuccessMessage(result.data.message);
+				history.goBack();
 			}
 		} catch (error) {
 			if (error.response) {
@@ -140,7 +145,9 @@ const CreateTerminal = () => {
 				<Container className={styles('inner-wrapper')}>
 					<View className={styles('header')}>
 						<Text variant="h4">Terminal Creation</Text>
-						<Toggle state={active} handleChange={handleChange} />
+					</View>
+					<View>
+						<p style={{ paddingLeft: '3px' }}>Add Terminals</p>
 					</View>
 					<form onSubmit={onSubmit}>
 						{errorMessage || ''}
@@ -257,4 +264,4 @@ const CreateTerminal = () => {
 	);
 };
 
-export default CreateTerminal;
+export default connect()(CreateTerminal);
