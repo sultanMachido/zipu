@@ -1,5 +1,5 @@
 import classnames from 'classnames/bind';
-import React from 'react';
+import React, { useState } from 'react';
 import { FormButton } from 'ui/atoms/components/Button';
 import Container from 'ui/atoms/components/Container';
 import { Text, View } from 'ui/atoms/components/Typography';
@@ -13,10 +13,51 @@ const styles = classnames.bind(style);
 const editHandler = (e) => {
 	e.preventDefault();
 	e.nativeEvent.target.previousSibling.contentEditable = true;
-	console.log(e.nativeEvent.target.previousSibling.contentEditable);
+	// console.log(e.nativeEvent.target.previousSibling.contentEditable);
+
+	// console.log(e.nativeEvent.target.previousSibling.id, 'id');
+	let elementID = e.nativeEvent.target.previousSibling.id;
+
+	var el = document.getElementById(elementID);
+	var range = document.createRange();
+	var sel = window.getSelection();
+
+	range.setStart(el.childNodes[0], el.childNodes[0].length);
+	// range.setEnd(el.childNodes[0], 10);
+	// console.log(el.childNodes[0].length, 'child node');
+	range.collapse(true);
+
+	sel.removeAllRanges();
+	sel.addRange(range);
 };
 
 const Profile = () => {
+	const [showSave, setShowSave] = useState(false);
+	const editHandler = (e) => {
+		e.preventDefault();
+		e.nativeEvent.target.previousSibling.contentEditable = true;
+		if (e.nativeEvent.target.textContent === 'Edit') {
+			console.log(e.nativeEvent.target.textContent);
+
+			// console.log(e.nativeEvent.target.previousSibling.id, 'id');
+			let elementID = e.nativeEvent.target.previousSibling.id;
+
+			var el = document.getElementById(elementID);
+			var range = document.createRange();
+			var sel = window.getSelection();
+
+			range.setStart(el.childNodes[0], el.childNodes[0].length);
+			// range.setEnd(el.childNodes[0], 10);
+			// console.log(el.childNodes[0].length, 'child node');
+			range.collapse(true);
+
+			sel.removeAllRanges();
+			sel.addRange(range);
+			e.nativeEvent.target.textContent = 'Save';
+		} else {
+			e.nativeEvent.target.textContent = 'Edit';
+		}
+	};
 	return (
 		<AdminLayout>
 			<View className={styles('profile-wrapper')}>
@@ -85,22 +126,22 @@ const Profile = () => {
 								</li> */}
 								<li>
 									<Text>Full Name</Text>
-									<Text>Oluwaleke Ojo</Text>
-									<Text variant="a" href="/">
+									<Text id="name">Oluwaleke Ojo</Text>
+									<Text variant="a" href="#" onClick={(e) => editHandler(e)}>
 										Edit
 									</Text>
 								</li>
 								<li>
 									<Text>Email address</Text>
-									<Text>ojopeta@gmail.com</Text>
-									<Text variant="a" href="/" onClick={(e) => editHandler(e)}>
+									<Text id="email">ojopeta@gmail.com</Text>
+									<Text variant="a" href="#" onClick={(e) => editHandler(e)}>
 										Edit
 									</Text>
 								</li>
 								<li>
 									<Text>Phone number</Text>
-									<Text>+2348067710761</Text>
-									<Text variant="a" href="/">
+									<Text id="phone">+2348067710761</Text>
+									<Text variant="a" href="/" onClick={(e) => editHandler(e)}>
 										Edit
 									</Text>
 								</li>
@@ -120,15 +161,15 @@ const Profile = () => {
 								</li> */}
 								<li>
 									<Text>Gender</Text>
-									<Text>Male now</Text>
-									<Text variant="a" href="/">
+									<Text id="gender">Male now</Text>
+									<Text variant="a" href="#" onClick={(e) => editHandler(e)}>
 										Edit
 									</Text>
 								</li>
 								<li>
 									<Text>Address</Text>
-									<Text>2 Adyinka Adeoye street, olonade junction, Yaba</Text>
-									<Text variant="a" href="/">
+									<Text id="address">2 Adyinka Adeoye street, olonade junction, Yaba</Text>
+									<Text variant="a" href="#" onClick={(e) => editHandler(e)}>
 										Edit
 									</Text>
 								</li>
