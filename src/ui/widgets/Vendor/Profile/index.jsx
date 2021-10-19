@@ -6,6 +6,7 @@ import { Text, View } from 'ui/atoms/components/Typography';
 import { SettingBellIcon, SettingCardIcon, SettingKeyIcon, SettingPersonIcon } from 'ui/svgs';
 import AdminLayout from 'ui/widgets/AdminLayout';
 
+import { APIService } from '../../../../config/apiConfig';
 import style from './index.module.scss';
 
 const styles = classnames.bind(style);
@@ -32,7 +33,7 @@ const editHandler = (e) => {
 };
 
 const Profile = () => {
-	const [showSave, setShowSave] = useState(false);
+	const [loading, setLoading] = useState(false);
 	const editHandler = (e) => {
 		e.preventDefault();
 		e.nativeEvent.target.previousSibling.contentEditable = true;
@@ -57,6 +58,10 @@ const Profile = () => {
 		} else {
 			e.nativeEvent.target.textContent = 'Edit';
 		}
+	};
+
+	const updateCompanyInfo = async () => {
+		const response = await APIService.post('/update-company-profile');
 	};
 	return (
 		<AdminLayout>

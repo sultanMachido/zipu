@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import classnames from 'classnames/bind';
+import { APIService } from 'config/apiConfig';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import { Text, View } from 'ui/atoms/components/Typography';
@@ -15,9 +16,15 @@ const Dropdown = ({ dropList, text, imgUrl, logout }) => {
 	let history = useHistory();
 
 	const handleLogOut = async () => {
-		console.log('ffff');
-		await logout();
-		history.push('/customer/login');
+		if (JSON.parse(localStorage.zipuUser).user_type === 'transco') {
+			localStorage.clear();
+			history.push('/vendor/auth/login');
+		} else {
+			localStorage.clear();
+			history.push('/customer/login');
+		}
+		// await logout();
+		// history.push('/customer/login');
 	};
 	return (
 		<View

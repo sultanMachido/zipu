@@ -4,7 +4,7 @@ import loginTypes from '../../types/loginTypes';
 
 // const cachedUser = localStorage && JSON?.parse(localStorage.getItem('zipuUser'));
 // const cachedToken = localStorage && localStorage.getItem('zipuJWTToken');
-console.log(localStorage.zipuUser);
+console.log(localStorage.zipuUser, 'zipuUser');
 let cachedUser;
 // const cachedUser = JSON.parse(localStorage.zipuUser) || '';
 localStorage.zipuUser ? (cachedUser = JSON.parse(localStorage.zipuUser)) : (cachedUser = '');
