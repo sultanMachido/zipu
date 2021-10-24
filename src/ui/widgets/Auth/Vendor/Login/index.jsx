@@ -108,7 +108,8 @@ const AdminLogin = () => {
 							setAuthMessage(errorMessage);
 						} else if (error.request) {
 							setIsLoading(false);
-							setAuthMessage(error.request);
+							let errorMessage = getAPIError(error.request.data.message);
+							setAuthMessage(errorMessage);
 							// console.log(error.request);
 						} else {
 							console.log('Error', error.message);

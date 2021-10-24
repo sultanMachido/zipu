@@ -1,8 +1,9 @@
 import classnames from 'classnames/bind';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router';
+import { Facebook } from 'react-spinners-css';
 import { FormButton } from 'ui/atoms/components/Button';
 import Container from 'ui/atoms/components/Container';
 import { SelectField } from 'ui/atoms/components/SelectField';
@@ -14,6 +15,7 @@ import ActivityLayout from 'ui/widgets/ActivityLayout';
 
 import { APIService } from '../../../../config/apiConfig';
 import { addTerminal } from '../../../../redux/actions/terminals/terminals.action';
+import { fetchAllVehicles } from '../../../../redux/actions/vehicles/vehicles.actions';
 import { getAPIError } from '../../../../utils/errorHandler/apiErrors';
 import style from './index.module.scss';
 
@@ -47,6 +49,13 @@ const initialValues = {
 
 const styles = classnames.bind(style);
 
+const DisplayBuses = ({ id, name, text, change }) => (
+	<View key={id} className={styles('input-group', 'check')}>
+		<input type="checkbox" name={name} id={id} onChange={change} className="check" />
+		<label htmlFor={name}>{text}</label>
+	</View>
+);
+
 const CreateTerminal = (props) => {
 	const [active, setActive] = useState(false);
 	const [values, setValues] = useState(initialValues);
@@ -56,8 +65,39 @@ const CreateTerminal = (props) => {
 	const [errorMessage, setErrorMessage] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
 	const [successMessage, setSuccessMessage] = useState('');
+	const [buses, setBuses] = useState([]);
 
 	let history = useHistory();
+
+	useEffect(() => {
+		getTranscoVehicles();
+	}, []);
+
+	const getTranscoVehicles = async () => {
+		console.log(localStorage.zipuUser, 'user');
+		const { vehicles, fetchAllVehiclesLoading } = props.vehicles;
+		try {
+			let response = await props.fetchAllVehicles(JSON.parse(localStorage.zipuUser).transco_id);
+			console.log(response);
+			if (response.fetchVehiclesStatus) {
+				console.log(props.vehicles);
+			}
+		} catch (error) {
+			if (error.response) {
+				setIsLoading(false);
+				let errorMessage = getAPIError(error.response.data.message);
+				console.log(errorMessage);
+				setErrorMessage(errorMessage);
+			} else if (error.request) {
+				setIsLoading(false);
+				setErrorMessage(error.request);
+				console.log(error.request);
+			} else {
+				setIsLoading(false);
+				console.log('Error', error.message);
+			}
+		}
+	};
 
 	const handleInputChange = (e) => {
 		console.log(e.nativeEvent.target);
@@ -202,36 +242,9 @@ const CreateTerminal = (props) => {
 										</View>
 									</View>
 									<View className={styles('terminals-group')}>
-										{terminalOptions.map((option) => (
-											<View key={option.name} className={styles('input-group', 'check')}>
-												<input
-													type="checkbox"
-													name={option.name}
-													id={option.id}
-													onChange={handleCheckboxChange}
-													className="check"
-												/>
-												<label htmlFor={option.name}>{option.text}</label>
-											</View>
-										))}
-										{terminalOptions.map((option) => (
-											<View key={option.name} className={styles('input-group', 'check')}>
-												<input type="checkbox" name={option.name} id={option.id} />
-												<label htmlFor={option.name}>{option.text}</label>
-											</View>
-										))}
-										{terminalOptions.map((option) => (
-											<View key={option.name} className={styles('input-group', 'check')}>
-												<input type="checkbox" name={option.name} id={option.name} />
-												<label htmlFor={option.name}>{option.text}</label>
-											</View>
-										))}
-										{terminalOptions.map((option) => (
-											<View key={option.name} className={styles('input-group', 'check')}>
-												<input type="checkbox" name={option.name} id={option.name} />
-												<label htmlFor={option.name}>{option.text}</label>
-											</View>
-										))}
+										{props.vehicles.data
+											? props.vehicles.data.map((option) => <DisplayBuses key={option.id} />)
+											: ''}
 									</View>
 								</View>
 							</View>
@@ -272,11 +285,13 @@ const CreateTerminal = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-	terminals: state.terminals
+	terminals: state.terminals,
+	vehicles: state.vehicles
 });
 
 const mapDispatchToProps = {
-	addTerminal
+	addTerminal,
+	fetchAllVehicles
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateTerminal);

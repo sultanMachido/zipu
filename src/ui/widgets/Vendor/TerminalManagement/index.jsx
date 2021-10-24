@@ -45,8 +45,8 @@ const TerminalManagement = (props) => {
 	useEffect(() => {
 		getActiveTerminals();
 		// console.log(props.terminals.addTerminalsSuccess.message);
-		let message = props.terminals.addTerminalsSuccess.message || '';
-		toast.success(message);
+		let message = props.terminals.addTerminalsSuccess.message;
+		message ? toast.success(message) : '';
 	}, []);
 
 	const getActiveTerminals = async () => {
@@ -104,7 +104,9 @@ const TerminalManagement = (props) => {
 					setErrorMessage(errorMessage);
 				} else if (error.request) {
 					setIsLoading(false);
-					setErrorMessage(error.request);
+					let errorMessage = getAPIError(error.request.data.message);
+
+					setErrorMessage(errorMessage);
 					// console.log(error.request);
 				} else {
 					setIsLoading(false);
