@@ -26,7 +26,28 @@
 // 		[0, 0, 1, 0],
 // 		[1, 0, 1, 0]
 // 	]);
-
+const arrangement = [
+    [
+      { seatNumber: 1, available: 0 },
+      { seatNumber: 2, available: 0 },
+    ],
+    [
+      { seatNumber: 3, available: 1 },
+      { seatNumber: 4, available: 1 },
+      { seatNumber: 5, available: 0 },
+      { seatNumber: 6, available: 1 },
+    ],
+    [
+      { seatNumber: 7, available: 0 },
+      { seatNumber: 8, available: 1 },
+      { seatNumber: 9, available: 0 },
+      { seatNumber: 10, available: 0 },
+    ],
+    [
+      { seatNumber: 11, available: 0 },
+      { seatNumber: 12, available: 0 },
+    ]
+]
 // 	const { promoCodes, fetchAllTripsLoading } = props.promoCodes;
 
 // 	useEffect(() => {
